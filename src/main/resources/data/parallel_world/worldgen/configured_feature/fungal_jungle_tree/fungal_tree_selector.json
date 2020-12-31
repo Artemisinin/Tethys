@@ -1,0 +1,24 @@
+{
+	"config": {
+		"features": [
+		  {
+			"feature": "parallel_world:fungal_jungle_tree/fungi_overland_1",
+			"chance": 0.24
+		  },
+		  {
+			"feature": "parallel_world:fungal_jungle_tree/fungi_overland_2",
+			"chance": 0.25
+		  },
+		  {
+			"feature": "parallel_world:fungal_jungle_tree/fungi_overland_3",
+			"chance": 0.25
+		  },
+		  {
+			"feature": "parallel_world:fungal_jungle_tree/fungi_overland_4",
+			"chance": 0.25
+		  }
+		],
+		"default": "parallel_world:fungal_jungle_tree/fungi_overland_1"
+		},
+	"type": "minecraft:random_selector"
+}

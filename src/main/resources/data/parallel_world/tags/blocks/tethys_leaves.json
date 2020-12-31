@@ -1,0 +1,12 @@
+{
+  "replace": false,
+  "values": [
+    "parallel_world:basswood_leaves",
+    "parallel_world:blackcurrant_leaves",
+    "parallel_world:cherry_leaves",
+    "parallel_world:dogwood_leaves",
+    "parallel_world:ginkgo_leaves",
+    "parallel_world:sweetgum_leaves",
+    "parallel_world:glowfruit"
+  ]
+}

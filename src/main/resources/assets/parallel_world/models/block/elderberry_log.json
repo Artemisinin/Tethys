@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "parallel_world:block/elderberry_log_top",
+    "side": "parallel_world:block/elderberry_log"
+  }
+}

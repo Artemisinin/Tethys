@@ -1,0 +1,42 @@
+{
+  "config": {
+	"feature": {
+	  "config": {
+		"feature": {
+		  "config": {
+			"target": {
+			  "Name": "minecraft:coarse_dirt"
+			},
+			"state": {
+				"Properties": {
+					"layers": "8"
+					},
+				"Name": "minecraft:snow"
+				},
+			"radius": {
+			  "base": 120,
+			  "spread": 5
+			}
+		  },
+		  "type": "minecraft:netherrack_replace_blobs"
+		},
+		"decorator": {
+		  "config": {
+			"bottom_offset": 0,
+			"top_offset": 0,
+			"maximum": 256
+		  },
+		  "type": "minecraft:range"
+		}
+	  },
+	  "type": "minecraft:decorated"
+	},
+    "decorator": {
+      "config": {
+        "count": 128
+      },
+      "type": "minecraft:count"
+    }
+  },
+  "type": "minecraft:decorated"
+}

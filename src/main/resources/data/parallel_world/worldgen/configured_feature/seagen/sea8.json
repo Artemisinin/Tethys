@@ -1,0 +1,12 @@
+{
+  "config": {
+	"height": 13,
+	"state": {
+		"Properties": {
+		  "level": "0"
+		},
+		"Name": "minecraft:water"
+		}
+	},
+  "type": "fill_layer"
+}

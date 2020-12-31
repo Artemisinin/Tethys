@@ -1,0 +1,6 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "parallel_world:item/pink_diamond"
+  }
+}

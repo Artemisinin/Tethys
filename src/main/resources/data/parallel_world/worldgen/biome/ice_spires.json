@@ -1,0 +1,187 @@
+{
+  "scale": 0.4,
+  "effects": {
+    "mood_sound": {
+      "sound": "minecraft:ambient.cave",
+      "tick_delay": 6000,
+      "block_search_extent": 8,
+      "offset": 2.0
+    },
+    "sky_color": 5211903,
+    "fog_color": 12638463,
+    "water_color": 3750089,
+    "water_fog_color": 329011
+  },
+  "surface_builder": "parallel_world:deep_snow",
+  "carvers": {
+    "air": [
+      "minecraft:cave",
+      "minecraft:canyon"
+    ]
+  },
+  "features": [
+    [
+		"parallel_world:seagen/seabed_sandstone",
+		"parallel_world:seagen/seabed_sand",
+		"parallel_world:seagen/sea1",
+		"parallel_world:seagen/sea2",
+		"parallel_world:seagen/sea3",
+		"parallel_world:seagen/sea4",
+		"parallel_world:seagen/sea5",
+		"parallel_world:seagen/sea6",
+		"parallel_world:seagen/sea7",
+		"parallel_world:seagen/sea8",
+		"parallel_world:seagen/sea9",
+		"parallel_world:seagen/sea10",
+		"parallel_world:seagen/sea11",
+		"parallel_world:seagen/sea12",
+		"parallel_world:seagen/sea13",
+		"parallel_world:seagen/sea14",
+		"parallel_world:seagen/sea15"
+	],
+    [
+      "minecraft:lake_water",
+	  "minecraft:lake_lava"
+    ],
+    [],
+    [
+      "minecraft:monster_room"
+    ],
+    [
+      "minecraft:ice_spike",
+      "minecraft:ice_patch"
+    ],
+    [],
+    [ 
+	  "parallel_world:coarse_dirt_blobs_ycap",
+      "minecraft:ore_dirt",
+      "minecraft:ore_gravel",
+      "minecraft:ore_granite",
+      "minecraft:ore_diorite",
+      "minecraft:ore_andesite",
+      "minecraft:ore_coal",
+      "minecraft:ore_iron",
+      "minecraft:ore_gold",
+      "minecraft:ore_redstone",
+      "minecraft:ore_diamond",
+      "minecraft:ore_lapis",
+      "minecraft:disk_sand",
+      "minecraft:disk_clay",
+      "minecraft:disk_gravel"
+    ],
+    [],
+    [
+      "parallel_world:dwarf_pine",
+      "minecraft:kelp_cold",
+	  "minecraft:spruce_snowy",
+      "minecraft:spring_water",
+      "minecraft:spring_lava"
+    ],
+    [
+	  "parallel_world:coarse_dirt_replacer_snow",
+	  "minecraft:freeze_top_layer"
+    ]
+  ],
+  "starts": [
+    "minecraft:stronghold"
+  ],
+  "creature_spawn_probability": 0.07,
+  "spawners": {
+    "monster": [
+      {
+        "type": "minecraft:spider",
+        "weight": 100,
+        "minCount": 4,
+        "maxCount": 4
+      },
+      {
+        "type": "minecraft:zombie",
+        "weight": 95,
+        "minCount": 4,
+        "maxCount": 4
+      },
+      {
+        "type": "minecraft:zombie_villager",
+        "weight": 5,
+        "minCount": 1,
+        "maxCount": 1
+      },
+      {
+        "type": "minecraft:skeleton",
+        "weight": 20,
+        "minCount": 4,
+        "maxCount": 4
+      },
+      {
+        "type": "minecraft:slime",
+        "weight": 100,
+        "minCount": 4,
+        "maxCount": 4
+      },
+      {
+        "type": "minecraft:enderman",
+        "weight": 10,
+        "minCount": 1,
+        "maxCount": 4
+      },
+      {
+        "type": "minecraft:witch",
+        "weight": 5,
+        "minCount": 1,
+        "maxCount": 1
+      },
+      {
+        "type": "minecraft:stray",
+        "weight": 80,
+        "minCount": 4,
+        "maxCount": 4
+      }
+    ],
+    "creature": [
+      {
+        "type": "minecraft:rabbit",
+        "weight": 10,
+        "minCount": 2,
+        "maxCount": 3
+      },
+      {
+        "type": "minecraft:polar_bear",
+        "weight": 1,
+        "minCount": 1,
+        "maxCount": 2
+      }
+    ],
+    "ambient": [
+      {
+        "type": "minecraft:bat",
+        "weight": 10,
+        "minCount": 8,
+        "maxCount": 8
+      }
+    ],
+		"water_creature": [
+		  {
+			"type": "minecraft:squid",
+			"weight": 10,
+			"minCount": 4,
+			"maxCount": 4
+		  }
+		],
+		"water_ambient": [
+		  {
+			"type": "minecraft:cod",
+			"weight": 15,
+			"minCount": 1,
+			"maxCount": 3
+		  }
+		],
+	"misc": []
+  },
+  "spawn_costs": {},
+  "player_spawn_friendly": false,
+  "precipitation": "snow",
+  "temperature": 0.0,
+  "downfall": 0.5,
+  "category": "icy",
+  "depth": 0.40
+}

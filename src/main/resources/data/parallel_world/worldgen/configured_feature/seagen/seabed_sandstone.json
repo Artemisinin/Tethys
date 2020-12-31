@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:fill_layer",
+  "config": {
+    "state": {
+
+      "Name": "minecraft:sandstone"
+    },
+    "height": 4
+  }
+}

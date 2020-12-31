@@ -1,0 +1,63 @@
+{
+  "config": {
+    "feature": {
+  "config": {
+    "feature": {
+      "config": {
+        "features": [
+          {
+            "feature": "parallel_world:huge_heath_mushroom",
+            "chance": 0.15
+          },
+          {
+            "feature": "parallel_world:heath_tree/heath_bush_1",
+            "chance": 0.15
+          },
+		  {
+            "feature": "parallel_world:heath_tree/heath_bush_2",
+            "chance": 0.15
+          },
+		  {
+            "feature": "parallel_world:heath_tree/heath_bush_3",
+            "chance": 0.15
+          },
+		  {
+            "feature": "parallel_world:heath_tree/heath_bush_4",
+            "chance": 0.15
+          },
+		  {
+            "feature": "parallel_world:heath_tree/heath_bush_5",
+            "chance": 0.15
+          }
+        ],
+        "default": "parallel_world:heath_tree/heath_bush_1"
+      },
+      "type": "minecraft:random_selector"
+    },
+        "decorator": {
+          "config": {
+            "outer": {
+              "config": {},
+              "type": "minecraft:square"
+            },
+            "inner": {
+              "config": {},
+              "type": "minecraft:heightmap"
+            }
+          },
+          "type": "minecraft:decorated"
+        }
+      },
+      "type": "minecraft:decorated"
+    },
+    "decorator": {
+      "config": {
+        "count": 15,
+        "extra_chance": 0.3,
+        "extra_count": 3
+      },
+      "type": "minecraft:count_extra"
+    }
+  },
+  "type": "minecraft:decorated"
+}

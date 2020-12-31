@@ -1,0 +1,14 @@
+{
+  "name": "parallel_world:village/flower_forest/trees",
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "feature": "minecraft:oak",
+        "projection": "rigid",
+        "element_type": "minecraft:feature_pool_element"
+      }
+    }
+  ]
+}

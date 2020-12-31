@@ -1,0 +1,151 @@
+{
+  "scale": 0.3,
+  "effects": {
+    "mood_sound": {
+      "sound": "minecraft:ambient.cave",
+      "tick_delay": 6000,
+      "block_search_extent": 8,
+      "offset": 2.0
+    },
+    "sky_color": 6190335,
+    "fog_color": 15135231,
+    "water_color": 3557818,
+    "water_fog_color": 329011
+  },
+  "surface_builder": "parallel_world:end_desert",
+  "carvers": {    
+	"air": [
+      "minecraft:cave",
+      "minecraft:canyon"
+    ]
+  },
+  "features": [
+    [
+		"parallel_world:seagen/seabed_sandstone",
+		"parallel_world:seagen/seabed_sand",
+		"parallel_world:seagen/sea1",
+		"parallel_world:seagen/sea2",
+		"parallel_world:seagen/sea3",
+		"parallel_world:seagen/sea4",
+		"parallel_world:seagen/sea5",
+		"parallel_world:seagen/sea6",
+		"parallel_world:seagen/sea7",
+		"parallel_world:seagen/sea8",
+		"parallel_world:seagen/sea9",
+		"parallel_world:seagen/sea10",
+		"parallel_world:seagen/sea11",
+		"parallel_world:seagen/sea12",
+		"parallel_world:seagen/sea13",
+		"parallel_world:seagen/sea14",
+		"parallel_world:seagen/sea15"
+	],
+    [
+      "minecraft:lake_lava"	
+	],
+    [],
+    [
+      "minecraft:monster_room"
+	],
+    [],
+    [],
+    [	
+	  "minecraft:ore_dirt",
+      "minecraft:ore_gravel",
+      "minecraft:ore_granite",
+      "minecraft:ore_diorite",
+      "minecraft:ore_andesite",
+      "minecraft:ore_coal",
+      "minecraft:ore_iron",
+      "minecraft:ore_gold",
+      "minecraft:disk_sand",
+      "minecraft:disk_clay",
+      "minecraft:disk_gravel"
+	],
+    [],
+    [
+      "parallel_world:end_desert_chorus_plant",
+	  "parallel_world:end_desert_sand", 
+	  "minecraft:flower_default",
+      "minecraft:patch_grass_badlands",
+      "minecraft:patch_dead_bush_2",
+      "minecraft:brown_mushroom_normal",
+      "minecraft:red_mushroom_normal",
+      "minecraft:patch_sugar_cane_desert",
+      "minecraft:patch_pumpkin",
+      "minecraft:patch_cactus_desert",
+      "minecraft:spring_water",
+      "minecraft:spring_lava"
+    ],
+	[
+      "minecraft:freeze_top_layer"
+    ]
+  ],
+  "starts": [
+	    "minecraft:village_desert"
+	],
+  "spawners": {
+    "monster": [
+      {
+        "type": "minecraft:spider",
+        "weight": 100,
+        "minCount": 4,
+        "maxCount": 4
+      },
+      {
+        "type": "minecraft:zombie",
+        "weight": 19,
+        "minCount": 4,
+        "maxCount": 4
+      },
+      {
+        "type": "minecraft:skeleton",
+        "weight": 100,
+        "minCount": 4,
+        "maxCount": 4
+      },
+      {
+        "type": "minecraft:creeper",
+        "weight": 100,
+        "minCount": 4,
+        "maxCount": 4
+      },
+      {
+        "type": "minecraft:enderman",
+        "weight": 10,
+        "minCount": 1,
+        "maxCount": 4
+      },
+      {
+        "type": "minecraft:witch",
+        "weight": 5,
+        "minCount": 1,
+        "maxCount": 1
+      },
+      {
+        "type": "minecraft:husk",
+        "weight": 80,
+        "minCount": 4,
+        "maxCount": 4
+      }
+    ],
+    "creature": [
+		{
+        "type": "minecraft:rabbit",
+        "weight": 4,
+        "minCount": 2,
+        "maxCount": 3
+      }
+    ],
+    "ambient": [],
+    "water_creature": [],
+    "water_ambient": [],
+    "misc": []
+  },
+  "spawn_costs": {},
+  "player_spawn_friendly": false,
+  "precipitation": "none",
+  "temperature": 2.0,
+  "downfall": 0.0,
+  "category": "desert",
+  "depth": 0.15
+}

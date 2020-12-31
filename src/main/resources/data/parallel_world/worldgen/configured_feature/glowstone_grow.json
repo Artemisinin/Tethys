@@ -1,0 +1,28 @@
+{
+	"config": {
+		"feature": {
+			"config": {
+				"feature": {
+					"config": {},
+					"type": "minecraft:glowstone_blob"
+					},
+				"decorator": {
+					"config": {
+						"bottom_offset": 0,
+						"top_offset": 0,
+						"maximum": 45
+					},
+					"type": "minecraft:range"
+				}
+			},
+			"type": "minecraft:decorated"		
+		},
+		"decorator": {
+			"config": {
+				"count": 50
+				},
+			"type": "minecraft:count"
+			}
+		},
+	"type": "minecraft:decorated"
+}

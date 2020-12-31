@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:story/iron_tools",
+  "display": {
+    "icon": {
+      "item": "parallel_world:pink_diamond"
+    },
+    "title": {
+      "text": "DIAMONDS! But pink."
+    },
+    "description": {
+      "text": "Acquire a pink diamond. How trendy."
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "diamond": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "parallel_world:pink_diamond"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "diamond"
+    ]
+  ]
+}

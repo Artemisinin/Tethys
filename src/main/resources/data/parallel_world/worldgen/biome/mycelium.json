@@ -1,0 +1,125 @@
+{
+  "scale": 0.2,
+  "effects": {
+    "mood_sound": {
+      "sound": "minecraft:ambient.cave",
+      "tick_delay": 6000,
+      "block_search_extent": 8,
+      "offset": 2.0
+    },
+    "sky_color": 6268922,
+    "fog_color": 9421823,
+	"grass_color": 10615388,	
+    "water_color": 6657504,
+    "water_fog_color": 329011
+  },
+  "surface_builder": "minecraft:mycelium",
+  "carvers": {
+    "air": [
+      "minecraft:cave",
+      "minecraft:canyon"
+    ]
+  },
+  "features": [
+    [
+		"parallel_world:seagen/seabed_sandstone",
+		"parallel_world:seagen/seabed_sand",
+		"parallel_world:seagen/sea1",
+		"parallel_world:seagen/sea2",
+		"parallel_world:seagen/sea3",
+		"parallel_world:seagen/sea4",
+		"parallel_world:seagen/sea5",
+		"parallel_world:seagen/sea6",
+		"parallel_world:seagen/sea7",
+		"parallel_world:seagen/sea8",
+		"parallel_world:seagen/sea9",
+		"parallel_world:seagen/sea10",
+		"parallel_world:seagen/sea11",
+		"parallel_world:seagen/sea12",
+		"parallel_world:seagen/sea13",
+		"parallel_world:seagen/sea14",
+		"parallel_world:seagen/sea15"
+	],
+    [
+      "minecraft:lake_water",
+      "minecraft:lake_lava"
+    ],
+    [],
+    [
+      "minecraft:monster_room"
+    ],
+    [],
+    [],
+    [
+      "minecraft:ore_dirt",
+      "minecraft:ore_gravel",
+      "minecraft:ore_granite",
+      "minecraft:ore_diorite",
+      "minecraft:ore_andesite",
+      "minecraft:ore_coal",
+      "minecraft:ore_iron",
+      "minecraft:ore_gold",
+      "minecraft:disk_sand",
+      "minecraft:disk_clay",
+      "minecraft:disk_gravel"
+    ],
+    [],
+    [
+	  "parallel_world:mycelium_vegetation",
+	  "minecraft:patch_melon",
+	  "minecraft:sea_pickle",
+      "minecraft:patch_sugar_cane",
+      "minecraft:patch_pumpkin",
+      "minecraft:spring_water",
+      "minecraft:spring_lava"
+    ],
+    [
+      "minecraft:freeze_top_layer"
+    ]
+  ],
+  "starts": [
+    "parallel_world:village_mycelium",
+    "minecraft:stronghold"
+  ],
+  "spawners": {
+    "monster": [],
+    "creature": [
+      {
+        "type": "minecraft:mooshroom",
+        "weight": 8,
+        "minCount": 4,
+        "maxCount": 8
+      },
+	  {
+		"type": "minecraft:donkey",
+        "weight": 1,
+        "minCount": 2,
+        "maxCount": 4
+      },
+	  {
+        "type": "minecraft:rabbit",
+        "weight": 4,
+        "minCount": 2,
+        "maxCount": 3
+      }
+    ],
+    "ambient": [
+      {
+        "type": "minecraft:bat",
+        "weight": 10,
+        "minCount": 8,
+        "maxCount": 8
+      }
+    ],
+    "water_creature": [],
+    "water_ambient": [],
+    "misc": []
+  },
+  "spawn_costs": {},
+  "player_spawn_friendly": true,
+  "precipitation": "rain",
+  "temperature": 0.9,
+  "downfall": 1.0,
+  "category": "mushroom",
+  "depth": 0.25
+}
