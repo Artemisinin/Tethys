@@ -31,7 +31,7 @@ public class HugeHeathMushroomFeature extends HugeMushroomFeature {
                         if (i >= y || bl5 != bl6) {
                             mutable.set(start, l, i, m);
                             if (!world.getBlockState(mutable).isOpaqueFullCube(world, mutable)) {
-                                this.setBlockState(world, mutable, (BlockState)((BlockState)((BlockState)((BlockState)((BlockState)config.capProvider.getBlockState(random, start).with(MushroomBlock.UP, i >= y - 1)).with(MushroomBlock.WEST, l < -k)).with(MushroomBlock.EAST, l > k)).with(MushroomBlock.NORTH, m < -k)).with(MushroomBlock.SOUTH, m > k));
+                                this.setBlockState(world, mutable, config.capProvider.getBlockState(random, start).with(MushroomBlock.UP, i >= y - 1).with(MushroomBlock.WEST, l < -k).with(MushroomBlock.EAST, l > k).with(MushroomBlock.NORTH, m < -k).with(MushroomBlock.SOUTH, m > k));
                             }
                         }
                     }

@@ -13,9 +13,6 @@ public class TethysFeatures {
     }
 
     public static void registerFeatures() {
-
         HUGE_HEATH_MUSHROOM_FEATURE = register("parallel_world:huge_heath_mushroom", new HugeHeathMushroomFeature(HugeMushroomFeatureConfig.CODEC));
-
     }
-
 }

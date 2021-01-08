@@ -26,7 +26,7 @@ public class TethysEntities {
         // Add flying cats
         FLYING_CAT = Registry.register(Registry.ENTITY_TYPE, new Identifier("parallel_world", "flying_cat"),
             FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, FlyingCatEntity::new).dimensions(EntityDimensions.fixed(0.6f, 0.7f)).build());
-        FabricDefaultAttributeRegistry.register(FLYING_CAT, FlyingCatEntity.createCatAttributes());
+        FabricDefaultAttributeRegistry.register(FLYING_CAT, FlyingCatEntity.createFlyingCatAttributes());
         // This before was CatEntity.createCatAttributes()
     }
 
