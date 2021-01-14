@@ -2,6 +2,7 @@ package com.artemis.parallel_world.client;
 
 import com.artemis.parallel_world.client.render.FlyingCatEntityRenderer;
 import com.artemis.parallel_world.client.render.TethysTurtleEntityRenderer;
+import com.artemis.parallel_world.client.render.WaterStriderEntityRenderer;
 import com.artemis.parallel_world.entity.TethysEntities;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
@@ -46,8 +47,8 @@ public class DimensionClient implements ClientModInitializer {
 
         ColorProviderRegistry.ITEM.register((stack, tintIndex) -> 0x48B518, GLOWFRUIT);
 
-        EntityRendererRegistry.INSTANCE.register(TethysEntities.TETHYS_TURTLE, (entityRenderDispatcher, context) -> new TethysTurtleEntityRenderer(entityRenderDispatcher));
         EntityRendererRegistry.INSTANCE.register(TethysEntities.FLYING_CAT, (entityRenderDispatcher, context) -> new FlyingCatEntityRenderer(entityRenderDispatcher));
-
+        EntityRendererRegistry.INSTANCE.register(TethysEntities.TETHYS_TURTLE, (entityRenderDispatcher, context) -> new TethysTurtleEntityRenderer(entityRenderDispatcher));
+        EntityRendererRegistry.INSTANCE.register(TethysEntities.WATER_STRIDER, (entityRenderDispatcher, context) -> new WaterStriderEntityRenderer(entityRenderDispatcher));
     }
 }
