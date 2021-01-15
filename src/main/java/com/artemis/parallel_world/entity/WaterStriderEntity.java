@@ -90,12 +90,10 @@ public class WaterStriderEntity extends AnimalEntity {
         }
 
         public boolean shouldContinue() {
-//            return !this.waterStrider.isSubmergedInWater() && this.isTargetPos(this.waterStrider.world, this.targetPos);
             return this.isTargetPos(this.waterStrider.world, this.targetPos);
         }
 
         public boolean canStart() {
-//            return !this.waterStrider.isSubmergedInWater() && super.canStart();
             return super.canStart();
         }
 

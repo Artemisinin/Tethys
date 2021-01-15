@@ -9,10 +9,11 @@ public class FlyingCatWalkAroundFarGoal extends FlyingCatWalkAroundGoal {
 
     protected final float probability;
 
-    public FlyingCatWalkAroundFarGoal(PathAwareEntity mob, double speed, float probability) {
-        super(mob, speed);
+    public FlyingCatWalkAroundFarGoal(PathAwareEntity flyingCat, double speed, float probability) {
+        super(flyingCat, speed);
         this.probability = probability;
     }
+
 
     @Nullable
     protected Vec3d getWanderTarget() {
@@ -20,6 +21,10 @@ public class FlyingCatWalkAroundFarGoal extends FlyingCatWalkAroundGoal {
             Vec3d vec3d = TargetFinder.findGroundTarget(this.mob, 15, 7);
             return vec3d == null ? super.getWanderTarget() : vec3d;
         } else {
+            if (!this.mob.isOnGround()) {
+                Vec3d vec3d = TargetFinder.findGroundTarget(this.mob, 10, 30);
+
+            }
             return this.mob.getRandom().nextFloat() >= this.probability ? TargetFinder.findGroundTarget(this.mob, 10, 7) : super.getWanderTarget();
         }
     }

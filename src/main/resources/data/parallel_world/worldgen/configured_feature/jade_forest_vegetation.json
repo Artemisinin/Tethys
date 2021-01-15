@@ -14,7 +14,7 @@
 				"chance": 0.05
 			  },
 			  {	
-				"feature": "parallel_world:rainbow_trees/jade_forest_tree_selector",
+				"feature": "parallel_world:jade_forest_tree_selector",
 				"chance": 0.89
 			  }
 			],

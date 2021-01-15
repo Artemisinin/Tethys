@@ -1,10 +1,9 @@
 package com.artemis.parallel_world.entity;
 
 import com.artemis.parallel_world.entity.ai.control.FlyingCatMoveControl;
+import com.artemis.parallel_world.entity.goal.FlyingCatLandGoal;
 import com.artemis.parallel_world.entity.goal.FlyingCatWalkAroundFarGoal;
-import com.artemis.parallel_world.entity.goal.FlyingCatWalkAroundGoal;
 import net.minecraft.entity.*;
-import net.minecraft.entity.ai.control.FlightMoveControl;
 import net.minecraft.entity.ai.control.MoveControl;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.ai.pathing.BirdNavigation;
@@ -13,8 +12,6 @@ import net.minecraft.entity.ai.pathing.PathNodeType;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.damage.DamageSource;
-import net.minecraft.entity.data.DataTracker;
-import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.passive.*;
 import net.minecraft.entity.player.PlayerEntity;
@@ -63,39 +60,6 @@ public class FlyingCatEntity extends TameableEntity {
         return birdNavigation;
     }
 
-    public void travel(Vec3d movementInput) {
-        if (this.isTouchingWater()) {
-            this.updateVelocity(0.02F, movementInput);
-            this.move(MovementType.SELF, this.getVelocity());
-            this.setVelocity(this.getVelocity().multiply(0.8D));
-        } else if (this.isInLava()) {
-            this.updateVelocity(0.02F, movementInput);
-            this.move(MovementType.SELF, this.getVelocity());
-            this.setVelocity(this.getVelocity().multiply(0.5D));
-        } else {
-            float f = 0.91F;
-            if (this.onGround) {
-                f = this.world.getBlockState(new BlockPos(this.getX(), this.getY() - 1.0D, this.getZ())).getBlock().getSlipperiness() * 0.91F;
-            }
-
-            float g = 0.163F / (f * f * f);
-            f = 0.91F;
-            if (this.onGround) {
-                f = this.world.getBlockState(new BlockPos(this.getX(), this.getY() - 1.0D, this.getZ())).getBlock().getSlipperiness() * 0.91F;
-            }
-
-            this.updateVelocity(this.onGround ? 0.1F * g : 0.02F, movementInput);
-            this.move(MovementType.SELF, this.getVelocity());
-            this.setVelocity(this.getVelocity().multiply((double)f));
-        }
-
-        this.method_29242(this, false);
-    }
-
-    public boolean isClimbing() {
-        return false;
-    }
-
     protected void initGoals() {
         this.goalSelector.add(1, new SwimGoal(this));
         this.goalSelector.add(1, new SitGoal(this));
@@ -104,9 +68,10 @@ public class FlyingCatEntity extends TameableEntity {
         this.goalSelector.add(5, new PounceAtTargetGoal(this, 0.3F));
         this.goalSelector.add(6, new AttackGoal(this));
         this.goalSelector.add(7, new AnimalMateGoal(this, 0.8D));
-        this.goalSelector.add(8, new FlyingCatWalkAroundFarGoal(this, 0.8D, 1.0E-5F));
-        this.goalSelector.add(9, new WanderAroundFarGoal(this, 0.8D, 1.0E-5F));
-        this.goalSelector.add(10, new LookAtEntityGoal(this, PlayerEntity.class, 10.0F));
+        this.goalSelector.add(8, new FlyingCatLandGoal(this, 0.6D, 20));
+        this.goalSelector.add(9, new FlyingCatWalkAroundFarGoal(this, 0.8D, 1.0E-5F));
+        this.goalSelector.add(10, new WanderAroundFarGoal(this, 0.8D, 1.0E-5F));
+        this.goalSelector.add(11, new LookAtEntityGoal(this, PlayerEntity.class, 10.0F));
     }
 
     public void tick() {
@@ -122,25 +87,26 @@ public class FlyingCatEntity extends TameableEntity {
     }
 
     public void mobTick() {
-        if (!this.isOnGround()) {
-            this.setPose(EntityPose.FALL_FLYING);
-        }
-        else if (this.getMoveControl().isMoving()) {
-            double d = this.getMoveControl().getSpeed();
-            if (d == 0.6D) {
-                this.setPose(EntityPose.CROUCHING);
-                this.setSprinting(false);
-            } else if (d == 1.33D) {
-                this.setPose(EntityPose.STANDING);
-                this.setSprinting(true);
-            } else {
-                this.setPose(EntityPose.STANDING);
-                this.setSprinting(false);
-            }
-        } else {
-            this.setPose(EntityPose.STANDING);
-            this.setSprinting(false);
-        }
+        super.mobTick();
+//        if (!this.isOnGround()) {
+//            this.setPose(EntityPose.FALL_FLYING);
+//        }
+//        else if (this.getMoveControl().isMoving()) {
+//            double d = this.getMoveControl().getSpeed();
+//            if (d == 0.6D) {
+//                this.setPose(EntityPose.CROUCHING);
+//                this.setSprinting(false);
+//            } else if (d == 1.33D) {
+//                this.setPose(EntityPose.STANDING);
+//                this.setSprinting(true);
+//            } else {
+//                this.setPose(EntityPose.STANDING);
+//                this.setSprinting(false);
+//            }
+//        } else {
+//            this.setPose(EntityPose.STANDING);
+//            this.setSprinting(false);
+//        }
     }
 
 
@@ -272,7 +238,4 @@ public class FlyingCatEntity extends TameableEntity {
         return !this.isTamed() && this.age > 2400;
     }
 
-    protected void onTamedChanged() {
-        //I mean nothing?
-    }
 }
