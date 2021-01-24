@@ -53,6 +53,7 @@
 		[],
 		[],
 		[
+		  "parallel_world:pink_diamond_ore",
 		  "minecraft:ore_dirt",
 		  "minecraft:ore_gravel",
 		  "minecraft:ore_granite",
@@ -70,6 +71,7 @@
 		],
 		[],
 		[
+		  "minecraft:glow_lichen",
 		  "parallel_world:glowstone_grow",
 		  "parallel_world:rainbow_vegetation",
 		  "parallel_world:warm_ocean_vegetation_raised",

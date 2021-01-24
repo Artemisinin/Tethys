@@ -3,6 +3,10 @@ package com.artemis.parallel_world.client;
 import com.artemis.parallel_world.client.render.FlyingCatEntityRenderer;
 import com.artemis.parallel_world.client.render.TethysTurtleEntityRenderer;
 import com.artemis.parallel_world.client.render.WaterStriderEntityRenderer;
+import com.artemis.parallel_world.client.render.entity.model.TethysEntityModelLayers;
+import com.artemis.parallel_world.client.render.entity.model.TethysEntityModels;
+import com.artemis.parallel_world.client.render.entity.model.TethysTexturedModelData;
+import com.artemis.parallel_world.entity.FlyingCatEntity;
 import com.artemis.parallel_world.entity.TethysEntities;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
@@ -13,6 +17,8 @@ import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.minecraft.block.Blocks;
 import net.minecraft.client.color.block.BlockColorProvider;
 import net.minecraft.client.render.RenderLayer;
+import net.minecraft.client.render.entity.EntityRenderer;
+import net.minecraft.client.render.entity.EntityRendererFactory;
 
 import java.awt.*;
 
@@ -28,6 +34,7 @@ import static com.artemis.parallel_world.block.TethysBlocks.SWEETGUM_SAPLING;
 
 @Environment(EnvType.CLIENT)
 public class DimensionClient implements ClientModInitializer {
+
 
     @Override
     public void onInitializeClient() {
@@ -47,8 +54,13 @@ public class DimensionClient implements ClientModInitializer {
 
         ColorProviderRegistry.ITEM.register((stack, tintIndex) -> 0x48B518, GLOWFRUIT);
 
-        EntityRendererRegistry.INSTANCE.register(TethysEntities.FLYING_CAT, (entityRenderDispatcher, context) -> new FlyingCatEntityRenderer(entityRenderDispatcher));
-        EntityRendererRegistry.INSTANCE.register(TethysEntities.TETHYS_TURTLE, (entityRenderDispatcher, context) -> new TethysTurtleEntityRenderer(entityRenderDispatcher));
-        EntityRendererRegistry.INSTANCE.register(TethysEntities.WATER_STRIDER, (entityRenderDispatcher, context) -> new WaterStriderEntityRenderer(entityRenderDispatcher));
+        TethysEntityModelLayers.registerModelLayers();
+        TethysTexturedModelData.registerTexturedModelData();
+        //TethysEntityModels.getTethysModels();
+
+        //EntityRendererRegistry.INSTANCE.register(TethysEntities.FLYING_CAT, FlyingCatEntityRenderer::new);
+        //EntityRendererRegistry.INSTANCE.register(TethysEntities.TETHYS_TURTLE, TethysTurtleEntityRenderer::new);
+        //EntityRendererRegistry.INSTANCE.register(TethysEntities.WATER_STRIDER, WaterStriderEntityRenderer::new);
+
     }
 }

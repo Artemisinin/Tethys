@@ -68,6 +68,7 @@
 		],
 		[],
 		[
+		  "minecraft:glow_lichen",
 		  "parallel_world:glowstone_grow",
 		  "parallel_world:jade_forest_vegetation",
 		  "parallel_world:warm_ocean_vegetation_raised",

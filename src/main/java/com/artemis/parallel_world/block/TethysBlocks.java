@@ -7,16 +7,12 @@ import net.minecraft.block.*;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
-import net.minecraft.util.registry.RegistryKey;
-import net.minecraft.world.gen.feature.ConfiguredFeature;
-import org.apache.logging.log4j.core.pattern.AbstractStyleNameConverter;
 
-import static com.artemis.parallel_world.world.gen.feature.TethysConfiguredFeatures.*;
 
 public class TethysBlocks {
 
-    public static final Block CALCITE_LOG = new CustomLog(FabricBlockSettings.of(Material.STONE).hardness(2.0f));
-    public static final Block BLUE_CALCITE_LOG = new CustomLog(FabricBlockSettings.of(Material.STONE).hardness(2.0f));
+    public static final Block CALCITE_LOG = new PillarBlock(FabricBlockSettings.of(Material.STONE).hardness(2.0f));
+    public static final Block BLUE_CALCITE_LOG = new PillarBlock(FabricBlockSettings.of(Material.STONE).hardness(2.0f));
     public static final Block GLOWFRUIT = new Block(FabricBlockSettings.of(Material.PLANT).breakByHand(true).nonOpaque().luminance(12).hardness(0.2f));
 
     // Pink diamonds!
@@ -24,48 +20,48 @@ public class TethysBlocks {
     public static final Block PINK_DIAMOND_ORE = new Block(FabricBlockSettings.of(Material.METAL).hardness(3.0f));
 
     // Tethys turtle eggs
-    public static final Block TETHYS_TURTLE_EGG = new TethysTurtleEggBlock((AbstractBlock.Settings.of(Material.EGG, MaterialColor.SAND).strength(0.5F).sounds(BlockSoundGroup.METAL).ticksRandomly().nonOpaque()));
+    public static final Block TETHYS_TURTLE_EGG = new TethysTurtleEggBlock((AbstractBlock.Settings.of(Material.EGG).strength(0.5F).sounds(BlockSoundGroup.METAL).ticksRandomly().nonOpaque()));
 
     // Basswood trees
     public static final Block BASSWOOD_PLANKS = new Block(FabricBlockSettings.of(Material.WOOD).hardness(2.0f));
-    public static final Block BASSWOOD_LEAVES = new CustomLeaves(FabricBlockSettings.of(Material.LEAVES).hardness(0.2f).breakByHand(true).nonOpaque());
-    public static final Block BASSWOOD_LOG = new CustomLog(FabricBlockSettings.of(Material.WOOD).hardness(2.0f));
+    public static final Block BASSWOOD_LEAVES = new LeavesBlock(FabricBlockSettings.of(Material.LEAVES).hardness(0.2f).breakByHand(true).nonOpaque());
+    public static final Block BASSWOOD_LOG = new PillarBlock(FabricBlockSettings.of(Material.WOOD).hardness(2.0f));
     public static final CustomSaplingBlock BASSWOOD_SAPLING = new CustomSaplingBlock(new BasswoodSaplingGenerator(), AbstractBlock.Settings.of(Material.PLANT).ticksRandomly().breakInstantly().sounds(BlockSoundGroup.GRASS).nonOpaque().noCollision());
 
     // Blackcurrant trees
     public static final Block BLACKCURRANT_PLANKS = new Block(FabricBlockSettings.of(Material.WOOD).hardness(2.0f));
-    public static final Block BLACKCURRANT_LEAVES = new CustomLeaves(FabricBlockSettings.of(Material.LEAVES).hardness(0.2f).breakByHand(true).nonOpaque());
-    public static final Block BLACKCURRANT_LOG = new CustomLog(FabricBlockSettings.of(Material.WOOD).hardness(2.0f));
+    public static final Block BLACKCURRANT_LEAVES = new LeavesBlock(FabricBlockSettings.of(Material.LEAVES).hardness(0.2f).breakByHand(true).nonOpaque());
+    public static final Block BLACKCURRANT_LOG = new PillarBlock(FabricBlockSettings.of(Material.WOOD).hardness(2.0f));
     public static final CustomSaplingBlock BLACKCURRANT_SAPLING = new CustomSaplingBlock(new BlackcurrantSaplingGenerator(), AbstractBlock.Settings.of(Material.PLANT).ticksRandomly().breakInstantly().sounds(BlockSoundGroup.GRASS).nonOpaque().noCollision());
 
     // Cherry trees
     public static final Block CHERRY_PLANKS = new Block(FabricBlockSettings.of(Material.WOOD).hardness(2.0f));
-    public static final Block CHERRY_LEAVES = new CustomLeaves(FabricBlockSettings.of(Material.LEAVES).hardness(0.2f).breakByHand(true).nonOpaque());
-    public static final Block CHERRY_LOG = new CustomLog(FabricBlockSettings.of(Material.WOOD).hardness(2.0f));
+    public static final Block CHERRY_LEAVES = new LeavesBlock(FabricBlockSettings.of(Material.LEAVES).hardness(0.2f).breakByHand(true).nonOpaque());
+    public static final Block CHERRY_LOG = new PillarBlock(FabricBlockSettings.of(Material.WOOD).hardness(2.0f));
     public static final CustomSaplingBlock CHERRY_SAPLING = new CustomSaplingBlock(new CherrySaplingGenerator(), AbstractBlock.Settings.of(Material.PLANT).ticksRandomly().breakInstantly().sounds(BlockSoundGroup.GRASS).nonOpaque().noCollision());
 
     // Dogwood trees
     public static final Block DOGWOOD_PLANKS = new Block(FabricBlockSettings.of(Material.WOOD).hardness(2.0f));
-    public static final Block DOGWOOD_LEAVES = new CustomLeaves(FabricBlockSettings.of(Material.LEAVES).hardness(0.2f).breakByHand(true).nonOpaque());
-    public static final Block DOGWOOD_LOG = new CustomLog(FabricBlockSettings.of(Material.WOOD).hardness(2.0f));
+    public static final Block DOGWOOD_LEAVES = new LeavesBlock(FabricBlockSettings.of(Material.LEAVES).hardness(0.2f).breakByHand(true).nonOpaque());
+    public static final Block DOGWOOD_LOG = new PillarBlock(FabricBlockSettings.of(Material.WOOD).hardness(2.0f));
     public static final CustomSaplingBlock DOGWOOD_SAPLING = new CustomSaplingBlock(new DogwoodSaplingGenerator(), AbstractBlock.Settings.of(Material.PLANT).ticksRandomly().breakInstantly().sounds(BlockSoundGroup.GRASS).nonOpaque().noCollision());
 
     // Elderberry trees
     public static final Block ELDERBERRY_PLANKS = new Block(FabricBlockSettings.of(Material.WOOD).hardness(2.0f));
-    public static final Block ELDERBERRY_LEAVES = new CustomLeaves(FabricBlockSettings.of(Material.LEAVES).hardness(0.2f).breakByHand(true).nonOpaque());
-    public static final Block ELDERBERRY_LOG = new CustomLog(FabricBlockSettings.of(Material.WOOD).hardness(2.0f));
+    public static final Block ELDERBERRY_LEAVES = new LeavesBlock(FabricBlockSettings.of(Material.LEAVES).hardness(0.2f).breakByHand(true).nonOpaque());
+    public static final Block ELDERBERRY_LOG = new PillarBlock(FabricBlockSettings.of(Material.WOOD).hardness(2.0f));
     public static final CustomSaplingBlock ELDERBERRY_SAPLING = new CustomSaplingBlock(new ElderberrySaplingGenerator(), AbstractBlock.Settings.of(Material.PLANT).ticksRandomly().breakInstantly().sounds(BlockSoundGroup.GRASS).nonOpaque().noCollision());
 
     // Ginkgo trees
     public static final Block GINKGO_PLANKS = new Block(FabricBlockSettings.of(Material.WOOD).hardness(2.0f));
-    public static final Block GINKGO_LEAVES = new CustomLeaves(FabricBlockSettings.of(Material.LEAVES).hardness(0.2f).breakByHand(true).nonOpaque());
-    public static final Block GINKGO_LOG = new CustomLog(FabricBlockSettings.of(Material.WOOD).hardness(2.0f));
+    public static final Block GINKGO_LEAVES = new LeavesBlock(FabricBlockSettings.of(Material.LEAVES).hardness(0.2f).breakByHand(true).nonOpaque());
+    public static final Block GINKGO_LOG = new PillarBlock(FabricBlockSettings.of(Material.WOOD).hardness(2.0f));
     public static final CustomSaplingBlock GINKGO_SAPLING = new CustomSaplingBlock(new GinkgoSaplingGenerator(), AbstractBlock.Settings.of(Material.PLANT).ticksRandomly().breakInstantly().sounds(BlockSoundGroup.GRASS).nonOpaque().noCollision());
 
     // Sweetgum trees
     public static final Block SWEETGUM_PLANKS = new Block(FabricBlockSettings.of(Material.WOOD).hardness(2.0f));
-    public static final Block SWEETGUM_LEAVES = new CustomLeaves(FabricBlockSettings.of(Material.LEAVES).hardness(0.2f).breakByHand(true).nonOpaque());
-    public static final Block SWEETGUM_LOG = new CustomLog(FabricBlockSettings.of(Material.WOOD).hardness(2.0f));
+    public static final Block SWEETGUM_LEAVES = new LeavesBlock(FabricBlockSettings.of(Material.LEAVES).hardness(0.2f).breakByHand(true).nonOpaque());
+    public static final Block SWEETGUM_LOG = new PillarBlock(FabricBlockSettings.of(Material.WOOD).hardness(2.0f));
     public static final CustomSaplingBlock SWEETGUM_SAPLING = new CustomSaplingBlock(new SweetgumSaplingGenerator(), AbstractBlock.Settings.of(Material.PLANT).ticksRandomly().breakInstantly().sounds(BlockSoundGroup.GRASS).nonOpaque().noCollision());
 
 

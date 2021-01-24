@@ -71,7 +71,8 @@
       "minecraft:disk_gravel"
 	],
     [
-	  "parallel_world:glowstone_grow",
+      "minecraft:glow_lichen",
+      "parallel_world:glowstone_grow",
 	  "parallel_world:wasteland_vegetation",
 	  "minecraft:spring_delta",
       "minecraft:ore_magma",

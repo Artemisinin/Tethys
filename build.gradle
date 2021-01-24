@@ -23,12 +23,14 @@ dependencies {
     // You may need to force-disable transitiveness on them.
 
     // Add custom portals mod.
-    modImplementation "net.kyrptonaught:customportalapi:0.0.1-beta20-1.16"
-    include "net.kyrptonaught:customportalapi:0.0.1-beta20-1.16"
+    // Not working in snapshot at the moment.
+    //modImplementation "net.kyrptonaught:customportalapi:0.0.1-beta20-1.17"
+    //include "net.kyrptonaught:customportalapi:0.0.1-beta20-1.17"
 
     repositories {
-        //Add mod for accessing dimension.
-        maven { url "https://dl.bintray.com/kyrptonaught/customportalapi/" }
+        // Add mod for accessing dimension.
+        // Not working in snapshot at the moment.
+        //maven { url "https://dl.bintray.com/kyrptonaught/customportalapi/" }
     }
 }
 

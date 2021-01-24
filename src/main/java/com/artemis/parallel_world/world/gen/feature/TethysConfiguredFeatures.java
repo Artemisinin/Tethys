@@ -10,6 +10,8 @@ import net.minecraft.util.registry.Registry;
 import net.minecraft.util.registry.RegistryKey;
 import net.minecraft.world.Heightmap;
 import net.minecraft.world.gen.UniformIntDistribution;
+import net.minecraft.world.gen.decorator.Decorator;
+import net.minecraft.world.gen.decorator.RangeDecoratorConfig;
 import net.minecraft.world.gen.feature.*;
 import net.minecraft.world.gen.feature.size.TwoLayersFeatureSize;
 import net.minecraft.world.gen.foliage.BlobFoliagePlacer;
@@ -35,6 +37,8 @@ public class TethysConfiguredFeatures {
     public static ConfiguredFeature<?,?> ELDERBERRY_TREE;
     public static ConfiguredFeature<?,?> GINKGO_TREE;
     public static ConfiguredFeature<?,?> SWEETGUM_TREE;
+
+    public static ConfiguredFeature<?,?> PINK_DIAMOND_ORE;
 
     //public static ConfiguredFeature<?, ?> HUGE_HEATH_MUSHROOM;
 
@@ -88,6 +92,10 @@ public class TethysConfiguredFeatures {
                         new LargeOakFoliagePlacer(UniformIntDistribution.of(2), UniformIntDistribution.of(4), 4),
                         new LargeOakTrunkPlacer(3, 11, 0),
                         new TwoLayersFeatureSize(0, 0, 0, OptionalInt.of(4)))).ignoreVines().heightmap(Heightmap.Type.MOTION_BLOCKING).build()));
+
+        PINK_DIAMOND_ORE = register("parallel_world:pink_diamond_ore", Feature.ORE.configure(
+                new OreFeatureConfig(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD, TethysBlocks.PINK_DIAMOND_ORE.getDefaultState(), 5)).
+                decorate(Decorator.RANGE.configure(new RangeDecoratorConfig(0,30, 50))).spreadHorizontally().repeat(2));
 
         // The mushroom right now is configured in json.
         //HUGE_HEATH_MUSHROOM = register("parallel_world:huge_heath_mushroom", TethysFeatures.HUGE_HEATH_MUSHROOM_FEATURE.configure(new HugeMushroomFeatureConfig(new SimpleBlockStateProvider(BROWN_MUSHROOM_BLOCK), new SimpleBlockStateProvider(MUSHROOM_STEM), 3)));

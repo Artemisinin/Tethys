@@ -65,7 +65,8 @@
     ],
     [],
     [
-	  "parallel_world:mycelium_vegetation",
+      "minecraft:glow_lichen",
+      "parallel_world:mycelium_vegetation",
 	  "minecraft:patch_melon",
 	  "minecraft:sea_pickle",
       "minecraft:patch_sugar_cane",

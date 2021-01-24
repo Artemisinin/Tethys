@@ -27,7 +27,7 @@ public class GullyCarver extends Carver<ProbabilityConfig> {
             double d = (double)(j * 16 + random.nextInt(16));
             double e = (double)(random.nextInt(random.nextInt(40) + 8) + 20);
             double f = (double)(k * 16 + random.nextInt(16));
-            float g = random.nextFloat() * 6.2831855F;
+            float g = random.nextFloat() * 6.28F;
             float h = (random.nextFloat() - 0.5F) * 2.0F / 8.0F;
             double o = 3.0D;
             float p = (random.nextFloat() * 2.0F + random.nextFloat()) * 2.0F;

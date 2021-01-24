@@ -5,8 +5,9 @@ import com.google.common.collect.ImmutableList;
 import com.sun.org.apache.xpath.internal.operations.Mod;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.minecraft.client.model.ModelPart;
+import net.minecraft.client.model.*;
 import net.minecraft.client.render.entity.model.AnimalModel;
+import net.minecraft.client.util.math.Dilation;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.math.MathHelper;
 
@@ -14,7 +15,7 @@ import net.minecraft.util.math.MathHelper;
 public class FlyingCatEntityModel<T extends FlyingCatEntity> extends AnimalModel<T> {
 
 	private final ModelPart torso;
-	private final ModelPart head = new ModelPart(this);
+	private final ModelPart head;
 	private final ModelPart upperTail;
 	private final ModelPart lowerTail;
 	private final ModelPart leftBackLeg;
@@ -22,20 +23,15 @@ public class FlyingCatEntityModel<T extends FlyingCatEntity> extends AnimalModel
 	private final ModelPart leftFrontLeg;
 	private final ModelPart rightFrontLeg;
 	private final ModelPart rightWingProx;
-	private final ModelPart rightWingProxMid;
-	private final ModelPart rightWingProxEnd;
-	private final ModelPart leftWingProx;
-	private final ModelPart leftWingProxMid;
-	private final ModelPart leftWingProxEnd;
 	private final ModelPart rightWingDistal1;
 	private final ModelPart rightWingDistal2;
 	private final ModelPart rightWingDistal3;
 	private final ModelPart rightWingDistal4;
+	private final ModelPart leftWingProx;
 	private final ModelPart leftWingDistal1;
 	private final ModelPart leftWingDistal2;
 	private final ModelPart leftWingDistal3;
 	private final ModelPart leftWingDistal4;
-
 	private final float proxWingPitchRest = 2.2F;
 	private final float proxWingRollRest = -0.15F;
 	private final float proxWingYawRest = -0.20F;
@@ -49,112 +45,85 @@ public class FlyingCatEntityModel<T extends FlyingCatEntity> extends AnimalModel
 
 	protected  int animationState = 1;
 
-	public FlyingCatEntityModel(float scale) {
+	public FlyingCatEntityModel(ModelPart root) {
 		super(true, 10.0F, 4.0F);
+		this.head = root.getChild("head");
+		this.torso = root.getChild("body");
+		this.upperTail = root.getChild("tail1");
+		this.lowerTail = root.getChild("tail2");
+		this.leftBackLeg = root.getChild("left_hind_leg");
+		this.rightBackLeg = root.getChild("right_hind_leg");
+		this.leftFrontLeg = root.getChild("left_front_leg");
+		this.rightFrontLeg = root.getChild("right_front_leg");
+		this.rightWingProx = root.getChild("right_wing_prox");
+		this.rightWingDistal1 = root.getChild("right_wing_distal1");
+		this.rightWingDistal2 = root.getChild("right_wing_distal2");
+		this.rightWingDistal3 = root.getChild("right_wing_distal3");
+		this.rightWingDistal4 = root.getChild("right_wing_distal4");
+		this.leftWingProx = root.getChild("left_wing_prox");
+		this.leftWingDistal1 = root.getChild("left_wing_distal1");
+		this.leftWingDistal2 = root.getChild("left_wing_distal2");
+		this.leftWingDistal3 = root.getChild("left_wing_distal3");
+		this.leftWingDistal4 = root.getChild("left_wing_distal4");
+	}
 
-		this.head.addCuboid("main", -2.5F, -2.0F, -3.0F, 5, 4, 5, 0, 0, 0);
-		this.head.addCuboid("nose", -1.5F, 0.0F, -4.0F, 3, 2, 2, 0, 0, 24);
-		this.head.addCuboid("ear1", -2.0F, -3.0F, 0.0F, 1, 1, 2, 0, 0, 10);
-		this.head.addCuboid("ear2", 1.0F, -3.0F, 0.0F, 1, 1, 2, 0, 6, 10);
-		head.setPivot(0.0F, 15.0F, -9.0F);
-		this.torso = new ModelPart(this, 20, 0);
-		this.torso.addCuboid(-2.0F,3.0F, -8.0F,4.0F, 16.0F,6.0F, 0.0F);
-		// 1.57 rad = 1/2*pi; a quarter of a circle, 90 degrees
-		this.torso.pitch = 1.57F;
-		torso.setPivot(0.0F, 12.0F, -10.0F);
-		this.upperTail = new ModelPart(this, 0, 15);
-		this.upperTail.addCuboid(-0.5F, 0.0F, 0.0F, 1.0F, 8.0F, 1.0F, scale);
-		this.upperTail.pitch = 0.9F;
-		this.upperTail.setPivot(0.0F, 15.0F, 8.0F);
-		this.lowerTail = new ModelPart(this, 4, 15);
-		this.lowerTail.addCuboid(-0.5F, 0.0F, 0.0F, 1.0F, 8.0F, 1.0F, scale);
-		this.lowerTail.setPivot(0.0F, 20.0F, 14.0F);
-		this.leftBackLeg = new ModelPart(this, 8, 13);
-		this.leftBackLeg.addCuboid(-1.0F, 0.0F, 1.0F, 2.0F, 6.0F, 2.0F, scale);
-		this.leftBackLeg.setPivot(1.1F, 18.0F, 5.0F);
-		this.rightBackLeg = new ModelPart(this, 8, 13);
-		this.rightBackLeg.addCuboid(-1.0F, 0.0F, 1.0F, 2.0F, 6.0F, 2.0F, scale);
-		this.rightBackLeg.setPivot(-1.1F, 18.0F, 5.0F);
-		this.leftFrontLeg = new ModelPart(this, 40, 0);
-		this.leftFrontLeg.addCuboid(-1.0F, 0.0F, 0.0F, 2.0F, 10.0F, 2.0F, scale);
-		this.leftFrontLeg.setPivot(1.2F, 14.1F, -5.0F);
-		this.rightFrontLeg = new ModelPart(this, 40, 0);
-		this.rightFrontLeg.addCuboid(-1.0F, 0.0F, 0.0F, 2.0F, 10.0F, 2.0F, scale);
-		this.rightFrontLeg.setPivot(-1.2F, 14.1F, -5.0F);
+	public static ModelData getModelData(Dilation dilation) {
+		ModelData modelData = new ModelData();
+		ModelPartData modelPartData = modelData.getRoot();
+		modelPartData.addChild("head", ModelPartBuilder.create().
+				cuboid("main", -2.5F, -2.0F, -3.0F, 5.0F, 4.0F, 5.0F, dilation).
+				cuboid("nose", -1.5F, 0.0F, -4.0F, 3, 2, 2, dilation, 0, 24).
+				cuboid("ear1", -2.0F, -3.0F, 0.0F, 1, 1, 2, dilation, 0, 10).
+				cuboid("ear2", 1.0F, -3.0F, 0.0F, 1, 1, 2, dilation, 6, 10),
+				ModelTransform.pivot(0.0F, 15.0F, -9.0F));
+		modelPartData.addChild("torso", ModelPartBuilder.create().
+				uv(20, 0).
+				cuboid(-2.0F, 3.0F, -8.0F, 4.0F, 16.0F, 6.0F, dilation),
+				// 1.57 rad = 1/2*pi; a quarter of a circle, 90 degrees
+				ModelTransform.of(0.0F, 12.0F, -10.0F, 1.57F, 0.0F, 0.0F));
+		modelPartData.addChild("upperTail", ModelPartBuilder.create().
+				uv(0, 15).
+				cuboid(-0.5F, 0.0F, 0.0F, 1.0F, 8.0F, 1.0F, dilation),
+				ModelTransform.of(0.0F, 15.0F, 8.0F, 0.9F, 0.0F, 0.0F));
+		modelPartData.addChild("lowerTail", ModelPartBuilder.create().
+				uv(4, 15).
+				cuboid(-0.5F, 0.0F, 0.0F, 1.0F, 8.0F, 1.0F, dilation),
+				ModelTransform.pivot(0.0F, 20.0F, 14.0F));
+		ModelPartBuilder hind_leg = ModelPartBuilder.create().
+				uv(8, 13).cuboid(-1.0F, 0.0F, 1.0F, 2.0F, 6.0F, 2.0F, dilation);
+		modelPartData.addChild("left_hind_leg", hind_leg, ModelTransform.pivot(1.1F, 18.0F, 5.0F));
+		modelPartData.addChild("right_hind_leg", hind_leg, ModelTransform.pivot(-1.1F, 18.0F, 5.0F));
+		ModelPartBuilder front_leg = ModelPartBuilder.create().
+				uv(40, 0).cuboid(-1.0F, 0.0F, 0.0F, 2.0F, 10.0F, 2.0F, dilation);
+		modelPartData.addChild("left_front_leg", front_leg, ModelTransform.pivot(1.2F, 14.1F, -5.0F));
+		modelPartData.addChild("right_front_leg", front_leg, ModelTransform.pivot(-1.2F, 14.1F, -5.0F));
 
-		// Right Wing
-		this.rightWingProx = new ModelPart(this, 41, 23);
-		this.rightWingProx.addCuboid(-0.5F, 0.0F,0.0F, 1, 11, 1, -0.1F);
-		this.rightWingProx.setPivot(-1.5F,15.0F,-5.0F);
+		// Proximal wings
+		ModelPartBuilder prox_wing = ModelPartBuilder.create().
+				uv(41,23).
+				cuboid("main", -0.5F, 0.0F, 0.0F, 1, 11, 1, dilation).
+				cuboid("mid", -0.5F, 0.0F, -0.5F, 2, 3, 2, dilation).
+				cuboid("end", -0.5F, -3.0F, -0.5F, 3, 6, 2, dilation);
+		modelPartData.addChild("right_wing_prox", prox_wing, ModelTransform.pivot(-1.5F, 15.0F, -5.0F));
+		modelPartData.addChild("left_wing_prox", prox_wing, ModelTransform.pivot(1.5F, 15.0F, -5.0F));
 
-		this.rightWingProxMid = new ModelPart(this, 55, 15);
-		this.rightWingProx.addChild(rightWingProxMid);
-		this.rightWingProxMid.addCuboid(-0.5F, 0.0F, -0.5F, 2, 3, 2, 0F);
-		this.rightWingProxMid.setPivot(0.0F, 2.0F, 0.0F);
+		// Distal wings
+		ModelPartBuilder leading_edge = ModelPartBuilder.create().
+				uv(29, 22).
+				cuboid(-0.5F, 0.0F, -0.5F, 1, 9, 1,dilation);
+		modelPartData.addChild("right_wing_distal1", leading_edge, ModelTransform.pivot(0.0F, 1.5F, 0.0F));
+		modelPartData.addChild("left_wing_distal1", leading_edge, ModelTransform.pivot(0.0F, 1.5F, 0.0F));
+		ModelPartBuilder feather = ModelPartBuilder.create().
+				uv(30,22).
+				cuboid(-0.5F, 0.0F, -0.5F, 1,9,1, dilation);
+		modelPartData.addChild("right_wing_distal2", feather,	ModelTransform.pivot(0.0F, 1.0F, 0.0F));
+		modelPartData.addChild("right_wing_distal3", feather, ModelTransform.pivot(0.0F, 0.5F, 0.0F));
+		modelPartData.addChild("right_wing_distal4", feather,	ModelTransform.pivot(0.0F, 0.0F, 0.0F));
+		modelPartData.addChild("left_wing_distal2", feather,	ModelTransform.pivot(0.0F, 1.0F, 0.0F));
+		modelPartData.addChild("left_wing_distal3", feather, ModelTransform.pivot(0.0F, 0.5F, 0.0F));
+		modelPartData.addChild("left_wing_distal4", feather,	ModelTransform.pivot(0.0F, 0.0F, 0.0F));
 
-		this.rightWingProxEnd = new ModelPart(this, 41, 23);
-		this.rightWingProx.addChild(rightWingProxEnd);
-		this.rightWingProxEnd.addCuboid(-0.5F, -3.0F, -0.5F, 3, 6, 2, 0.1F);
-		this.rightWingProxEnd.setPivot(0F, 8.0F,0F);
-
-		this.rightWingDistal1 = new ModelPart(this, 29, 22);
-		this.rightWingProxEnd.addChild(rightWingDistal1);
-		rightWingDistal1.addCuboid(-0.5F, 0.0F, -0.5F, 1, 9, 1);
-		rightWingDistal1.setPivot(0.0F, 1.5F, 0.0F);
-
-		this.rightWingDistal2 = new ModelPart(this, 30, 22);
-		this.rightWingProxEnd.addChild(rightWingDistal2);
-		rightWingDistal2.addCuboid(-0.5F, 0.0F, -0.5F, 1, 9, 1);
-		rightWingDistal2.setPivot(0.0F, 1.0F, 0.0F);
-
-		this.rightWingDistal3 = new ModelPart(this, 30, 22);
-		this.rightWingProxEnd.addChild(rightWingDistal3);
-		rightWingDistal3.addCuboid(-0.5F, 0.0F, -0.5F, 1, 9, 1);
-		rightWingDistal3.setPivot(0.0F, 0.5F, 0.0F);
-
-		this.rightWingDistal4 = new ModelPart(this, 30, 22);
-		this.rightWingProxEnd.addChild(rightWingDistal4);
-		rightWingDistal4.addCuboid(-0.5F, 0.0F, -0.5F, 1, 9, 1);
-		rightWingDistal4.setPivot(0.0F, 0.0F, 0.0F);
-
-		// Left wing.
-
-		this.leftWingProx = new ModelPart(this, 41, 23);
-		this.leftWingProx.addCuboid(-0.5F, 0.0F,0.0F, 1, 11, 1, -0.1F);
-		this.leftWingProx.setPivot(1.5F,15.0F,-5.0F);
-
-		this.leftWingProxMid = new ModelPart(this, 55, 15);
-		this.leftWingProx.addChild(leftWingProxMid);
-		this.leftWingProxMid.addCuboid(-1.5F, 0.0F, -0.5F, 2, 3, 2, 0F);
-		this.leftWingProxMid.setPivot(0.0F, 2.0F, 0.0F);
-
-		this.leftWingProxEnd = new ModelPart(this, 41, 23);
-		this.leftWingProx.addChild(leftWingProxEnd);
-		this.leftWingProxEnd.addCuboid(-2.5F, -3.0F, -0.5F, 3, 6, 2, 0.1F);
-		this.leftWingProxEnd.setPivot(0F, 8.0F,0F);
-
-		this.leftWingDistal1 = new ModelPart(this, 29, 22);
-		this.leftWingProxEnd.addChild(leftWingDistal1);
-		leftWingDistal1.addCuboid(-0.5F, 0.0F, 0.0F, 1, 9, 1);
-		leftWingDistal1.setPivot(0.0F, 1.5F, 0.0F);
-
-		this.leftWingDistal2 = new ModelPart(this, 30, 22);
-		this.leftWingProxEnd.addChild(leftWingDistal2);
-		leftWingDistal2.addCuboid(-0.5F, 0.0F, 0.0F, 1, 9, 1);
-		leftWingDistal2.setPivot(0.0F, 1.0F, 0.0F);
-
-		this.leftWingDistal3 = new ModelPart(this, 30, 22);
-		this.leftWingProxEnd.addChild(leftWingDistal3);
-		leftWingDistal3.addCuboid(-0.5F, 0.0F, 0.0F, 1, 9, 1);
-		leftWingDistal3.setPivot(0.0F, 0.5F, 0.0F);
-
-		this.leftWingDistal4 = new ModelPart(this, 30, 22);
-		this.leftWingProxEnd.addChild(leftWingDistal4);
-		leftWingDistal4.addCuboid(-0.5F, 0.0F, 0.0F, 1, 9, 1);
-		leftWingDistal4.setPivot(0.0F, 0F, 0.0F);
-
-		textureWidth = 64;
-		textureHeight = 32;
+		return modelData;
 	}
 
 	protected Iterable<ModelPart> getHeadParts() {
@@ -162,7 +131,25 @@ public class FlyingCatEntityModel<T extends FlyingCatEntity> extends AnimalModel
 	}
 
 	protected Iterable<ModelPart> getBodyParts() {
-		return ImmutableList.of(this.torso, this.leftBackLeg, this.rightBackLeg, this.leftFrontLeg, this.rightFrontLeg, this.upperTail, this.lowerTail, this.rightWingProx, this.leftWingProx);
+		return ImmutableList.of(
+				this.torso,
+				this.leftBackLeg,
+				this.rightBackLeg,
+				this.leftFrontLeg,
+				this.rightFrontLeg,
+				this.upperTail,
+				this.lowerTail,
+				this.rightWingProx,
+				this.leftWingProx,
+				this.rightWingDistal1,
+				this.rightWingDistal2,
+				this.rightWingDistal3,
+				this.rightWingDistal4,
+				this.leftWingDistal1,
+				this.leftWingDistal2,
+				this.leftWingDistal3,
+				this.leftWingDistal4
+				);
 	}
 
 	public void animateModel(T flyingCatEntity, float limbAngle, float limbDistance, float tickDelta) {
@@ -200,7 +187,6 @@ public class FlyingCatEntityModel<T extends FlyingCatEntity> extends AnimalModel
 		this.rightWingDistal2.pitch = this.leftWingDistal2.pitch = -1.45F;
 		this.rightWingDistal3.pitch = this.leftWingDistal3.pitch = -1.60F;
 		this.rightWingDistal4.pitch = this.leftWingDistal4.pitch = -1.75F;
-
 
 		boolean flying = !flyingCatEntity.isOnGround();
 

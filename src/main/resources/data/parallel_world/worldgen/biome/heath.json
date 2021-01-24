@@ -65,6 +65,7 @@
     ],
     [],
     [
+      "minecraft:glow_lichen",
       "parallel_world:glowstone_grow",
 	  "parallel_world:heath_vegetation",
 	  "minecraft:patch_berry_sparse",

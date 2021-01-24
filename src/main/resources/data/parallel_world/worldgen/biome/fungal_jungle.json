@@ -66,7 +66,8 @@
     ],
     [],
     [
-	  "parallel_world:fungal_jungle_vegetation",
+      "minecraft:glow_lichen",
+      "parallel_world:fungal_jungle_vegetation",
       "minecraft:bamboo_light",
       "minecraft:flower_warm",
       "minecraft:patch_grass_jungle",

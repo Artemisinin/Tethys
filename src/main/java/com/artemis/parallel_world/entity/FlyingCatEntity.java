@@ -1,13 +1,12 @@
 package com.artemis.parallel_world.entity;
 
-import com.artemis.parallel_world.entity.ai.control.FlyingCatMoveControl;
-import com.artemis.parallel_world.entity.goal.FlyingCatLandGoal;
-import com.artemis.parallel_world.entity.goal.FlyingCatWalkAroundFarGoal;
 import net.minecraft.entity.*;
+import net.minecraft.entity.ai.control.FlightMoveControl;
 import net.minecraft.entity.ai.control.MoveControl;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.ai.pathing.BirdNavigation;
 import net.minecraft.entity.ai.pathing.EntityNavigation;
+import net.minecraft.entity.ai.pathing.MobNavigation;
 import net.minecraft.entity.ai.pathing.PathNodeType;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
@@ -15,17 +14,13 @@ import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.passive.*;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
-import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 import net.minecraft.entity.ai.goal.TemptGoal;
@@ -34,29 +29,24 @@ import net.minecraft.entity.ai.goal.TemptGoal;
 public class FlyingCatEntity extends TameableEntity {
 
     private static final Ingredient TAMING_INGREDIENT = Ingredient.ofItems(Items.COOKIE);
-//    private static final TrackedData<? super Boolean> NO_GRAVITY;
+    private int locomotionToggle;
 
     public FlyingCatEntity(EntityType<? extends TameableEntity> entityType, World world) {
         super(entityType, world);
-        this.moveControl = new FlyingCatMoveControl(this, 5);
+        this.moveControl = new FlightMoveControl(this, 5, false);
         this.setPathfindingPenalty(PathNodeType.DANGER_FIRE, 16.0F);
         this.setPathfindingPenalty(PathNodeType.DAMAGE_FIRE, -1.0F);
-
     }
 
     public static DefaultAttributeContainer.Builder createFlyingCatAttributes() {
         return MobEntity.createMobAttributes().add(EntityAttributes.GENERIC_MAX_HEALTH, 10.0D).add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.3D).add(EntityAttributes.GENERIC_FLYING_SPEED, 0.6D).add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 3.0D);
     }
 
-    public boolean canFly() {
-        return true;
-    }
-
     protected EntityNavigation createNavigation(World world) {
         BirdNavigation birdNavigation = new BirdNavigation(this, world);
-        birdNavigation.setCanPathThroughDoors(false);
         birdNavigation.setCanSwim(true);
-        birdNavigation.setCanEnterOpenDoors(false);
+        birdNavigation.setCanPathThroughDoors(true);
+        birdNavigation.setCanEnterOpenDoors(true);
         return birdNavigation;
     }
 
@@ -65,60 +55,69 @@ public class FlyingCatEntity extends TameableEntity {
         this.goalSelector.add(1, new SitGoal(this));
         this.goalSelector.add(3, new TemptGoal(this, 1.25D, Ingredient.ofItems(Items.COOKIE), false));
         this.goalSelector.add(4, new FollowOwnerGoal(this, 1.0D, 10.0F, 5.0F, false));
-        this.goalSelector.add(5, new PounceAtTargetGoal(this, 0.3F));
-        this.goalSelector.add(6, new AttackGoal(this));
-        this.goalSelector.add(7, new AnimalMateGoal(this, 0.8D));
-        this.goalSelector.add(8, new FlyingCatLandGoal(this, 0.6D, 20));
-        this.goalSelector.add(9, new FlyingCatWalkAroundFarGoal(this, 0.8D, 1.0E-5F));
-        this.goalSelector.add(10, new WanderAroundFarGoal(this, 0.8D, 1.0E-5F));
+        // Add this later modelled on cat.
+        //this.goalSelector.add(5, new FleeEntityGoal<>());
+        this.goalSelector.add(6, new PounceAtTargetGoal(this, 0.3F));
+        this.goalSelector.add(7, new AttackGoal(this));
+        this.goalSelector.add(8, new AnimalMateGoal(this, 0.8D));
+        this.goalSelector.add(9, new WanderAroundFarGoal(this, 0.8D, 1.0E-5F));
+        this.goalSelector.add(10, new FlyOntoTreeGoal(this, 1.0D));
         this.goalSelector.add(11, new LookAtEntityGoal(this, PlayerEntity.class, 10.0F));
     }
 
     public void tick() {
         super.tick();
-//        if (this.temptGoal != null && this.temptGoal.isActive() && !this.isTamed() && this.age % 100 == 0) {
-//            this.playSound(SoundEvents.ENTITY_CAT_BEG_FOR_FOOD, 1.0F, 1.0F);
-//        }
+        // Why is my math not working.
+//        if (this.locomotionToggle < 900) {
+//            int increment = random.nextInt(10);
+//            locomotionToggle += increment;
+        if (this.locomotionToggle <600) {
+            locomotionToggle++;
+        } else if (this.flying(true)) {
+            if(this.isOnGround()) {
+                setFlying(false);
+                MoveControl walkingControl = new MoveControl(this);
+                this.moveControl = walkingControl;
+                MobNavigation walkingNav = new MobNavigation(this, world);
+                walkingNav.setCanPathThroughDoors(true);
+                walkingNav.setCanPathThroughDoors(true);
+                this.navigation = walkingNav;
+                this.locomotionToggle = 0;
+            }
+        } else if (this.flying(false)) {
+            setFlying(true);
+            FlightMoveControl flyingControl = new FlightMoveControl(this,5, false);
+            this.moveControl = flyingControl;
+            BirdNavigation flyingNav = new BirdNavigation(this, world);
+            flyingNav.setCanEnterOpenDoors(true);
+            flyingNav.setCanPathThroughDoors(true);
+            flyingNav.setCanSwim(true);
+            this.navigation = flyingNav;
+            this.locomotionToggle = 0;
+        }
     }
 
-@Override
-    public MoveControl getMoveControl() {
-        return new FlyingCatMoveControl(this, 5);
+     public boolean canFly() {
+        return true;
     }
 
-    public void mobTick() {
-        super.mobTick();
-//        if (!this.isOnGround()) {
-//            this.setPose(EntityPose.FALL_FLYING);
-//        }
-//        else if (this.getMoveControl().isMoving()) {
-//            double d = this.getMoveControl().getSpeed();
-//            if (d == 0.6D) {
-//                this.setPose(EntityPose.CROUCHING);
-//                this.setSprinting(false);
-//            } else if (d == 1.33D) {
-//                this.setPose(EntityPose.STANDING);
-//                this.setSprinting(true);
-//            } else {
-//                this.setPose(EntityPose.STANDING);
-//                this.setSprinting(false);
-//            }
-//        } else {
-//            this.setPose(EntityPose.STANDING);
-//            this.setSprinting(false);
-//        }
+    public void setFlying(boolean status) {
+        this.flying(status);
     }
 
+    private boolean flying(boolean status) {
+        return status;
+    }
 
     public boolean isBreedingItem(ItemStack stack) {
         return TAMING_INGREDIENT.test(stack);
     }
 
-    protected void eat(PlayerEntity player, ItemStack stack) {
+    protected void eat(PlayerEntity player, Hand hand, ItemStack stack) {
         if (this.isBreedingItem(stack)) {
             this.playSound(SoundEvents.ENTITY_CAT_EAT, 1.0F, 1.0F);
         }
-        super.eat(player, stack);
+        super.eat(player, hand, stack);
     }
 
     private float getAttackDamage() {
@@ -160,65 +159,6 @@ public class FlyingCatEntity extends TameableEntity {
 
     protected SoundEvent getDeathSound() {
         return SoundEvents.ENTITY_CAT_DEATH;
-    }
-
-    public ActionResult interactMob(PlayerEntity player, Hand hand) {
-        ItemStack itemStack = player.getStackInHand(hand);
-        Item item = itemStack.getItem();
-        ActionResult actionResult;
-
-        if (this.world.isClient) {
-            if (this.isTamed() && this.isOwner(player)) {
-                return ActionResult.SUCCESS;
-            } else {
-                return !this.isBreedingItem(itemStack) || this.getHealth() >= this.getMaxHealth() && this.isTamed() ? ActionResult.PASS : ActionResult.SUCCESS;
-            }
-        } else {
-            if (this.isTamed()) {
-                if (this.isOwner(player)) {
-                    if (item.isFood() && this.isBreedingItem(itemStack) && this.getHealth() < this.getMaxHealth()) {
-                        this.eat(player, itemStack);
-                        this.heal((float)item.getFoodComponent().getHunger());
-                        return ActionResult.CONSUME;
-                    }
-                    actionResult = super.interactMob(player, hand);
-                    if (!actionResult.isAccepted() || this.isBaby()) {
-                        this.setSitting(!this.isSitting());
-                    }
-                    return actionResult;
-                }
-            } else if (this.isBreedingItem(itemStack)) {
-                this.eat(player, itemStack);
-                if (this.random.nextInt(3) == 0) {
-                    this.setOwner(player);
-                    if (this.isOnGround()) {
-                        this.setSitting(true);
-                    }
-                    this.world.sendEntityStatus(this, (byte)7);
-                } else {
-                    this.world.sendEntityStatus(this, (byte)6);
-                }
-                this.setPersistent();
-                return ActionResult.CONSUME;
-            }
-            actionResult = super.interactMob(player, hand);
-            if (actionResult.isAccepted()) {
-                this.setPersistent();
-            }
-            return actionResult;
-        }
-    }
-
-
-    public boolean canBreedWith(AnimalEntity other) {
-        if (!this.isTamed()) {
-            return false;
-        } else if (!(other instanceof FlyingCatEntity)) {
-            return false;
-        } else {
-            FlyingCatEntity flyingCatEntity = (FlyingCatEntity) other;
-            return flyingCatEntity.isTamed() && super.canBreedWith(other);
-        }
     }
 
     public FlyingCatEntity createChild(ServerWorld serverWorld, PassiveEntity passiveEntity) {

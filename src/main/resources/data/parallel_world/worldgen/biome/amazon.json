@@ -64,7 +64,8 @@
     ],
     [],
     [
-	  "minecraft:sea_pickle",      
+	  "minecraft:glow_lichen",
+      "minecraft:sea_pickle",
 	  "minecraft:trees_jungle",
 	  "minecraft:patch_melon",
       "minecraft:flower_swamp",

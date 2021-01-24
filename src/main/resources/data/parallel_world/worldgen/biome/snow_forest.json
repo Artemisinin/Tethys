@@ -64,6 +64,7 @@
     ],
     [],
     [
+      "minecraft:glow_lichen",
       "minecraft:patch_large_fern",
       "minecraft:taiga_vegetation",
       "minecraft:flower_default",

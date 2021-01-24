@@ -4,9 +4,12 @@
   "package": "com.artemis.parallel_world.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
+    "EntityMixin"
   ],
   "client": [
+    "EntityModelsMixin"
   ],
+  "server": [],
   "injectors": {
     "defaultRequire": 1
   }

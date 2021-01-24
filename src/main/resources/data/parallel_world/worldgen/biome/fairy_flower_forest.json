@@ -51,6 +51,7 @@
     [],
     [
 	  "parallel_world:shroomlight_blobs", 
+	  "parallel_world:pink_diamond_ore",
       "minecraft:ore_dirt",
       "minecraft:ore_gravel",
       "minecraft:ore_granite",
@@ -65,7 +66,8 @@
     ],
     [],
     [
-	  "minecraft:forest_flower_vegetation_common",
+      "minecraft:glow_lichen",
+      "minecraft:forest_flower_vegetation_common",
       "minecraft:forest_flower_trees",
       "minecraft:flower_forest",
       "minecraft:patch_grass_badlands",

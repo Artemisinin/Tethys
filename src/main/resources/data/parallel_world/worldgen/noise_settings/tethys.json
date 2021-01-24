@@ -98,28 +98,29 @@
     }
   },
   "noise": {
+    "simplex_surface_noise": true,
+    "random_density_offset": true,
+    "size_vertical": 1,
     "density_factor": 0.2,
     "density_offset": -0.15,
-	"random_density_offset": true,
-    "simplex_surface_noise": true,
+    "top_slide": {
+      "target": -100,
+      "size": 10,
+      "offset": 10
+    },
     "bottom_slide": {
       "target": -90,
       "size": 9,
       "offset": -1
     },
     "size_horizontal": 1,
-    "size_vertical": 1,
-    "height": 170,
+    "min_y": 0,
+    "height": 176,
     "sampling": {
       "xz_scale": 1.0,
       "y_scale": 1.0,
       "xz_factor": 90.0,
       "y_factor": 90.0
-    },
-    "top_slide": {
-      "target": -100,
-      "size": 10,
-      "offset": 10
     },
 	"amplified": false,
 	"island_noise_override": false

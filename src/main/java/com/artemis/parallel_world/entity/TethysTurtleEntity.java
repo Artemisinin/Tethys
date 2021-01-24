@@ -7,8 +7,8 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.TurtleEggBlock;
+import net.minecraft.class_5532;
 import net.minecraft.entity.*;
-import net.minecraft.entity.ai.TargetFinder;
 import net.minecraft.entity.ai.TargetPredicate;
 import net.minecraft.entity.ai.control.MoveControl;
 import net.minecraft.entity.ai.goal.*;
@@ -33,7 +33,9 @@ import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.stat.Stats;
+import net.minecraft.tag.BlockTags;
 import net.minecraft.tag.FluidTags;
+import net.minecraft.tag.Tag;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
@@ -71,9 +73,7 @@ public class TethysTurtleEntity extends AnimalEntity {
         TRAVEL_POS = DataTracker.registerData(TethysTurtleEntity.class, TrackedDataHandlerRegistry.BLOCK_POS);
         LAND_BOUND = DataTracker.registerData(TethysTurtleEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
         ACTIVELY_TRAVELLING = DataTracker.registerData(TethysTurtleEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
-        BABY_TURTLE_ON_LAND_FILTER = (livingEntity) -> {
-            return livingEntity.isBaby() && !livingEntity.isTouchingWater();
-        };
+        BABY_TURTLE_ON_LAND_FILTER = (livingEntity) -> livingEntity.isBaby() && !livingEntity.isTouchingWater();
     }
 
     public void setHomePos(BlockPos pos) {
@@ -299,7 +299,7 @@ public class TethysTurtleEntity extends AnimalEntity {
     }
 
     public void onStruckByLightning(ServerWorld world, LightningEntity lightning) {
-        this.damage(DamageSource.LIGHTNING_BOLT, 3.4028235E38F);
+        this.damage(DamageSource.LIGHTNING_BOLT, 3.4F);
     }
 
     static class TurtleSwimNavigation extends SwimNavigation {
@@ -312,7 +312,8 @@ public class TethysTurtleEntity extends AnimalEntity {
         }
 
         protected PathNodeNavigator createPathNodeNavigator(int range) {
-            this.nodeMaker = new AmphibiousPathNodeMaker();
+            // This true/false thing seems to penalize swimming far below sea level.
+            this.nodeMaker = new AmphibiousPathNodeMaker(false);
             return new PathNodeNavigator(this.nodeMaker, range);
         }
 
@@ -355,7 +356,7 @@ public class TethysTurtleEntity extends AnimalEntity {
                 double d = this.targetX - this.turtle.getX();
                 double e = this.targetY - this.turtle.getY();
                 double f = this.targetZ - this.turtle.getZ();
-                double g = (double)MathHelper.sqrt(d * d + e * e + f * f);
+                double g = MathHelper.sqrt(d * d + e * e + f * f);
                 e /= g;
                 float h = (float)(MathHelper.atan2(f, d) * 57.2957763671875D) - 90.0F;
                 this.turtle.yaw = this.changeAngle(this.turtle.yaw, h, 90.0F);
@@ -429,21 +430,26 @@ public class TethysTurtleEntity extends AnimalEntity {
 
         public void tick() {
             super.tick();
-            BlockPos blockPos = this.turtle.getBlockPos();
+            BlockPos turtlePos = this.turtle.getBlockPos();
+            BlockPos belowTurtlePos = turtlePos.down();
+            BlockState belowTurtleBlockState = this.turtle.world.getBlockState(belowTurtlePos);
+            Block belowTurtleBlock = belowTurtleBlockState.getBlock();
+            Tag<Block> blockSandTag = BlockTags.SAND;
             if (this.hasReached()) {
-                if (this.turtle.sandDiggingCounter < 1) {
-                    this.turtle.setDiggingSand(true);
-
-                // Attempt to make eggs lay faster because they bounce off the seabed so much (counter was 200).
-                } else if (this.turtle.sandDiggingCounter > 50) {
-                    World world = this.turtle.world;
-                    world.playSound(null, blockPos, SoundEvents.ENTITY_TURTLE_LAY_EGG, SoundCategory.BLOCKS, 0.3F, 0.9F + world.random.nextFloat() * 0.2F);
-                    world.setBlockState(this.targetPos.up(), TethysBlocks.TETHYS_TURTLE_EGG.getDefaultState().with(TethysTurtleEggBlock.EGGS, this.turtle.random.nextInt(4) + 1), 3);
-                    this.turtle.setHasEgg(false);
-                    this.turtle.setDiggingSand(false);
-                    this.turtle.setLoveTicks(600);
+                if (blockSandTag.contains(belowTurtleBlock)) {
+                    // Attempt to stick turtle to bottom of ocean.
+                    this.turtle.setVelocity(0.0D, -0.1D, 0.0D);
+                    if (this.turtle.sandDiggingCounter < 1) {
+                        this.turtle.setDiggingSand(true);
+                    } else if (this.turtle.sandDiggingCounter > 100) {
+                        World world = this.turtle.world;
+                        world.playSound(null, turtlePos, SoundEvents.ENTITY_TURTLE_LAY_EGG, SoundCategory.BLOCKS, 0.3F, 0.9F + world.random.nextFloat() * 0.2F);
+                        world.setBlockState(this.targetPos.up(), TethysBlocks.TETHYS_TURTLE_EGG.getDefaultState().with(TethysTurtleEggBlock.EGGS, this.turtle.random.nextInt(4) + 1), 3);
+                        this.turtle.setHasEgg(false);
+                        this.turtle.setDiggingSand(false);
+                        this.turtle.setLoveTicks(600);
+                    }
                 }
-
                 if (this.turtle.isDiggingSand()) {
                     this.turtle.sandDiggingCounter++;
                 }
@@ -452,7 +458,7 @@ public class TethysTurtleEntity extends AnimalEntity {
 
         // Goes to the vanilla turtle egg block to see if the block below is sand, but no longer checks to make sure it has air above it.
         protected boolean isTargetPos(WorldView world, BlockPos pos) {
-            return TurtleEggBlock.method_29952(world, pos);
+            return TurtleEggBlock.isSandBelow(world, pos);
         }
     }
 
@@ -589,13 +595,13 @@ public class TethysTurtleEntity extends AnimalEntity {
 
             if (this.turtle.getNavigation().isIdle()) {
                 Vec3d vec3d = Vec3d.ofBottomCenter(blockPos);
-                Vec3d vec3d2 = TargetFinder.findTargetTowards(this.turtle, 16, 3, vec3d, 0.3141592741012573D);
+                Vec3d vec3d2 = class_5532.method_31512(this.turtle, 16, 3, vec3d, 0.3141592741012573D);
                 if (vec3d2 == null) {
-                    vec3d2 = TargetFinder.findTargetTowards(this.turtle, 8, 7, vec3d);
+                    vec3d2 = class_5532.method_31512(this.turtle, 8, 7, vec3d, 1.57D);
                 }
 
                 if (vec3d2 != null && !bl && !this.turtle.world.getBlockState(new BlockPos(vec3d2)).isOf(Blocks.WATER)) {
-                    vec3d2 = TargetFinder.findTargetTowards(this.turtle, 16, 5, vec3d);
+                    vec3d2 = class_5532.method_31512(this.turtle, 16, 5, vec3d, 1.57D);
                 }
 
                 if (vec3d2 == null) {
@@ -643,9 +649,9 @@ public class TethysTurtleEntity extends AnimalEntity {
         public void tick() {
             if (this.turtle.getNavigation().isIdle()) {
                 Vec3d vec3d = Vec3d.ofBottomCenter(this.turtle.getTravelPos());
-                Vec3d vec3d2 = TargetFinder.findTargetTowards(this.turtle, 16, 3, vec3d, 0.3141592741012573D);
+                Vec3d vec3d2 = class_5532.method_31512(this.turtle, 16, 3, vec3d, 0.3141592741012573D);
                 if (vec3d2 == null) {
-                    vec3d2 = TargetFinder.findTargetTowards(this.turtle, 8, 7, vec3d);
+                    vec3d2 = class_5532.method_31512(this.turtle, 8, 7, vec3d, 1.57D);
                 }
 
                 if (vec3d2 != null) {

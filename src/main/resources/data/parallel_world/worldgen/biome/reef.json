@@ -109,12 +109,7 @@
       }
     ],
     "creature": [
-	  {
-		"type": "parallel_world:tethys_turtle",
-		"weight": 20,
-		"minCount": 2,
-		"maxCount": 4
-	  }		  
+
 	],
     "ambient": [
       {

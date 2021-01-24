@@ -1,4 +1,4 @@
-This mod is for Minecraft 1.16.4 and requires Fabric loader and Fabric API 0.28.3+1.16 in the mod directory.  Fabric can be downloaded at https://fabricmc.net/.
+This mod is for Minecraft 1.17.4 (snapshot 21w03a) and requires Fabric loader and Fabric API 0.29.5+1.17 in the mod directory.  Fabric can be downloaded at https://fabricmc.net/.
 
 To access the added dimension:
 
