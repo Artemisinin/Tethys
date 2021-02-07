@@ -5,6 +5,7 @@ import net.minecraft.client.render.entity.model.EntityModelLayer;
 import net.minecraft.util.Identifier;
 
 import java.util.Set;
+import java.util.stream.Stream;
 
 public class TethysEntityModelLayers {
 
@@ -37,5 +38,9 @@ public class TethysEntityModelLayers {
         FLYING_CAT = registerMain("flying_cat");
         TETHYS_TURTLE = registerMain("tethys_turtle");
         WATER_STRIDER = registerMain("water_strider");
+    }
+
+    public static Stream<EntityModelLayer> getLayers() {
+        return TETHYS_LAYERS.stream();
     }
 }

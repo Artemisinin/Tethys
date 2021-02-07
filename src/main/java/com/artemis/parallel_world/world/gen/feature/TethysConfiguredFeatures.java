@@ -16,6 +16,7 @@ import net.minecraft.world.gen.feature.*;
 import net.minecraft.world.gen.feature.size.TwoLayersFeatureSize;
 import net.minecraft.world.gen.foliage.BlobFoliagePlacer;
 import net.minecraft.world.gen.foliage.LargeOakFoliagePlacer;
+import net.minecraft.world.gen.placer.SimpleBlockPlacer;
 import net.minecraft.world.gen.stateprovider.SimpleBlockStateProvider;
 import net.minecraft.world.gen.trunk.LargeOakTrunkPlacer;
 import net.minecraft.world.gen.trunk.StraightTrunkPlacer;
@@ -40,9 +41,14 @@ public class TethysConfiguredFeatures {
 
     public static ConfiguredFeature<?,?> PINK_DIAMOND_ORE;
 
+    public static ConfiguredFeature<?,?> TEST_CHERT;
+
     //public static ConfiguredFeature<?, ?> HUGE_HEATH_MUSHROOM;
 
     public static void registerConfiguredFeatures() {
+
+        TEST_CHERT = register("chert_block", Feature.FLOWER.configure((new RandomPatchFeatureConfig.Builder(new SimpleBlockStateProvider(TethysBlocks.PINK_DIAMOND_ORE.getDefaultState()),
+                SimpleBlockPlacer.INSTANCE)).tries(64).build()));
 
         BASSWOOD_TREE = register("parallel_world:basswood_tree", Feature.TREE.configure(
                 (new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(TethysConfiguredFeatures.States.BASSWOOD_LOG),

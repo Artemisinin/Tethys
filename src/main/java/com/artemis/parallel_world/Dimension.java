@@ -1,13 +1,13 @@
 package com.artemis.parallel_world;
 
 import com.artemis.parallel_world.block.*;
-import com.artemis.parallel_world.client.render.entity.model.TethysEntityModelLayers;
 import com.artemis.parallel_world.entity.TethysEntities;
 import com.artemis.parallel_world.item.TethysItems;
 import com.artemis.parallel_world.world.gen.feature.TethysConfiguredFeatures;
 import com.artemis.parallel_world.world.gen.feature.TethysFeatures;
 import net.fabricmc.api.ModInitializer;
-import net.minecraft.client.render.entity.model.EntityModelLayer;
+import net.minecraft.block.entity.BlockEntityType;
+import net.minecraft.util.registry.Registry;
 
 
 public class Dimension implements ModInitializer {
@@ -25,7 +25,6 @@ public class Dimension implements ModInitializer {
         TethysBlocks.registerFlammability();
         TethysFeatures.registerFeatures();
         TethysConfiguredFeatures.registerConfiguredFeatures();
-        //TethysEntities.registerEntities();
-
+        TethysEntities.registerEntities();
     }
 }

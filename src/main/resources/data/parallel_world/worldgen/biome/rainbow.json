@@ -48,7 +48,8 @@
 	    ],
 		[],
 		[
-		  "minecraft:monster_room"
+			"minecraft:amethyst_geode",
+			"minecraft:monster_room"
 		],
 		[],
 		[],
@@ -61,6 +62,7 @@
 		  "minecraft:ore_andesite",
 		  "minecraft:ore_coal",
 		  "minecraft:ore_iron",
+		  "minecraft:ore_copper",
 		  "minecraft:ore_gold",
 		  "minecraft:ore_redstone",
 		  "minecraft:ore_diamond",
@@ -94,6 +96,7 @@
 		]
     ],
 	"starts": [
+        "minecraft:mineshaft",		
 		"minecraft:village_taiga",
 		"minecraft:stronghold"
 		],

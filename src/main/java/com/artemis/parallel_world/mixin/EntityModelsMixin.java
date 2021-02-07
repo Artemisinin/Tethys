@@ -15,16 +15,17 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 
 
-@Mixin(EntityModels.class)
-abstract class EntityModelsMixin {
-    @Inject(method = "getModels", at = @At(value = "INVOKE",
-            target = "Lcom/google/common/collect/ImmutableMap$Builder;build()Lcom/google/common/collect/ImmutableMap;"),
-            locals = LocalCapture.CAPTURE_FAILEXCEPTION)
-    private static void registerExtraModelData(CallbackInfoReturnable<Map<EntityModelLayer, TexturedModelData>> info,
-                                               ImmutableMap.Builder<EntityModelLayer, TexturedModelData> builder) {
-        builder.put(TethysEntityModelLayers.FLYING_CAT, TethysTexturedModelData.FLYING_CAT_MODEL_DATA);
-        builder.put(TethysEntityModelLayers.WATER_STRIDER, TethysTexturedModelData.WATER_STRIDER_MODEL_DATA);
-        builder.put(TethysEntityModelLayers.TETHYS_TURTLE, TethysTexturedModelData.TETHYS_TURTLE_MODEL_DATA);
-    }
-}
+//@Mixin(EntityModels.class)
+//abstract class EntityModelsMixin {
+//    @Inject(method = "getModels", at = @At(value = "INVOKE",
+//            //target = "Lcom/google/common/collect/ImmutableMap$Builder;build()Lcom/google/common/collect/ImmutableMap;"),
+//            target = "Lnet/minecraft/client/render/entity/model/EntityModels;getModels()Ljava/util/Map;"),
+//            locals = LocalCapture.CAPTURE_FAILEXCEPTION)
+//    private static void registerExtraModelData(CallbackInfoReturnable<Map<EntityModelLayer, TexturedModelData>> info,
+//                                               ImmutableMap.Builder<EntityModelLayer, TexturedModelData> builder) {
+//        //builder.put(TethysEntityModelLayers.FLYING_CAT, TethysTexturedModelData.FLYING_CAT_MODEL_DATA);
+//        //builder.put(TethysEntityModelLayers.WATER_STRIDER, TethysTexturedModelData.WATER_STRIDER_MODEL_DATA);
+//        //builder.put(TethysEntityModelLayers.TETHYS_TURTLE, TethysTexturedModelData.TETHYS_TURTLE_MODEL_DATA);
+//    }
+//}
 
