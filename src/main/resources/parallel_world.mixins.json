@@ -12,6 +12,8 @@
     "MineshaftCrossingMixin",
     "MineshaftRoomMixin",
     "MineshaftStairsMixin",
+    "SaplingGeneratorMixin",
+    "TreeFeatureMixin",
     "VillageFeatureMixin"
   ],
   "client": [

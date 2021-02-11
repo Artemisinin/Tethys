@@ -6,11 +6,17 @@ import com.artemis.parallel_world.item.TethysItems;
 import com.artemis.parallel_world.world.gen.feature.TethysConfiguredFeatures;
 import com.artemis.parallel_world.world.gen.feature.TethysFeatures;
 import net.fabricmc.api.ModInitializer;
+import net.minecraft.block.Blocks;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.util.registry.Registry;
+import net.minecraft.world.gen.surfacebuilder.ConfiguredSurfaceBuilder;
+import net.minecraft.world.gen.surfacebuilder.SurfaceBuilder;
+import net.minecraft.world.gen.surfacebuilder.TernarySurfaceConfig;
 
 
 public class Dimension implements ModInitializer {
+
+
 
     @Override
     public void onInitialize() {
@@ -26,5 +32,6 @@ public class Dimension implements ModInitializer {
         TethysFeatures.registerFeatures();
         TethysConfiguredFeatures.registerConfiguredFeatures();
         TethysEntities.registerEntities();
+
     }
 }

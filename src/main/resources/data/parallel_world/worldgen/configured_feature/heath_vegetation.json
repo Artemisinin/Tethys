@@ -10,27 +10,27 @@
             "chance": 0.15
           },
           {
-            "feature": "parallel_world:heath_tree/heath_bush_1",
+            "feature": "parallel_world:birch_shrub",
             "chance": 0.15
           },
 		  {
-            "feature": "parallel_world:heath_tree/heath_bush_2",
+            "feature": "parallel_world:dark_oak_shrub_short",
             "chance": 0.15
           },
 		  {
-            "feature": "parallel_world:heath_tree/heath_bush_3",
+            "feature": "parallel_world:dark_oak_shrub_tall",
             "chance": 0.15
           },
 		  {
-            "feature": "parallel_world:heath_tree/heath_bush_4",
+            "feature": "parallel_world:oak_shrub",
             "chance": 0.15
           },
 		  {
-            "feature": "parallel_world:heath_tree/heath_bush_5",
+            "feature": "parallel_world:spruce_shrub_short",
             "chance": 0.15
           }
         ],
-        "default": "parallel_world:heath_tree/heath_bush_1"
+        "default": "parallel_world:spruce_shrub_tall"
       },
       "type": "minecraft:random_selector"
     },

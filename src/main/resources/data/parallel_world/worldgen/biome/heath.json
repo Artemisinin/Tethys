@@ -13,7 +13,7 @@
     "water_color": 3557818,
     "water_fog_color": 329011
   },
-  "surface_builder": "minecraft:grass",
+  "surface_builder": "parallel_world:heath",
   "carvers": {
     "air": [
       "minecraft:cave",

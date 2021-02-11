@@ -1,9 +1,12 @@
 package com.artemis.parallel_world.item;
 
+import com.artemis.parallel_world.entity.TethysEntities;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
+import net.minecraft.entity.EntityType;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
+import net.minecraft.item.SpawnEggItem;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
@@ -72,6 +75,11 @@ public class TethysItems {
         Registry.register(Registry.ITEM, new Identifier("parallel_world", "pink_diamond_block"), new BlockItem(PINK_DIAMOND_BLOCK, new Item.Settings().group(ItemGroup.MISC)));
         Registry.register(Registry.ITEM, new Identifier("parallel_world", "pink_diamond_ore"), new BlockItem(PINK_DIAMOND_ORE, new Item.Settings().group(ItemGroup.MISC)));
         Registry.register(Registry.ITEM, new Identifier("parallel_world", "pink_diamond"), PINK_DIAMOND);
+
+        // Spawn eggs
+        Registry.register(Registry.ITEM, new Identifier("parallel_world", "flying_cat_spawn_egg"), new SpawnEggItem(TethysEntities.FLYING_CAT, 16769262, 4668761, (new Item.Settings()).group(ItemGroup.MISC)));
+        Registry.register(Registry.ITEM, new Identifier("parallel_world", "tethys_turtle_spawn_egg"), new SpawnEggItem(TethysEntities.TETHYS_TURTLE, 4750419, 4599642, (new Item.Settings()).group(ItemGroup.MISC)));
+        Registry.register(Registry.ITEM, new Identifier("parallel_world", "water_strider_spawn_egg"), new SpawnEggItem(TethysEntities.WATER_STRIDER, 5263602, 987033, (new Item.Settings()).group(ItemGroup.MISC)));
 
     }
 }
