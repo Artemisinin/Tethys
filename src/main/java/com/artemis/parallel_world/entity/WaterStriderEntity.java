@@ -5,9 +5,9 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.FluidBlock;
 import net.minecraft.block.ShapeContext;
-import net.minecraft.class_5532;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnReason;
+import net.minecraft.entity.ai.NoPenaltyTargeting;
 import net.minecraft.entity.ai.TargetPredicate;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.ai.pathing.*;
@@ -157,8 +157,7 @@ public class WaterStriderEntity extends AnimalEntity {
             if (this.targetEntity == null) {
                 return false;
             } else {
-                // This method is probably all wrong, but they're all gibberish right now so let's just grab it.
-                Vec3d vec3d = class_5532.method_31511(this.mob, 16, 0, this.targetEntity.getPos());
+                Vec3d vec3d = NoPenaltyTargeting.find(this.mob, 16, 0, this.targetEntity.getPos());
                 if (vec3d == null) {
                     return false;
                 } else if (this.targetEntity.squaredDistanceTo(vec3d.x, vec3d.y, vec3d.z) < this.targetEntity.squaredDistanceTo(this.mob)) {

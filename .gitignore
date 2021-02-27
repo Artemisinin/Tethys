@@ -118,3 +118,5 @@ run/
 !gradle-wrapper.jar
 /.project
 /.classpath
+/src/main/resources/META-INF/
+/src/test/META-INF/

@@ -21,7 +21,7 @@ public abstract class GeodeFeatureMixin {
     @Inject(method = "generate", at = @At("HEAD"), cancellable = true)
     private void onGenerate(FeatureContext<GeodeFeatureConfig> featureContext, CallbackInfoReturnable<Boolean> cir) {
         GeodeFeatureConfig geodeFeatureConfig = featureContext.getConfig();
-        BlockPos blockPos = featureContext.getPos();
+        BlockPos blockPos = featureContext.getOrigin();
         StructureWorldAccess structureWorldAccess = featureContext.getWorld();
         int j = geodeFeatureConfig.maxGenOffset;
         if(structureWorldAccess.getBlockState(blockPos.add(0, j/3, 0)).isAir()) {

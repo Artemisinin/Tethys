@@ -1,6 +1,6 @@
 package com.artemis.parallel_world.entity.goal;
 
-import net.minecraft.class_5532;
+import net.minecraft.entity.ai.NoPenaltyTargeting;
 import net.minecraft.entity.ai.goal.Goal;
 import net.minecraft.entity.mob.PathAwareEntity;
 import net.minecraft.util.math.Vec3d;
@@ -58,9 +58,8 @@ public class WaterStriderWanderGoal extends Goal {
         }
 
         @Nullable
-        //This is pretty much definitely the wrong method, but they're all gibberish right now.
         protected Vec3d getWanderTarget() {
-            return class_5532.method_31510(strider, 12,0);
+            return NoPenaltyTargeting.find(strider, 12,0);
         }
 
         public boolean shouldContinue() {

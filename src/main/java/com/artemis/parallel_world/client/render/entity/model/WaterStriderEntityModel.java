@@ -148,5 +148,7 @@ public class WaterStriderEntityModel<T extends WaterStriderEntity> extends Anima
 	this.leftAntenna.roll = 0.4F;
 	this.rightLegUpper1.roll = this.rightLegUpper2.roll = this.rightLegUpper3.roll = this.rightLegUpper4.roll = upperLegRoll;
 	this.rightLegLower1.roll = this.rightLegLower2.roll = this.rightLegLower3.roll = this.rightLegLower4.roll = lowerLegRoll;
+	this.leftLegUpper1.roll = this.leftLegUpper2.roll = this.leftLegUpper3.roll = this.leftLegUpper4.roll = -upperLegRoll;
+	this.leftLegLower1.roll = this.leftLegLower2.roll = this.leftLegLower3.roll = this.leftLegLower4.roll = -lowerLegRoll;
 	}
 }
