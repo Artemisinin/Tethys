@@ -141,7 +141,7 @@ public class FlyingCatEntity extends TameableEntity {
         }
     }
 
-    public boolean handleFallDamage(float fallDistance, float damageMultiplier) {
+    public boolean handleFallDamage(float fallDistance, float damageMultiplier, DamageSource damageSource) {
         return false;
     }
 

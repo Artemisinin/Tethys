@@ -27,28 +27,13 @@
   },
   "features": [
     [
-		"parallel_world:seagen/seabed_sandstone",
-		"parallel_world:seagen/seabed_sand",
-		"parallel_world:seagen/sea1",
-		"parallel_world:seagen/sea2",
-		"parallel_world:seagen/sea3",
-		"parallel_world:seagen/sea4",
-		"parallel_world:seagen/sea5",
-		"parallel_world:seagen/sea6",
-		"parallel_world:seagen/sea7",
-		"parallel_world:seagen/sea8",
-		"parallel_world:seagen/sea9",
-		"parallel_world:seagen/sea10",
-		"parallel_world:seagen/sea11",
-		"parallel_world:seagen/sea12",
-		"parallel_world:seagen/sea13",
-		"parallel_world:seagen/sea14",
-		"parallel_world:seagen/sea15"
+	  "parallel_world:seagen/seabed_sandstone",
+	  "parallel_world:seagen/seabed_sand"
 	],
     [
-		"parallel_world:netherrack_blobs", 
-		"parallel_world:traps_lava",		
-		"minecraft:lake_lava"
+	  "parallel_world:netherrack_blobs", 
+	  "parallel_world:traps_lava",		
+	  "minecraft:lake_lava"
 	],
     [],
     [],
@@ -63,8 +48,10 @@
       "minecraft:ore_granite",
       "minecraft:ore_diorite",
       "minecraft:ore_andesite",
-      "minecraft:ore_coal",
-      "minecraft:ore_iron",
+      "minecraft:ore_coal_upper",
+      "minecraft:ore_coal_lower",
+      "minecraft:ore_iron_lower",
+      "minecraft:ore_iron_upper",
       "minecraft:ore_copper",
       "minecraft:ore_gold",
       "minecraft:disk_sand",

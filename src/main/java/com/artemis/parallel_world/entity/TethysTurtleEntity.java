@@ -7,8 +7,8 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.TurtleEggBlock;
-import net.minecraft.class_5532;
 import net.minecraft.entity.*;
+import net.minecraft.entity.ai.NoPenaltyTargeting;
 import net.minecraft.entity.ai.TargetPredicate;
 import net.minecraft.entity.ai.control.MoveControl;
 import net.minecraft.entity.ai.goal.*;
@@ -135,8 +135,8 @@ public class TethysTurtleEntity extends AnimalEntity {
         this.dataTracker.startTracking(DIGGING_SAND, false);
     }
 
-    public void writeCustomDataToTag(CompoundTag tag) {
-        super.writeCustomDataToTag(tag);
+    public void writeCustomDataToNbt(CompoundTag tag) {
+        super.writeCustomDataToNbt(tag);
         tag.putInt("HomePosX", this.getHomePos().getX());
         tag.putInt("HomePosY", this.getHomePos().getY());
         tag.putInt("HomePosZ", this.getHomePos().getZ());
@@ -146,12 +146,12 @@ public class TethysTurtleEntity extends AnimalEntity {
         tag.putInt("TravelPosZ", this.getTravelPos().getZ());
     }
 
-    public void readCustomDataFromTag(CompoundTag tag) {
+    public void readCustomDataFromNbt(CompoundTag tag) {
         int i = tag.getInt("HomePosX");
         int j = tag.getInt("HomePosY");
         int k = tag.getInt("HomePosZ");
         this.setHomePos(new BlockPos(i, j, k));
-        super.readCustomDataFromTag(tag);
+        super.readCustomDataFromNbt(tag);
         this.setHasEgg(tag.getBoolean("HasEgg"));
         int l = tag.getInt("TravelPosX");
         int m = tag.getInt("TravelPosY");
@@ -172,7 +172,7 @@ public class TethysTurtleEntity extends AnimalEntity {
         return TethysEntities.TETHYS_TURTLE.create(world);
     }
 
-    public static boolean canSpawn(EntityType<TethysTurtleEntity> type, WorldAccess world, SpawnReason spawnReason, BlockPos pos, Random random) {
+    public static boolean isValidNaturalSpawn(EntityType<? extends AnimalEntity> type, WorldAccess world, SpawnReason spawnReason, BlockPos pos, Random random) {
         return pos.getY() < 25 && TethysTurtleEggBlock.isSand(world, pos) && world.getBaseLightLevel(pos, 0) > 8;
     }
 
@@ -387,7 +387,7 @@ public class TethysTurtleEntity extends AnimalEntity {
             if (this.turtle.isBaby() && !this.turtle.isTouchingWater()) {
                 return super.canStart();
             } else {
-                return !this.turtle.isLandBound() && !this.turtle.isTouchingWater() && !this.turtle.hasEgg() ? super.canStart() : false;
+                return !this.turtle.isLandBound() && !this.turtle.isTouchingWater() && !this.turtle.hasEgg() && super.canStart();
             }
         }
 
@@ -409,7 +409,7 @@ public class TethysTurtleEntity extends AnimalEntity {
         }
 
         public boolean canStart() {
-            return !this.mob.isTouchingWater() && !this.turtle.isLandBound() && !this.turtle.hasEgg() ? super.canStart() : false;
+            return !this.mob.isTouchingWater() && !this.turtle.isLandBound() && !this.turtle.hasEgg() && super.canStart();
         }
     }
 
@@ -421,7 +421,7 @@ public class TethysTurtleEntity extends AnimalEntity {
         }
 
         public boolean canStart() {
-            return this.turtle.hasEgg() && this.turtle.getHomePos().isWithinDistance(this.turtle.getPos(), 9.0D) ? super.canStart() : false;
+            return this.turtle.hasEgg() && this.turtle.getHomePos().isWithinDistance(this.turtle.getPos(), 9.0D) && super.canStart();
         }
 
         public boolean shouldContinue() {
@@ -482,7 +482,7 @@ public class TethysTurtleEntity extends AnimalEntity {
 
             if (serverPlayerEntity != null) {
                 serverPlayerEntity.incrementStat(Stats.ANIMALS_BRED);
-                Criteria.BRED_ANIMALS.trigger(serverPlayerEntity, this.animal, this.mate, (PassiveEntity)null);
+                Criteria.BRED_ANIMALS.trigger(serverPlayerEntity, this.animal, this.mate, null);
             }
 
             this.turtle.setHasEgg(true);
@@ -506,7 +506,7 @@ public class TethysTurtleEntity extends AnimalEntity {
         ApproachFoodHoldingPlayerGoal(TethysTurtleEntity turtle, double speed, Item attractiveItem) {
             this.turtle = turtle;
             this.speed = speed;
-            this.attractiveItems = Sets.newHashSet(new Item[]{attractiveItem});
+            this.attractiveItems = Sets.newHashSet(attractiveItem);
             this.setControls(EnumSet.of(Control.MOVE, Control.LOOK));
         }
 
@@ -595,13 +595,13 @@ public class TethysTurtleEntity extends AnimalEntity {
 
             if (this.turtle.getNavigation().isIdle()) {
                 Vec3d vec3d = Vec3d.ofBottomCenter(blockPos);
-                Vec3d vec3d2 = class_5532.method_31512(this.turtle, 16, 3, vec3d, 0.3141592741012573D);
+                Vec3d vec3d2 = NoPenaltyTargeting.find(this.turtle, 16, 3, vec3d, 0.3141592741012573D);
                 if (vec3d2 == null) {
-                    vec3d2 = class_5532.method_31512(this.turtle, 8, 7, vec3d, 1.57D);
+                    vec3d2 = NoPenaltyTargeting.find(this.turtle, 8, 7, vec3d, 1.57D);
                 }
 
                 if (vec3d2 != null && !bl && !this.turtle.world.getBlockState(new BlockPos(vec3d2)).isOf(Blocks.WATER)) {
-                    vec3d2 = class_5532.method_31512(this.turtle, 16, 5, vec3d, 1.57D);
+                    vec3d2 = NoPenaltyTargeting.find(this.turtle, 16, 5, vec3d, 1.57D);
                 }
 
                 if (vec3d2 == null) {
@@ -630,8 +630,6 @@ public class TethysTurtleEntity extends AnimalEntity {
         }
 
         public void start() {
-            boolean i = true;
-            boolean j = true;
             Random random = this.turtle.random;
             int k = random.nextInt(1025) - 512;
             int l = random.nextInt(9) - 4;
@@ -649,9 +647,9 @@ public class TethysTurtleEntity extends AnimalEntity {
         public void tick() {
             if (this.turtle.getNavigation().isIdle()) {
                 Vec3d vec3d = Vec3d.ofBottomCenter(this.turtle.getTravelPos());
-                Vec3d vec3d2 = class_5532.method_31512(this.turtle, 16, 3, vec3d, 0.3141592741012573D);
+                Vec3d vec3d2 = NoPenaltyTargeting.find(this.turtle, 16, 3, vec3d, 0.3141592741012573D);
                 if (vec3d2 == null) {
-                    vec3d2 = class_5532.method_31512(this.turtle, 8, 7, vec3d, 1.57D);
+                    vec3d2 = NoPenaltyTargeting.find(this.turtle, 8, 7, vec3d, 1.57D);
                 }
 
                 if (vec3d2 != null) {

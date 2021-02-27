@@ -33,6 +33,9 @@
   "block.parallel_world.tethys_turtle_egg": "Tethys Turtle Egg",
   "block.parallel_world.pink_diamond_block": "Pink Diamond Block",
   "block.parallel_world.pink_diamond_ore": "Pink Diamond Ore",
+  "block.parallel_world.pink_mushroom_block": "Pink Mushroom Block",
+  "block.parallel_world.white_mushroom_block": "White Mushroom Block",
 
+  "item.parallel_world.glow_lichen_ball": "Glow Lichen Ball",
   "item.parallel_world.pink_diamond": "Pink Diamond"
 }

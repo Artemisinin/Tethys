@@ -1,10 +1,7 @@
 {
   "config": {
     "top_material": {
-      "Properties": {
-        "snowy": "false"
-      },
-      "Name": "minecraft:grass_block"
+      "Name": "minecraft:sand"
     },
     "under_material": {
       "Name": "minecraft:sand"
@@ -13,5 +10,5 @@
       "Name": "minecraft:sand"
     }
   },
-  "type": "minecraft:nether"
+  "type": "parallel_world:tethys_default"
 }

@@ -10,5 +10,5 @@
         "Name": "minecraft:dirt"
       }
     },
-    "type": "minecraft:default"
+    "type": "parallel_world:tethys_default"
   }

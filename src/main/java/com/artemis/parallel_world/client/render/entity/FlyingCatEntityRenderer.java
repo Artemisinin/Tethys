@@ -1,4 +1,4 @@
-package com.artemis.parallel_world.client.render;
+package com.artemis.parallel_world.client.render.entity;
 
 import com.artemis.parallel_world.client.render.entity.model.FlyingCatEntityModel;
 import com.artemis.parallel_world.client.render.entity.model.TethysEntityModelLayers;
@@ -16,7 +16,7 @@ import net.minecraft.util.Identifier;
 public class FlyingCatEntityRenderer extends MobEntityRenderer<FlyingCatEntity, FlyingCatEntityModel<FlyingCatEntity>> {
 
     public FlyingCatEntityRenderer(EntityRendererFactory.Context context) {
-        super(context, new FlyingCatEntityModel(context.getPart(TethysEntityModelLayers.FLYING_CAT)), 0.4F);
+        super(context, new FlyingCatEntityModel(context.getPart(TethysEntityModelLayers.FLYING_CAT_MODEL_LAYER)), 0.4F);
     }
 
     public Identifier getTexture(FlyingCatEntity entity) {

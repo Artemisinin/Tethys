@@ -1,4 +1,4 @@
-package com.artemis.parallel_world.client.render;
+package com.artemis.parallel_world.client.render.entity;
 
 import com.artemis.parallel_world.client.render.entity.model.TethysEntityModelLayers;
 import com.artemis.parallel_world.client.render.entity.model.WaterStriderEntityModel;
@@ -14,7 +14,7 @@ import net.minecraft.util.Identifier;
 public class WaterStriderEntityRenderer extends MobEntityRenderer<WaterStriderEntity, WaterStriderEntityModel<WaterStriderEntity>> {
 
     public WaterStriderEntityRenderer(EntityRendererFactory.Context context) {
-        super(context, new WaterStriderEntityModel(context.getPart(TethysEntityModelLayers.WATER_STRIDER)), 0.4F);
+        super(context, new WaterStriderEntityModel(context.getPart(TethysEntityModelLayers.WATER_STRIDER_MODEL_LAYER)), 0.4F);
     }
 
     public Identifier getTexture(WaterStriderEntity entity) {

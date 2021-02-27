@@ -26,11 +26,11 @@
             "chance": 0.15
           },
 		  {
-            "feature": "parallel_world:spruce_shrub_short",
+            "feature": "parallel_world:spruce_shrub_tall",
             "chance": 0.15
           }
         ],
-        "default": "parallel_world:spruce_shrub_tall"
+        "default": "parallel_world:spruce_shrub_short"
       },
       "type": "minecraft:random_selector"
     },

@@ -12,7 +12,7 @@
     "water_color": 4435182,
     "water_fog_color": 270131
   },
-  "surface_builder": "minecraft:full_sand",
+  "surface_builder": "parallel_world:full_sand",
   "carvers": {
     "air": [],
     "liquid": []
@@ -20,22 +20,7 @@
   "features": [
 	[
 		"parallel_world:seagen/seabed_sandstone",
-		"parallel_world:seagen/seabed_sand",
-		"parallel_world:seagen/sea1",
-		"parallel_world:seagen/sea2",
-		"parallel_world:seagen/sea3",
-		"parallel_world:seagen/sea4",
-		"parallel_world:seagen/sea5",
-		"parallel_world:seagen/sea6",
-		"parallel_world:seagen/sea7",
-		"parallel_world:seagen/sea8",
-		"parallel_world:seagen/sea9",
-		"parallel_world:seagen/sea10",
-		"parallel_world:seagen/sea11",
-		"parallel_world:seagen/sea12",
-		"parallel_world:seagen/sea13",
-		"parallel_world:seagen/sea14",
-		"parallel_world:seagen/sea15"
+		"parallel_world:seagen/seabed_sand"
 	],
     [],
     [],

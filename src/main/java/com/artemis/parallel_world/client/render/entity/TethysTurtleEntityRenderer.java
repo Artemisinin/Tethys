@@ -1,5 +1,6 @@
-package com.artemis.parallel_world.client.render;
+package com.artemis.parallel_world.client.render.entity;
 
+import com.artemis.parallel_world.client.render.entity.model.TethysEntityModelLayers;
 import com.artemis.parallel_world.client.render.entity.model.TethysTurtleEntityModel;
 import com.artemis.parallel_world.entity.TethysTurtleEntity;
 import net.fabricmc.api.EnvType;
@@ -19,7 +20,7 @@ public class TethysTurtleEntityRenderer extends MobEntityRenderer<TethysTurtleEn
 
     // Originally turtles were bigger, with different renderer they are smaller, need to figure out how to grow them.
     public TethysTurtleEntityRenderer(Context context) {
-        super(context, new TethysTurtleEntityModel(context.getPart(EntityModelLayers.TURTLE)), 0.7F);
+        super(context, new TethysTurtleEntityModel(context.getPart(TethysEntityModelLayers.TETHYS_TURTLE_MODEL_LAYER)), 0.7F);
     }
 
     public void render(TethysTurtleEntity tethysTurtleEntity, float f, float g, MatrixStack matrixStack, VertexConsumerProvider vertexConsumerProvider, int i) {

@@ -10,8 +10,8 @@
       "Name": "minecraft:dirt"
     },
     "underwater_material": {
-      "Name": "minecraft:clay"
-    }    
+      "Name": "minecraft:dirt"
+    }
   },
-  "type": "minecraft:default"
+  "type": "parallel_world:tethys_default"
 }

@@ -1,5 +1,5 @@
 {
-  "type": "minecraft:fill_layer",
+  "type": "parallel_world:water_replacing_fill_layer",
   "config": {
     "state": {
       "Name": "minecraft:sand"

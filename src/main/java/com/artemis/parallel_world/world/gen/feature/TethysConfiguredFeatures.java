@@ -7,12 +7,13 @@ import net.minecraft.util.registry.BuiltinRegistries;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.Heightmap;
 import net.minecraft.world.gen.UniformIntDistribution;
-import net.minecraft.world.gen.decorator.*;
+import net.minecraft.world.gen.YOffset;
 import net.minecraft.world.gen.feature.*;
 import net.minecraft.world.gen.feature.size.TwoLayersFeatureSize;
 import net.minecraft.world.gen.foliage.BlobFoliagePlacer;
 import net.minecraft.world.gen.foliage.BushFoliagePlacer;
 import net.minecraft.world.gen.foliage.LargeOakFoliagePlacer;
+import net.minecraft.world.gen.placer.SimpleBlockPlacer;
 import net.minecraft.world.gen.stateprovider.SimpleBlockStateProvider;
 import net.minecraft.world.gen.trunk.LargeOakTrunkPlacer;
 import net.minecraft.world.gen.trunk.StraightTrunkPlacer;
@@ -27,10 +28,11 @@ public class TethysConfiguredFeatures {
         return (ConfiguredFeature)Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, id, configuredFeature);
     }
 
-    // Heath Shrubs
+    // Shrubs for vanilla trees
     public static ConfiguredFeature<?,?> BIRCH_SHRUB;
     public static ConfiguredFeature<?,?> DARK_OAK_SHRUB_SHORT;
     public static ConfiguredFeature<?,?> DARK_OAK_SHRUB_TALL;
+    public static ConfiguredFeature<?,?> JUNGLE_SHRUB;
     public static ConfiguredFeature<?,?> OAK_SHRUB;
     public static ConfiguredFeature<?,?> SPRUCE_SHRUB_SHORT;
     public static ConfiguredFeature<?,?> SPRUCE_SHRUB_TALL;
@@ -44,6 +46,7 @@ public class TethysConfiguredFeatures {
     public static ConfiguredFeature<?,?> GINKGO_TREE;
     public static ConfiguredFeature<?,?> SWEETGUM_TREE;
 
+    public static ConfiguredFeature<?,?> PATCH_BERRY_BUSH_HEATH;
     public static ConfiguredFeature<?,?> PINK_DIAMOND_ORE;
 
     //public static ConfiguredFeature<?, ?> HUGE_HEATH_MUSHROOM;
@@ -70,6 +73,13 @@ public class TethysConfiguredFeatures {
                         new SimpleBlockStateProvider(TethysConfiguredFeatures.States.DARK_OAK_LEAVES),
                         new BushFoliagePlacer(UniformIntDistribution.of(2), UniformIntDistribution.of(1), 2),
                         new StraightTrunkPlacer(1, 0, 1),
+                        new TwoLayersFeatureSize(0, 0, 0))).heightmap(Heightmap.Type.MOTION_BLOCKING_NO_LEAVES).build()));
+
+        JUNGLE_SHRUB = register("parallel_world:jungle_shrub", Feature.TREE.configure(
+                (new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(TethysConfiguredFeatures.States.JUNGLE_LOG),
+                        new SimpleBlockStateProvider(TethysConfiguredFeatures.States.JUNGLE_LEAVES),
+                        new BushFoliagePlacer(UniformIntDistribution.of(2), UniformIntDistribution.of(1), 2),
+                        new StraightTrunkPlacer(1, 0, 0),
                         new TwoLayersFeatureSize(0, 0, 0))).heightmap(Heightmap.Type.MOTION_BLOCKING_NO_LEAVES).build()));
 
         OAK_SHRUB = register("parallel_world:oak_shrub", Feature.TREE.configure(
@@ -143,9 +153,12 @@ public class TethysConfiguredFeatures {
                         new LargeOakTrunkPlacer(3, 11, 0),
                         new TwoLayersFeatureSize(0, 0, 0, OptionalInt.of(4)))).ignoreVines().heightmap(Heightmap.Type.MOTION_BLOCKING).build()));
 
+        PATCH_BERRY_BUSH_HEATH = register("parallel_world:patch_berry_bush_heath", Feature.RANDOM_PATCH.configure(
+                (new RandomPatchFeatureConfig.Builder(new SimpleBlockStateProvider(TethysConfiguredFeatures.States.SWEET_BERRY_BUSH), SimpleBlockPlacer.INSTANCE)).cannotProject().build()));
+
         PINK_DIAMOND_ORE = register("parallel_world:pink_diamond_ore", Feature.ORE.configure(
                 new OreFeatureConfig(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD, TethysBlocks.PINK_DIAMOND_ORE.getDefaultState(), 5)).
-                decorate(Decorator.RANGE.configure(new RangeDecoratorConfig(0,30, 50))).spreadHorizontally().repeat(2));
+                averageDepth(YOffset.getBottom(), 80)).spreadHorizontally().repeat(4);
 
         // The mushroom right now is configured in json.
         //HUGE_HEATH_MUSHROOM = register("parallel_world:huge_heath_mushroom", TethysFeatures.HUGE_HEATH_MUSHROOM_FEATURE.configure(new HugeMushroomFeatureConfig(new SimpleBlockStateProvider(BROWN_MUSHROOM_BLOCK), new SimpleBlockStateProvider(MUSHROOM_STEM), 3)));
@@ -170,13 +183,17 @@ public class TethysConfiguredFeatures {
         protected static final BlockState ELDERBERRY_LOG = TethysBlocks.ELDERBERRY_LOG.getDefaultState();
         protected static final BlockState GINKGO_LEAVES = TethysBlocks.GINKGO_LEAVES.getDefaultState();
         protected static final BlockState GINKGO_LOG = TethysBlocks.GINKGO_LOG.getDefaultState();
+        protected static final BlockState GRASS_BLOCK = Blocks.GRASS_BLOCK.getDefaultState();
+        protected static final BlockState JUNGLE_LEAVES = Blocks.JUNGLE_LEAVES.getDefaultState();
+        protected static final BlockState JUNGLE_LOG = Blocks.JUNGLE_LOG.getDefaultState();
+        protected static final BlockState MOSS_BLOCK = Blocks.MOSS_BLOCK.getDefaultState();
         protected static final BlockState OAK_LOG = Blocks.OAK_LOG.getDefaultState();
         protected static final BlockState OAK_LEAVES = Blocks.OAK_LEAVES.getDefaultState();
         protected static final BlockState SPRUCE_LOG = Blocks.SPRUCE_LOG.getDefaultState();
         protected static final BlockState SPRUCE_LEAVES = Blocks.SPRUCE_LEAVES.getDefaultState();
+        protected static final BlockState SWEET_BERRY_BUSH = Blocks.SWEET_BERRY_BUSH.getDefaultState();
         protected static final BlockState SWEETGUM_LEAVES = TethysBlocks.SWEETGUM_LEAVES.getDefaultState();
         protected static final BlockState SWEETGUM_LOG = TethysBlocks.SWEETGUM_LOG.getDefaultState();
-
 
         //protected static final BlockState BROWN_MUSHROOM_BLOCK = Blocks.BROWN_MUSHROOM_BLOCK.getDefaultState().with(MushroomBlock.UP, true).with(MushroomBlock.DOWN, false);
         //protected static final BlockState MUSHROOM_STEM = Blocks.MUSHROOM_STEM.getDefaultState().with(MushroomBlock.UP, false).with(MushroomBlock.DOWN, false);

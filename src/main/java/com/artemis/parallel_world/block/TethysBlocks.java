@@ -16,51 +16,55 @@ public class TethysBlocks {
     public static final Block BLUE_CALCITE_LOG = new PillarBlock(FabricBlockSettings.of(Material.STONE).hardness(2.0f));
     public static final Block GLOWFRUIT = new Block(FabricBlockSettings.of(Material.PLANT).breakByHand(true).nonOpaque().luminance(12).hardness(0.2f));
 
+    // Mushroom blocks
+    public static final Block PINK_MUSHROOM_BLOCK = new MushroomBlock(AbstractBlock.Settings.of(Material.WOOD, MapColor.DULL_PINK).strength(0.2F).sounds(BlockSoundGroup.WOOD));
+    public static final Block WHITE_MUSHROOM_BLOCK = new MushroomBlock(AbstractBlock.Settings.of(Material.WOOD, MapColor.OFF_WHITE).strength(0.2F).sounds(BlockSoundGroup.WOOD));
+
     // Pink diamonds!
     public static final Block PINK_DIAMOND_BLOCK = new Block(FabricBlockSettings.of(Material.METAL).hardness(5.0f));
-    //public static final Block PINK_DIAMOND_ORE = new Block(FabricBlockSettings.of(Material.METAL).hardness(3.0f));
     public static final Block PINK_DIAMOND_ORE = new OreBlock(AbstractBlock.Settings.of(Material.METAL).requiresTool().strength(3.0F, 3.0F), IntRange.between(3, 7));
 
     // Tethys turtle eggs
     public static final Block TETHYS_TURTLE_EGG = new TethysTurtleEggBlock((AbstractBlock.Settings.of(Material.EGG).strength(0.5F).sounds(BlockSoundGroup.METAL).ticksRandomly().nonOpaque()));
 
-    // Basswood trees
+    // Trees
+        // Basswood trees
     public static final Block BASSWOOD_PLANKS = new Block(FabricBlockSettings.of(Material.WOOD).hardness(2.0f));
     public static final Block BASSWOOD_LEAVES = new LeavesBlock(FabricBlockSettings.of(Material.LEAVES).hardness(0.2f).breakByHand(true).nonOpaque());
     public static final Block BASSWOOD_LOG = new PillarBlock(FabricBlockSettings.of(Material.WOOD).hardness(2.0f));
     public static final CustomSaplingBlock BASSWOOD_SAPLING = new CustomSaplingBlock(new BasswoodSaplingGenerator(), AbstractBlock.Settings.of(Material.PLANT).ticksRandomly().breakInstantly().sounds(BlockSoundGroup.GRASS).nonOpaque().noCollision());
 
-    // Blackcurrant trees
+        // Blackcurrant trees
     public static final Block BLACKCURRANT_PLANKS = new Block(FabricBlockSettings.of(Material.WOOD).hardness(2.0f));
     public static final Block BLACKCURRANT_LEAVES = new LeavesBlock(FabricBlockSettings.of(Material.LEAVES).hardness(0.2f).breakByHand(true).nonOpaque());
     public static final Block BLACKCURRANT_LOG = new PillarBlock(FabricBlockSettings.of(Material.WOOD).hardness(2.0f));
     public static final CustomSaplingBlock BLACKCURRANT_SAPLING = new CustomSaplingBlock(new BlackcurrantSaplingGenerator(), AbstractBlock.Settings.of(Material.PLANT).ticksRandomly().breakInstantly().sounds(BlockSoundGroup.GRASS).nonOpaque().noCollision());
 
-    // Cherry trees
+        // Cherry trees
     public static final Block CHERRY_PLANKS = new Block(FabricBlockSettings.of(Material.WOOD).hardness(2.0f));
     public static final Block CHERRY_LEAVES = new LeavesBlock(FabricBlockSettings.of(Material.LEAVES).hardness(0.2f).breakByHand(true).nonOpaque());
     public static final Block CHERRY_LOG = new PillarBlock(FabricBlockSettings.of(Material.WOOD).hardness(2.0f));
     public static final CustomSaplingBlock CHERRY_SAPLING = new CustomSaplingBlock(new CherrySaplingGenerator(), AbstractBlock.Settings.of(Material.PLANT).ticksRandomly().breakInstantly().sounds(BlockSoundGroup.GRASS).nonOpaque().noCollision());
 
-    // Dogwood trees
+        // Dogwood trees
     public static final Block DOGWOOD_PLANKS = new Block(FabricBlockSettings.of(Material.WOOD).hardness(2.0f));
     public static final Block DOGWOOD_LEAVES = new LeavesBlock(FabricBlockSettings.of(Material.LEAVES).hardness(0.2f).breakByHand(true).nonOpaque());
     public static final Block DOGWOOD_LOG = new PillarBlock(FabricBlockSettings.of(Material.WOOD).hardness(2.0f));
     public static final CustomSaplingBlock DOGWOOD_SAPLING = new CustomSaplingBlock(new DogwoodSaplingGenerator(), AbstractBlock.Settings.of(Material.PLANT).ticksRandomly().breakInstantly().sounds(BlockSoundGroup.GRASS).nonOpaque().noCollision());
 
-    // Elderberry trees
+        // Elderberry trees
     public static final Block ELDERBERRY_PLANKS = new Block(FabricBlockSettings.of(Material.WOOD).hardness(2.0f));
     public static final Block ELDERBERRY_LEAVES = new LeavesBlock(FabricBlockSettings.of(Material.LEAVES).hardness(0.2f).breakByHand(true).nonOpaque());
     public static final Block ELDERBERRY_LOG = new PillarBlock(FabricBlockSettings.of(Material.WOOD).hardness(2.0f));
     public static final CustomSaplingBlock ELDERBERRY_SAPLING = new CustomSaplingBlock(new ElderberrySaplingGenerator(), AbstractBlock.Settings.of(Material.PLANT).ticksRandomly().breakInstantly().sounds(BlockSoundGroup.GRASS).nonOpaque().noCollision());
 
-    // Ginkgo trees
+        // Ginkgo trees
     public static final Block GINKGO_PLANKS = new Block(FabricBlockSettings.of(Material.WOOD).hardness(2.0f));
     public static final Block GINKGO_LEAVES = new LeavesBlock(FabricBlockSettings.of(Material.LEAVES).hardness(0.2f).breakByHand(true).nonOpaque());
     public static final Block GINKGO_LOG = new PillarBlock(FabricBlockSettings.of(Material.WOOD).hardness(2.0f));
     public static final CustomSaplingBlock GINKGO_SAPLING = new CustomSaplingBlock(new GinkgoSaplingGenerator(), AbstractBlock.Settings.of(Material.PLANT).ticksRandomly().breakInstantly().sounds(BlockSoundGroup.GRASS).nonOpaque().noCollision());
 
-    // Sweetgum trees
+        // Sweetgum trees
     public static final Block SWEETGUM_PLANKS = new Block(FabricBlockSettings.of(Material.WOOD).hardness(2.0f));
     public static final Block SWEETGUM_LEAVES = new LeavesBlock(FabricBlockSettings.of(Material.LEAVES).hardness(0.2f).breakByHand(true).nonOpaque());
     public static final Block SWEETGUM_LOG = new PillarBlock(FabricBlockSettings.of(Material.WOOD).hardness(2.0f));
@@ -69,12 +73,16 @@ public class TethysBlocks {
 
     public static void registerBlocks() {
 
-        // Glowfruit
-        Registry.register(Registry.BLOCK, new Identifier("parallel_world", "glowfruit"), GLOWFRUIT);
-
         // Crystal forest calcite logs
         Registry.register(Registry.BLOCK, new Identifier("parallel_world", "calcite_log"), CALCITE_LOG);
         Registry.register(Registry.BLOCK, new Identifier("parallel_world", "blue_calcite_log"), BLUE_CALCITE_LOG);
+
+        // Glowfruit
+        Registry.register(Registry.BLOCK, new Identifier("parallel_world", "glowfruit"), GLOWFRUIT);
+
+        // Mushroom blocks
+        Registry.register(Registry.BLOCK, new Identifier("parallel_world", "pink_mushroom_block"), PINK_MUSHROOM_BLOCK);
+        Registry.register(Registry.BLOCK, new Identifier("parallel_world", "white_mushroom_block"), WHITE_MUSHROOM_BLOCK);
 
         // Pink diamonds!
         Registry.register(Registry.BLOCK, new Identifier("parallel_world", "pink_diamond_block"), PINK_DIAMOND_BLOCK);
@@ -83,44 +91,44 @@ public class TethysBlocks {
         // Tethys turtle eggs
         Registry.register(Registry.BLOCK, new Identifier("parallel_world", "tethys_turtle_egg"), TETHYS_TURTLE_EGG);
 
-        // All the trees
-        // Basswood trees
+        // Tethys trees
+            // Basswood trees
         Registry.register(Registry.BLOCK, new Identifier("parallel_world", "basswood_log"), BASSWOOD_LOG);
         Registry.register(Registry.BLOCK, new Identifier("parallel_world", "basswood_planks"), BASSWOOD_PLANKS);
         Registry.register(Registry.BLOCK, new Identifier("parallel_world", "basswood_leaves"), BASSWOOD_LEAVES);
         Registry.register(Registry.BLOCK, new Identifier("parallel_world", "basswood_sapling"), BASSWOOD_SAPLING);
 
-        // Blackcurrant trees
+            // Blackcurrant trees
         Registry.register(Registry.BLOCK, new Identifier("parallel_world", "blackcurrant_log"), BLACKCURRANT_LOG);
         Registry.register(Registry.BLOCK, new Identifier("parallel_world", "blackcurrant_planks"), BLACKCURRANT_PLANKS);
         Registry.register(Registry.BLOCK, new Identifier("parallel_world", "blackcurrant_leaves"), BLACKCURRANT_LEAVES);
         Registry.register(Registry.BLOCK, new Identifier("parallel_world", "blackcurrant_sapling"), BLACKCURRANT_SAPLING);
 
-        // Cherry trees
+            // Cherry trees
         Registry.register(Registry.BLOCK, new Identifier("parallel_world", "cherry_log"), CHERRY_LOG);
         Registry.register(Registry.BLOCK, new Identifier("parallel_world", "cherry_planks"), CHERRY_PLANKS);
         Registry.register(Registry.BLOCK, new Identifier("parallel_world", "cherry_leaves"), CHERRY_LEAVES);
         Registry.register(Registry.BLOCK, new Identifier("parallel_world", "cherry_sapling"), CHERRY_SAPLING);
 
-        // Dogwood trees
+            // Dogwood trees
         Registry.register(Registry.BLOCK, new Identifier("parallel_world", "dogwood_log"), DOGWOOD_LOG);
         Registry.register(Registry.BLOCK, new Identifier("parallel_world", "dogwood_planks"), DOGWOOD_PLANKS);
         Registry.register(Registry.BLOCK, new Identifier("parallel_world", "dogwood_leaves"), DOGWOOD_LEAVES);
         Registry.register(Registry.BLOCK, new Identifier("parallel_world", "dogwood_sapling"), DOGWOOD_SAPLING);
 
-        // Elderberry trees
+            // Elderberry trees
         Registry.register(Registry.BLOCK, new Identifier("parallel_world", "elderberry_log"), ELDERBERRY_LOG);
         Registry.register(Registry.BLOCK, new Identifier("parallel_world", "elderberry_planks"), ELDERBERRY_PLANKS);
         Registry.register(Registry.BLOCK, new Identifier("parallel_world", "elderberry_leaves"), ELDERBERRY_LEAVES);
         Registry.register(Registry.BLOCK, new Identifier("parallel_world", "elderberry_sapling"), ELDERBERRY_SAPLING);
 
-        // Ginkgo trees
+            // Ginkgo trees
         Registry.register(Registry.BLOCK, new Identifier("parallel_world", "ginkgo_log"), GINKGO_LOG);
         Registry.register(Registry.BLOCK, new Identifier("parallel_world", "ginkgo_planks"), GINKGO_PLANKS);
         Registry.register(Registry.BLOCK, new Identifier("parallel_world", "ginkgo_leaves"), GINKGO_LEAVES);
         Registry.register(Registry.BLOCK, new Identifier("parallel_world", "ginkgo_sapling"), GINKGO_SAPLING);
 
-        // Sweetgum trees
+            // Sweetgum trees
         Registry.register(Registry.BLOCK, new Identifier("parallel_world", "sweetgum_log"), SWEETGUM_LOG);
         Registry.register(Registry.BLOCK, new Identifier("parallel_world", "sweetgum_planks"), SWEETGUM_PLANKS);
         Registry.register(Registry.BLOCK, new Identifier("parallel_world", "sweetgum_leaves"), SWEETGUM_LEAVES);

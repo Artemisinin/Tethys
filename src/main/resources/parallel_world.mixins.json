@@ -4,16 +4,11 @@
   "package": "com.artemis.parallel_world.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
-    "EntityMixin",
-    "EntityRenderersMixin",
+    "FeatureMixin",
     "GeodeFeatureMixin",
     "IcebergFeatureMixin",
-    "MineshaftCorridorMixin",
-    "MineshaftCrossingMixin",
-    "MineshaftRoomMixin",
-    "MineshaftStairsMixin",
+    "LargeTreeSaplingGeneratorMixin",
     "SaplingGeneratorMixin",
-    "TreeFeatureMixin",
     "VillageFeatureMixin"
   ],
   "client": [
