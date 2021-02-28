@@ -8,12 +8,13 @@ import com.artemis.parallel_world.world.gen.feature.TethysFeatures;
 import com.artemis.parallel_world.world.gen.surfacebuilder.TethysSurfaceBuilder;
 import net.fabricmc.api.ModInitializer;
 
-import net.minecraft.block.Blocks;
-import net.minecraft.block.entity.BlockEntityType;
+import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
+import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
+import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
-import net.minecraft.world.gen.surfacebuilder.ConfiguredSurfaceBuilder;
-import net.minecraft.world.gen.surfacebuilder.SurfaceBuilder;
-import net.minecraft.world.gen.surfacebuilder.TernarySurfaceConfig;
+import net.minecraft.util.registry.RegistryKey;
+import net.minecraft.world.gen.GenerationStep;
+import org.lwjgl.system.CallbackI;
 
 
 public class Dimension implements ModInitializer {
@@ -37,5 +38,6 @@ public class Dimension implements ModInitializer {
 
         TethysSurfaceBuilder.registerSurfaceBuilders();
 
+        BiomeModifications.addFeature(BiomeSelectors.all(), GenerationStep.Feature.UNDERGROUND_ORES, RegistryKey.of(Registry.CONFIGURED_FEATURE_WORLDGEN, new Identifier("parallel_world", "cave_forest")));
     }
 }

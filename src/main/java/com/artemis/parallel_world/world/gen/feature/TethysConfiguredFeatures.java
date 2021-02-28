@@ -8,6 +8,9 @@ import net.minecraft.util.registry.Registry;
 import net.minecraft.world.Heightmap;
 import net.minecraft.world.gen.UniformIntDistribution;
 import net.minecraft.world.gen.YOffset;
+import net.minecraft.world.gen.decorator.CountExtraDecoratorConfig;
+import net.minecraft.world.gen.decorator.Decorator;
+import net.minecraft.world.gen.decorator.RangeDecoratorConfig;
 import net.minecraft.world.gen.feature.*;
 import net.minecraft.world.gen.feature.size.TwoLayersFeatureSize;
 import net.minecraft.world.gen.foliage.BlobFoliagePlacer;
@@ -49,9 +52,21 @@ public class TethysConfiguredFeatures {
     public static ConfiguredFeature<?,?> PATCH_BERRY_BUSH_HEATH;
     public static ConfiguredFeature<?,?> PINK_DIAMOND_ORE;
 
+    public static ConfiguredFeature<?,?> TEST_CAVE_TREE;
+    public static ConfiguredFeature<?,?> TEST_CAVE_FOREST;
+
     //public static ConfiguredFeature<?, ?> HUGE_HEATH_MUSHROOM;
 
     public static void registerConfiguredFeatures() {
+
+        TEST_CAVE_TREE = register("parallel_world:cave_tree", TethysFeatures.UNLOCKED_TREE_FEATURE.configure(
+                (new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(Blocks.QUARTZ_PILLAR.getDefaultState()),
+                        new SimpleBlockStateProvider(Blocks.SEA_LANTERN.getDefaultState()),
+                        new BlobFoliagePlacer(UniformIntDistribution.of(2), UniformIntDistribution.of(0), 3),
+                        new StraightTrunkPlacer(4, 2, 0),
+                        new TwoLayersFeatureSize(0,0,0))).heightmap(Heightmap.Type.MOTION_BLOCKING).build()));
+
+        TEST_CAVE_FOREST = register("parallel_world:cave_forest", TEST_CAVE_TREE.rangeOf(YOffset.getBottom(), YOffset.fixed(40)).spreadHorizontally().repeat(UniformIntDistribution.of(20, 10)));
 
         // Heath Shrubs
         BIRCH_SHRUB = register("parallel_world:birch_shrub", Feature.TREE.configure(
