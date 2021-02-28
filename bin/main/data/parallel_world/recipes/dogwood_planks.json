@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "parallel_world:dogwood_log"
+    }
+  ],
+  "result": {
+    "item": "parallel_world:dogwood_planks",
+    "count": 4
+  }
+}

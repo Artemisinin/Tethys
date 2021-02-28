@@ -1,0 +1,36 @@
+{
+	"config": {
+        "features": [
+			{
+            "feature": "parallel_world:crystal_tree/crystal_tree_cyan",
+            "chance": 0.25
+			},
+			{	
+            "feature": "parallel_world:crystal_tree/crystal_tree_green",
+            "chance": 0.10
+			},
+			{
+            "feature": "parallel_world:crystal_tree/crystal_tree_pink",
+            "chance": 0.20
+			},
+			{
+            "feature": "parallel_world:crystal_tree/crystal_tree_purple",
+            "chance": 0.25
+			},
+			{
+            "feature": "parallel_world:crystal_tree/crystal_tree_lime",
+            "chance": 0.20
+			},
+			{
+			"feature": "parallel_world:crystal_tree/crystal_pine_green",
+			"chance": 0.40
+			},
+			{
+			"feature": "parallel_world:crystal_tree/crystal_bush_red",
+			"chance": 0.3
+			}
+		],
+        "default": "parallel_world:crystal_tree/crystal_tree_white"
+	},
+    "type": "minecraft:random_selector"
+}

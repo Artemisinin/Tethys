@@ -1,0 +1,142 @@
+{
+  "scale": 0.3,
+  "effects": {
+    "mood_sound": {
+      "sound": "minecraft:ambient.cave",
+      "tick_delay": 6000,
+      "block_search_extent": 8,
+      "offset": 2.0
+    },
+    "particle": {
+      "options": {
+        "type": "minecraft:white_ash"
+      },
+      "probability": 0.01
+    },
+    "sky_color": 6849715,
+    "fog_color": 12638463,
+	"grass_color": 10392884,
+    "water_color": 8235263,
+    "water_fog_color": 2041677
+  },
+  "surface_builder": "parallel_world:wasteland",
+  "carvers": {
+    "air": [
+      "minecraft:cave"
+    ]
+  },
+  "features": [
+    [
+	  "parallel_world:seagen/seabed_sandstone",
+	  "parallel_world:seagen/seabed_sand"
+	],
+    [
+	  "parallel_world:netherrack_blobs", 
+	  "parallel_world:traps_lava",		
+	  "minecraft:lake_lava"
+	],
+    [],
+    [],
+    [],
+    [],
+    [
+	  "parallel_world:coarse_dirt_blobs_wasteland",
+	  "parallel_world:gravel_blobs",
+	  "parallel_world:scattered_obsidian",
+	  "minecraft:ore_dirt",
+      "minecraft:ore_gravel",
+      "minecraft:ore_granite",
+      "minecraft:ore_diorite",
+      "minecraft:ore_andesite",
+      "minecraft:ore_coal_upper",
+      "minecraft:ore_coal_lower",
+      "minecraft:ore_iron_lower",
+      "minecraft:ore_iron_upper",
+      "minecraft:ore_copper",
+      "minecraft:ore_gold",
+      "minecraft:disk_sand",
+      "minecraft:disk_clay",
+      "minecraft:disk_gravel"
+	],
+    [
+      "minecraft:glow_lichen",
+      "parallel_world:glowstone_grow",
+	  "parallel_world:wasteland_vegetation",
+	  "minecraft:spring_delta",
+      "minecraft:ore_magma",
+      "minecraft:spring_closed_double",
+	  "minecraft:brown_mushroom_normal",
+      "minecraft:red_mushroom_normal"
+    ],
+    [
+      "parallel_world:netherrack_replacer",
+	  "minecraft:spring_lava_double"
+    ]
+  ],
+  "starts": [],
+  "spawners": {
+    "monster": [
+      {
+        "type": "minecraft:spider",
+        "weight": 100,
+        "minCount": 4,
+        "maxCount": 4
+      },
+      {
+        "type": "minecraft:zombie",
+        "weight": 19,
+        "minCount": 4,
+        "maxCount": 4
+      },
+      {
+        "type": "minecraft:skeleton",
+        "weight": 100,
+        "minCount": 4,
+        "maxCount": 4
+      },
+      {
+        "type": "minecraft:creeper",
+        "weight": 100,
+        "minCount": 4,
+        "maxCount": 4
+      },
+      {
+        "type": "minecraft:enderman",
+        "weight": 10,
+        "minCount": 1,
+        "maxCount": 4
+      },
+      {
+        "type": "minecraft:witch",
+        "weight": 5,
+        "minCount": 1,
+        "maxCount": 1
+      },
+      {
+        "type": "minecraft:husk",
+        "weight": 80,
+        "minCount": 4,
+        "maxCount": 4
+      }
+    ],
+    "creature": [],
+    "ambient": [
+      {
+        "type": "minecraft:bat",
+        "weight": 10,
+        "minCount": 8,
+        "maxCount": 8
+      }
+    ],
+    "water_creature": [],
+    "water_ambient": [],
+    "misc": []
+  },
+  "spawn_costs": {},
+  "player_spawn_friendly": false,
+  "precipitation": "none",
+  "temperature": 2.0,
+  "downfall": 0.0,
+  "category": "desert",
+  "depth": 0.3
+}

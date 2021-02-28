@@ -1,0 +1,7 @@
+{
+  "config": {
+    "start_pool": "parallel_world:village/mycelium/town_centers",
+    "size": 6
+  },
+  "type": "minecraft:village"
+}

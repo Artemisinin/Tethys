@@ -1,0 +1,12 @@
+{
+  "replace": false,
+  "values": [
+    "parallel_world:basswood_log",
+    "parallel_world:blackcurrant_log",
+    "parallel_world:cherry_log",
+    "parallel_world:dogwood_log",
+    "parallel_world:elderberry_log",
+    "parallel_world:ginkgo_log",
+    "parallel_world:sweetgum_log"
+  ]
+}

@@ -1,0 +1,177 @@
+{
+  "name": "parallel_world:village/mycelium/streets",
+  "fallback": "parallel_world:village/mycelium/terminators",
+  "elements": [
+    {
+      "weight": 2,
+      "element": {
+        "location": "parallel_world:mycelium/streets/corner_01",
+        "processors": "parallel_world:street_mycelium",
+        "projection": "terrain_matching",
+        "element_type": "minecraft:legacy_single_pool_element"
+      }
+    },
+    {
+      "weight": 2,
+      "element": {
+        "location": "parallel_world:mycelium/streets/corner_03",
+        "processors": "parallel_world:street_mycelium",
+        "projection": "terrain_matching",
+        "element_type": "minecraft:legacy_single_pool_element"
+      }
+    },
+    {
+      "weight": 4,
+      "element": {
+        "location": "parallel_world:mycelium/streets/straight_02",
+        "processors": "parallel_world:street_mycelium",
+        "projection": "terrain_matching",
+        "element_type": "minecraft:legacy_single_pool_element"
+      }
+    },
+    {
+      "weight": 7,
+      "element": {
+        "location": "parallel_world:mycelium/streets/straight_04",
+        "processors": "parallel_world:street_mycelium",
+        "projection": "terrain_matching",
+        "element_type": "minecraft:legacy_single_pool_element"
+      }
+    },
+    {
+      "weight": 3,
+      "element": {
+        "location": "parallel_world:mycelium/streets/straight_05",
+        "processors": "parallel_world:street_mycelium",
+        "projection": "terrain_matching",
+        "element_type": "minecraft:legacy_single_pool_element"
+      }
+    },
+    {
+      "weight": 4,
+      "element": {
+        "location": "parallel_world:mycelium/streets/straight_06",
+        "processors": "parallel_world:street_mycelium",
+        "projection": "terrain_matching",
+        "element_type": "minecraft:legacy_single_pool_element"
+      }
+    },
+    {
+      "weight": 4,
+      "element": {
+        "location": "parallel_world:mycelium/streets/straight_08",
+        "processors": "parallel_world:street_mycelium",
+        "projection": "terrain_matching",
+        "element_type": "minecraft:legacy_single_pool_element"
+      }
+    },
+    {
+      "weight": 4,
+      "element": {
+        "location": "parallel_world:mycelium/streets/straight_09",
+        "processors": "parallel_world:street_mycelium",
+        "projection": "terrain_matching",
+        "element_type": "minecraft:legacy_single_pool_element"
+      }
+    },
+    {
+      "weight": 4,
+      "element": {
+        "location": "parallel_world:mycelium/streets/straight_10",
+        "processors": "parallel_world:street_mycelium",
+        "projection": "terrain_matching",
+        "element_type": "minecraft:legacy_single_pool_element"
+      }
+    },
+    {
+      "weight": 4,
+      "element": {
+        "location": "parallel_world:mycelium/streets/straight_11",
+        "processors": "parallel_world:street_mycelium",
+        "projection": "terrain_matching",
+        "element_type": "minecraft:legacy_single_pool_element"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "location": "parallel_world:mycelium/streets/crossroad_02",
+        "processors": "parallel_world:street_mycelium",
+        "projection": "terrain_matching",
+        "element_type": "minecraft:legacy_single_pool_element"
+      }
+    },
+    {
+      "weight": 2,
+      "element": {
+        "location": "parallel_world:mycelium/streets/crossroad_03",
+        "processors": "parallel_world:street_mycelium",
+        "projection": "terrain_matching",
+        "element_type": "minecraft:legacy_single_pool_element"
+      }
+    },
+    {
+      "weight": 2,
+      "element": {
+        "location": "parallel_world:mycelium/streets/crossroad_04",
+        "processors": "parallel_world:street_mycelium",
+        "projection": "terrain_matching",
+        "element_type": "minecraft:legacy_single_pool_element"
+      }
+    },
+    {
+      "weight": 2,
+      "element": {
+        "location": "parallel_world:mycelium/streets/crossroad_05",
+        "processors": "parallel_world:street_mycelium",
+        "projection": "terrain_matching",
+        "element_type": "minecraft:legacy_single_pool_element"
+      }
+    },
+    {
+      "weight": 2,
+      "element": {
+        "location": "parallel_world:mycelium/streets/crossroad_06",
+        "processors": "parallel_world:street_mycelium",
+        "projection": "terrain_matching",
+        "element_type": "minecraft:legacy_single_pool_element"
+      }
+    },
+    {
+      "weight": 2,
+      "element": {
+        "location": "parallel_world:mycelium/streets/crossroad_07",
+        "processors": "parallel_world:street_mycelium",
+        "projection": "terrain_matching",
+        "element_type": "minecraft:legacy_single_pool_element"
+      }
+    },
+    {
+      "weight": 2,
+      "element": {
+        "location": "parallel_world:mycelium/streets/split_01",
+        "processors": "parallel_world:street_mycelium",
+        "projection": "terrain_matching",
+        "element_type": "minecraft:legacy_single_pool_element"
+      }
+    },
+    {
+      "weight": 2,
+      "element": {
+        "location": "parallel_world:mycelium/streets/split_02",
+        "processors": "parallel_world:street_mycelium",
+        "projection": "terrain_matching",
+        "element_type": "minecraft:legacy_single_pool_element"
+      }
+    },
+    {
+      "weight": 3,
+      "element": {
+        "location": "parallel_world:mycelium/streets/turn_01",
+        "processors": "parallel_world:street_mycelium",
+        "projection": "terrain_matching",
+        "element_type": "minecraft:legacy_single_pool_element"
+      }
+    }
+  ]
+}

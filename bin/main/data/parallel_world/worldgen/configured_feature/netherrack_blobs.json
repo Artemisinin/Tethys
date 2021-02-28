@@ -1,0 +1,43 @@
+{
+  "config": {
+	"feature": {
+	  "config": {
+		"feature": {
+		  "config": {
+			"target": {
+			  "Name": "minecraft:stone"
+			},
+			"state": {
+			  "Properties": {},
+			  "Name": "minecraft:netherrack"
+			},
+			"radius": {
+			  "base": 0,
+			  "spread": 0
+			}
+		  },
+		  "type": "minecraft:netherrack_replace_blobs"
+		},
+		"decorator": {
+		  "config": {
+			"bottom_inclusive": {
+			  "above_bottom": 0
+			},
+			"top_inclusive": {
+			  "absolute": 45
+			}
+		  },
+		  "type": "minecraft:range"
+		}
+	  },
+	  "type": "minecraft:decorated"
+	},
+    "decorator": {
+      "config": {
+        "count": 12
+      },
+      "type": "minecraft:count"
+    }
+  },
+  "type": "minecraft:decorated"
+}

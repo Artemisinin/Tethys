@@ -1,0 +1,46 @@
+{
+	"config": {
+        "feature": {
+			"config": {
+				"feature": {
+					"config": {
+						"target": {
+							"Properties": {},
+							"Name": "minecraft:snow_block"
+						},
+						"state": {
+							"Properties": {},
+							"Name": "minecraft:coarse_dirt"
+						},
+						"radius": {
+							"base": 0,
+							"spread": 0
+						}
+					},
+					"type": "minecraft:netherrack_replace_blobs"
+				},		
+				"decorator": {
+					"config": {
+						"outer": {
+							"config": {},
+							"type":"minecraft:square"
+						},
+						"inner": {
+							"config": {},
+							"type": "minecraft:top_solid_heightmap"
+						}
+					},
+					"type": "minecraft:decorated"
+				}
+			},
+			"type": "minecraft:decorated"				
+		},	
+		"decorator": {
+			"config": {
+				"count": 6
+			},
+			"type": "minecraft:count"
+		}
+	},	
+	"type": "minecraft:decorated"
+}

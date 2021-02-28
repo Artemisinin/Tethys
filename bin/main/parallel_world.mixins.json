@@ -1,0 +1,21 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.artemis.parallel_world.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "mixins": [
+    "FeatureMixin",
+    "GeodeFeatureMixin",
+    "IcebergFeatureMixin",
+    "LargeTreeSaplingGeneratorMixin",
+    "SaplingGeneratorMixin",
+    "VillageFeatureMixin"
+  ],
+  "client": [
+
+  ],
+  "server": [],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

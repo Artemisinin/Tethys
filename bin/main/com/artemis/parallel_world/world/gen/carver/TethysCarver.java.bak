@@ -1,0 +1,16 @@
+package com.artemis.parallel_world.world.gen.carver;
+
+import com.mojang.serialization.Codec;
+import net.minecraft.world.gen.ProbabilityConfig;
+import net.minecraft.world.gen.carver.*;
+
+
+public abstract class TethysCarver extends Carver {
+
+    public TethysCarver(Codec configCodec, int heightLimit) {
+        super(configCodec, heightLimit);
+
+    static {
+        CANYON = register("gully", new GullyCarver(ProbabilityConfig.CODEC));
+    }
+}

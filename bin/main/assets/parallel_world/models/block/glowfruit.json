@@ -1,0 +1,42 @@
+{
+	"parent": "minecraft:block/leaves",
+	"credit": "Made with Blockbench",
+	"textures": {
+		"0": "minecraft:block/dark_oak_leaves",
+		"1": "parallel_world:block/glowfruit-interior",
+		"particle": "minecraft:block/dark_oak_leaves"
+	},
+	"elements": [
+		{
+			"from": [0, 0, 0],
+			"to": [16, 16, 16],
+			"faces": {
+				"down":  { "uv": [ 0, 0, 16, 16 ], "texture": "#0", "tintindex": 0, "cullface": "down" },
+				"up":    { "uv": [ 0, 0, 16, 16 ], "texture": "#0", "tintindex": 0, "cullface": "up" },
+				"north": { "uv": [ 0, 0, 16, 16 ], "texture": "#0", "tintindex": 0, "cullface": "north" },
+				"south": { "uv": [ 0, 0, 16, 16 ], "texture": "#0", "tintindex": 0, "cullface": "south" },
+				"west":  { "uv": [ 0, 0, 16, 16 ], "texture": "#0", "tintindex": 0, "cullface": "west" },
+				"east":  { "uv": [ 0, 0, 16, 16 ], "texture": "#0", "tintindex": 0, "cullface": "east" }
+			}
+		},
+		{
+			"from": [6, 6, 6],
+			"to": [10, 10, 10],
+			"faces": {
+				"north": {"uv": [0, 0, 6, 6], "texture": "#1"},
+				"east": {"uv": [0, 0, 6, 6], "texture": "#1"},
+				"south": {"uv": [0, 0, 6, 6], "texture": "#1"},
+				"west": {"uv": [0, 0, 6, 6], "texture": "#1"},
+				"up": {"uv": [0, 0, 6, 6], "texture": "#1"},
+				"down": {"uv": [0, 0, 6, 6], "texture": "#1"}
+			}
+		}
+	],
+	"groups": [
+		{
+			"name": "group",
+			"origin": [8, 8, 8],
+			"children": [0, 1]
+		}
+	]
+}

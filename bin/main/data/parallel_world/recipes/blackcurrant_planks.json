@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "parallel_world:blackcurrant_log"
+    }
+  ],
+  "result": {
+    "item": "parallel_world:blackcurrant_planks",
+    "count": 4
+  }
+}

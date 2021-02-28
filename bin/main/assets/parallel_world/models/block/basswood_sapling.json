@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "parallel_world:block/basswood_sapling"
+  }
+}

@@ -1,0 +1,226 @@
+{
+	"type": "parallel_world:tethys",
+	"generator": {
+		"type": "minecraft:noise",
+		"seed": -200055084505552,
+		"biome_source": {
+		  "type": "minecraft:multi_noise",
+		  "seed": -200055084505552,
+		  "biomes": [
+				{
+				"parameters": {
+					"altitude": 0.0, 
+					"weirdness": 0.0, 
+					"offset": 1.0,
+					"temperature": 0.0,
+					"humidity": 0.1
+					},
+				"biome": "parallel_world:rainbow"
+				},
+				{
+				"parameters": {
+					"altitude": 0.3, 
+					"weirdness": 0.02, 
+					"offset": 1.0,
+					"temperature": 0.5,
+					"humidity": 0.5
+					},
+				"biome": "parallel_world:amazon"
+				},
+				{
+				"parameters": {
+					"altitude": 0.65, 
+					"weirdness": 0.2, 
+					"offset": 1.0,
+					"temperature": 0.5,
+					"humidity": -0.5
+					},
+				"biome": "parallel_world:end_desert"
+				},
+				{
+					"parameters": {
+					"altitude": 0.0, 
+					"weirdness": 0.15, 
+					"offset": 1.0,
+					"temperature": -0.1,
+					"humidity": 0.2
+					},
+				"biome": "parallel_world:fairy_dark_forest"
+				},
+				{
+					"parameters": {
+					"altitude": 0.0, 
+					"weirdness": 0.10, 
+					"offset": 1.0,
+					"temperature": 0.0,
+					"humidity": 0.1
+					},
+				"biome": "parallel_world:fairy_flower_forest"
+				},
+				{
+				"parameters": {
+					"altitude": -0.5, 
+					"weirdness": 0.2, 
+					"offset": 1.0,
+					"temperature": 0.5,
+					"humidity": -0.5
+					},
+				"biome": "parallel_world:traps"
+				},
+				{
+				"parameters": {
+					"altitude": -0.4, 
+					"weirdness": 0.12, 
+					"offset": 1.0,
+					"temperature": 0.25,
+					"humidity": 0.0
+					},
+				"biome": "parallel_world:wasteland"				
+				}, 
+				{
+				"parameters": {
+					"altitude": 0.1, 
+					"weirdness": 0.1, 
+					"offset": 1.0,
+					"temperature": -0.1,
+					"humidity": 0.2
+					},
+				"biome": "parallel_world:mycelium"				
+				},
+				{
+				"parameters": {
+					"altitude": -0.5, 
+					"weirdness": 0.18, 
+					"offset": 1.0,
+					"temperature": -0.5,
+					"humidity": 0.2
+					},
+				"biome": "parallel_world:ice_spires"				
+				},
+				{
+				"parameters": {
+					"altitude": -0.4, 
+					"weirdness": 0.15, 
+					"offset": 1.0,
+					"temperature": -0.45,
+					"humidity": 0.2
+					},
+				"biome": "parallel_world:ice_bergs"				
+				},
+				{
+				"parameters": {
+					"altitude": 0.2, 
+					"weirdness": 0.08, 
+					"offset": 1.0,
+					"temperature": 0.5,
+					"humidity": 0.5
+					},
+				"biome": "parallel_world:bamboo"						
+				},
+				{
+				"parameters": {
+					"altitude": -0.3, 
+					"weirdness": 0.05, 
+					"offset": 1.0,
+					"temperature": -0.2,
+					"humidity": 0.2
+					},
+				"biome": "parallel_world:heath"						
+				},
+				{
+				"parameters": {
+					"altitude": -0.3, 
+					"weirdness": 0.18, 
+					"offset": 1.0,
+					"temperature": -0.3,
+					"humidity": 0.4
+					},
+				"biome": "parallel_world:crystal_forest"						
+				},
+				{
+				"parameters": {
+					"altitude": 0.2, 
+					"weirdness": 0.15, 
+					"offset":1.0,
+					"temperature": 0.3,
+					"humidity": 0.5
+					},
+				"biome": "parallel_world:fungal_jungle"
+				}, 
+				{
+				"parameters": {
+					"altitude": 0.1, 
+					"weirdness": 0.12, 
+					"offset": 1.0,
+					"temperature": 0.3,
+					"humidity": 0.3
+					},
+				"biome": "parallel_world:reef"
+				},
+				{
+				"parameters": {
+					"altitude": -0.3, 
+					"weirdness": 0.05, 
+					"offset": 1.0,
+					"temperature": -0.3,
+					"humidity": -0.1
+					},
+				"biome": "parallel_world:sequoia_forest"
+				},
+				{
+				"parameters": {
+					"altitude": -0.3, 
+					"weirdness": 0.0, 
+					"offset": 1.0,
+					"temperature": -0.4,
+					"humidity": 0.1
+					},
+				"biome": "parallel_world:snow_forest"
+				},
+				{
+				"parameters": {
+					"altitude": -0.15, 
+					"weirdness": 0.1, 
+					"offset": 1.0,
+					"temperature": -0.2,
+					"humidity": -0.1
+					},
+				"biome": "parallel_world:jade_forest"
+				}				
+			],
+			"humidity_noise": {
+				 "firstOctave": -7,
+				 "amplitudes": [
+					1.0,
+					1.0,
+					0.8
+				]
+			},
+			"altitude_noise": {
+				"firstOctave": -7,
+				"amplitudes": [
+					1.0,
+					1.0,
+					0.8
+				]
+			},
+			"weirdness_noise": {
+				"firstOctave": -7,
+				"amplitudes": [
+					1.0,
+					1.0,
+					0.8
+				]
+			},
+			"temperature_noise": {
+				"firstOctave": -7,
+				"amplitudes": [
+					1.0,
+					0.8,
+					0.8
+				]
+			}
+		},
+		"settings": "parallel_world:tethys"
+	}
+}

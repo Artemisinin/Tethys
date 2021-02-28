@@ -1,0 +1,40 @@
+{
+  "config": {
+    "feature": {
+      "config": {
+        "hat_state": {
+          "Name": "minecraft:magenta_wool"
+        },
+        "decor_state": {
+          "Name": "minecraft:shroomlight"
+        },
+        "planted": false,
+        "valid_base_block": {
+			"Properties": {
+				"snowy": "false"
+				},
+			"Name": "minecraft:grass_block"
+        },
+        "stem_state": {
+			"Properties": {
+			  "west": "true",
+			  "up": "false",
+			  "south": "true",
+			  "north": "true",
+			  "east": "true",
+			  "down": "false"
+			},
+			"Name": "minecraft:mushroom_stem"
+        }
+      },
+      "type": "minecraft:huge_fungus"
+    },
+    "decorator": {
+      "config": {
+        "count": 1
+      },
+      "type": "minecraft:count_multilayer"
+    }
+  },
+  "type": "minecraft:decorated"
+}

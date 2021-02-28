@@ -1,0 +1,159 @@
+{
+  "name": "parallel_world:mycelium/zombie/streets",
+  "fallback": "parallel_world:mycelium/zombie/terminators",
+  "elements": [
+    {
+      "weight": 2,
+      "element": {
+        "location": "parallel_world:mycelium/zombie/streets/corner_01",
+        "processors": "minecraft:street_savanna",
+        "projection": "terrain_matching",
+        "element_type": "minecraft:legacy_single_pool_element"
+      }
+    },
+    {
+      "weight": 2,
+      "element": {
+        "location": "parallel_world:mycelium/zombie/streets/corner_03",
+        "processors": "minecraft:street_savanna",
+        "projection": "terrain_matching",
+        "element_type": "minecraft:legacy_single_pool_element"
+      }
+    },
+    {
+      "weight": 4,
+      "element": {
+        "location": "parallel_world:mycelium/zombie/streets/straight_02",
+        "processors": "minecraft:street_savanna",
+        "projection": "terrain_matching",
+        "element_type": "minecraft:legacy_single_pool_element"
+      }
+    },
+    {
+      "weight": 7,
+      "element": {
+        "location": "parallel_world:mycelium/zombie/streets/straight_04",
+        "processors": "minecraft:street_savanna",
+        "projection": "terrain_matching",
+        "element_type": "minecraft:legacy_single_pool_element"
+      }
+    },
+    {
+      "weight": 3,
+      "element": {
+        "location": "parallel_world:mycelium/zombie/streets/straight_05",
+        "processors": "minecraft:street_savanna",
+        "projection": "terrain_matching",
+        "element_type": "minecraft:legacy_single_pool_element"
+      }
+    },
+    {
+      "weight": 4,
+      "element": {
+        "location": "parallel_world:mycelium/zombie/streets/straight_06",
+        "processors": "minecraft:street_savanna",
+        "projection": "terrain_matching",
+        "element_type": "minecraft:legacy_single_pool_element"
+      }
+    },
+    {
+      "weight": 4,
+      "element": {
+        "location": "parallel_world:mycelium/zombie/streets/straight_08",
+        "processors": "minecraft:street_savanna",
+        "projection": "terrain_matching",
+        "element_type": "minecraft:legacy_single_pool_element"
+      }
+    },
+	{
+      "weight": 1,
+      "element": {
+        "location": "parallel_world:mycelium/zombie/streets/crossroad_01",
+        "processors": "minecraft:street_savanna",
+        "projection": "terrain_matching",
+        "element_type": "minecraft:legacy_single_pool_element"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "location": "parallel_world:mycelium/zombie/streets/crossroad_02",
+        "processors": "minecraft:street_savanna",
+        "projection": "terrain_matching",
+        "element_type": "minecraft:legacy_single_pool_element"
+      }
+    },
+    {
+      "weight": 2,
+      "element": {
+        "location": "parallel_world:mycelium/zombie/streets/crossroad_03",
+        "processors": "minecraft:street_savanna",
+        "projection": "terrain_matching",
+        "element_type": "minecraft:legacy_single_pool_element"
+      }
+    },
+    {
+      "weight": 2,
+      "element": {
+        "location": "parallel_world:mycelium/zombie/streets/crossroad_04",
+        "processors": "minecraft:street_savanna",
+        "projection": "terrain_matching",
+        "element_type": "minecraft:legacy_single_pool_element"
+      }
+    },
+    {
+      "weight": 2,
+      "element": {
+        "location": "parallel_world:mycelium/zombie/streets/crossroad_05",
+        "processors": "minecraft:street_savanna",
+        "projection": "terrain_matching",
+        "element_type": "minecraft:legacy_single_pool_element"
+      }
+    },
+    {
+      "weight": 2,
+      "element": {
+        "location": "parallel_world:mycelium/zombie/streets/crossroad_06",
+        "processors": "minecraft:street_savanna",
+        "projection": "terrain_matching",
+        "element_type": "minecraft:legacy_single_pool_element"
+      }
+    },
+    {
+      "weight": 2,
+      "element": {
+        "location": "parallel_world:mycelium/zombie/streets/square_01",
+        "processors": "minecraft:street_savanna",
+        "projection": "terrain_matching",
+        "element_type": "minecraft:legacy_single_pool_element"
+      }
+    },
+    {
+      "weight": 2,
+      "element": {
+        "location": "parallel_world:mycelium/zombie/streets/split_01",
+        "processors": "minecraft:street_savanna",
+        "projection": "terrain_matching",
+        "element_type": "minecraft:legacy_single_pool_element"
+      }
+    },
+    {
+      "weight": 2,
+      "element": {
+        "location": "parallel_world:mycelium/zombie/streets/split_02",
+        "processors": "minecraft:street_savanna",
+        "projection": "terrain_matching",
+        "element_type": "minecraft:legacy_single_pool_element"
+      }
+    },
+    {
+      "weight": 3,
+      "element": {
+        "location": "parallel_world:mycelium/zombie/streets/turn_01",
+        "processors": "minecraft:street_savanna",
+        "projection": "terrain_matching",
+        "element_type": "minecraft:legacy_single_pool_element"
+      }
+    }
+  ]
+}

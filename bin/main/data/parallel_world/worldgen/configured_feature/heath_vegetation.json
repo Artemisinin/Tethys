@@ -1,0 +1,63 @@
+{
+  "config": {
+    "feature": {
+  "config": {
+    "feature": {
+      "config": {
+        "features": [
+          {
+            "feature": "parallel_world:huge_heath_mushroom",
+            "chance": 0.15
+          },
+          {
+            "feature": "parallel_world:birch_shrub",
+            "chance": 0.15
+          },
+		  {
+            "feature": "parallel_world:dark_oak_shrub_short",
+            "chance": 0.15
+          },
+		  {
+            "feature": "parallel_world:dark_oak_shrub_tall",
+            "chance": 0.15
+          },
+		  {
+            "feature": "parallel_world:oak_shrub",
+            "chance": 0.15
+          },
+		  {
+            "feature": "parallel_world:spruce_shrub_tall",
+            "chance": 0.15
+          }
+        ],
+        "default": "parallel_world:spruce_shrub_short"
+      },
+      "type": "minecraft:random_selector"
+    },
+        "decorator": {
+          "config": {
+            "outer": {
+              "config": {},
+              "type": "minecraft:square"
+            },
+            "inner": {
+              "config": {},
+              "type": "minecraft:heightmap"
+            }
+          },
+          "type": "minecraft:decorated"
+        }
+      },
+      "type": "minecraft:decorated"
+    },
+    "decorator": {
+      "config": {
+        "count": 15,
+        "extra_chance": 0.3,
+        "extra_count": 3
+      },
+      "type": "minecraft:count_extra"
+    }
+  },
+  "type": "minecraft:decorated"
+}

@@ -1,0 +1,78 @@
+{
+  "name": "parallel_world:village/mycelium/town_centers",
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 100,
+      "element": {
+        "location": "parallel_world:mycelium/town_centers/mycelium_meeting_point_1",
+        "processors": "minecraft:empty",
+        "projection": "rigid",
+        "element_type": "minecraft:legacy_single_pool_element"
+      }
+    },
+    {
+      "weight": 50,
+      "element": {
+        "location": "parallel_world:mycelium/town_centers/mycelium_meeting_point_2",
+        "processors": "minecraft:empty",
+        "projection": "rigid",
+        "element_type": "minecraft:legacy_single_pool_element"
+      }
+    },
+    {
+      "weight": 150,
+      "element": {
+        "location": "parallel_world:mycelium/town_centers/mycelium_meeting_point_3",
+        "processors": "minecraft:empty",
+        "projection": "rigid",
+        "element_type": "minecraft:legacy_single_pool_element"
+      }
+    },
+    {
+      "weight": 150,
+      "element": {
+        "location": "parallel_world:mycelium/town_centers/mycelium_meeting_point_4",
+        "processors": "minecraft:empty",
+        "projection": "rigid",
+        "element_type": "minecraft:legacy_single_pool_element"
+      }
+    },
+    {
+      "weight": 2,
+      "element": {
+        "location": "parallel_world:mycelium/zombie/town_centers/mycelium_meeting_point_z1",
+        "processors": "minecraft:zombie_savanna",
+        "projection": "rigid",
+        "element_type": "minecraft:legacy_single_pool_element"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "location": "parallel_world:mycelium/zombie/town_centers/mycelium_meeting_point_z2",
+        "processors": "minecraft:zombie_savanna",
+        "projection": "rigid",
+        "element_type": "minecraft:legacy_single_pool_element"
+      }
+    },
+    {
+      "weight": 3,
+      "element": {
+        "location": "parallel_world:mycelium/zombie/town_centers/mycelium_meeting_point_z3",
+        "processors": "minecraft:zombie_savanna",
+        "projection": "rigid",
+        "element_type": "minecraft:legacy_single_pool_element"
+      }
+    },
+    {
+      "weight": 3,
+      "element": {
+        "location": "parallel_world:mycelium/zombie/town_centers/mycelium_meeting_point_z4",
+        "processors": "minecraft:zombie_savanna",
+        "projection": "rigid",
+        "element_type": "minecraft:legacy_single_pool_element"
+      }
+    }
+  ]
+}
