@@ -7,6 +7,7 @@ import com.artemis.parallel_world.world.gen.feature.TethysConfiguredFeatures;
 import com.artemis.parallel_world.world.gen.feature.TethysFeatures;
 import com.artemis.parallel_world.world.gen.surfacebuilder.TethysSurfaceBuilder;
 import net.fabricmc.api.ModInitializer;
+
 import net.minecraft.block.Blocks;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.util.registry.Registry;
