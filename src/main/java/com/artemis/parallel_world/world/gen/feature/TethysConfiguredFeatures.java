@@ -16,6 +16,7 @@ import net.minecraft.world.gen.feature.size.TwoLayersFeatureSize;
 import net.minecraft.world.gen.foliage.BlobFoliagePlacer;
 import net.minecraft.world.gen.foliage.BushFoliagePlacer;
 import net.minecraft.world.gen.foliage.LargeOakFoliagePlacer;
+import net.minecraft.world.gen.foliage.SpruceFoliagePlacer;
 import net.minecraft.world.gen.placer.SimpleBlockPlacer;
 import net.minecraft.world.gen.stateprovider.SimpleBlockStateProvider;
 import net.minecraft.world.gen.trunk.LargeOakTrunkPlacer;
@@ -60,10 +61,10 @@ public class TethysConfiguredFeatures {
     public static void registerConfiguredFeatures() {
 
         TEST_CAVE_TREE = register("parallel_world:cave_tree", TethysFeatures.UNLOCKED_TREE_FEATURE.configure(
-                (new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(Blocks.QUARTZ_PILLAR.getDefaultState()),
-                        new SimpleBlockStateProvider(Blocks.SEA_LANTERN.getDefaultState()),
-                        new BlobFoliagePlacer(UniformIntDistribution.of(2), UniformIntDistribution.of(0), 3),
-                        new StraightTrunkPlacer(4, 2, 0),
+                (new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(Blocks.POLISHED_BASALT.getDefaultState()),
+                        new SimpleBlockStateProvider(TethysBlocks.CAVE_GLOWLEAF.getDefaultState()),
+                        new SpruceFoliagePlacer(UniformIntDistribution.of(1, 1), UniformIntDistribution.of(1, 1), UniformIntDistribution.of(1, 1)),
+                        new StraightTrunkPlacer(4, 2, 2),
                         new TwoLayersFeatureSize(0,0,0))).heightmap(Heightmap.Type.MOTION_BLOCKING).build()));
 
         TEST_CAVE_FOREST = register("parallel_world:cave_forest", TEST_CAVE_TREE.rangeOf(YOffset.getBottom(), YOffset.fixed(40)).spreadHorizontally().repeat(UniformIntDistribution.of(20, 10)));

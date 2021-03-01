@@ -19,6 +19,8 @@ public class TethysItems {
 
     public static void registerItems() {
 
+        // Cave glowleaf
+        Registry.register(Registry.ITEM, new Identifier("parallel_world", "cave_glowleaf"), new BlockItem(CAVE_GLOWLEAF, new Item.Settings().group(ItemGroup.DECORATIONS)));
         // Glowfruit
         Registry.register(Registry.ITEM, new Identifier("parallel_world", "glowfruit"), new BlockItem(GLOWFRUIT, new Item.Settings().group(ItemGroup.DECORATIONS)));
 

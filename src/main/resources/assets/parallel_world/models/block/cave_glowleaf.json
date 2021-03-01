@@ -1,0 +1,46 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "0": "parallel_world:block/cave_glowleaf",
+    "1": "parallel_world:block/cave_glowleaf_interior",
+    "particle": "minecraft:block/dark_oak_leaves"
+  },
+  "elements": [
+    {
+      "from": [0, 0, 0],
+      "to": [16, 16, 16],
+      "faces": {
+        "down":  { "uv": [ 0, 0, 16, 16 ], "texture": "#0", "cullface": "down" },
+        "up":    { "uv": [ 0, 0, 16, 16 ], "texture": "#0", "cullface": "up" },
+        "north": { "uv": [ 0, 0, 16, 16 ], "texture": "#0", "cullface": "north" },
+        "south": { "uv": [ 0, 0, 16, 16 ], "texture": "#0", "cullface": "south" },
+        "west":  { "uv": [ 0, 0, 16, 16 ], "texture": "#0", "cullface": "west" },
+        "east":  { "uv": [ 0, 0, 16, 16 ], "texture": "#0", "cullface": "east" }
+      }
+    },
+    {
+      "from": [2, 2, 2],
+      "to":   [4, 4, 4],
+      "faces": {
+        "north":  { "uv": [ 0, 0, 2, 2 ], "texture": "#1" },
+        "east":   { "uv": [ 0, 0, 2, 2 ], "texture": "#1" },
+        "south":  { "uv": [ 0, 0, 2, 2 ], "texture": "#1" },
+        "west":   { "uv": [ 0, 0, 2, 2 ], "texture": "#1" },
+        "up":     { "uv": [ 0, 0, 2, 2 ], "texture": "#1" },
+        "down":   { "uv": [ 0, 0, 2, 2 ], "texture": "#1" }
+      }
+    },
+      {
+        "from": [7, 7, 7],
+        "to":   [9, 9, 9],
+        "faces": {
+          "north":  { "uv": [0, 0, 2, 2], "texture": "#1"},
+          "east":   { "uv": [0, 0, 2, 2], "texture": "#1"},
+          "south":  { "uv": [0, 0, 2, 2], "texture": "#1"},
+          "west":   { "uv": [0, 0, 2, 2], "texture": "#1"},
+          "up":     { "uv": [0, 0, 2, 2], "texture": "#1"},
+          "down":   { "uv": [0, 0, 2, 2], "texture": "#1"}
+        }
+      }
+  ]
+}

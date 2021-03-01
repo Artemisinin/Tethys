@@ -27,14 +27,7 @@ import net.minecraft.util.registry.Registry;
 
 import java.util.UUID;
 
-import static com.artemis.parallel_world.block.TethysBlocks.GLOWFRUIT;
-import static com.artemis.parallel_world.block.TethysBlocks.BASSWOOD_SAPLING;
-import static com.artemis.parallel_world.block.TethysBlocks.BLACKCURRANT_SAPLING;
-import static com.artemis.parallel_world.block.TethysBlocks.CHERRY_SAPLING;
-import static com.artemis.parallel_world.block.TethysBlocks.DOGWOOD_SAPLING;
-import static com.artemis.parallel_world.block.TethysBlocks.ELDERBERRY_SAPLING;
-import static com.artemis.parallel_world.block.TethysBlocks.GINKGO_SAPLING;
-import static com.artemis.parallel_world.block.TethysBlocks.SWEETGUM_SAPLING;
+import static com.artemis.parallel_world.block.TethysBlocks.*;
 
 
 @Environment(EnvType.CLIENT)
@@ -67,13 +60,14 @@ public class DimensionClient implements ClientModInitializer {
 
     @Override
     public void onInitializeClient() {
-        BlockRenderLayerMap.INSTANCE.putBlock(GLOWFRUIT, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(BASSWOOD_SAPLING, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(BLACKCURRANT_SAPLING, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(CAVE_GLOWLEAF, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(CHERRY_SAPLING, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(DOGWOOD_SAPLING, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ELDERBERRY_SAPLING, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(GINKGO_SAPLING, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(GLOWFRUIT, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(SWEETGUM_SAPLING, RenderLayer.getCutout());
 
         ColorProviderRegistry.BLOCK.register((block, world, pos, layer) -> {

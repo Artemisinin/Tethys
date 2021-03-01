@@ -13,6 +13,7 @@ import net.minecraft.util.registry.Registry;
 public class TethysBlocks {
 
     public static final Block CALCITE_LOG = new PillarBlock(FabricBlockSettings.of(Material.STONE).hardness(2.0f));
+    public static final Block CAVE_GLOWLEAF = new Block(FabricBlockSettings.of(Material.LEAVES).hardness(0.2f).breakByHand(true).nonOpaque().luminance(6));
     public static final Block BLUE_CALCITE_LOG = new PillarBlock(FabricBlockSettings.of(Material.STONE).hardness(2.0f));
     public static final Block GLOWFRUIT = new Block(FabricBlockSettings.of(Material.PLANT).breakByHand(true).nonOpaque().luminance(12).hardness(0.2f));
 
@@ -72,6 +73,9 @@ public class TethysBlocks {
 
 
     public static void registerBlocks() {
+
+        // Cave glowleaf
+        Registry.register(Registry.BLOCK, new Identifier("parallel_world", "cave_glowleaf"), CAVE_GLOWLEAF);
 
         // Crystal forest calcite logs
         Registry.register(Registry.BLOCK, new Identifier("parallel_world", "calcite_log"), CALCITE_LOG);
