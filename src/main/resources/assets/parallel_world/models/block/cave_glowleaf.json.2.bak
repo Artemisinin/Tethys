@@ -1,0 +1,6 @@
+{
+  "parent": "parallel_world:block/double_cross",
+  "textures": {
+    "cross": "parallel_world:block/crystal_spikes"
+  }
+}

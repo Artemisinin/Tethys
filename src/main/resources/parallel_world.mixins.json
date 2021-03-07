@@ -4,15 +4,20 @@
   "package": "com.artemis.parallel_world.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
+    "EntityMixin",
     "FeatureMixin",
+    "FoliagePlacerMixin",
     "GeodeFeatureMixin",
+    "GetTopPositionInvoker",
     "IcebergFeatureMixin",
     "LargeTreeSaplingGeneratorMixin",
+    "LeavesBlockMixin",
+    "PlaceLogsAndLeavesInvoker",
     "SaplingGeneratorMixin",
+    "TrunkPlacerMixin",
     "VillageFeatureMixin"
   ],
   "client": [
-
   ],
   "server": [],
   "injectors": {

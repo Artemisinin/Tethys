@@ -8,6 +8,7 @@ import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.IntRange;
 import net.minecraft.util.registry.Registry;
+import org.lwjgl.system.CallbackI;
 
 
 public class TethysBlocks {
@@ -24,6 +25,11 @@ public class TethysBlocks {
     // Pink diamonds!
     public static final Block PINK_DIAMOND_BLOCK = new Block(FabricBlockSettings.of(Material.METAL).hardness(5.0f));
     public static final Block PINK_DIAMOND_ORE = new OreBlock(AbstractBlock.Settings.of(Material.METAL).requiresTool().strength(3.0F, 3.0F), IntRange.between(3, 7));
+
+    // Poriferans
+    public static final Block PORIFERAN_CHUNK = new Block(FabricBlockSettings.of(Material.STONE).hardness(0.5f).requiresTool().strength(0.8F));
+    public static final Block PORIFERAN_CHUNK_GLOW = new Block(FabricBlockSettings.of(Material.STONE).hardness(0.5f).requiresTool().luminance(5).strength(0.8F));
+    public static final Block PORIFERAN_STEM = new PillarBlock(FabricBlockSettings.of(Material.WOOD).strength(0.2F).sounds(BlockSoundGroup.WOOD));
 
     // Tethys turtle eggs
     public static final Block TETHYS_TURTLE_EGG = new TethysTurtleEggBlock((AbstractBlock.Settings.of(Material.EGG).strength(0.5F).sounds(BlockSoundGroup.METAL).ticksRandomly().nonOpaque()));
@@ -91,6 +97,11 @@ public class TethysBlocks {
         // Pink diamonds!
         Registry.register(Registry.BLOCK, new Identifier("parallel_world", "pink_diamond_block"), PINK_DIAMOND_BLOCK);
         Registry.register(Registry.BLOCK, new Identifier("parallel_world", "pink_diamond_ore"), PINK_DIAMOND_ORE);
+
+        // Poriferans
+        Registry.register(Registry.BLOCK, new Identifier("parallel_world", "poriferan_chunk"), PORIFERAN_CHUNK);
+        Registry.register(Registry.BLOCK, new Identifier("parallel_world", "poriferan_chunk_glow"), PORIFERAN_CHUNK_GLOW);
+        Registry.register(Registry.BLOCK, new Identifier("parallel_world", "poriferan_stem"), PORIFERAN_STEM);
 
         // Tethys turtle eggs
         Registry.register(Registry.BLOCK, new Identifier("parallel_world", "tethys_turtle_egg"), TETHYS_TURTLE_EGG);

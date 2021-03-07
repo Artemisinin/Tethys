@@ -48,22 +48,20 @@
       "minecraft:ore_granite",
       "minecraft:ore_diorite",
       "minecraft:ore_andesite",
-      "minecraft:ore_coal_upper",
       "minecraft:ore_coal_lower",
-      "minecraft:ore_iron_lower",
-      "minecraft:ore_iron_upper",
+      "minecraft:ore_iron_middle",
       "minecraft:ore_copper",
-      "minecraft:ore_gold",
+      "minecraft:ore_gold_extra",
       "minecraft:disk_sand",
       "minecraft:disk_clay",
-      "minecraft:disk_gravel"
-	],
+      "minecraft:disk_gravel",
+      "minecraft:ore_magma"
+    ],
     [
       "minecraft:glow_lichen",
       "parallel_world:glowstone_grow",
 	  "parallel_world:wasteland_vegetation",
 	  "minecraft:spring_delta",
-      "minecraft:ore_magma",
       "minecraft:spring_closed_double",
 	  "minecraft:brown_mushroom_normal",
       "minecraft:red_mushroom_normal"

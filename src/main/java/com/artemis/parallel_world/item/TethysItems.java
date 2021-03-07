@@ -35,6 +35,11 @@ public class TethysItems {
         Registry.register(Registry.ITEM, new Identifier("parallel_world", "pink_mushroom_block"), new BlockItem(PINK_MUSHROOM_BLOCK, new Item.Settings().group(ItemGroup.DECORATIONS)));
         Registry.register(Registry.ITEM, new Identifier("parallel_world", "white_mushroom_block"), new BlockItem(WHITE_MUSHROOM_BLOCK, new Item.Settings().group(ItemGroup.DECORATIONS)));
 
+        // Poriferans
+        Registry.register(Registry.ITEM, new Identifier("parallel_world", "poriferan_chunk"), new BlockItem(PORIFERAN_CHUNK, new Item.Settings().group(ItemGroup.BUILDING_BLOCKS)));
+        Registry.register(Registry.ITEM, new Identifier("parallel_world", "poriferan_chunk_glow"), new BlockItem(PORIFERAN_CHUNK_GLOW, new Item.Settings().group(ItemGroup.BUILDING_BLOCKS)));
+        Registry.register(Registry.ITEM, new Identifier("parallel_world", "poriferan_stem"), new BlockItem(PORIFERAN_STEM, new Item.Settings().group(ItemGroup.BUILDING_BLOCKS)));
+
         // Tethys turtle eggs
         Registry.register(Registry.ITEM, new Identifier("parallel_world", "tethys_turtle_egg"), new BlockItem(TETHYS_TURTLE_EGG, new Item.Settings().group(ItemGroup.MISC)));
 

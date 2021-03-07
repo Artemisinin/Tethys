@@ -10,16 +10,27 @@ import net.fabricmc.api.ModInitializer;
 
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
+import net.fabricmc.fabric.api.biome.v1.OverworldBiomes;
+import net.fabricmc.fabric.api.biome.v1.OverworldClimate;
+import net.fabricmc.fabric.api.tag.TagRegistry;
+import net.minecraft.block.Block;
+import net.minecraft.tag.Tag;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.registry.BuiltinRegistries;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.util.registry.RegistryKey;
+import net.minecraft.world.biome.Biome;
+import net.minecraft.world.biome.BiomeKeys;
+import net.minecraft.world.biome.BuiltinBiomes;
+import net.minecraft.world.biome.DefaultBiomeCreator;
 import net.minecraft.world.gen.GenerationStep;
-import org.lwjgl.system.CallbackI;
+
+import static net.minecraft.world.biome.BiomeKeys.*;
 
 
 public class Dimension implements ModInitializer {
 
-
+    public static Tag.Identified<Block> VALID_GROUND_BLOCKS;
 
     @Override
     public void onInitialize() {
@@ -38,6 +49,10 @@ public class Dimension implements ModInitializer {
 
         TethysSurfaceBuilder.registerSurfaceBuilders();
 
-        BiomeModifications.addFeature(BiomeSelectors.all(), GenerationStep.Feature.UNDERGROUND_ORES, RegistryKey.of(Registry.CONFIGURED_FEATURE_WORLDGEN, new Identifier("parallel_world", "cave_forest")));
+        VALID_GROUND_BLOCKS = (Tag.Identified<Block>) TagRegistry.block(new Identifier("parallel_world", "valid_ground_blocks"));
+
+        BiomeModifications.addFeature(BiomeSelectors.all(), GenerationStep.Feature.UNDERGROUND_ORES, RegistryKey.of(Registry.CONFIGURED_FEATURE_WORLDGEN, new Identifier("parallel_world", "cave_scattered_ghost_trees")));
+        BiomeModifications.addFeature(BiomeSelectors.includeByKey(LUKEWARM_OCEAN), GenerationStep.Feature.VEGETAL_DECORATION, RegistryKey.of(Registry.CONFIGURED_FEATURE_WORLDGEN, new Identifier("parallel_world", "scattered_poriferans")));
+        BiomeModifications.addFeature(BiomeSelectors.categories(Biome.Category.SWAMP), GenerationStep.Feature.VEGETAL_DECORATION, RegistryKey.of(Registry.CONFIGURED_FEATURE_WORLDGEN, new Identifier("parallel_world", "swamp_oak_shrubs")));
     }
 }

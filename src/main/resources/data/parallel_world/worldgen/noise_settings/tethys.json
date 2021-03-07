@@ -1,7 +1,7 @@
 {
   "aquifers_enabled": false,
   "noise_caves_enabled": false, 
-  "grimstone_enabled": false,
+  "deepslate_enabled": false,
   "bedrock_roof_position": -10,
   "bedrock_floor_position": 0,
   "sea_level": 20,

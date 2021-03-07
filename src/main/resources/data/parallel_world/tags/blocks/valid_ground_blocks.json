@@ -1,0 +1,12 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:farmland",
+    "minecraft:dirt",
+    "minecraft:coarse_dirt",
+    "minecraft:grass_block",
+    "minecraft:mycelium",
+    "minecraft:podzol",
+    "#minecraft:base_stone_overworld"
+  ]
+}

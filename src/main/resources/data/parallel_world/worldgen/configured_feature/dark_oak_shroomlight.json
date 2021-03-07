@@ -3,21 +3,21 @@
     "feature": {
       "config": {
         "hat_state": {
-			"Properties": {
-			"persistent": "true",
-			"distance": "7"
-			},        
-		"Name": "minecraft:dark_oak_leaves"
+          "Properties": {
+            "persistent": "true",
+            "distance": "7"
+          },
+          "Name": "minecraft:dark_oak_leaves"
         },
         "decor_state": {
           "Name": "parallel_world:glowfruit"
         },
         "planted": false,
-        "valid_base_block": {		
-			"Properties": {
-			"snowy": "false"
-			},
-			"Name": "minecraft:grass_block"
+        "valid_base_block": {
+          "Properties": {
+            "snowy": "false"
+          },
+          "Name": "minecraft:grass_block"
         },
         "stem_state": {
           "Properties": {

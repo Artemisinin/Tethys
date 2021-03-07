@@ -1,5 +1,7 @@
 package com.artemis.parallel_world.world.gen.feature;
 
+import com.artemis.parallel_world.mixin.GetTopPositionInvoker;
+import com.artemis.parallel_world.mixin.PlaceLogsAndLeavesInvoker;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 import com.mojang.serialization.Codec;
@@ -7,12 +9,11 @@ import com.mojang.serialization.Codec;
 import java.util.*;
 
 import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
+import net.minecraft.fluid.Fluids;
 import net.minecraft.state.property.Properties;
 import net.minecraft.structure.Structure;
 import net.minecraft.util.math.BlockBox;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.BlockPos.Mutable;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.Vec3i;
 import net.minecraft.util.shape.BitSetVoxelSet;
@@ -25,6 +26,8 @@ import net.minecraft.world.gen.feature.TreeFeatureConfig;
 import net.minecraft.world.gen.feature.util.FeatureContext;
 import net.minecraft.world.gen.foliage.FoliagePlacer.TreeNode;
 
+import static com.artemis.parallel_world.Dimension.VALID_GROUND_BLOCKS;
+
 
 public class UnlockedTreeFeature extends TreeFeature {
 
@@ -32,31 +35,31 @@ public class UnlockedTreeFeature extends TreeFeature {
         super(codec);
     }
 
-    // Grow on rocks for testing purposes.
-    private static boolean canPlaceTreeOn(TestableWorld world, BlockPos pos) {
-        return world.testBlockState(pos, (state) -> isSoil(state) || state.isOf(Blocks.FARMLAND) || state.isOf(Blocks.STONE) || state.isOf(Blocks.DEEPSLATE));
+    // Allows this to be placed just about anywhere.  Edit the json to configure allowable blocks.
+    private boolean canPlaceTreeOn(TestableWorld world, BlockPos pos) {
+        return world.testBlockState(pos, (state) -> state.isIn(VALID_GROUND_BLOCKS));
     }
 
-    private int getTopPosition(TestableWorld world, int height, BlockPos pos, TreeFeatureConfig config) {
-        Mutable mutable = new Mutable();
-
-        for(int i = 0; i <= height + 1; ++i) {
-            int j = config.minimumSize.getRadius(height, i);
-
-            for(int k = -j; k <= j; ++k) {
-                for(int l = -j; l <= j; ++l) {
-                    mutable.set(pos, k, i, l);
-                    if (!canTreeReplace(world, mutable) || !config.ignoreVines && isVine(world, mutable)) {
-                        return i - 2;
-                    }
+    // Uses config.maxWaterDepth to make sure trees aren't placed in water that is too deep.  If config.maxWaterDepth is <0, the check will be skipped.
+    private static boolean isIllegallySubmerged(TestableWorld world, BlockPos pos, TreeFeatureConfig config) {
+        if (config.maxWaterDepth >= 0) {
+            int blocksUp = 0;
+            while (blocksUp < (config.maxWaterDepth + 1)) {
+                BlockPos pos2 = pos.offset(Direction.Axis.Y, blocksUp);
+                // If a non-water block is encountered, return false since it is not submerged. Currently allows *flowing* water.
+                if (!world.testBlockState(pos2, (state) -> state.getFluidState().isEqualAndStill(Fluids.WATER))) {
+                    return false;
+                    // Otherwise it was a water block, so increment to check the next block.
+                } else {
+                    blocksUp++;
                 }
             }
+            // We ran through the maximum water height allowed and found more water above, so this would be illegal submerged, return true.
+            return true;
+            // config.maxWaterDepth apparently was null, so the check is invalid and the tree would not be illegally submerged, return false.
+        } else {
+            return false;
         }
-        return height;
-    }
-
-    private static boolean isVine(TestableWorld world, BlockPos pos) {
-        return world.testBlockState(pos, (state) -> state.isOf(Blocks.VINE));
     }
 
     private boolean generate(StructureWorldAccess world, Random random, BlockPos pos, Set<BlockPos> logPositions, Set<BlockPos> leavesPositions, BlockBox box, TreeFeatureConfig config) {
@@ -65,15 +68,18 @@ public class UnlockedTreeFeature extends TreeFeature {
         int k = i - j;
         int l = config.foliagePlacer.getRandomRadius(random, k);
         int r;
+
         if (pos.getY() >= world.getBottomY() + 1 && pos.getY() + i + 1 <= world.getTopY()) {
-            if (!canPlaceTreeOn(world, pos.down())) {
+            if (!canPlaceTreeOn(world, pos.down()) || isIllegallySubmerged(world, pos, config)) {
                 return false;
             } else {
                 OptionalInt optionalInt = config.minimumSize.getMinClippedHeight();
-                r = this.getTopPosition(world, i, pos, config);
+                r = ((GetTopPositionInvoker) this).invokeGetTopPosition(world, i, pos, config);
                 if (r >= i || optionalInt.isPresent() && r >= optionalInt.getAsInt()) {
                     List<TreeNode> list = config.trunkPlacer.generate(world, random, r, pos, logPositions, box, config);
-                    list.forEach((node) -> config.foliagePlacer.generate(world, random, config, r, node, j, l, leavesPositions, box));
+                    list.forEach((node) -> {
+                        config.foliagePlacer.generate(world, random, config, r, node, j, l, leavesPositions, box);
+                    });
                     return true;
                 } else {
                     return false;
@@ -85,117 +91,32 @@ public class UnlockedTreeFeature extends TreeFeature {
     }
 
     @Override
-    public final boolean generate(FeatureContext<TreeFeatureConfig> context) {
+    public boolean generate(FeatureContext<TreeFeatureConfig> context) {
         StructureWorldAccess structureWorldAccess = context.getWorld();
         Random random = context.getRandom();
-        BlockPos blockPos = context.getOrigin();
+        BlockPos placementPos = context.getOrigin();
         TreeFeatureConfig treeFeatureConfig = context.getConfig();
-        Set<BlockPos> set = Sets.newHashSet();
-        Set<BlockPos> set2 = Sets.newHashSet();
-        Set<BlockPos> set3 = Sets.newHashSet();
-        BlockBox blockBox = BlockBox.empty();
-        boolean bl = this.generate(structureWorldAccess, random, blockPos, set, set2, blockBox, treeFeatureConfig);
-        if (blockBox.minX <= blockBox.maxX && bl && !set.isEmpty()) {
+        Set<BlockPos> logs = Sets.newHashSet();
+        Set<BlockPos> decorators = Sets.newHashSet();
+        Set<BlockPos> leaves = Sets.newHashSet();
+        BlockBox treeBlocksBox = BlockBox.empty();
+        // Check to see if tree can be placed at this position.
+        boolean canGenerate = this.generate(structureWorldAccess, random, placementPos, logs, decorators, treeBlocksBox, treeFeatureConfig);
+        if (treeBlocksBox.minX <= treeBlocksBox.maxX && canGenerate && !logs.isEmpty()) {
             if (!treeFeatureConfig.decorators.isEmpty()) {
-                List<BlockPos> list = Lists.newArrayList(set);
-                List<BlockPos> list2 = Lists.newArrayList(set2);
-                list.sort(Comparator.comparingInt(Vec3i::getY));
-                list2.sort(Comparator.comparingInt(Vec3i::getY));
-                treeFeatureConfig.decorators.forEach((decorator) -> {
-                    decorator.generate(structureWorldAccess, random, list, list2, set3, blockBox);
-                });
+                List<BlockPos> logList = Lists.newArrayList(logs);
+                List<BlockPos> decoratorsList = Lists.newArrayList(decorators);
+                logList.sort(Comparator.comparingInt(Vec3i::getY));
+                decoratorsList.sort(Comparator.comparingInt(Vec3i::getY));
+                // Looks like this is where decorators get set, so if decorators are waterloggable this will have to be edited.
+                treeFeatureConfig.decorators.forEach((decorator) -> decorator.generate(structureWorldAccess, random, logList, decoratorsList, leaves, treeBlocksBox));
             }
 
-            VoxelSet voxelSet = this.placeLogsAndLeaves(structureWorldAccess, blockBox, set, set3);
-            Structure.updateCorner(structureWorldAccess, 3, voxelSet, blockBox.minX, blockBox.minY, blockBox.minZ);
+            VoxelSet treeBlocksSet = ((PlaceLogsAndLeavesInvoker) this).invokePlaceLogsAndLeaves(structureWorldAccess, treeBlocksBox, logs, leaves);
+            Structure.updateCorner(structureWorldAccess, 3, treeBlocksSet, treeBlocksBox.minX, treeBlocksBox.minY, treeBlocksBox.minZ);
             return true;
         } else {
             return false;
         }
-    }
-
-    private VoxelSet placeLogsAndLeaves(WorldAccess world, BlockBox box, Set<BlockPos> logs, Set<BlockPos> leaves) {
-        List<Set<BlockPos>> list = Lists.newArrayList();
-        VoxelSet voxelSet = new BitSetVoxelSet(box.getBlockCountX(), box.getBlockCountY(), box.getBlockCountZ());
-        boolean i = true;
-
-        for(int j = 0; j < 6; ++j) {
-            list.add(Sets.newHashSet());
-        }
-
-        Mutable mutable = new Mutable();
-        Iterator var9 = Lists.newArrayList(leaves).iterator();
-
-        BlockPos blockPos2;
-        while(var9.hasNext()) {
-            blockPos2 = (BlockPos)var9.next();
-            if (box.contains(blockPos2)) {
-                voxelSet.set(blockPos2.getX() - box.minX, blockPos2.getY() - box.minY, blockPos2.getZ() - box.minZ);
-            }
-        }
-
-        var9 = Lists.newArrayList(logs).iterator();
-
-        while(var9.hasNext()) {
-            blockPos2 = (BlockPos)var9.next();
-            if (box.contains(blockPos2)) {
-                voxelSet.set(blockPos2.getX() - box.minX, blockPos2.getY() - box.minY, blockPos2.getZ() - box.minZ);
-            }
-
-            Direction[] var11 = Direction.values();
-            int var12 = var11.length;
-
-            for(int var13 = 0; var13 < var12; ++var13) {
-                Direction direction = var11[var13];
-                mutable.set(blockPos2, direction);
-                if (!logs.contains(mutable)) {
-                    BlockState blockState = world.getBlockState(mutable);
-                    if (blockState.contains(Properties.DISTANCE_1_7)) {
-                        ((Set)list.get(0)).add(mutable.toImmutable());
-                        setBlockStateWithoutUpdatingNeighbors(world, mutable, blockState.with(Properties.DISTANCE_1_7, 1));
-                        if (box.contains(mutable)) {
-                            voxelSet.set(mutable.getX() - box.minX, mutable.getY() - box.minY, mutable.getZ() - box.minZ);
-                        }
-                    }
-                }
-            }
-        }
-
-        for(int k = 1; k < 6; ++k) {
-            Set<BlockPos> set = (Set)list.get(k - 1);
-            Set<BlockPos> set2 = (Set)list.get(k);
-            Iterator var25 = set.iterator();
-
-            while(var25.hasNext()) {
-                BlockPos blockPos3 = (BlockPos)var25.next();
-                if (box.contains(blockPos3)) {
-                    voxelSet.set(blockPos3.getX() - box.minX, blockPos3.getY() - box.minY, blockPos3.getZ() - box.minZ);
-                }
-
-                Direction[] var27 = Direction.values();
-                int var28 = var27.length;
-
-                for(int var16 = 0; var16 < var28; ++var16) {
-                    Direction direction2 = var27[var16];
-                    mutable.set(blockPos3, direction2);
-                    if (!set.contains(mutable) && !set2.contains(mutable)) {
-                        BlockState blockState2 = world.getBlockState(mutable);
-                        if (blockState2.contains(Properties.DISTANCE_1_7)) {
-                            int l = (Integer)blockState2.get(Properties.DISTANCE_1_7);
-                            if (l > k + 1) {
-                                BlockState blockState3 = (BlockState)blockState2.with(Properties.DISTANCE_1_7, k + 1);
-                                setBlockStateWithoutUpdatingNeighbors(world, mutable, blockState3);
-                                if (box.contains(mutable)) {
-                                    voxelSet.set(mutable.getX() - box.minX, mutable.getY() - box.minY, mutable.getZ() - box.minZ);
-                                }
-
-                                set2.add(mutable.toImmutable());
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        return voxelSet;
     }
 }

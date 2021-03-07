@@ -6,6 +6,7 @@ import net.minecraft.block.Blocks;
 import net.minecraft.util.registry.BuiltinRegistries;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.Heightmap;
+import net.minecraft.world.gen.CountConfig;
 import net.minecraft.world.gen.UniformIntDistribution;
 import net.minecraft.world.gen.YOffset;
 import net.minecraft.world.gen.decorator.CountExtraDecoratorConfig;
@@ -13,12 +14,10 @@ import net.minecraft.world.gen.decorator.Decorator;
 import net.minecraft.world.gen.decorator.RangeDecoratorConfig;
 import net.minecraft.world.gen.feature.*;
 import net.minecraft.world.gen.feature.size.TwoLayersFeatureSize;
-import net.minecraft.world.gen.foliage.BlobFoliagePlacer;
-import net.minecraft.world.gen.foliage.BushFoliagePlacer;
-import net.minecraft.world.gen.foliage.LargeOakFoliagePlacer;
-import net.minecraft.world.gen.foliage.SpruceFoliagePlacer;
+import net.minecraft.world.gen.foliage.*;
 import net.minecraft.world.gen.placer.SimpleBlockPlacer;
 import net.minecraft.world.gen.stateprovider.SimpleBlockStateProvider;
+import net.minecraft.world.gen.trunk.ForkingTrunkPlacer;
 import net.minecraft.world.gen.trunk.LargeOakTrunkPlacer;
 import net.minecraft.world.gen.trunk.StraightTrunkPlacer;
 
@@ -50,24 +49,31 @@ public class TethysConfiguredFeatures {
     public static ConfiguredFeature<?,?> GINKGO_TREE;
     public static ConfiguredFeature<?,?> SWEETGUM_TREE;
 
+    // Misc
+    public static ConfiguredFeature<?,?> CAVE_SCATTERED_GHOST_TREES;
+    public static ConfiguredFeature<?,?> GHOST_TREE;
     public static ConfiguredFeature<?,?> PATCH_BERRY_BUSH_HEATH;
-    public static ConfiguredFeature<?,?> PINK_DIAMOND_ORE;
+    public static ConfiguredFeature<?,?> PINK_DIAMOND_ORE_TETHYS;
+    public static ConfiguredFeature<?,?> PORIFERAN;
+    public static ConfiguredFeature<?,?> SCATTERED_PORIFERANS;
+    public static ConfiguredFeature<?,?> SWAMP_OAK_SHRUB;
+    public static ConfiguredFeature<?,?> SWAMP_OAK_SHRUBS;
 
-    public static ConfiguredFeature<?,?> TEST_CAVE_TREE;
-    public static ConfiguredFeature<?,?> TEST_CAVE_FOREST;
-
+    //public static ConfiguredFeature<?,?> PORIFERAN_GLOW;
+    //public static ConfiguredFeature<?,?> SCATTERED_PORIFERANS_GLOW;
     //public static ConfiguredFeature<?, ?> HUGE_HEATH_MUSHROOM;
 
     public static void registerConfiguredFeatures() {
 
-        TEST_CAVE_TREE = register("parallel_world:cave_tree", TethysFeatures.UNLOCKED_TREE_FEATURE.configure(
+        GHOST_TREE = register("parallel_world:ghost_tree", TethysFeatures.UNLOCKED_TREE_FEATURE.configure(
                 (new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(Blocks.POLISHED_BASALT.getDefaultState()),
                         new SimpleBlockStateProvider(TethysBlocks.CAVE_GLOWLEAF.getDefaultState()),
-                        new SpruceFoliagePlacer(UniformIntDistribution.of(1, 1), UniformIntDistribution.of(1, 1), UniformIntDistribution.of(1, 1)),
-                        new StraightTrunkPlacer(4, 2, 2),
-                        new TwoLayersFeatureSize(0,0,0))).heightmap(Heightmap.Type.MOTION_BLOCKING).build()));
+                        new AcaciaFoliagePlacer(UniformIntDistribution.of(2, 0), UniformIntDistribution.of(0, 0)),
+                        new ForkingTrunkPlacer(2,4, 4),
+                        new TwoLayersFeatureSize(1,0,2))).heightmap(Heightmap.Type.MOTION_BLOCKING).maxWaterDepth(0).build()));
 
-        TEST_CAVE_FOREST = register("parallel_world:cave_forest", TEST_CAVE_TREE.rangeOf(YOffset.getBottom(), YOffset.fixed(40)).spreadHorizontally().repeat(UniformIntDistribution.of(20, 10)));
+        //CAVE_SCATTERED_GHOST_TREES = register("parallel_world:cave_scattered_ghost_trees", GHOST_TREE.rangeOf(YOffset.getBottom(), YOffset.fixed(40)).spreadHorizontally().repeat(UniformIntDistribution.of(20, 10)));
+        CAVE_SCATTERED_GHOST_TREES = register("parallel_world:cave_scattered_ghost_trees", GHOST_TREE.rangeOf(YOffset.getBottom(), YOffset.fixed(40)).spreadHorizontally().decorate(Decorator.COUNT_MULTILAYER.configure(new CountConfig(50))));
 
         // Heath Shrubs
         BIRCH_SHRUB = register("parallel_world:birch_shrub", Feature.TREE.configure(
@@ -169,15 +175,44 @@ public class TethysConfiguredFeatures {
                         new LargeOakTrunkPlacer(3, 11, 0),
                         new TwoLayersFeatureSize(0, 0, 0, OptionalInt.of(4)))).ignoreVines().heightmap(Heightmap.Type.MOTION_BLOCKING).build()));
 
+        // Misc
         PATCH_BERRY_BUSH_HEATH = register("parallel_world:patch_berry_bush_heath", Feature.RANDOM_PATCH.configure(
                 (new RandomPatchFeatureConfig.Builder(new SimpleBlockStateProvider(TethysConfiguredFeatures.States.SWEET_BERRY_BUSH), SimpleBlockPlacer.INSTANCE)).cannotProject().build()));
 
-        PINK_DIAMOND_ORE = register("parallel_world:pink_diamond_ore", Feature.ORE.configure(
+        PINK_DIAMOND_ORE_TETHYS = register("parallel_world:pink_diamond_ore_tethys", Feature.ORE.configure(
                 new OreFeatureConfig(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD, TethysBlocks.PINK_DIAMOND_ORE.getDefaultState(), 5)).
-                averageDepth(YOffset.getBottom(), 80)).spreadHorizontally().repeat(4);
+                rangeOf(YOffset.getBottom(), YOffset.fixed(40))).spreadHorizontally().repeat(4);
 
-        // The mushroom right now is configured in json.
-        //HUGE_HEATH_MUSHROOM = register("parallel_world:huge_heath_mushroom", TethysFeatures.HUGE_HEATH_MUSHROOM_FEATURE.configure(new HugeMushroomFeatureConfig(new SimpleBlockStateProvider(BROWN_MUSHROOM_BLOCK), new SimpleBlockStateProvider(MUSHROOM_STEM), 3)));
+        PORIFERAN = register("parallel_world:poriferan", TethysFeatures.UNLOCKED_TREE_FEATURE.configure(
+                (new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(TethysBlocks.PORIFERAN_STEM.getDefaultState()),
+                        new SimpleBlockStateProvider(TethysBlocks.PORIFERAN_CHUNK.getDefaultState()),
+                        new PineFoliagePlacer(UniformIntDistribution.of(1), UniformIntDistribution.of(0),UniformIntDistribution.of(4)),
+                        new StraightTrunkPlacer(4, 2, 0),
+                        new TwoLayersFeatureSize(1, 1, 1))).heightmap(Heightmap.Type.MOTION_BLOCKING).maxWaterDepth(-1).build()));
+
+        SCATTERED_PORIFERANS = register("parallel_world:scattered_poriferans", PORIFERAN.rangeOf(YOffset.fixed(30), YOffset.fixed(55)).spreadHorizontally().repeat(40));
+
+        SWAMP_OAK_SHRUB = register("parallel_world:swamp_oak_shrub", TethysFeatures.UNLOCKED_TREE_FEATURE.configure(
+                (new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(TethysConfiguredFeatures.States.OAK_LOG),
+                        new SimpleBlockStateProvider(TethysConfiguredFeatures.States.OAK_LEAVES),
+                        new BushFoliagePlacer(UniformIntDistribution.of(2), UniformIntDistribution.of(1), 2),
+                        new StraightTrunkPlacer(2, 1, 0),
+                        new TwoLayersFeatureSize(1, 0, 1))).maxWaterDepth(2).build()));
+
+        SWAMP_OAK_SHRUBS = register("parallel_world:swamp_oak_shrubs", SWAMP_OAK_SHRUB.rangeOf(YOffset.fixed(60), YOffset.fixed(62)).spreadHorizontally().repeat(10));
+
+        // These right now are configured in json.
+        /*
+        HUGE_HEATH_MUSHROOM = register("parallel_world:huge_heath_mushroom", TethysFeatures.HUGE_HEATH_MUSHROOM_FEATURE.configure(new HugeMushroomFeatureConfig(new SimpleBlockStateProvider(BROWN_MUSHROOM_BLOCK), new SimpleBlockStateProvider(MUSHROOM_STEM), 3)));
+        PORIFERAN_GLOW = register("parallel_world:poriferan", TethysFeatures.DARK_OCEAN_FLOOR_TREE_PLACER.configure(
+                (new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(Blocks.MUSHROOM_STEM.getDefaultState()),
+                        new SimpleBlockStateProvider(TethysBlocks.PORIFERAN_CHUNK_GLOW.getDefaultState()),
+                        new PineFoliagePlacer(UniformIntDistribution.of(1), UniformIntDistribution.of(0),UniformIntDistribution.of(4)),
+                        new StraightTrunkPlacer(4, 2, 0),
+                        new TwoLayersFeatureSize(1, 1, 1))).heightmap(Heightmap.Type.MOTION_BLOCKING).maxWaterDepth(-1).build()));
+
+        SCATTERED_PORIFERANS_GLOW = register("parallel_world:scattered_poriferans_glowing", PORIFERAN_GLOW.rangeOf(YOffset.fixed(30), YOffset.fixed(55)).spreadHorizontally().repeat(20));
+        */
     }
 
     public static final class States {

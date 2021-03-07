@@ -9,6 +9,7 @@
   "block.parallel_world.blackcurrant_sapling": "Blackcurrant Sapling",
   "block.parallel_world.blue_calcite_log": "Blue Calcite",
   "block.parallel_world.calcite_log": "Calcite",
+  "block.parallel_world.cave_glowleaf": "Cave Glowleaf",
   "block.parallel_world.cherry_leaves": "Cherry Leaves",
   "block.parallel_world.cherry_log": "Cherry Log",
   "block.parallel_world.cherry_planks": "Cherry Planks",
@@ -34,9 +35,10 @@
   "block.parallel_world.pink_diamond_block": "Pink Diamond Block",
   "block.parallel_world.pink_diamond_ore": "Pink Diamond Ore",
   "block.parallel_world.pink_mushroom_block": "Pink Mushroom Block",
+  "block.parallel_world.poriferan_chunk": "Poriferan Chunk",
+  "block.parallel_world.poriferan_chunk_glow": "Glowing Poriferan Chunk",
   "block.parallel_world.white_mushroom_block": "White Mushroom Block",
 
-  "item.parallel_world.cave_glowleaf": "Cave Glowleaf",
   "item.parallel_world.glow_lichen_ball": "Glow Lichen Ball",
   "item.parallel_world.pink_diamond": "Pink Diamond"
 }

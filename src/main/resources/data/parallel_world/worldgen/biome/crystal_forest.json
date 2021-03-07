@@ -21,8 +21,8 @@
   },
   "features": [
     [
-		"parallel_world:seagen/seabed_sandstone",
-		"parallel_world:seagen/seabed_sand"
+      "parallel_world:seagen/seabed_sandstone",
+      "parallel_world:seagen/seabed_sand"
 	],
     [
       "minecraft:lake_water",
@@ -36,8 +36,9 @@
       "minecraft:monster_room"
     ],
     [
-      "minecraft:glow_lichen",
       "parallel_world:crystal_forest_vegetation",
+      "parallel_world:scattered_poriferans_glowing",
+      "minecraft:glow_lichen",
 	  "minecraft:pile_snow",
 	  "minecraft:pile_ice",
 	  "minecraft:ice_patch"
@@ -50,12 +51,10 @@
       "minecraft:ore_granite",
       "minecraft:ore_diorite",
       "minecraft:ore_andesite",
-      "minecraft:ore_coal_upper",
       "minecraft:ore_coal_lower",
-      "minecraft:ore_iron_lower",
-      "minecraft:ore_iron_upper",
+      "minecraft:ore_iron_middle",
       "minecraft:ore_copper",
-      "minecraft:ore_gold",
+      "minecraft:ore_gold_extra",
       "minecraft:disk_sand",
       "minecraft:disk_clay",
       "minecraft:disk_gravel"
