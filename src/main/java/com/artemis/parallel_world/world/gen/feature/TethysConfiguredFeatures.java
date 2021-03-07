@@ -51,6 +51,7 @@ public class TethysConfiguredFeatures {
 
     // Misc
     public static ConfiguredFeature<?,?> CAVE_SCATTERED_GHOST_TREES;
+    public static ConfiguredFeature<?,?> DARK_OAK_GLOWFRUIT;
     public static ConfiguredFeature<?,?> GHOST_TREE;
     public static ConfiguredFeature<?,?> PATCH_BERRY_BUSH_HEATH;
     public static ConfiguredFeature<?,?> PINK_DIAMOND_ORE_TETHYS;
@@ -72,7 +73,6 @@ public class TethysConfiguredFeatures {
                         new ForkingTrunkPlacer(2,4, 4),
                         new TwoLayersFeatureSize(1,0,2))).heightmap(Heightmap.Type.MOTION_BLOCKING).maxWaterDepth(0).build()));
 
-        //CAVE_SCATTERED_GHOST_TREES = register("parallel_world:cave_scattered_ghost_trees", GHOST_TREE.rangeOf(YOffset.getBottom(), YOffset.fixed(40)).spreadHorizontally().repeat(UniformIntDistribution.of(20, 10)));
         CAVE_SCATTERED_GHOST_TREES = register("parallel_world:cave_scattered_ghost_trees", GHOST_TREE.rangeOf(YOffset.getBottom(), YOffset.fixed(40)).spreadHorizontally().decorate(Decorator.COUNT_MULTILAYER.configure(new CountConfig(50))));
 
         // Heath Shrubs
@@ -176,6 +176,12 @@ public class TethysConfiguredFeatures {
                         new TwoLayersFeatureSize(0, 0, 0, OptionalInt.of(4)))).ignoreVines().heightmap(Heightmap.Type.MOTION_BLOCKING).build()));
 
         // Misc
+        DARK_OAK_GLOWFRUIT = register("parallel_world:dark_oak_glowfruit", Feature.HUGE_FUNGUS.configure(
+                new HugeFungusFeatureConfig(Blocks.GRASS_BLOCK.getDefaultState(),
+                    Blocks.DARK_OAK_LOG.getDefaultState(),
+                    Blocks.DARK_OAK_LEAVES.getDefaultState(),
+                    TethysBlocks.GLOWFRUIT.getDefaultState(),
+                    false)));
         PATCH_BERRY_BUSH_HEATH = register("parallel_world:patch_berry_bush_heath", Feature.RANDOM_PATCH.configure(
                 (new RandomPatchFeatureConfig.Builder(new SimpleBlockStateProvider(TethysConfiguredFeatures.States.SWEET_BERRY_BUSH), SimpleBlockPlacer.INSTANCE)).cannotProject().build()));
 

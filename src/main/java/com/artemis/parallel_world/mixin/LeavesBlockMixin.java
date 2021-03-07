@@ -27,7 +27,6 @@ public abstract class LeavesBlockMixin extends Block implements Waterloggable {
     }
 
     @Shadow @Final public static BooleanProperty PERSISTENT;
-
     private static BooleanProperty WATERLOGGED = Properties.WATERLOGGED;
 
     public LeavesBlockMixin(Settings settings) {
@@ -43,7 +42,7 @@ public abstract class LeavesBlockMixin extends Block implements Waterloggable {
     @Inject(method = "<init>", at = @At(value = "TAIL"))
     private void addDefaultStateWaterloggable(AbstractBlock.Settings settings, CallbackInfo ci)
     {
-        this.setDefaultState(this.stateManager.getDefaultState().with(WATERLOGGED, false));
+        this.setDefaultState(this.getDefaultState().with(WATERLOGGED, false));
     }
 
     @Inject(method = "getStateForNeighborUpdate", at = @At(value = "TAIL"))
@@ -63,10 +62,6 @@ public abstract class LeavesBlockMixin extends Block implements Waterloggable {
     @Inject(method = "getPlacementState", at = @At(value = "TAIL"), cancellable = true)
     private void getPlacementState(ItemPlacementContext ctx, CallbackInfoReturnable<BlockState> cir) {
         FluidState fluidState = ctx.getWorld().getFluidState(ctx.getBlockPos());
-        if (fluidState.isEqualAndStill(Fluids.WATER)) {
-            cir.setReturnValue(updateDistanceFromLogs(this.getDefaultState().with(PERSISTENT, true).with(WATERLOGGED, true), ctx.getWorld(), ctx.getBlockPos()));
-        } else {
-            cir.setReturnValue(updateDistanceFromLogs(this.getDefaultState().with(PERSISTENT, true), ctx.getWorld(), ctx.getBlockPos()));
-        }
+        cir.setReturnValue(updateDistanceFromLogs(this.getDefaultState().with(PERSISTENT, true).with(WATERLOGGED, fluidState.isEqualAndStill(Fluids.WATER)), ctx.getWorld(), ctx.getBlockPos()));
     }
 }

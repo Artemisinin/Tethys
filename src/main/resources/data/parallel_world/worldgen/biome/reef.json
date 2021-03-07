@@ -106,6 +106,12 @@
     ],
     "water_creature": [
       {
+        "type": "parallel_world:tethys_turtle",
+        "weight": 10,
+        "minCount": 2,
+        "maxCount": 4
+      },
+      {
         "type": "minecraft:squid",
         "weight": 10,
         "minCount": 4,

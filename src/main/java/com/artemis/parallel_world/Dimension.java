@@ -6,6 +6,8 @@ import com.artemis.parallel_world.item.TethysItems;
 import com.artemis.parallel_world.world.gen.feature.TethysConfiguredFeatures;
 import com.artemis.parallel_world.world.gen.feature.TethysFeatures;
 import com.artemis.parallel_world.world.gen.surfacebuilder.TethysSurfaceBuilder;
+import com.artemis.parallel_world.world.gen.tree.GlowfruitTreeDecorator;
+import com.sun.corba.se.spi.ior.IdentifiableFactory;
 import net.fabricmc.api.ModInitializer;
 
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
@@ -24,13 +26,17 @@ import net.minecraft.world.biome.BiomeKeys;
 import net.minecraft.world.biome.BuiltinBiomes;
 import net.minecraft.world.biome.DefaultBiomeCreator;
 import net.minecraft.world.gen.GenerationStep;
+import net.minecraft.world.gen.tree.TreeDecoratorType;
+import org.lwjgl.system.CallbackI;
 
 import static net.minecraft.world.biome.BiomeKeys.*;
 
 
 public class Dimension implements ModInitializer {
 
+    public static Tag.Identified<Block> SOIL_BLOCKS;
     public static Tag.Identified<Block> VALID_GROUND_BLOCKS;
+    //public static final TreeDecoratorType<GlowfruitTreeDecorator> GLOWFRUIT;
 
     @Override
     public void onInitialize() {
@@ -46,9 +52,10 @@ public class Dimension implements ModInitializer {
         TethysFeatures.registerFeatures();
         TethysConfiguredFeatures.registerConfiguredFeatures();
         TethysEntities.registerEntities();
-
         TethysSurfaceBuilder.registerSurfaceBuilders();
+        //GLOWFRUIT = Registry.register(Registry.TREE_DECORATOR_TYPE, new Identifier("parallel_world", "glowfruit"),GlowfruitTreeDecorator.CODEC);
 
+        SOIL_BLOCKS = (Tag.Identified<Block>) TagRegistry.block(new Identifier("parallel_world", "soil_blocks"));
         VALID_GROUND_BLOCKS = (Tag.Identified<Block>) TagRegistry.block(new Identifier("parallel_world", "valid_ground_blocks"));
 
         BiomeModifications.addFeature(BiomeSelectors.all(), GenerationStep.Feature.UNDERGROUND_ORES, RegistryKey.of(Registry.CONFIGURED_FEATURE_WORLDGEN, new Identifier("parallel_world", "cave_scattered_ghost_trees")));

@@ -87,6 +87,12 @@
 		"monster": [],
 		"creature": [
 		  {
+			"type": "parallel_world:flying_cat",
+			"weight": 6,
+			"minCount": 2,
+			"maxCount": 4
+		  },
+		  {
 			"type": "minecraft:sheep",
 			"weight": 12,
 			"minCount": 4,

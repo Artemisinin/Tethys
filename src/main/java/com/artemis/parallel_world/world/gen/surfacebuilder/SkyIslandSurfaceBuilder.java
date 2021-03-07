@@ -28,7 +28,7 @@ public class SkyIslandSurfaceBuilder extends SurfaceBuilder<TernarySurfaceConfig
         if (i == 0) {
             boolean bl = false;
 
-            for(j = height; j >= 20; --j) {
+            for(j = height; j >= 19; --j) {
                 mutable.set(x, j, z);
                 BlockState blockState = chunk.getBlockState(mutable);
                 if (blockState.isAir()) {
@@ -55,7 +55,7 @@ public class SkyIslandSurfaceBuilder extends SurfaceBuilder<TernarySurfaceConfig
             BlockState blockState6 = underBlock;
             j = -1;
 
-            for(int l = height; l >= 20; --l) {
+            for(int l = height; l >= 19; --l) {
                 mutable.set(x, l, z);
                 blockState5 = chunk.getBlockState(mutable);
                 if (blockState5.isAir()) {
