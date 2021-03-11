@@ -6,6 +6,7 @@ import net.minecraft.fluid.Fluids;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
+import net.minecraft.state.property.IntProperty;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
@@ -27,6 +28,8 @@ public abstract class LeavesBlockMixin extends Block implements Waterloggable {
     }
 
     @Shadow @Final public static BooleanProperty PERSISTENT;
+    @Shadow @Final public static IntProperty DISTANCE;
+
     private static BooleanProperty WATERLOGGED = Properties.WATERLOGGED;
 
     public LeavesBlockMixin(Settings settings) {
@@ -42,15 +45,17 @@ public abstract class LeavesBlockMixin extends Block implements Waterloggable {
     @Inject(method = "<init>", at = @At(value = "TAIL"))
     private void addDefaultStateWaterloggable(AbstractBlock.Settings settings, CallbackInfo ci)
     {
-        this.setDefaultState(this.getDefaultState().with(WATERLOGGED, false));
+        this.setDefaultState(this.stateManager.getDefaultState().with(DISTANCE, 7).with(PERSISTENT, false).with(WATERLOGGED, false));
     }
 
-    @Inject(method = "getStateForNeighborUpdate", at = @At(value = "TAIL"))
+    @Inject(method = "getStateForNeighborUpdate", at = @At(value = "TAIL"), cancellable = true)
     private void wateryNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos, CallbackInfoReturnable<BlockState> cir)
     {
         if (state.get(WATERLOGGED)) {
             world.getFluidTickScheduler().schedule(pos, Fluids.WATER, Fluids.WATER.getTickRate(world));
         }
+        state = super.getStateForNeighborUpdate(state, direction, neighborState, world, pos, neighborPos);
+        cir.setReturnValue(state);
     }
 
     @Override

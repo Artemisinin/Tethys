@@ -58,9 +58,9 @@
       "minecraft:ore_magma"
     ],
     [
-      "minecraft:glow_lichen",
       "parallel_world:glowstone_grow",
-	  "parallel_world:wasteland_vegetation",
+      "parallel_world:wasteland_vegetation",
+      "minecraft:glow_lichen",
 	  "minecraft:spring_delta",
       "minecraft:spring_closed_double",
 	  "minecraft:brown_mushroom_normal",

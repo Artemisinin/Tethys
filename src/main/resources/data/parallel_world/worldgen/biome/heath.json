@@ -71,8 +71,7 @@
     ]
   ],
   "starts": [
-    "minecraft:mineshaft",
-    "minecraft:stronghold", 
+    "minecraft:stronghold",
 	"minecraft:village_plains"
   ],
   "spawners": {

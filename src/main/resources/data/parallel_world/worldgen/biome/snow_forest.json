@@ -72,7 +72,6 @@
     ]
   ],
   "starts": [
-    "minecraft:mineshaft",    
 	"minecraft:igloo",
     "minecraft:stronghold"
   ],

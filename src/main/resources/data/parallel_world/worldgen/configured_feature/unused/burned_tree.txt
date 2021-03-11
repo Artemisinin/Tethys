@@ -10,6 +10,20 @@
       "min_clipped_height": 3,
       "type": "minecraft:two_layers_feature_size"
     },
+    "decorators": [
+      {
+        "provider": {
+          "state": {
+            "Properties": {
+              "snowy": "false"
+            },
+            "Name": "minecraft:coarse_dirt"
+          },
+          "type": "minecraft:simple_state_provider"
+        },
+        "type": "minecraft:alter_ground"
+      }
+    ],
     "trunk_provider": {
       "state": {
         "Properties": {
@@ -31,30 +45,16 @@
     },
     "foliage_placer": {
       "radius": 0,
-      "offset": 0,
+      "offset": 4,
       "height": 0,
       "type": "minecraft:fancy_foliage_placer"
     },
     "trunk_placer": {
-      "base_height": 2,
-      "height_rand_a": 7,
-      "height_rand_b": 3,
+      "base_height": 3,
+      "height_rand_a": 11,
+      "height_rand_b": 0,
       "type": "minecraft:fancy_trunk_placer"
-    },
-    "decorators": [
-      {
-        "provider": {
-          "state": {
-            "Properties": {
-              "snowy": "false"
-            },
-            "Name": "minecraft:coarse_dirt"
-          },
-          "type": "minecraft:simple_state_provider"
-        },
-        "type": "minecraft:alter_ground"
-      }
-    ]
+    }
   },
   "type": "minecraft:tree"
 }

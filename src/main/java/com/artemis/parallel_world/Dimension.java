@@ -53,11 +53,14 @@ public class Dimension implements ModInitializer {
         TethysConfiguredFeatures.registerConfiguredFeatures();
         TethysEntities.registerEntities();
         TethysSurfaceBuilder.registerSurfaceBuilders();
+        TethysSurfaceBuilder.registerConfiguredSurfaceBuilders();
         //GLOWFRUIT = Registry.register(Registry.TREE_DECORATOR_TYPE, new Identifier("parallel_world", "glowfruit"),GlowfruitTreeDecorator.CODEC);
 
+        // Register tags
         SOIL_BLOCKS = (Tag.Identified<Block>) TagRegistry.block(new Identifier("parallel_world", "soil_blocks"));
         VALID_GROUND_BLOCKS = (Tag.Identified<Block>) TagRegistry.block(new Identifier("parallel_world", "valid_ground_blocks"));
 
+        // Add configured features to overworld biomes.
         BiomeModifications.addFeature(BiomeSelectors.all(), GenerationStep.Feature.UNDERGROUND_ORES, RegistryKey.of(Registry.CONFIGURED_FEATURE_WORLDGEN, new Identifier("parallel_world", "cave_scattered_ghost_trees")));
         BiomeModifications.addFeature(BiomeSelectors.includeByKey(LUKEWARM_OCEAN), GenerationStep.Feature.VEGETAL_DECORATION, RegistryKey.of(Registry.CONFIGURED_FEATURE_WORLDGEN, new Identifier("parallel_world", "scattered_poriferans")));
         BiomeModifications.addFeature(BiomeSelectors.categories(Biome.Category.SWAMP), GenerationStep.Feature.VEGETAL_DECORATION, RegistryKey.of(Registry.CONFIGURED_FEATURE_WORLDGEN, new Identifier("parallel_world", "swamp_oak_shrubs")));

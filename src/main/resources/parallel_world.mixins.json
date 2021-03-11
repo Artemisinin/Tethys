@@ -4,6 +4,7 @@
   "package": "com.artemis.parallel_world.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
+    "BlocksMixin",
     "EntityMixin",
     "FeatureMixin",
     "FoliagePlacerMixin",
@@ -14,6 +15,7 @@
     "LeavesBlockMixin",
     "PlaceLogsAndLeavesInvoker",
     "SaplingGeneratorMixin",
+    "StructureStartMixin",
     "TrunkPlacerMixin",
     "VillageFeatureMixin"
   ],
