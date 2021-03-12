@@ -6,7 +6,7 @@
           "config": {
             "features": [
               {
-                "feature": "parallel_world:huge_heath_mushroom",
+                "feature": "parallel_world:heath_mushroom_selector",
                 "chance": 0.15
               },
               {

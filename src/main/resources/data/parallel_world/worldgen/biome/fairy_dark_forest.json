@@ -27,8 +27,7 @@
 	],
     [
       "minecraft:lake_water",
-      "minecraft:lake_lava",
-	  "parallel_world:netherrack_blobs"
+      "minecraft:lake_lava"
     ],
     [],
     [
@@ -54,8 +53,8 @@
     [],
     [
       "parallel_world:fairy_dark_forest_vegetation",
+      "parallel_world:sky_island_glowstone",
       "minecraft:glow_lichen",
-      "minecraft:glowstone_extra",
 	  "minecraft:kelp_cold",
 	  "minecraft:seagrass_cold", 
 	  "minecraft:sea_pickle",
@@ -71,7 +70,6 @@
       "minecraft:spring_lava"
     ],
     [
-      "parallel_world:netherrack_replacer",
       "minecraft:freeze_top_layer"
     ]
   ],

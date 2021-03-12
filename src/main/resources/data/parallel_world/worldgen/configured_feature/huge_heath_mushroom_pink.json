@@ -10,7 +10,7 @@
           "east": "true",
           "down": "false"
         },
-        "Name": "minecraft:brown_mushroom_block"
+        "Name": "parallel_world:pink_mushroom_block"
       },
       "type": "minecraft:simple_state_provider"
     },
@@ -28,7 +28,7 @@
       },
       "type": "minecraft:simple_state_provider"
     },
-    "foliage_radius": 3
+    "foliage_radius": 2
   },
-  "type": "parallel_world:huge_heath_mushroom"
+  "type": "parallel_world:flat_mushroom"
 }

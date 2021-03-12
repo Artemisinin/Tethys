@@ -28,7 +28,6 @@
 		"parallel_world:seagen/seabed_sand"
 		],
 		[
-		  "parallel_world:netherrack_blobs",
 		  "minecraft:lake_water"
 	    ],
 		[],
@@ -57,7 +56,7 @@
 		[],
 		[
 		  "parallel_world:rainbow_vegetation",
-		  "parallel_world:glowstone_grow",
+		  "parallel_world:sky_island_glowstone",
 		  "minecraft:glow_lichen",
 		  "minecraft:warm_ocean_vegetation",
  		  "minecraft:forest_flower_vegetation_common",
@@ -74,7 +73,6 @@
 		  "minecraft:sea_pickle"
 		],
 		[
-		  "parallel_world:netherrack_replacer",
 		  "minecraft:freeze_top_layer"
 		]
     ],
@@ -87,7 +85,7 @@
 		"creature": [
 		  {
 			"type": "parallel_world:flying_cat",
-			"weight": 6,
+			"weight": 8,
 			"minCount": 2,
 			"maxCount": 4
 		  },
@@ -126,12 +124,6 @@
 			"weight": 40,
 			"minCount": 1,
 			"maxCount": 2
-		  },
-		  {
-			"type": "minecraft:turtle",
-			"weight": 5,
-			"minCount": 2,
-			"maxCount": 5
 		  }
 		],
 		"ambient": [

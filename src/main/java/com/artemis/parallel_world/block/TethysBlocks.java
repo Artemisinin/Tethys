@@ -1,9 +1,11 @@
 package com.artemis.parallel_world.block;
 
 import com.artemis.parallel_world.block.sapling.*;
+import jdk.net.SocketFlow;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.minecraft.block.*;
+import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.IntRange;
@@ -17,7 +19,7 @@ public class TethysBlocks {
     public static final Block CAVE_GLOWLEAF = new Block(FabricBlockSettings.of(Material.LEAVES).hardness(0.2f).breakByHand(true).nonOpaque().luminance(6));
     public static final Block BLUE_CALCITE_LOG = new PillarBlock(FabricBlockSettings.of(Material.STONE).hardness(2.0f));
     public static final Block GLOWFRUIT = new Block(FabricBlockSettings.of(Material.PLANT).breakByHand(true).nonOpaque().luminance(12).hardness(0.2f));
-
+    public static final Block HEATHER = new FlowerBlock(StatusEffects.LUCK, 7, AbstractBlock.Settings.of(Material.PLANT).noCollision().breakInstantly().sounds(BlockSoundGroup.GRASS));
     // Mushroom blocks
     public static final Block PINK_MUSHROOM_BLOCK = new MushroomBlock(AbstractBlock.Settings.of(Material.WOOD, MapColor.DULL_PINK).strength(0.2F).sounds(BlockSoundGroup.WOOD));
     public static final Block WHITE_MUSHROOM_BLOCK = new MushroomBlock(AbstractBlock.Settings.of(Material.WOOD, MapColor.OFF_WHITE).strength(0.2F).sounds(BlockSoundGroup.WOOD));
@@ -89,6 +91,9 @@ public class TethysBlocks {
 
         // Glowfruit
         Registry.register(Registry.BLOCK, new Identifier("parallel_world", "glowfruit"), GLOWFRUIT);
+
+        // Heather
+        Registry.register(Registry.BLOCK, new Identifier("parallel_world", "heather"), HEATHER);
 
         // Mushroom blocks
         Registry.register(Registry.BLOCK, new Identifier("parallel_world", "pink_mushroom_block"), PINK_MUSHROOM_BLOCK);

@@ -31,8 +31,7 @@
 	  "parallel_world:seagen/seabed_sand"
 	],
     [
-	  "parallel_world:netherrack_blobs", 
-	  "parallel_world:traps_lava",		
+	  "parallel_world:traps_lava",
 	  "minecraft:lake_lava"
 	],
     [],
@@ -58,7 +57,7 @@
       "minecraft:ore_magma"
     ],
     [
-      "parallel_world:glowstone_grow",
+      "parallel_world:sky_island_glowstone",
       "parallel_world:wasteland_vegetation",
       "minecraft:glow_lichen",
 	  "minecraft:spring_delta",
@@ -67,7 +66,6 @@
       "minecraft:red_mushroom_normal"
     ],
     [
-      "parallel_world:netherrack_replacer",
 	  "minecraft:spring_lava_double"
     ]
   ],

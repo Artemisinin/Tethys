@@ -52,12 +52,12 @@ public class TethysConfiguredFeatures {
     public static ConfiguredFeature<?,?> CAVE_SCATTERED_GHOST_TREES;
     public static ConfiguredFeature<?,?> DARK_OAK_GLOWFRUIT;
     public static ConfiguredFeature<?,?> GHOST_TREE;
-    public static ConfiguredFeature<?,?> PATCH_BERRY_BUSH_HEATH;
     public static ConfiguredFeature<?,?> PINK_DIAMOND_ORE_TETHYS;
     public static ConfiguredFeature<?,?> PORIFERAN;
     public static ConfiguredFeature<?,?> SCATTERED_PORIFERANS;
     public static ConfiguredFeature<?,?> SWAMP_OAK_SHRUB;
     public static ConfiguredFeature<?,?> SWAMP_OAK_SHRUBS;
+    public static ConfiguredFeature<?,?> WATER_LILIES;
 
     //public static ConfiguredFeature<?,?> PORIFERAN_GLOW;
     //public static ConfiguredFeature<?,?> SCATTERED_PORIFERANS_GLOW;
@@ -186,8 +186,6 @@ public class TethysConfiguredFeatures {
                         new ForkingTrunkPlacer(2,4, 4),
                         new TwoLayersFeatureSize(1,0,2))).heightmap(Heightmap.Type.MOTION_BLOCKING).maxWaterDepth(0).build()));
         CAVE_SCATTERED_GHOST_TREES = register("parallel_world:cave_scattered_ghost_trees", GHOST_TREE.rangeOf(YOffset.getBottom(), YOffset.fixed(40)).spreadHorizontally().decorate(Decorator.COUNT_MULTILAYER.configure(new CountConfig(50))));
-        PATCH_BERRY_BUSH_HEATH = register("parallel_world:patch_berry_bush_heath", Feature.RANDOM_PATCH.configure(
-                (new RandomPatchFeatureConfig.Builder(new SimpleBlockStateProvider(TethysConfiguredFeatures.States.SWEET_BERRY_BUSH), SimpleBlockPlacer.INSTANCE)).cannotProject().build()));
         PINK_DIAMOND_ORE_TETHYS = register("parallel_world:pink_diamond_ore_tethys", Feature.ORE.configure(
                 new OreFeatureConfig(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD, TethysBlocks.PINK_DIAMOND_ORE.getDefaultState(), 5)).
                 rangeOf(YOffset.getBottom(), YOffset.fixed(40))).spreadHorizontally().repeat(4);
@@ -205,6 +203,7 @@ public class TethysConfiguredFeatures {
                         new StraightTrunkPlacer(2, 1, 0),
                         new TwoLayersFeatureSize(1, 0, 1))).maxWaterDepth(2).build()));
         SWAMP_OAK_SHRUBS = register("parallel_world:swamp_oak_shrubs", SWAMP_OAK_SHRUB.rangeOf(YOffset.fixed(60), YOffset.fixed(62)).spreadHorizontally().repeat(10));
+        WATER_LILIES = register("parallel_world:waterlilies", Feature.RANDOM_PATCH.configure((new RandomPatchFeatureConfig.Builder(new SimpleBlockStateProvider(Blocks.LILY_PAD.getDefaultState()), SimpleBlockPlacer.INSTANCE)).tries(5).build()).decorate(ConfiguredFeatures.Decorators.SPREAD_32_ABOVE).repeat(2));
 
         // These right now are configured in json.
         /*

@@ -1,5 +1,7 @@
 package com.artemis.parallel_world.entity;
 
+import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.control.FlightMoveControl;
 import net.minecraft.entity.ai.control.MoveControl;
@@ -20,10 +22,17 @@ import net.minecraft.recipe.Ingredient;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
+import net.minecraft.tag.BlockTags;
 import net.minecraft.util.Hand;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.ServerWorldAccess;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldAccess;
+import net.minecraft.world.WorldView;
 import org.jetbrains.annotations.Nullable;
 import net.minecraft.entity.ai.goal.TemptGoal;
+
+import java.util.Random;
 
 
 public class FlyingCatEntity extends TameableEntity {
@@ -174,8 +183,17 @@ public class FlyingCatEntity extends TameableEntity {
         return dimensions.height * 0.5F;
     }
 
+    public static boolean canSpawn(EntityType<? extends FlyingCatEntity> type, WorldAccess world, SpawnReason spawnReason, BlockPos pos, Random random) {
+        if (pos.getY() < 35) {
+            return false;
+        }
+        BlockState blockState = world.getBlockState(pos.down());
+        return blockState.isOf(Blocks.GRASS_BLOCK) || blockState.isIn(BlockTags.LEAVES);
+    }
+
     public boolean canImmediatelyDespawn(double distanceSquared) {
         return !this.isTamed() && this.age > 2400;
     }
+
 
 }

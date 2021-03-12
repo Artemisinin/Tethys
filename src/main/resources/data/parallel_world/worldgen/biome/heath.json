@@ -52,7 +52,8 @@
     ],
     [],
     [
-      "parallel_world:patch_berry_bush_heath",
+      "parallel_world:heath_berry_bushes",
+      "parallel_world:heather_patch",
       "parallel_world:heath_vegetation",
       "minecraft:brown_mushroom_normal",
       "minecraft:red_mushroom_normal",
