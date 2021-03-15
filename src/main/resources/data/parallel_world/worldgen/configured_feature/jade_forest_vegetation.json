@@ -28,10 +28,12 @@
 				  "config": {},
 				  "type": "minecraft:square"
 				},
-				"inner": {
-				  "config": {},
-				  "type": "minecraft:heightmap"
-				}
+				  "inner": {
+					  "config": {
+						  "heightmap": "MOTION_BLOCKING"
+					  },
+					  "type": "minecraft:heightmap"
+				  }
 			  },
 			  "type": "minecraft:decorated"
 			}

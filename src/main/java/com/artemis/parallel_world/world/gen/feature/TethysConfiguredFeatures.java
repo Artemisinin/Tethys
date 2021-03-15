@@ -1,14 +1,18 @@
 package com.artemis.parallel_world.world.gen.feature;
 
 import com.artemis.parallel_world.block.TethysBlocks;
+import com.google.common.collect.ImmutableList;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
+import net.minecraft.util.math.VerticalSurfaceType;
 import net.minecraft.util.registry.BuiltinRegistries;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.Heightmap;
 import net.minecraft.world.gen.CountConfig;
 import net.minecraft.world.gen.UniformIntDistribution;
 import net.minecraft.world.gen.YOffset;
+import net.minecraft.world.gen.decorator.CaveSurfaceDecoratorConfig;
+import net.minecraft.world.gen.decorator.CountExtraDecoratorConfig;
 import net.minecraft.world.gen.decorator.Decorator;
 import net.minecraft.world.gen.feature.*;
 import net.minecraft.world.gen.feature.size.TwoLayersFeatureSize;
@@ -68,110 +72,110 @@ public class TethysConfiguredFeatures {
         // Heath shrubs
         BIRCH_SHRUB = register("parallel_world:birch_shrub", Feature.TREE.configure(
                 (new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(TethysConfiguredFeatures.States.BIRCH_LOG),
+                        new StraightTrunkPlacer(1, 0, 1),
                         new SimpleBlockStateProvider(TethysConfiguredFeatures.States.BIRCH_LEAVES),
                         new BushFoliagePlacer(UniformIntDistribution.of(2), UniformIntDistribution.of(1), 2),
-                        new StraightTrunkPlacer(1, 0, 1),
-                        new TwoLayersFeatureSize(0, 0, 0))).heightmap(Heightmap.Type.WORLD_SURFACE).build()));
+                        new TwoLayersFeatureSize(0, 0, 0))).build()));
 
         DARK_OAK_SHRUB_SHORT = register("parallel_world:dark_oak_shrub_short", Feature.TREE.configure(
                 (new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(TethysConfiguredFeatures.States.DARK_OAK_LOG),
+                        new StraightTrunkPlacer(1, 0, 0),
                         new SimpleBlockStateProvider(TethysConfiguredFeatures.States.DARK_OAK_LEAVES),
                         new BushFoliagePlacer(UniformIntDistribution.of(2), UniformIntDistribution.of(1), 1),
-                        new StraightTrunkPlacer(1, 0, 0),
-                        new TwoLayersFeatureSize(0, 0, 0))).heightmap(Heightmap.Type.WORLD_SURFACE_WG).build()));
+                        new TwoLayersFeatureSize(0, 0, 0))).build()));
 
         DARK_OAK_SHRUB_TALL = register("parallel_world:dark_oak_shrub_tall", Feature.TREE.configure(
                 (new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(TethysConfiguredFeatures.States.DARK_OAK_LOG),
+                        new StraightTrunkPlacer(1, 0, 1),
                         new SimpleBlockStateProvider(TethysConfiguredFeatures.States.DARK_OAK_LEAVES),
                         new BushFoliagePlacer(UniformIntDistribution.of(2), UniformIntDistribution.of(1), 2),
-                        new StraightTrunkPlacer(1, 0, 1),
-                        new TwoLayersFeatureSize(0, 0, 0))).heightmap(Heightmap.Type.WORLD_SURFACE_WG).build()));
+                        new TwoLayersFeatureSize(0, 0, 0))).build()));
 
         JUNGLE_SHRUB = register("parallel_world:jungle_shrub", Feature.TREE.configure(
                 (new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(TethysConfiguredFeatures.States.JUNGLE_LOG),
+                        new StraightTrunkPlacer(1, 0, 0),
                         new SimpleBlockStateProvider(TethysConfiguredFeatures.States.JUNGLE_LEAVES),
                         new BushFoliagePlacer(UniformIntDistribution.of(2), UniformIntDistribution.of(1), 2),
-                        new StraightTrunkPlacer(1, 0, 0),
-                        new TwoLayersFeatureSize(0, 0, 0))).heightmap(Heightmap.Type.WORLD_SURFACE_WG).build()));
+                        new TwoLayersFeatureSize(0, 0, 0))).build()));
 
         OAK_SHRUB = register("parallel_world:oak_shrub", Feature.TREE.configure(
                 (new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(TethysConfiguredFeatures.States.OAK_LOG),
+                        new StraightTrunkPlacer(1, 0, 0),
                         new SimpleBlockStateProvider(TethysConfiguredFeatures.States.OAK_LEAVES),
                         new BushFoliagePlacer(UniformIntDistribution.of(2), UniformIntDistribution.of(1), 2),
-                        new StraightTrunkPlacer(1, 0, 0),
-                        new TwoLayersFeatureSize(0, 0, 0))).heightmap(Heightmap.Type.WORLD_SURFACE_WG).build()));
+                        new TwoLayersFeatureSize(0, 0, 0))).build()));
 
         SPRUCE_SHRUB_SHORT = register("parallel_world:spruce_shrub_short", Feature.TREE.configure(
                 (new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(TethysConfiguredFeatures.States.SPRUCE_LOG),
+                        new StraightTrunkPlacer(1, 0, 0),
                         new SimpleBlockStateProvider(TethysConfiguredFeatures.States.SPRUCE_LEAVES),
                         new BushFoliagePlacer(UniformIntDistribution.of(2), UniformIntDistribution.of(1), 1),
-                        new StraightTrunkPlacer(1, 0, 0),
-                        new TwoLayersFeatureSize(0, 0, 0))).heightmap(Heightmap.Type.WORLD_SURFACE_WG).build()));
+                        new TwoLayersFeatureSize(0, 0, 0))).build()));
 
         SPRUCE_SHRUB_TALL = register("parallel_world:spruce_shrub_tall", Feature.TREE.configure(
                 (new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(TethysConfiguredFeatures.States.SPRUCE_LOG),
+                        new StraightTrunkPlacer(1, 0, 1),
                         new SimpleBlockStateProvider(TethysConfiguredFeatures.States.SPRUCE_LEAVES),
                         new BushFoliagePlacer(UniformIntDistribution.of(2), UniformIntDistribution.of(1), 2),
-                        new StraightTrunkPlacer(1, 0, 1),
-                        new TwoLayersFeatureSize(0, 0, 0))).heightmap(Heightmap.Type.WORLD_SURFACE_WG).build()));
+                        new TwoLayersFeatureSize(0, 0, 0))).build()));
 
         // Rainbow trees
         BASSWOOD_TREE = register("parallel_world:basswood_tree", Feature.TREE.configure(
                 (new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(TethysConfiguredFeatures.States.BASSWOOD_LOG),
+                        new LargeOakTrunkPlacer(3, 11, 0),
                         new SimpleBlockStateProvider(TethysConfiguredFeatures.States.BASSWOOD_LEAVES),
                         new LargeOakFoliagePlacer(UniformIntDistribution.of(2), UniformIntDistribution.of(4), 4),
-                        new LargeOakTrunkPlacer(3, 11, 0),
-                        new TwoLayersFeatureSize(0, 0, 0, OptionalInt.of(4)))).ignoreVines().heightmap(Heightmap.Type.MOTION_BLOCKING).build()));
+                        new TwoLayersFeatureSize(0, 0, 0, OptionalInt.of(4)))).ignoreVines().build()));
 
         BLACKCURRANT_TREE = register("parallel_world:blackcurrant_tree", Feature.TREE.configure(
                 (new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(TethysConfiguredFeatures.States.BLACKCURRANT_LOG),
+                        new StraightTrunkPlacer(4, 2, 0),
                         new SimpleBlockStateProvider(TethysConfiguredFeatures.States.BLACKCURRANT_LEAVES),
                         new BlobFoliagePlacer(UniformIntDistribution.of(2), UniformIntDistribution.of(0), 3),
-                        new StraightTrunkPlacer(4, 2, 0),
                         new TwoLayersFeatureSize(0, 0, 0))).ignoreVines().build()));
 
         CHERRY_TREE = register("parallel_world:cherry_tree", Feature.TREE.configure(
                 (new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(TethysConfiguredFeatures.States.CHERRY_LOG),
+                        new StraightTrunkPlacer(4, 2, 0),
                         new SimpleBlockStateProvider(TethysConfiguredFeatures.States.CHERRY_LEAVES),
                         new BlobFoliagePlacer(UniformIntDistribution.of(2), UniformIntDistribution.of(0), 3),
-                        new StraightTrunkPlacer(4, 2, 0),
                         new TwoLayersFeatureSize(0, 0, 0))).ignoreVines().build()));
 
         DOGWOOD_TREE = register("parallel_world:dogwood_tree", Feature.TREE.configure(
                 (new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(TethysConfiguredFeatures.States.DOGWOOD_LOG),
+                        new StraightTrunkPlacer(3, 0, 5),
                         new SimpleBlockStateProvider(TethysConfiguredFeatures.States.DOGWOOD_LEAVES),
                         new BlobFoliagePlacer(UniformIntDistribution.of(2), UniformIntDistribution.of(0), 3),
-                        new StraightTrunkPlacer(3, 0, 5),
                         new TwoLayersFeatureSize(0, 0, 0))).ignoreVines().build()));
 
         ELDERBERRY_TREE = register("parallel_world:elderberry_tree", Feature.TREE.configure(
                 (new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(TethysConfiguredFeatures.States.ELDERBERRY_LOG),
+                        new StraightTrunkPlacer(4, 2, 0),
                         new SimpleBlockStateProvider(TethysConfiguredFeatures.States.ELDERBERRY_LEAVES),
                         new BlobFoliagePlacer(UniformIntDistribution.of(2), UniformIntDistribution.of(0), 3),
-                        new StraightTrunkPlacer(4, 2, 0),
                         new TwoLayersFeatureSize(0, 0, 0))).ignoreVines().build()));
 
         GINKGO_TREE = register("parallel_world:ginkgo_tree", Feature.TREE.configure(
                 (new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(TethysConfiguredFeatures.States.GINKGO_LOG),
+                        new StraightTrunkPlacer(4, 2, 1),
                         new SimpleBlockStateProvider(TethysConfiguredFeatures.States.GINKGO_LEAVES),
                         new BlobFoliagePlacer(UniformIntDistribution.of(3), UniformIntDistribution.of(0), 3),
-                        new StraightTrunkPlacer(4, 2, 1),
                         new TwoLayersFeatureSize(0, 0, 0))).ignoreVines().build()));
 
         SWEETGUM_TREE = register("parallel_world:sweetgum_tree", Feature.TREE.configure(
                 (new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(TethysConfiguredFeatures.States.SWEETGUM_LOG),
+                        new LargeOakTrunkPlacer(3, 11, 0),
                         new SimpleBlockStateProvider(TethysConfiguredFeatures.States.SWEETGUM_LEAVES),
                         new LargeOakFoliagePlacer(UniformIntDistribution.of(2), UniformIntDistribution.of(4), 4),
-                        new LargeOakTrunkPlacer(3, 11, 0),
-                        new TwoLayersFeatureSize(0, 0, 0, OptionalInt.of(4)))).ignoreVines().heightmap(Heightmap.Type.MOTION_BLOCKING).build()));
+                        new TwoLayersFeatureSize(0, 0, 0, OptionalInt.of(4)))).ignoreVines().build()));
 
         // Misc
         BURNED_TREE = register ("parallel_world:burned_tree", Feature.TREE.configure(
                 (new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(Blocks.DARK_OAK_LOG.getDefaultState()),
+                        new LargeOakTrunkPlacer(3, 11, 0),
                         new SimpleBlockStateProvider(Blocks.AIR.getDefaultState()),
                         new BlobFoliagePlacer(UniformIntDistribution.of(2), UniformIntDistribution.of(0), 3),
-                        new LargeOakTrunkPlacer(3, 11, 0),
-                        new TwoLayersFeatureSize(0, 0, 0, OptionalInt.of(4)))).heightmap(Heightmap.Type.MOTION_BLOCKING).build()));
+                        new TwoLayersFeatureSize(0, 0, 0, OptionalInt.of(4)))).build()));
 
         DARK_OAK_GLOWFRUIT = register("parallel_world:dark_oak_glowfruit", Feature.HUGE_FUNGUS.configure(
                 new HugeFungusFeatureConfig(Blocks.GRASS_BLOCK.getDefaultState(),
@@ -179,29 +183,33 @@ public class TethysConfiguredFeatures {
                     Blocks.DARK_OAK_LEAVES.getDefaultState(),
                     TethysBlocks.GLOWFRUIT.getDefaultState(),
                     false)));
-        GHOST_TREE = register("parallel_world:ghost_tree", TethysFeatures.UNLOCKED_TREE_FEATURE.configure(
-                (new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(Blocks.POLISHED_BASALT.getDefaultState()),
-                        new SimpleBlockStateProvider(TethysBlocks.CAVE_GLOWLEAF.getDefaultState()),
-                        new AcaciaFoliagePlacer(UniformIntDistribution.of(2, 0), UniformIntDistribution.of(0, 0)),
-                        new ForkingTrunkPlacer(2,4, 4),
-                        new TwoLayersFeatureSize(1,0,2))).heightmap(Heightmap.Type.MOTION_BLOCKING).maxWaterDepth(0).build()));
-        CAVE_SCATTERED_GHOST_TREES = register("parallel_world:cave_scattered_ghost_trees", GHOST_TREE.rangeOf(YOffset.getBottom(), YOffset.fixed(40)).spreadHorizontally().decorate(Decorator.COUNT_MULTILAYER.configure(new CountConfig(50))));
+
+        GHOST_TREE = register("parallel_world:ghost_tree", Feature.TREE.configure((new TreeFeatureConfig.Builder
+                        (new SimpleBlockStateProvider(Blocks.POLISHED_BASALT.getDefaultState()),
+                                new ForkingTrunkPlacer(2,4,4),
+                                new SimpleBlockStateProvider(TethysBlocks.CAVE_GLOWLEAF.getDefaultState()),
+                                new AcaciaFoliagePlacer(UniformIntDistribution.of(2,0), UniformIntDistribution.of(0,0)),
+                                new TwoLayersFeatureSize(1,0,2))).build()));
+
+        //CAVE_SCATTERED_GHOST_TREES = register("parallel_world:cave_scattered_ghost_trees", GHOST_TREE.rangeOf(YOffset.getBottom(), YOffset.fixed(40)).spreadHorizontally().decorate(Decorator.COUNT_MULTILAYER.configure(new CountConfig(50))));
+        CAVE_SCATTERED_GHOST_TREES = register("parallel_world:cave_scattered_ghost_trees", GHOST_TREE.rangeOf(YOffset.getBottom(), YOffset.fixed(40)).spreadHorizontally().decorate(Decorator.CAVE_SURFACE.configure(new CaveSurfaceDecoratorConfig(VerticalSurfaceType.FLOOR, 12))).decorate(Decorator.COUNT_MULTILAYER.configure(new CountConfig(50))));
+
         PINK_DIAMOND_ORE_TETHYS = register("parallel_world:pink_diamond_ore_tethys", Feature.ORE.configure(
                 new OreFeatureConfig(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD, TethysBlocks.PINK_DIAMOND_ORE.getDefaultState(), 5)).
                 rangeOf(YOffset.getBottom(), YOffset.fixed(40))).spreadHorizontally().repeat(4);
-        PORIFERAN = register("parallel_world:poriferan", TethysFeatures.UNLOCKED_TREE_FEATURE.configure(
+        PORIFERAN = register("parallel_world:poriferan",  Feature.TREE.configure(
                 (new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(TethysBlocks.PORIFERAN_STEM.getDefaultState()),
+                        new StraightTrunkPlacer(4, 2, 0),
                         new SimpleBlockStateProvider(TethysBlocks.PORIFERAN_CHUNK.getDefaultState()),
                         new PineFoliagePlacer(UniformIntDistribution.of(1), UniformIntDistribution.of(0),UniformIntDistribution.of(4)),
-                        new StraightTrunkPlacer(4, 2, 0),
-                        new TwoLayersFeatureSize(1, 1, 1))).heightmap(Heightmap.Type.MOTION_BLOCKING).maxWaterDepth(-1).build()));
+                        new TwoLayersFeatureSize(1, 1, 1))).build()));
         SCATTERED_PORIFERANS = register("parallel_world:scattered_poriferans", PORIFERAN.rangeOf(YOffset.fixed(30), YOffset.fixed(55)).spreadHorizontally().repeat(40));
-        SWAMP_OAK_SHRUB = register("parallel_world:swamp_oak_shrub", TethysFeatures.UNLOCKED_TREE_FEATURE.configure(
-                (new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(TethysConfiguredFeatures.States.OAK_LOG),
-                        new SimpleBlockStateProvider(TethysConfiguredFeatures.States.OAK_LEAVES),
-                        new BushFoliagePlacer(UniformIntDistribution.of(2), UniformIntDistribution.of(1), 2),
+        SWAMP_OAK_SHRUB = register("parallel_world:swamp_oak_shrub", Feature.TREE.configure(
+                (new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(States.OAK_LOG),
                         new StraightTrunkPlacer(2, 1, 0),
-                        new TwoLayersFeatureSize(1, 0, 1))).maxWaterDepth(2).build()));
+                        new SimpleBlockStateProvider(States.OAK_LEAVES),
+                        new BushFoliagePlacer(UniformIntDistribution.of(2), UniformIntDistribution.of(1), 2),
+                        new TwoLayersFeatureSize(1, 0, 1))).build()));
         SWAMP_OAK_SHRUBS = register("parallel_world:swamp_oak_shrubs", SWAMP_OAK_SHRUB.rangeOf(YOffset.fixed(60), YOffset.fixed(62)).spreadHorizontally().repeat(10));
         WATER_LILIES = register("parallel_world:waterlilies", Feature.RANDOM_PATCH.configure((new RandomPatchFeatureConfig.Builder(new SimpleBlockStateProvider(Blocks.LILY_PAD.getDefaultState()), SimpleBlockPlacer.INSTANCE)).tries(5).build()).decorate(ConfiguredFeatures.Decorators.SPREAD_32_ABOVE).repeat(2));
 

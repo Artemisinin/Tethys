@@ -1,1 +1,1 @@
-This mod is for Minecraft 1.17 (snapshot 21w08b) and requires Fabric loader and Fabric API 0.31.1+1.17 in the mod directory.  Fabric can be downloaded at https://fabricmc.net/.
+This mod is for Minecraft 1.17 (snapshot 21w10a) and requires Fabric loader and Fabric API 0.32.2+1.17 in the mod directory.  Fabric can be downloaded at https://fabricmc.net/.

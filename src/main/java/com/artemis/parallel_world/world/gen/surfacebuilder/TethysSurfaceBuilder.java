@@ -16,6 +16,7 @@ public abstract class TethysSurfaceBuilder <C extends SurfaceConfig> extends Sur
 
     public static SurfaceBuilder<TernarySurfaceConfig>  TETHYS_DEFAULT;
     public static SurfaceBuilder<TernarySurfaceConfig> TETHYS_GIANT_TREE_TAIGA;
+    //public static SurfaceBuilder<QuaternarySurfaceBuilder> TEST_QUATERNARY;
 
     public static ConfiguredSurfaceBuilder<TernarySurfaceConfig> TETHYS_HEATH;
 
@@ -44,6 +45,7 @@ public abstract class TethysSurfaceBuilder <C extends SurfaceConfig> extends Sur
     {
         TETHYS_DEFAULT = register("parallel_world:tethys_default", new SkyIslandSurfaceBuilder(TernarySurfaceConfig.CODEC));
         TETHYS_GIANT_TREE_TAIGA = register("parallel_world:giant_tree_taiga", new TethysGiantTreeTaigaSurfaceBuilder(TernarySurfaceConfig.CODEC));
+        //TEST_QUATERNARY = register("parallel_world:test_quaternary", new QuaternarySurfaceBuilder(QuaternarySurfaceConfig.CODEC));
     }
 
     public static void registerConfiguredSurfaceBuilders()

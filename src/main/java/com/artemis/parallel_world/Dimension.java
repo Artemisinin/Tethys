@@ -6,28 +6,19 @@ import com.artemis.parallel_world.item.TethysItems;
 import com.artemis.parallel_world.world.gen.feature.TethysConfiguredFeatures;
 import com.artemis.parallel_world.world.gen.feature.TethysFeatures;
 import com.artemis.parallel_world.world.gen.surfacebuilder.TethysSurfaceBuilder;
-import com.artemis.parallel_world.world.gen.tree.GlowfruitTreeDecorator;
-import com.sun.corba.se.spi.ior.IdentifiableFactory;
 import net.fabricmc.api.ModInitializer;
 
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
-import net.fabricmc.fabric.api.biome.v1.OverworldBiomes;
-import net.fabricmc.fabric.api.biome.v1.OverworldClimate;
 import net.fabricmc.fabric.api.tag.TagRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.tag.Tag;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.BuiltinRegistries;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.util.registry.RegistryKey;
 import net.minecraft.world.biome.Biome;
-import net.minecraft.world.biome.BiomeKeys;
-import net.minecraft.world.biome.BuiltinBiomes;
-import net.minecraft.world.biome.DefaultBiomeCreator;
 import net.minecraft.world.gen.GenerationStep;
-import net.minecraft.world.gen.tree.TreeDecoratorType;
-import org.lwjgl.system.CallbackI;
+
 
 import static net.minecraft.world.biome.BiomeKeys.*;
 

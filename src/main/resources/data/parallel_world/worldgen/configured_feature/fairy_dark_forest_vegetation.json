@@ -39,7 +39,9 @@
           "type": "minecraft:dark_oak_tree"
         },
         "inner": {
-          "config": {},
+          "config": {
+            "heightmap": "MOTION_BLOCKING"
+          },
           "type": "minecraft:heightmap"
         }
       },
