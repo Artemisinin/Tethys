@@ -31,7 +31,7 @@ public class SkyIslandGlowstoneFeature extends Feature<DefaultFeatureConfig> {
             } else {
                 structureWorldAccess.setBlockState(blockPos, Blocks.GLOWSTONE.getDefaultState(), 2);
 
-                for(int i = 0; i < 1500; ++i) {
+                for(int i = 0; i < 800; ++i) {
                     BlockPos blockPos2 = blockPos.add(random.nextInt(8) - random.nextInt(8), -random.nextInt(12), random.nextInt(8) - random.nextInt(8));
                     if (structureWorldAccess.getBlockState(blockPos2).isAir()) {
                         int j = 0;

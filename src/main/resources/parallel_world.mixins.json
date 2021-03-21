@@ -16,6 +16,7 @@
     "PlaceLogsAndLeavesInvoker",
     "SaplingGeneratorMixin",
     "StructureStartMixin",
+    "TreeDecoratorTypeRegisterInvoker",
     "TrunkPlacerMixin",
     "VillageFeatureMixin"
   ],

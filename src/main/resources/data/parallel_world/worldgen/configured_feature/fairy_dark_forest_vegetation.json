@@ -13,11 +13,11 @@
           },
           {
             "feature": "minecraft:dark_oak",
-            "chance": 0.62
+            "chance": 0.10
           },
           {
             "feature": "parallel_world:dark_oak_glowfruit",
-            "chance": 0.05
+            "chance": 0.50
           },
           {
             "feature": "minecraft:birch",

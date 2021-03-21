@@ -1,9 +1,13 @@
 package com.artemis.parallel_world.world.gen.feature;
 
 import com.artemis.parallel_world.block.TethysBlocks;
+import com.artemis.parallel_world.mixin.LeavesBlockMixin;
+import com.artemis.parallel_world.world.gen.tree.GlowfruitTreeDecorator;
 import com.google.common.collect.ImmutableList;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
+import net.minecraft.block.LeavesBlock;
+import net.minecraft.state.property.Properties;
 import net.minecraft.util.math.VerticalSurfaceType;
 import net.minecraft.util.registry.BuiltinRegistries;
 import net.minecraft.util.registry.Registry;
@@ -19,6 +23,7 @@ import net.minecraft.world.gen.feature.size.TwoLayersFeatureSize;
 import net.minecraft.world.gen.foliage.*;
 import net.minecraft.world.gen.placer.SimpleBlockPlacer;
 import net.minecraft.world.gen.stateprovider.SimpleBlockStateProvider;
+import net.minecraft.world.gen.treedecorator.LeavesVineTreeDecorator;
 import net.minecraft.world.gen.trunk.ForkingTrunkPlacer;
 import net.minecraft.world.gen.trunk.LargeOakTrunkPlacer;
 import net.minecraft.world.gen.trunk.StraightTrunkPlacer;
@@ -177,12 +182,12 @@ public class TethysConfiguredFeatures {
                         new BlobFoliagePlacer(UniformIntDistribution.of(2), UniformIntDistribution.of(0), 3),
                         new TwoLayersFeatureSize(0, 0, 0, OptionalInt.of(4)))).build()));
 
-        DARK_OAK_GLOWFRUIT = register("parallel_world:dark_oak_glowfruit", Feature.HUGE_FUNGUS.configure(
-                new HugeFungusFeatureConfig(Blocks.GRASS_BLOCK.getDefaultState(),
-                    Blocks.DARK_OAK_LOG.getDefaultState(),
-                    Blocks.DARK_OAK_LEAVES.getDefaultState(),
-                    TethysBlocks.GLOWFRUIT.getDefaultState(),
-                    false)));
+//        DARK_OAK_GLOWFRUIT = register("parallel_world:dark_oak_glowfruit", Feature.TREE.configure(
+//                (new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(Blocks.DARK_OAK_LOG.getDefaultState()),
+//                        new StraightTrunkPlacer(4,3,2),
+//                        new SimpleBlockStateProvider(Blocks.DARK_OAK_LEAVES.getDefaultState()),
+//                        new BlobFoliagePlacer(UniformIntDistribution.of(3), UniformIntDistribution.of(2),4),
+//                        new TwoLayersFeatureSize(0,0, 1))).ignoreVines().decorators(ImmutableList.of(GlowfruitTreeDecorator.INSTANCE, LeavesVineTreeDecorator.INSTANCE)).build()));
 
         GHOST_TREE = register("parallel_world:ghost_tree", Feature.TREE.configure((new TreeFeatureConfig.Builder
                         (new SimpleBlockStateProvider(Blocks.POLISHED_BASALT.getDefaultState()),

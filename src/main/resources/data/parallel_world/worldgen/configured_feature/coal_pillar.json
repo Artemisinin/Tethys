@@ -6,7 +6,20 @@
 		"xspread": 0,
 		"yspread": 0,
 		"zspread": 0,
-		"whitelist": [],
+		"whitelist": [
+			{
+				"Properties": {},
+				"Name": "minecraft:blackstone"
+			},
+			{
+				"Properties": {},
+				"Name": "minecraft:gravel"
+			},
+			{
+				"Properties": {},
+				"Name": "minecraft:coarse_dirt"
+			}
+		],
 		"blacklist": [],
 		"tries": 20,
 		"state_provider": {
