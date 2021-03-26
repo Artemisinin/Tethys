@@ -39,8 +39,7 @@ public class DarkOceanFloorTreeFeature extends UnlockedTreeFeature {
 
         if (pos.getY() >= world.getBottomY() + 1 && pos.getY() + i + 1 <= world.getTopY()) {
             // Check to make sure there are blocks overhead.
-            //if (!this.canPlaceTreeOn(world, pos.down()) || world.isSkyVisible(pos)) {
-            if (!this.canPlaceTreeOn(world, pos.down()) || world.getLightLevel(pos) == world.getAmbientDarkness()) {
+            if (!this.canPlaceTreeOn(world, pos.down()) || world.getLightLevel(pos) == 0) {
                 return false;
             } else {
                 OptionalInt optionalInt = config.minimumSize.getMinClippedHeight();

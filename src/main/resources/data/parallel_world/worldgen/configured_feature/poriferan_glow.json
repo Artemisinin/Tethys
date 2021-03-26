@@ -48,5 +48,5 @@
       "type": "minecraft:straight_trunk_placer"
     }
   },
-  "type": "minecraft:tree"
+  "type": "parallel_world:dark_ocean_floor_tree"
 }
