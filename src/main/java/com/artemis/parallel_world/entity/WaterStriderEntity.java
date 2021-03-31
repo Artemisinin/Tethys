@@ -9,17 +9,17 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnReason;
 import net.minecraft.entity.ai.NoPenaltyTargeting;
 import net.minecraft.entity.ai.TargetPredicate;
+import net.minecraft.entity.ai.control.MoveControl;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.ai.pathing.*;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.mob.PathAwareEntity;
-import net.minecraft.entity.passive.AnimalEntity;
-import net.minecraft.entity.passive.PassiveEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.Fluid;
-import net.minecraft.server.world.ServerWorld;
+import net.minecraft.fluid.FluidState;
+import net.minecraft.fluid.Fluids;
 import net.minecraft.tag.FluidTags;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
@@ -27,14 +27,14 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
 import net.minecraft.world.WorldView;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.Random;
 
-public class WaterStriderEntity extends AnimalEntity {
+public class WaterStriderEntity extends PathAwareEntity {
     protected WaterStriderEntity(EntityType<? extends WaterStriderEntity> entityType, World world) {
         super(entityType, world);
         this.setPathfindingPenalty(PathNodeType.WATER, 0.0F);
+        this.moveControl = new MoveControl(this);
     }
 
     public static DefaultAttributeContainer.Builder createWaterStriderAttributes() {
@@ -44,7 +44,7 @@ public class WaterStriderEntity extends AnimalEntity {
     protected void initGoals() {
         this.goalSelector.add(1, new WaterStriderEntity.GoBackToWaterGoal(this, 0.3D));
         this.goalSelector.add(2, new FleePlayerGoal(this, PlayerEntity.class, 8.0F, 1.0D, 1.0D));
-        this.goalSelector.add(2, new WaterStriderWanderGoal(this, 1.0D, 60));
+        this.goalSelector.add(2, new WaterStriderWanderGoal(this, 0.8D, 60));
     }
 
     public void tick() {
@@ -54,33 +54,38 @@ public class WaterStriderEntity extends AnimalEntity {
     }
 
     protected EntityNavigation createNavigation(World world) {
-        Navigation striderNav = new Navigation(this, world);
-        return striderNav;
+        return new WaterStriderNavigation(this, world);
     }
 
     public boolean canWalkOnFluid(Fluid fluid) {
         return fluid.isIn(FluidTags.WATER);
     }
 
+    protected void onSwimmingStart() {
+    }
+
     public float getPathfindingFavor(BlockPos pos, WorldView world) {
-        if (world.getBlockState(pos).getFluidState().isIn(FluidTags.WATER)) {
+        if (world.getBlockState(pos).isAir() && world.getBlockState(pos.down()).getFluidState().isIn(FluidTags.WATER)) {
             return 10.0F;
         } else {
-            return this.isInsideWaterOrBubbleColumn() ? -1.0F : 0.0F;
+            return this.isSubmergedInWater() ? Float.NEGATIVE_INFINITY : 0.0F;
         }
     }
 
-    static class Navigation extends MobNavigation {
-        Navigation(WaterStriderEntity entity, World world) {
+    static class WaterStriderNavigation extends MobNavigation {
+        WaterStriderNavigation(WaterStriderEntity entity, World world) {
             super(entity, world);
         }
+
         protected PathNodeNavigator createPathNodeNavigator(int range) {
             this.nodeMaker = new LandPathNodeMaker();
             return new PathNodeNavigator(this.nodeMaker, range);
         }
+
         protected boolean canWalkOnPath(PathNodeType pathType) {
             return pathType == PathNodeType.WATER || super.canWalkOnPath(pathType);
         }
+
         public boolean isValidPosition(BlockPos pos) {
             BlockPos blockPos = pos.down();
             return this.world.getBlockState(blockPos).isOf(Blocks.WATER) || super.isValidPosition(pos);
@@ -91,18 +96,18 @@ public class WaterStriderEntity extends AnimalEntity {
         BlockPos.Mutable mutable = pos.mutableCopy();
         do {
             mutable.move(Direction.UP);
-        } while(world.getFluidState(mutable).isIn(FluidTags.WATER));
+        } while (world.getFluidState(mutable).isIn(FluidTags.WATER));
         return world.getBlockState(mutable).isAir();
     }
 
     private void updateFloating() {
-        if (this.isInsideWaterOrBubbleColumn()) {
-            ShapeContext shapeContext = ShapeContext.of(this);
-            if (shapeContext.isAbove(FluidBlock.COLLISION_SHAPE, this.getBlockPos(), true) && !this.world.getFluidState(this.getBlockPos()).isIn(FluidTags.WATER)) {
-                this.onGround = true;
-            } else {
-                this.setVelocity(this.getVelocity().multiply(0.5D).add(0.0D, 0.05D, 0.0D));
-            }
+        if (world.getBlockState(this.getBlockPos().down()).getFluidState().isIn(FluidTags.WATER) && world.getBlockState(this.getBlockPos()).isAir()) {
+            this.onGround = true;
+            this.setVelocity(getVelocity().add(0.0D, 0.05D, 0.0D));
+        }
+        else if (this.getBlockState().getFluidState().isIn(FluidTags.WATER)) {
+            this.onGround = false;
+            this.setVelocity(getVelocity().add(0.0D, 0.08D, 0.0D));
         }
     }
 
@@ -153,7 +158,7 @@ public class WaterStriderEntity extends AnimalEntity {
         }
 
         public boolean canStart() {
-            this.targetEntity = this.mob.world.getClosestEntity(this.classToFleeFrom, this.withinRangePredicate, this.mob, this.mob.getX(), this.mob.getY(), this.mob.getZ(), this.mob.getBoundingBox().expand((double)this.fleeDistance, 3.0D, (double)this.fleeDistance));
+            this.targetEntity = this.mob.world.getClosestEntity(this.classToFleeFrom, this.withinRangePredicate, this.mob, this.mob.getX(), this.mob.getY(), this.mob.getZ(), this.mob.getBoundingBox().expand((double) this.fleeDistance, 3.0D, (double) this.fleeDistance));
             if (this.targetEntity == null) {
                 return false;
             } else {
@@ -168,11 +173,5 @@ public class WaterStriderEntity extends AnimalEntity {
                 }
             }
         }
-    }
-
-    @Nullable
-    @Override
-    public PassiveEntity createChild(ServerWorld world, PassiveEntity entity) {
-        return null;
     }
 }

@@ -6,7 +6,6 @@
   "mixins": [
     "BlocksMixin",
     "DecoratorRegisterInvoker",
-    "EntityMixin",
     "FeatureMixin",
     "FoliagePlacerMixin",
     "GeodeFeatureMixin",
