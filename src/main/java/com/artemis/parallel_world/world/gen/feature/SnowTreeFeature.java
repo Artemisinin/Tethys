@@ -10,17 +10,20 @@ import net.minecraft.world.TestableWorld;
 import net.minecraft.world.gen.feature.TreeFeature;
 import net.minecraft.world.gen.feature.TreeFeatureConfig;
 import net.minecraft.world.gen.foliage.FoliagePlacer;
-import java.util.*;
+
+import java.util.List;
+import java.util.OptionalInt;
+import java.util.Random;
 import java.util.function.BiConsumer;
 
-public class DarkOceanFloorTreeFeature extends TreeFeature {
+public class SnowTreeFeature extends TreeFeature {
 
-    public DarkOceanFloorTreeFeature(Codec<TreeFeatureConfig> codec) {
+    public SnowTreeFeature(Codec<TreeFeatureConfig> codec) {
         super(codec);
     }
 
     private boolean canPlaceTreeOn(TestableWorld world, BlockPos pos) {
-        return world.testBlockState(pos, (state) -> state.isOf(Blocks.SAND));
+        return world.testBlockState(pos, (state) -> state.isOf(Blocks.SNOW_BLOCK));
     }
 
     @Override
@@ -33,7 +36,7 @@ public class DarkOceanFloorTreeFeature extends TreeFeature {
 
         if (pos.getY() >= world.getBottomY() + 1 && pos.getY() + i + 1 <= world.getTopY()) {
             // Check to make sure there are blocks overhead.
-            if (!this.canPlaceTreeOn(world, pos.down()) || world.getLightLevel(pos) == 0) {
+            if (!this.canPlaceTreeOn(world, pos.down())) {
                 return false;
             } else {
                 OptionalInt optionalInt = config.minimumSize.getMinClippedHeight();

@@ -1,4 +1,5 @@
 accessWidener v1 named
 
 extendable method net/minecraft/world/gen/feature/TreeFeature generate (Lnet/minecraft/world/gen/feature/util/FeatureContext;)Z
+extendable method net/minecraft/world/gen/feature/TreeFeature generate (Lnet/minecraft/world/StructureWorldAccess;Ljava/util/Random;Lnet/minecraft/util/math/BlockPos;Ljava/util/function/BiConsumer;Ljava/util/function/BiConsumer;Lnet/minecraft/world/gen/feature/TreeFeatureConfig;)Z
 accessible method net/minecraft/world/gen/feature/TreeFeatureConfig <init> (Lnet/minecraft/world/gen/stateprovider/BlockStateProvider;Lnet/minecraft/world/gen/trunk/TrunkPlacer;Lnet/minecraft/world/gen/stateprovider/BlockStateProvider;Lnet/minecraft/world/gen/foliage/FoliagePlacer;Lnet/minecraft/world/gen/stateprovider/BlockStateProvider;Lnet/minecraft/world/gen/feature/size/FeatureSize;Ljava/util/List;ZZ)V

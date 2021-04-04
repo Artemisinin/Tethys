@@ -2,7 +2,7 @@
   "config": {
     "feature": {
       "config": {
-			"feature": "parallel_world:spruce_shrub_short",
+			"feature": "parallel_world:snow_spruce_shrub",
 			"decorator": {
 			  "config": {
 				"outer": {
@@ -23,9 +23,31 @@
     },
     "decorator": {
       "config": {
-        "count": 50
+		  "outer": {
+			  "config": {
+				  "bottom_inclusive": {
+					  "absolute": 90
+				  },
+				  "top_inclusive": {
+					  "absolute": 120
+				  }
+			  },
+			  "type": "minecraft:range"
+		  },
+		  "inner": {
+			  "config": {
+				  "count": {
+					  "type": "minecraft:uniform",
+					  "value": {
+						  "min_inclusive": 5,
+						  "max_inclusive": 10
+					  }
+				  }
+			  },
+			  "type": "minecraft:count"
+		  }
       },
-      "type": "minecraft:count_multilayer"
+      "type": "minecraft:decorated"
     }
   },
   "type": "minecraft:decorated"

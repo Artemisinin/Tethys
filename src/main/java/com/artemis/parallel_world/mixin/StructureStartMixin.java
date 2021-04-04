@@ -39,17 +39,18 @@ public class StructureStartMixin<C extends FeatureConfig> {
 
     @Inject(method = "generateStructure", at = @At(value = "INVOKE", target = "Ljava/util/List;iterator()Ljava/util/Iterator;"))
     private void checkAltitude(StructureWorldAccess world, StructureAccessor structureAccessor, ChunkGenerator chunkGenerator, Random random, BlockBox box, ChunkPos chunkPos, CallbackInfo ci) {
-        Iterator iterator = this.children.iterator();
-        while (iterator.hasNext()) {
-            StructurePiece structurePiece = (StructurePiece) iterator.next();
-            if (world.getRegistryManager().get(Registry.DIMENSION_TYPE_KEY).getId(world.getDimension()).equals(new Identifier("parallel_world", "tethys")) &&
-                    this.feature.equals(StructureFeature.VILLAGE)) {
-                if (structurePiece.getBoundingBox().minY < 30) {
-                    iterator.remove();
-                }
-            }
-        }
-        iterator = this.children.iterator();
+//        Iterator iterator = this.children.iterator();
+//        if (world.getRegistryManager().get(Registry.DIMENSION_TYPE_KEY).getId(world.getDimension()).equals(new Identifier("parallel_world", "tethys")) &&
+//                this.feature.equals(StructureFeature.VILLAGE)) {
+//            while (iterator.hasNext()) {
+//                if (this.children.iterator().next().getBoundingBox().getMinY() < 30) {
+//                    iterator.remove();
+//                }
+//            }
+//            if (this.children.isEmpty()) {
+//                return;
+//            } else iterator = this.children.iterator();
+//        } else iterator = this.children.iterator();
     }
 }
 

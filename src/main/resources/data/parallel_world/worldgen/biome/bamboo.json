@@ -184,7 +184,8 @@
         "maxCount": 8
       }
     ],
-	"water_creature": [],
+    "underground_water_creature": [],
+    "water_creature": [],
 	"water_ambient": [
 	  {
 		"type": "minecraft:cod",

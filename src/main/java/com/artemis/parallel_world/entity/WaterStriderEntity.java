@@ -1,12 +1,10 @@
 package com.artemis.parallel_world.entity;
 
-import com.artemis.parallel_world.entity.goal.WaterStriderWanderGoal;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
-import net.minecraft.block.FluidBlock;
-import net.minecraft.block.ShapeContext;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnReason;
+import net.minecraft.entity.ai.FuzzyTargeting;
 import net.minecraft.entity.ai.NoPenaltyTargeting;
 import net.minecraft.entity.ai.TargetPredicate;
 import net.minecraft.entity.ai.control.MoveControl;
@@ -18,8 +16,6 @@ import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.mob.PathAwareEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.Fluid;
-import net.minecraft.fluid.FluidState;
-import net.minecraft.fluid.Fluids;
 import net.minecraft.tag.FluidTags;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
@@ -44,7 +40,7 @@ public class WaterStriderEntity extends PathAwareEntity {
     protected void initGoals() {
         this.goalSelector.add(1, new WaterStriderEntity.GoBackToWaterGoal(this, 0.3D));
         this.goalSelector.add(2, new FleePlayerGoal(this, PlayerEntity.class, 8.0F, 1.0D, 1.0D));
-        this.goalSelector.add(2, new WaterStriderWanderGoal(this, 0.8D, 60));
+        this.goalSelector.add(2, new WaterStriderWanderFarGoal(this, 0.8D));
     }
 
     public void tick() {
@@ -120,6 +116,8 @@ public class WaterStriderEntity extends PathAwareEntity {
         }
     }
 
+    // Goals
+
     static class GoBackToWaterGoal extends MoveToTargetPosGoal {
         private final WaterStriderEntity waterStrider;
 
@@ -151,7 +149,7 @@ public class WaterStriderEntity extends PathAwareEntity {
 
     static class FleePlayerGoal extends FleeEntityGoal<PlayerEntity> {
 
-        private TargetPredicate withinRangePredicate = (new TargetPredicate()).setBaseMaxDistance(this.fleeDistance).setPredicate(inclusionSelector.and(extraInclusionSelector));
+        private final TargetPredicate withinRangePredicate = (new TargetPredicate()).setBaseMaxDistance(this.fleeDistance).setPredicate(inclusionSelector.and(extraInclusionSelector));
 
         public FleePlayerGoal(PathAwareEntity mob, Class<PlayerEntity> fleeFromType, float distance, double slowSpeed, double fastSpeed) {
             super(mob, fleeFromType, distance, slowSpeed, fastSpeed);
@@ -172,6 +170,18 @@ public class WaterStriderEntity extends PathAwareEntity {
                     return this.fleePath != null;
                 }
             }
+        }
+    }
+
+    static class WaterStriderWanderFarGoal extends WanderAroundFarGoal {
+
+        public WaterStriderWanderFarGoal(PathAwareEntity mob, double speed) {
+            super(mob, speed);
+        }
+
+        protected Vec3d getWanderTarget() {
+            Vec3d vec3d = FuzzyTargeting.find(this.mob, 15, 0);
+            return vec3d == null ? super.getWanderTarget() : vec3d;
         }
     }
 }

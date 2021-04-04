@@ -1,12 +1,10 @@
 {
   "replace": false,
   "values": [
+    "#minecraft:dirt",
     "minecraft:farmland",
-    "minecraft:dirt",
-    "minecraft:coarse_dirt",
     "minecraft:grass_block",
     "minecraft:mycelium",
-    "minecraft:podzol",
     "minecraft:moss_block"
   ]
 }

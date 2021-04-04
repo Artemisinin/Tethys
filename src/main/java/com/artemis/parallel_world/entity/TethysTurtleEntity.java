@@ -13,20 +13,16 @@ import net.minecraft.entity.ai.TargetPredicate;
 import net.minecraft.entity.ai.control.MoveControl;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.ai.pathing.*;
-import net.minecraft.entity.attribute.DefaultAttributeContainer.Builder;
 import net.minecraft.entity.attribute.EntityAttributes;
-import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.data.DataTracker;
 import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.data.TrackedDataHandlerRegistry;
-import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.passive.PassiveEntity;
+import net.minecraft.entity.passive.TurtleEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
@@ -48,7 +44,7 @@ import java.util.Random;
 import java.util.Set;
 import java.util.function.Predicate;
 
-public class TethysTurtleEntity extends AnimalEntity {
+public class TethysTurtleEntity extends TurtleEntity {
 
     public TethysTurtleEntity(EntityType<? extends TethysTurtleEntity> entityType, World world) {
         super(entityType, world);
@@ -57,23 +53,34 @@ public class TethysTurtleEntity extends AnimalEntity {
         this.stepHeight = 1.0F;
     }
 
-    private static final TrackedData<BlockPos> HOME_POS;
-    private static final TrackedData<Boolean> HAS_EGG;
-    private static final TrackedData<Boolean> DIGGING_SAND;
-    private static final TrackedData<BlockPos> TRAVEL_POS;
-    private static final TrackedData<Boolean> LAND_BOUND;
-    private static final TrackedData<Boolean> ACTIVELY_TRAVELLING;
+    private static final TrackedData<BlockPos> HOME_POS = DataTracker.registerData(TethysTurtleEntity.class, TrackedDataHandlerRegistry.BLOCK_POS);
+    private static final TrackedData<Boolean> HAS_EGG = DataTracker.registerData(TethysTurtleEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
+    private static final TrackedData<Boolean> DIGGING_SAND = DataTracker.registerData(TethysTurtleEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
+    private static final TrackedData<BlockPos> TRAVEL_POS = DataTracker.registerData(TethysTurtleEntity.class, TrackedDataHandlerRegistry.BLOCK_POS);
+    private static final TrackedData<Boolean> LAND_BOUND = DataTracker.registerData(TethysTurtleEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
+    private static final TrackedData<Boolean> ACTIVELY_TRAVELLING = DataTracker.registerData(TethysTurtleEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
     private int sandDiggingCounter;
-    public static final Predicate<LivingEntity> BABY_TURTLE_ON_LAND_FILTER;
 
-    static {
-        HOME_POS = DataTracker.registerData(TethysTurtleEntity.class, TrackedDataHandlerRegistry.BLOCK_POS);
-        HAS_EGG = DataTracker.registerData(TethysTurtleEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
-        DIGGING_SAND = DataTracker.registerData(TethysTurtleEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
-        TRAVEL_POS = DataTracker.registerData(TethysTurtleEntity.class, TrackedDataHandlerRegistry.BLOCK_POS);
-        LAND_BOUND = DataTracker.registerData(TethysTurtleEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
-        ACTIVELY_TRAVELLING = DataTracker.registerData(TethysTurtleEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
-        BABY_TURTLE_ON_LAND_FILTER = (livingEntity) -> livingEntity.isBaby() && !livingEntity.isTouchingWater();
+    @Nullable
+    @Override
+    public PassiveEntity createChild(ServerWorld world, PassiveEntity entity) {
+        return TethysEntities.TETHYS_TURTLE.create(world);
+    }
+
+    public static boolean isValidNaturalSpawn(EntityType<? extends AnimalEntity> type, WorldAccess world, SpawnReason spawnReason, BlockPos pos, Random random) {
+        return pos.getY() < 25 && TethysTurtleEggBlock.isSand(world, pos) && world.getBaseLightLevel(pos, 0) > 8;
+    }
+
+    protected void initGoals() {
+        this.goalSelector.add(0, new TethysTurtleEntity.TurtleEscapeDangerGoal(this, 1.2D));
+        this.goalSelector.add(1, new TethysTurtleEntity.MateGoal(this, 1.0D));
+        this.goalSelector.add(1, new TethysTurtleEntity.LayEggGoal(this, 1.0D));
+        this.goalSelector.add(2, new TethysTurtleEntity.ApproachFoodHoldingPlayerGoal(this, 1.1D, Blocks.SEAGRASS.asItem()));
+        this.goalSelector.add(3, new TethysTurtleEntity.WanderInWaterGoal(this, 1.0D));
+        this.goalSelector.add(4, new TethysTurtleEntity.GoHomeGoal(this, 1.0D));
+        this.goalSelector.add(7, new TethysTurtleEntity.TravelGoal(this, 1.0D));
+        this.goalSelector.add(8, new LookAtEntityGoal(this, PlayerEntity.class, 8.0F));
+        this.goalSelector.add(9, new TethysTurtleEntity.WanderOnLandGoal(this, 1.0D, 100));
     }
 
     public void setHomePos(BlockPos pos) {
@@ -81,7 +88,7 @@ public class TethysTurtleEntity extends AnimalEntity {
     }
 
     private BlockPos getHomePos() {
-        return this.dataTracker.get(HOME_POS);
+        return (BlockPos)this.dataTracker.get(HOME_POS);
     }
 
     private void setTravelPos(BlockPos pos) {
@@ -112,7 +119,6 @@ public class TethysTurtleEntity extends AnimalEntity {
     private boolean isLandBound() {
         return this.dataTracker.get(LAND_BOUND);
     }
-
     private void setLandBound(boolean landBound) {
         this.dataTracker.set(LAND_BOUND, landBound);
     }
@@ -125,135 +131,13 @@ public class TethysTurtleEntity extends AnimalEntity {
         this.dataTracker.set(ACTIVELY_TRAVELLING, travelling);
     }
 
-    protected void initDataTracker() {
-        super.initDataTracker();
-        this.dataTracker.startTracking(HOME_POS, BlockPos.ORIGIN);
-        this.dataTracker.startTracking(HAS_EGG, false);
-        this.dataTracker.startTracking(TRAVEL_POS, BlockPos.ORIGIN);
-        this.dataTracker.startTracking(LAND_BOUND, false);
-        this.dataTracker.startTracking(ACTIVELY_TRAVELLING, false);
-        this.dataTracker.startTracking(DIGGING_SAND, false);
-    }
-
-    public void writeCustomDataToNbt(CompoundTag tag) {
-        super.writeCustomDataToNbt(tag);
-        tag.putInt("HomePosX", this.getHomePos().getX());
-        tag.putInt("HomePosY", this.getHomePos().getY());
-        tag.putInt("HomePosZ", this.getHomePos().getZ());
-        tag.putBoolean("HasEgg", this.hasEgg());
-        tag.putInt("TravelPosX", this.getTravelPos().getX());
-        tag.putInt("TravelPosY", this.getTravelPos().getY());
-        tag.putInt("TravelPosZ", this.getTravelPos().getZ());
-    }
-
-    public void readCustomDataFromNbt(CompoundTag tag) {
-        int i = tag.getInt("HomePosX");
-        int j = tag.getInt("HomePosY");
-        int k = tag.getInt("HomePosZ");
-        this.setHomePos(new BlockPos(i, j, k));
-        super.readCustomDataFromNbt(tag);
-        this.setHasEgg(tag.getBoolean("HasEgg"));
-        int l = tag.getInt("TravelPosX");
-        int m = tag.getInt("TravelPosY");
-        int n = tag.getInt("TravelPosZ");
-        this.setTravelPos(new BlockPos(l, m, n));
-    }
-
-    @Nullable
-    public EntityData initialize(ServerWorldAccess world, LocalDifficulty difficulty, SpawnReason spawnReason, @Nullable EntityData entityData, @Nullable CompoundTag entityTag) {
-        this.setHomePos(this.getBlockPos());
-        this.setTravelPos(BlockPos.ORIGIN);
-        return super.initialize(world, difficulty, spawnReason, entityData, entityTag);
-    }
-
-    @Nullable
-    @Override
-    public PassiveEntity createChild(ServerWorld world, PassiveEntity entity) {
-        return TethysEntities.TETHYS_TURTLE.create(world);
-    }
-
-    public static boolean isValidNaturalSpawn(EntityType<? extends AnimalEntity> type, WorldAccess world, SpawnReason spawnReason, BlockPos pos, Random random) {
-        return pos.getY() < 25 && TethysTurtleEggBlock.isSand(world, pos) && world.getBaseLightLevel(pos, 0) > 8;
-    }
-
-    protected void initGoals() {
-        this.goalSelector.add(0, new TethysTurtleEntity.TurtleEscapeDangerGoal(this, 1.2D));
-        this.goalSelector.add(1, new TethysTurtleEntity.MateGoal(this, 1.0D));
-        this.goalSelector.add(1, new TethysTurtleEntity.LayEggGoal(this, 1.0D));
-        this.goalSelector.add(2, new TethysTurtleEntity.ApproachFoodHoldingPlayerGoal(this, 1.1D, Blocks.SEAGRASS.asItem()));
-        this.goalSelector.add(3, new TethysTurtleEntity.WanderInWaterGoal(this, 1.0D));
-        this.goalSelector.add(4, new TethysTurtleEntity.GoHomeGoal(this, 1.0D));
-        this.goalSelector.add(7, new TethysTurtleEntity.TravelGoal(this, 1.0D));
-        this.goalSelector.add(8, new LookAtEntityGoal(this, PlayerEntity.class, 8.0F));
-        this.goalSelector.add(9, new TethysTurtleEntity.WanderOnLandGoal(this, 1.0D, 100));
-    }
-
-    public static Builder createTurtleAttributes() {
-        return MobEntity.createMobAttributes().add(EntityAttributes.GENERIC_MAX_HEALTH, 30.0D).add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.25D);
-    }
-
-    public boolean canFly() {
-        return false;
-    }
-
-    public boolean canBreatheInWater() {
-        return true;
-    }
-
-    public EntityGroup getGroup() {
-        return EntityGroup.AQUATIC;
-    }
-
-    public int getMinAmbientSoundDelay() {
-        return 200;
-    }
-
     @Nullable
     protected SoundEvent getAmbientSound() {
         return !this.isTouchingWater() && this.onGround && !this.isBaby() ? SoundEvents.ENTITY_TURTLE_AMBIENT_LAND : super.getAmbientSound();
     }
 
-    protected void playSwimSound(float volume) {
-        super.playSwimSound(volume * 1.5F);
-    }
-
-    protected SoundEvent getSwimSound() {
-        return SoundEvents.ENTITY_TURTLE_SWIM;
-    }
-
-    @Nullable
-    protected SoundEvent getHurtSound(DamageSource source) {
-        return this.isBaby() ? SoundEvents.ENTITY_TURTLE_HURT_BABY : SoundEvents.ENTITY_TURTLE_HURT;
-    }
-
-    @Nullable
-    protected SoundEvent getDeathSound() {
-        return this.isBaby() ? SoundEvents.ENTITY_TURTLE_DEATH_BABY : SoundEvents.ENTITY_TURTLE_DEATH;
-    }
-
-    protected void playStepSound(BlockPos pos, BlockState state) {
-        SoundEvent soundEvent = this.isBaby() ? SoundEvents.ENTITY_TURTLE_SHAMBLE_BABY : SoundEvents.ENTITY_TURTLE_SHAMBLE;
-        this.playSound(soundEvent, 0.15F, 1.0F);
-    }
-
-    public boolean canEat() {
-        return super.canEat() && !this.hasEgg();
-    }
-
-    protected float calculateNextStepSoundDistance() {
-        return this.distanceTraveled + 0.15F;
-    }
-
-    public float getScaleFactor() {
-        return this.isBaby() ? 0.3F : 1.0F;
-    }
-
     protected EntityNavigation createNavigation(World world) {
         return new TethysTurtleEntity.TurtleSwimNavigation(this, world);
-    }
-
-    public boolean isBreedingItem(ItemStack stack) {
-        return stack.getItem() == Blocks.SEAGRASS.asItem();
     }
 
     public float getPathfindingFavor(BlockPos pos, WorldView world) {
@@ -264,6 +148,7 @@ public class TethysTurtleEntity extends AnimalEntity {
         }
     }
 
+    @Override
     public void tickMovement() {
         super.tickMovement();
         if (this.isAlive() && this.isDiggingSand() && this.sandDiggingCounter >= 1 && this.sandDiggingCounter % 5 == 0) {
@@ -274,13 +159,7 @@ public class TethysTurtleEntity extends AnimalEntity {
         }
     }
 
-    protected void onGrowUp() {
-        super.onGrowUp();
-        if (!this.isBaby() && this.world.getGameRules().getBoolean(GameRules.DO_MOB_LOOT)) {
-            this.dropItem(Items.SCUTE, 1);
-        }
-    }
-
+    @Override
     public void travel(Vec3d movementInput) {
         if (this.canMoveVoluntarily() && this.isTouchingWater()) {
             this.updateVelocity(0.1F, movementInput);
@@ -292,14 +171,6 @@ public class TethysTurtleEntity extends AnimalEntity {
         } else {
             super.travel(movementInput);
         }
-    }
-
-    public boolean canBeLeashedBy(PlayerEntity player) {
-        return false;
-    }
-
-    public void onStruckByLightning(ServerWorld world, LightningEntity lightning) {
-        this.damage(DamageSource.LIGHTNING_BOLT, 3.4F);
     }
 
     static class TurtleSwimNavigation extends SwimNavigation {
@@ -350,6 +221,7 @@ public class TethysTurtleEntity extends AnimalEntity {
             }
         }
 
+        @Override
         public void tick() {
             this.updateVelocity();
             if (this.state == State.MOVE_TO && !this.turtle.getNavigation().isIdle()) {
@@ -358,7 +230,7 @@ public class TethysTurtleEntity extends AnimalEntity {
                 double f = this.targetZ - this.turtle.getZ();
                 double g = MathHelper.sqrt(d * d + e * e + f * f);
                 e /= g;
-                float h = (float)(MathHelper.atan2(f, d) * 57.2957763671875D) - 90.0F;
+                float h = (float)(MathHelper.atan2(f, d) * 57.3D) - 90.0F;
                 this.turtle.yaw = this.changeAngle(this.turtle.yaw, h, 90.0F);
                 this.turtle.bodyYaw = this.turtle.yaw;
                 float i = (float)(this.speed * this.turtle.getAttributeValue(EntityAttributes.GENERIC_MOVEMENT_SPEED));

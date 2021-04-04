@@ -7,7 +7,7 @@
 		"Name": "minecraft:snow_block"
     },
     "underwater_material": {
-      "Name": "minecraft:ice"
+      "Name": "minecraft:gravel"
     }    
   },
   "type": "parallel_world:tethys_default"

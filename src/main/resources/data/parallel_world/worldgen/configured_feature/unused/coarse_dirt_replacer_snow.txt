@@ -16,8 +16,11 @@
 									"Name": "minecraft:snow"
 								},
 								"radius": {
-									"base": 120,
-									"spread": 5
+									"type": "minecraft:uniform",
+									"value": {
+										"min_inclusive": 120,
+										"max_inclusive": 125
+									}
 								}
 							},
 							"type": "minecraft:netherrack_replace_blobs"

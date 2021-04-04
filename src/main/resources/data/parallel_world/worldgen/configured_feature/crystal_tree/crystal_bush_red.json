@@ -2,7 +2,7 @@
   "config": {
     "decorators": [],
     "ignore_vines": false,
-    "force_dirt": true,
+    "force_dirt": false,
     "dirt_provider": {
       "state": {
         "Name": "minecraft:snow_block"
@@ -47,5 +47,5 @@
       "type": "minecraft:straight_trunk_placer"
     }
   },
-  "type": "minecraft:tree"
+  "type": "parallel_world:snow_tree"
 }

@@ -2,18 +2,20 @@
   "config": {
     "decorators": [],
     "ignore_vines": true,
-    "force_dirt": false,
+    "force_dirt": true,
     "dirt_provider": {
       "state": {
-        "Name": "minecraft:snow_block"
+        "Properties": {
+          "axis": "y"
+        },
+        "Name": "minecraft:spruce_log"
       },
       "type": "minecraft:simple_state_provider"
     },
     "minimum_size": {
-      "limit": 0,
+      "limit": 2,
       "lower_size": 0,
-      "upper_size": 0,
-      "min_clipped_height": 4,
+      "upper_size": 2,
       "type": "minecraft:two_layers_feature_size"
     },
     "trunk_provider": {
@@ -21,31 +23,38 @@
         "Properties": {
           "axis": "y"
         },
-        "Name": "parallel_world:blue_calcite_log"
+        "Name": "minecraft:spruce_log"
       },
       "type": "minecraft:simple_state_provider"
+    },
+    "trunk_placer": {
+      "base_height": 6,
+      "height_rand_a": 4,
+      "height_rand_b": 0,
+      "type": "minecraft:straight_trunk_placer"
     },
     "foliage_provider": {
       "state": {
         "Properties": {
+          "waterlogged": "false",
           "persistent": "false",
           "distance": "7"
         },
-        "Name": "minecraft:glass"
+        "Name": "minecraft:spruce_leaves"
       },
       "type": "minecraft:simple_state_provider"
     },
     "foliage_placer": {
-      "radius": 3,
-      "offset": 4,
-      "height": 4,
-      "type": "minecraft:fancy_foliage_placer"
-    },
-    "trunk_placer": {
-      "base_height": 3,
-      "height_rand_a": 11,
-      "height_rand_b": 0,
-      "type": "minecraft:fancy_trunk_placer"
+      "radius": 1,
+      "offset": 1,
+      "height": {
+        "type": "minecraft:uniform",
+        "value": {
+          "min_inclusive": 3,
+          "max_inclusive": 4
+        }
+      },
+      "type": "minecraft:pine_foliage_placer"
     }
   },
   "type": "parallel_world:snow_tree"

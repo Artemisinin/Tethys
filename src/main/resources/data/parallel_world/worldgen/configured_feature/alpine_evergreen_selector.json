@@ -1,0 +1,20 @@
+{
+  "config": {
+    "features": [
+      {
+        "feature": "parallel_world:snow_pine",
+        "chance": 0.50
+      },
+      {
+        "feature": "parallel_world:snow_spruce",
+        "chance": 0.30
+      },
+      {
+        "feature": "parallel_world:snow_spruce_shrub",
+        "chance": 0.10
+      }
+    ],
+    "default": "parallel_world:snow_pine"
+  },
+  "type": "minecraft:random_selector"
+}

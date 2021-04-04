@@ -2,7 +2,7 @@
   "config": {
     "decorators": [],
     "ignore_vines": true,
-    "force_dirt": true,
+    "force_dirt": false,
     "dirt_provider": {
       "state": {
         "Name": "minecraft:snow_block"
@@ -38,8 +38,11 @@
 		"radius": 1,
 		"offset": 0,		
 		"height": {
-			"base": 4,
-			"spread": 2
+          "type": "minecraft:uniform",
+          "value": {
+            "min_inclusive": 3,
+            "max_inclusive": 4
+          }
 		},
       "type": "minecraft:pine_foliage_placer"
     },
@@ -50,5 +53,5 @@
       "type": "minecraft:straight_trunk_placer"
     }
   },
-  "type": "minecraft:tree"
+  "type": "parallel_world:snow_tree"
 }

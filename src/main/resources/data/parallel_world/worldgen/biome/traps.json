@@ -34,7 +34,7 @@
     [],
     [
       "parallel_world:traps_lava",
-      "parallel_world:traps_columns"
+      "minecraft:small_basalt_columns"
     ],
     [],
     [
@@ -119,6 +119,7 @@
         "maxCount": 8
       }
     ],
+    "underground_water_creature": [],
     "water_creature": [],
 		"water_ambient": [
 		  {

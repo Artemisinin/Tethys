@@ -23,30 +23,25 @@
     [
       "parallel_world:seagen/seabed_sandstone",
       "parallel_world:seagen/seabed_sand"
-	],
+    ],
     [
       "minecraft:lake_water",
       "minecraft:lake_lava"
     ],
-    [
-	  "parallel_world:coarse_dirt_blobs_noycap"
-	],
+    [],
     [
       "minecraft:amethyst_geode",
       "minecraft:monster_room"
     ],
     [
-      "parallel_world:crystal_forest_vegetation",
-      "parallel_world:scattered_poriferans_glowing",
-      "minecraft:glow_lichen",
-	  "minecraft:pile_snow",
-	  "minecraft:pile_ice",
-	  "minecraft:ice_patch"
-	],
+      "minecraft:pile_snow",
+      "minecraft:pile_ice",
+      "minecraft:ice_patch",
+      "parallel_world:scattered_diorite"
+    ],
     [],
     [
-	  "parallel_world:coarse_dirt_replacer_snow",
-	  "minecraft:ore_dirt",
+      "minecraft:ore_dirt",
       "minecraft:ore_gravel",
       "minecraft:ore_granite",
       "minecraft:ore_diorite",
@@ -59,19 +54,20 @@
       "minecraft:disk_clay",
       "minecraft:disk_gravel"
     ],
+    [],
     [
-	  "parallel_world:scattered_diorite"
-	],
-    [
-	  "minecraft:kelp_cold"
+      "parallel_world:crystal_forest_vegetation",
+      "parallel_world:scattered_poriferans_glowing",
+      "minecraft:glow_lichen",
+      "minecraft:kelp_cold"
     ],
     [
       "minecraft:freeze_top_layer"
     ]
   ],
-  "starts": [ 		
-	"minecraft:village_taiga"
-	],
+  "starts": [
+    "minecraft:village_taiga"
+  ],
   "spawners": {
     "monster": [
       {
@@ -139,28 +135,29 @@
         "maxCount": 8
       }
     ],
-		"water_creature": [
-		  {
-			"type": "minecraft:squid",
-			"weight": 10,
-			"minCount": 4,
-			"maxCount": 4
-		  }
-		],
-		"water_ambient": [
-		  {
-			"type": "minecraft:cod",
-			"weight": 15,
-			"minCount": 1,
-			"maxCount": 3
-		  },
-		  {
-			"type": "minecraft:salmon",
-			"weight": 25,
-			"minCount": 8,
-			"maxCount": 8
-		  }
-	],
+    "underground_water_creature": [],
+    "water_creature": [
+      {
+        "type": "minecraft:squid",
+        "weight": 10,
+        "minCount": 4,
+        "maxCount": 4
+      }
+    ],
+    "water_ambient": [
+      {
+        "type": "minecraft:cod",
+        "weight": 15,
+        "minCount": 1,
+        "maxCount": 3
+      },
+      {
+        "type": "minecraft:salmon",
+        "weight": 25,
+        "minCount": 8,
+        "maxCount": 8
+      }
+    ],
     "misc": []
   },
   "spawn_costs": {},

@@ -19,8 +19,11 @@
                   "Name": "minecraft:shroomlight"
                 },
                 "radius": {
-                  "base": 0,
-                  "spread": 0
+                  "type": "minecraft:uniform",
+                  "value": {
+                    "min_inclusive": 0,
+                    "max_inclusive": 0
+                  }
                 }
               },
               "type": "minecraft:netherrack_replace_blobs"

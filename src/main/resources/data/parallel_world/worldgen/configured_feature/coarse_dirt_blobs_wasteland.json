@@ -15,8 +15,11 @@
                   "Name": "minecraft:coarse_dirt"
                 },
                 "radius": {
-                  "base": 1,
-                  "spread": 2
+                  "type": "minecraft:uniform",
+                  "value": {
+                    "min_inclusive": 1,
+                    "max_inclusive": 3
+                  }
                 }
               },
               "type": "minecraft:netherrack_replace_blobs"
