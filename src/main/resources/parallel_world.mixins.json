@@ -7,7 +7,6 @@
     "DecoratorRegisterInvoker",
     "FeatureMixin",
     "FoliagePlacerMixin",
-    "GeodeFeatureMixin",
     "GetTopPositionInvoker",
     "IcebergFeatureMixin",
     "LargeTreeSaplingGeneratorMixin",

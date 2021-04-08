@@ -27,7 +27,7 @@ import java.util.List;
 import java.util.Random;
 
 @Mixin(StructureStart.class)
-public class StructureStartMixin<C extends FeatureConfig> {
+public final class StructureStartMixin<C extends FeatureConfig> {
 
     @Final
     @Shadow

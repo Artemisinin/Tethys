@@ -27,7 +27,6 @@ import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.decorator.Decorator;
 import net.minecraft.world.gen.treedecorator.TreeDecoratorType;
-import net.minecraft.world.gen.trunk.TrunkPlacerType;
 
 
 import static net.minecraft.world.biome.BiomeKeys.*;
