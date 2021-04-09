@@ -5,6 +5,7 @@ import com.artemis.parallel_world.entity.TethysEntities;
 import com.artemis.parallel_world.item.TethysItems;
 import com.artemis.parallel_world.mixin.DecoratorRegisterInvoker;
 import com.artemis.parallel_world.mixin.TreeDecoratorTypeRegisterInvoker;
+import com.artemis.parallel_world.world.gen.TethysBiomes;
 import com.artemis.parallel_world.world.gen.decorator.WaterMaxDepthDecorator;
 import com.artemis.parallel_world.world.gen.decorator.WaterMaxDepthDecoratorConfig;
 import com.artemis.parallel_world.world.gen.decorator.WaterMinDepthDecorator;
@@ -48,6 +49,7 @@ public class Dimension implements ModInitializer {
         //CustomPortalApiRegistry.addPortal(Blocks.POLISHED_BLACKSTONE, PortalIgnitionSource.WATER, new Identifier("parallel_world", "tethys"), 23, 140, 176);
 
         // Register many things
+        TethysBiomes.registerBiomes();
         TethysBlocks.registerBlocks();
         TethysItems.registerItems();
         TethysBlocks.registerFlammability();

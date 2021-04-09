@@ -35,9 +35,8 @@ public abstract class TethysSurfaceBuilder <C extends SurfaceConfig> extends Sur
         return BuiltinRegistries.add(BuiltinRegistries.CONFIGURED_SURFACE_BUILDER, id, configuredSurfaceBuilder);
     }
 
-
     @Override
-    public void generate(Random random, Chunk chunk, Biome biome, int x, int z, int height, double noise, BlockState defaultBlock, BlockState defaultFluid, int seaLevel, long seed, SurfaceConfig surfaceBlocks) {
+    public void generate(Random random, Chunk chunk, Biome biome, int x, int z, int height, double noise, BlockState defaultBlock, BlockState defaultFluid, int seaLevel, int i, long seed, SurfaceConfig surfaceBlocks) {
     }
 
     public static void registerSurfaceBuilders()

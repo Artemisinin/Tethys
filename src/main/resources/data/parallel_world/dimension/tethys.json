@@ -15,7 +15,7 @@
 					"temperature": 0.0,
 					"humidity": 0.1
 					},
-				"biome": "parallel_world:rainbow"
+				"biome": "parallel_world:rainbow_forest"
 				},
 				{
 				"parameters": {
@@ -115,7 +115,7 @@
 					"temperature": 0.5,
 					"humidity": 0.5
 					},
-				"biome": "parallel_world:bamboo"						
+				"biome": "parallel_world:bamboo_forest"
 				},
 				{
 				"parameters": {

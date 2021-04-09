@@ -1,0 +1,179 @@
+{
+	"scale": 0.2,
+	"effects": {
+		"mood_sound": {
+			"sound": "minecraft:ambient.cave",
+			"tick_delay": 6000,
+			"block_search_extent": 8,
+			"offset": 2.0
+		},
+		"fog_color": 16044543,
+		"foliage_color": 909403,
+		"grass_color": 16745885,
+		"sky_color": 12761594,
+		"water_color": 8155391,
+		"water_fog_color": 8992511,
+		"grass_color_modifier": "none"
+	},
+	"surface_builder": "parallel_world:default",
+	"carvers": {
+		"air": [
+			"minecraft:cave",
+			"minecraft:canyon"
+		]
+	},
+	"features": [
+		[
+			"parallel_world:seagen/seabed_sandstone",
+			"parallel_world:seagen/seabed_sand"
+		],
+		[
+			"minecraft:lake_water"
+		],
+		[],
+		[
+			"minecraft:amethyst_geode",
+			"minecraft:monster_room"
+		],
+		[],
+		[],
+		[
+			"minecraft:ore_dirt",
+			"minecraft:ore_gravel",
+			"minecraft:ore_granite",
+			"minecraft:ore_diorite",
+			"minecraft:ore_andesite",
+			"minecraft:ore_coal_lower",
+			"minecraft:ore_iron_middle",
+			"minecraft:ore_copper",
+			"minecraft:ore_gold_extra",
+			"minecraft:ore_lapis_buried",
+			"minecraft:disk_sand",
+			"minecraft:disk_clay",
+			"minecraft:disk_gravel"
+		],
+		[
+			"parallel_world:ore_copper_andesite",
+			"parallel_world:ore_copper_diorite",
+			"parallel_world:ore_copper_granite",
+			"parallel_world:pink_diamond_ore_tethys"
+		],
+		[
+			"parallel_world:rainbow_vegetation",
+			"parallel_world:sky_island_glowstone",
+			"minecraft:glow_lichen",
+			"minecraft:warm_ocean_vegetation",
+			"minecraft:forest_flower_vegetation_common",
+			"minecraft:patch_tall_grass_2",
+			"minecraft:plain_vegetation",
+			"minecraft:flower_plain_decorated",
+			"minecraft:patch_grass_plain",
+			"minecraft:brown_mushroom_normal",
+			"minecraft:red_mushroom_normal",
+			"minecraft:patch_pumpkin",
+			"minecraft:spring_water",
+			"minecraft:spring_lava",
+			"minecraft:seagrass_warm",
+			"minecraft:sea_pickle"
+		],
+		[
+			"minecraft:freeze_top_layer"
+		]
+	],
+	"starts": [
+		"minecraft:village_taiga",
+		"minecraft:stronghold"
+	],
+	"spawners": {
+		"monster": [],
+		"creature": [
+			{
+				"type": "parallel_world:flying_cat",
+				"weight": 8,
+				"minCount": 2,
+				"maxCount": 4
+			},
+			{
+				"type": "minecraft:sheep",
+				"weight": 12,
+				"minCount": 4,
+				"maxCount": 4
+			},
+			{
+				"type": "minecraft:pig",
+				"weight": 10,
+				"minCount": 4,
+				"maxCount": 4
+			},
+			{
+				"type": "minecraft:chicken",
+				"weight": 10,
+				"minCount": 4,
+				"maxCount": 4
+			},
+			{
+				"type": "minecraft:cow",
+				"weight": 8,
+				"minCount": 4,
+				"maxCount": 4
+			},
+			{
+				"type": "minecraft:chicken",
+				"weight": 10,
+				"minCount": 4,
+				"maxCount": 4
+			},
+			{
+				"type": "minecraft:parrot",
+				"weight": 40,
+				"minCount": 1,
+				"maxCount": 2
+			}
+		],
+		"ambient": [
+			{
+				"type": "minecraft:bat",
+				"weight": 10,
+				"minCount": 8,
+				"maxCount": 8
+			}
+		],
+		"underground_water_creature": [],
+		"water_creature": [
+			{
+				"type": "minecraft:squid",
+				"weight": 10,
+				"minCount": 4,
+				"maxCount": 4
+			},
+			{
+				"type": "minecraft:dolphin",
+				"weight": 2,
+				"minCount": 1,
+				"maxCount": 2
+			}
+		],
+		"water_ambient": [
+			{
+				"type": "minecraft:pufferfish",
+				"weight": 15,
+				"minCount": 1,
+				"maxCount": 3
+			},
+			{
+				"type": "minecraft:tropical_fish",
+				"weight": 25,
+				"minCount": 8,
+				"maxCount": 8
+			}
+		],
+		"misc": []
+	},
+	"spawn_costs": {},
+	"player_spawn_friendly": true,
+	"precipitation": "rain",
+	"category":"plains",
+	"depth": 0.3,
+	"temperature": 0.95,
+	"downfall": 1
+}

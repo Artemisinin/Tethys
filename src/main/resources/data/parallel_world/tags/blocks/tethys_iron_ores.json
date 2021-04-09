@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "parallel_world:iron_ore_andesite",
+    "parallel_world:iron_ore_diorite",
+    "parallel_world:iron_ore_granite"
+  ]
+}

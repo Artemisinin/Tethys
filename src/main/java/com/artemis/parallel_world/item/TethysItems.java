@@ -35,6 +35,17 @@ public class TethysItems {
         Registry.register(Registry.ITEM, new Identifier("parallel_world", "pink_mushroom_block"), new BlockItem(PINK_MUSHROOM_BLOCK, new Item.Settings().group(ItemGroup.DECORATIONS)));
         Registry.register(Registry.ITEM, new Identifier("parallel_world", "white_mushroom_block"), new BlockItem(WHITE_MUSHROOM_BLOCK, new Item.Settings().group(ItemGroup.DECORATIONS)));
 
+        // Ores
+        Registry.register(Registry.ITEM, new Identifier("parallel_world", "copper_ore_andesite"), new BlockItem(COPPER_ORE_ANDESITE, new Item.Settings().group(ItemGroup.BUILDING_BLOCKS)));
+        Registry.register(Registry.ITEM, new Identifier("parallel_world", "copper_ore_diorite"), new BlockItem(COPPER_ORE_DIORITE, new Item.Settings().group(ItemGroup.BUILDING_BLOCKS)));
+        Registry.register(Registry.ITEM, new Identifier("parallel_world", "copper_ore_granite"), new BlockItem(COPPER_ORE_GRANITE, new Item.Settings().group(ItemGroup.BUILDING_BLOCKS)));
+        Registry.register(Registry.ITEM, new Identifier("parallel_world", "gold_ore_andesite"), new BlockItem(GOLD_ORE_ANDESITE, new Item.Settings().group(ItemGroup.BUILDING_BLOCKS)));
+        Registry.register(Registry.ITEM, new Identifier("parallel_world", "gold_ore_diorite"), new BlockItem(GOLD_ORE_DIORITE, new Item.Settings().group(ItemGroup.BUILDING_BLOCKS)));
+        Registry.register(Registry.ITEM, new Identifier("parallel_world", "gold_ore_granite"), new BlockItem(GOLD_ORE_GRANITE, new Item.Settings().group(ItemGroup.BUILDING_BLOCKS)));
+        Registry.register(Registry.ITEM, new Identifier("parallel_world", "iron_ore_andesite"), new BlockItem(IRON_ORE_ANDESITE, new Item.Settings().group(ItemGroup.BUILDING_BLOCKS)));
+        Registry.register(Registry.ITEM, new Identifier("parallel_world", "iron_ore_diorite"), new BlockItem(IRON_ORE_DIORITE, new Item.Settings().group(ItemGroup.BUILDING_BLOCKS)));
+        Registry.register(Registry.ITEM, new Identifier("parallel_world", "iron_ore_granite"), new BlockItem(IRON_ORE_GRANITE, new Item.Settings().group(ItemGroup.BUILDING_BLOCKS)));
+
         // Poriferans
         Registry.register(Registry.ITEM, new Identifier("parallel_world", "poriferan_chunk"), new BlockItem(PORIFERAN_CHUNK, new Item.Settings().group(ItemGroup.BUILDING_BLOCKS)));
         Registry.register(Registry.ITEM, new Identifier("parallel_world", "poriferan_chunk_glow"), new BlockItem(PORIFERAN_CHUNK_GLOW, new Item.Settings().group(ItemGroup.BUILDING_BLOCKS)));

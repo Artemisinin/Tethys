@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "parallel_world:block/iron_ore_diorite"
+  }
+}

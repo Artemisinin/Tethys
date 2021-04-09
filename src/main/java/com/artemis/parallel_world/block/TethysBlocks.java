@@ -22,6 +22,17 @@ public class TethysBlocks {
     public static final Block PINK_MUSHROOM_BLOCK = new MushroomBlock(AbstractBlock.Settings.of(Material.WOOD, MapColor.DULL_PINK).strength(0.2F).sounds(BlockSoundGroup.WOOD));
     public static final Block WHITE_MUSHROOM_BLOCK = new MushroomBlock(AbstractBlock.Settings.of(Material.WOOD, MapColor.OFF_WHITE).strength(0.2F).sounds(BlockSoundGroup.WOOD));
 
+    // Ores
+    public static final Block COPPER_ORE_ANDESITE = new OreBlock(AbstractBlock.Settings.copy(Blocks.COPPER_ORE).strength(3.0F, 3.0F));
+    public static final Block COPPER_ORE_DIORITE = new OreBlock(AbstractBlock.Settings.copy(Blocks.COPPER_ORE).strength(3.0F, 3.0F));
+    public static final Block COPPER_ORE_GRANITE = new OreBlock(AbstractBlock.Settings.copy(Blocks.COPPER_ORE).strength(3.0F, 3.0F));
+    public static final Block GOLD_ORE_ANDESITE = new OreBlock(AbstractBlock.Settings.copy(Blocks.GOLD_ORE).strength(3.0F, 3.0F));
+    public static final Block GOLD_ORE_DIORITE = new OreBlock(AbstractBlock.Settings.copy(Blocks.GOLD_ORE).requiresTool().strength(3.0F, 3.0F));
+    public static final Block GOLD_ORE_GRANITE = new OreBlock(AbstractBlock.Settings.copy(Blocks.GOLD_ORE).requiresTool().strength(3.0F, 3.0F));
+    public static final Block IRON_ORE_ANDESITE = new OreBlock(AbstractBlock.Settings.copy(Blocks.IRON_ORE).strength(3.0F, 3.0F));
+    public static final Block IRON_ORE_DIORITE = new OreBlock(AbstractBlock.Settings.copy(Blocks.IRON_ORE).strength(3.0F, 3.0F));
+    public static final Block IRON_ORE_GRANITE = new OreBlock(AbstractBlock.Settings.copy(Blocks.IRON_ORE).strength(3.0F, 3.0F));
+
     // Pink diamonds!
     public static final Block PINK_DIAMOND_BLOCK = new Block(FabricBlockSettings.of(Material.METAL).hardness(5.0f));
     public static final Block PINK_DIAMOND_ORE = new OreBlock(AbstractBlock.Settings.of(Material.METAL).requiresTool().strength(3.0F, 3.0F), UniformIntProvider.create(3, 7));
@@ -96,6 +107,17 @@ public class TethysBlocks {
         // Mushroom blocks
         Registry.register(Registry.BLOCK, new Identifier("parallel_world", "pink_mushroom_block"), PINK_MUSHROOM_BLOCK);
         Registry.register(Registry.BLOCK, new Identifier("parallel_world", "white_mushroom_block"), WHITE_MUSHROOM_BLOCK);
+
+        // Ores
+        Registry.register(Registry.BLOCK, new Identifier("parallel_world", "copper_ore_andesite"), COPPER_ORE_ANDESITE);
+        Registry.register(Registry.BLOCK, new Identifier("parallel_world", "copper_ore_diorite"), COPPER_ORE_DIORITE);
+        Registry.register(Registry.BLOCK, new Identifier("parallel_world", "copper_ore_granite"), COPPER_ORE_GRANITE);
+        Registry.register(Registry.BLOCK, new Identifier("parallel_world", "gold_ore_andesite"), GOLD_ORE_ANDESITE);
+        Registry.register(Registry.BLOCK, new Identifier("parallel_world", "gold_ore_diorite"), GOLD_ORE_DIORITE);
+        Registry.register(Registry.BLOCK, new Identifier("parallel_world", "gold_ore_granite"), GOLD_ORE_GRANITE);
+        Registry.register(Registry.BLOCK, new Identifier("parallel_world", "iron_ore_andesite"), IRON_ORE_ANDESITE);
+        Registry.register(Registry.BLOCK, new Identifier("parallel_world", "iron_ore_diorite"), IRON_ORE_DIORITE);
+        Registry.register(Registry.BLOCK, new Identifier("parallel_world", "iron_ore_granite"), IRON_ORE_GRANITE);
 
         // Pink diamonds!
         Registry.register(Registry.BLOCK, new Identifier("parallel_world", "pink_diamond_block"), PINK_DIAMOND_BLOCK);

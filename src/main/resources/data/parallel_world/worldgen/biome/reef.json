@@ -93,9 +93,7 @@
         "maxCount": 1
       }
     ],
-    "creature": [
-
-	],
+    "creature": [],
     "ambient": [
       {
         "type": "minecraft:bat",

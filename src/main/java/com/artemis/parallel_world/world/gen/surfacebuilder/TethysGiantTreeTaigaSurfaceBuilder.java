@@ -14,13 +14,13 @@ public class TethysGiantTreeTaigaSurfaceBuilder extends SurfaceBuilder<TernarySu
         super(codec);
     }
 
-    public void generate(Random random, Chunk chunk, Biome biome, int i, int j, int k, double d, BlockState blockState, BlockState blockState2, int l, long m, TernarySurfaceConfig ternarySurfaceConfig) {
+    public void generate(Random random, Chunk chunk, Biome biome, int i, int j, int k, double d, BlockState blockState, BlockState blockState2, int seaLevel, int l, long seed, TernarySurfaceConfig ternarySurfaceConfig) {
         if (d > 1.75D) {
-            TethysSurfaceBuilder.TETHYS_DEFAULT.generate(random, chunk, biome, i, j, k, d, blockState, blockState2, l, m, SurfaceBuilder.COARSE_DIRT_CONFIG);
+            TethysSurfaceBuilder.TETHYS_DEFAULT.generate(random, chunk, biome, i, j, k, d, blockState, blockState2, seaLevel, l , seed, SurfaceBuilder.COARSE_DIRT_CONFIG);
         } else if (d > -0.95D) {
-            TethysSurfaceBuilder.TETHYS_DEFAULT.generate(random, chunk, biome, i, j, k, d, blockState, blockState2, l, m, SurfaceBuilder.PODZOL_CONFIG);
+            TethysSurfaceBuilder.TETHYS_DEFAULT.generate(random, chunk, biome, i, j, k, d, blockState, blockState2, seaLevel, l, seed, SurfaceBuilder.PODZOL_CONFIG);
         } else {
-            TethysSurfaceBuilder.TETHYS_DEFAULT.generate(random, chunk, biome, i, j, k, d, blockState, blockState2, l, m, SurfaceBuilder.GRASS_CONFIG);
+            TethysSurfaceBuilder.TETHYS_DEFAULT.generate(random, chunk, biome, i, j, k, d, blockState, blockState2, seaLevel, l, seed, SurfaceBuilder.GRASS_CONFIG);
         }
     }
 }

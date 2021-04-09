@@ -16,11 +16,11 @@ public class SkyIslandSurfaceBuilder extends SurfaceBuilder<TernarySurfaceConfig
         super(codec);
     }
 
-    public void generate(Random random, Chunk chunk, Biome biome, int x, int z, int height, double noise, BlockState defaultBlock, BlockState defaultFluid, int l, long m, TernarySurfaceConfig ternarySurfaceConfig) {
-        this.generate(random, chunk, biome, x, z, height, noise, defaultBlock, defaultFluid, ternarySurfaceConfig.getTopMaterial(), ternarySurfaceConfig.getUnderMaterial(), ternarySurfaceConfig.getUnderwaterMaterial(), l);
+    public void generate(Random random, Chunk chunk, Biome biome, int x, int z, int height, double noise, BlockState defaultBlock, BlockState defaultFluid, int seaLevel, int l, long seed, TernarySurfaceConfig ternarySurfaceConfig) {
+        this.generate(random, chunk, biome, x, z, height, noise, defaultBlock, defaultFluid, seaLevel, ternarySurfaceConfig.getTopMaterial(), ternarySurfaceConfig.getUnderMaterial(), ternarySurfaceConfig.getUnderwaterMaterial());
     }
 
-    protected void generate(Random random, Chunk chunk, Biome biome, int x, int z, int height, double noise, BlockState defaultBlock, BlockState fluidBlock, BlockState topBlock, BlockState underBlock, BlockState underwaterBlock, int seaLevel) {
+    protected void generate(Random random, Chunk chunk, Biome biome, int x, int z, int height, double noise, BlockState defaultBlock, BlockState fluidBlock, int seaLevel, BlockState topBlock, BlockState underBlock, BlockState underwaterBlock) {
         BlockPos.Mutable mutable = new BlockPos.Mutable();
         int i = (int)(noise / 3.0D + 3.0D + random.nextDouble() * 0.25D);
         int j;
