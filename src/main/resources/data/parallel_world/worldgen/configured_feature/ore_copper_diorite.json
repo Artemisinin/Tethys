@@ -9,7 +9,7 @@
                 "targets": [
                   {
                     "target": {
-                      "block": "minecraft:andesite",
+                      "block": "minecraft:diorite",
                       "predicate_type": "minecraft:block_match"
                     },
                     "state": {

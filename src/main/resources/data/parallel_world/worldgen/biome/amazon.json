@@ -14,7 +14,7 @@
     "water_color": 6388580,
     "water_fog_color": 2302743
   },
-  "surface_builder": "parallel_world:default",
+  "surface_builder": "parallel_world:amazon",
   "carvers": {
     "air": [
       "minecraft:cave",

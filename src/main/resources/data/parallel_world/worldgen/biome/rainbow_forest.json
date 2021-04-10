@@ -38,6 +38,7 @@
 		[],
 		[],
 		[
+			"parallel_world:ore_pink_diamond",
 			"minecraft:ore_dirt",
 			"minecraft:ore_gravel",
 			"minecraft:ore_granite",
@@ -55,8 +56,7 @@
 		[
 			"parallel_world:ore_copper_andesite",
 			"parallel_world:ore_copper_diorite",
-			"parallel_world:ore_copper_granite",
-			"parallel_world:pink_diamond_ore_tethys"
+			"parallel_world:ore_copper_granite"
 		],
 		[
 			"parallel_world:rainbow_vegetation",

@@ -10,5 +10,5 @@
       "Name": "minecraft:red_sand"
     }    
   },
-  "type": "parallel_world:tethys_default"
+  "type": "minecraft:default"
 }

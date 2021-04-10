@@ -29,7 +29,7 @@
               "absolute": 30
             },
             "top_inclusive": {
-              "absolute": 85
+              "absolute": 70
             }
           },
           "type": "minecraft:range"

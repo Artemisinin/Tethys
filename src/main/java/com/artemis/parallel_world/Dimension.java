@@ -60,7 +60,6 @@ public class Dimension implements ModInitializer {
         TethysConfiguredFeatures.registerConfiguredFeatures();
         TethysEntities.registerEntities();
         TethysSurfaceBuilder.registerSurfaceBuilders();
-        TethysSurfaceBuilder.registerConfiguredSurfaceBuilders();
 
         // Register tags
         SOIL_BLOCKS = (Tag.Identified<Block>) TagRegistry.block(new Identifier("parallel_world", "soil_blocks"));

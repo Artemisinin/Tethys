@@ -34,7 +34,7 @@
                 },
                 "inner": {
                   "config": {
-                    "heightmap": "MOTION_BLOCKING"
+                    "heightmap": "WORLD_SURFACE"
                   },
                   "type": "minecraft:heightmap"
                 }

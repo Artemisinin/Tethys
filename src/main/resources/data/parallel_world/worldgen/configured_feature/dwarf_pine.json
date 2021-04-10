@@ -26,7 +26,7 @@
 		  "outer": {
 			  "config": {
 				  "bottom_inclusive": {
-					  "absolute": 90
+					  "absolute": 75
 				  },
 				  "top_inclusive": {
 					  "absolute": 120

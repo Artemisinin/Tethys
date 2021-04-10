@@ -10,5 +10,5 @@
       "Name": "minecraft:gravel"
     }    
   },
-  "type": "parallel_world:tethys_default"
+  "type": "minecraft:default"
 }

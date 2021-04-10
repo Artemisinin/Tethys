@@ -70,7 +70,6 @@ public class TethysConfiguredFeatures {
     public static ConfiguredFeature<?,?> SCATTERED_PORIFERANS;
     public static ConfiguredFeature<?,?> SWAMP_OAK_SHRUB;
     public static ConfiguredFeature<?,?> SWAMP_OAK_SHRUBS;
-    public static ConfiguredFeature<?,?> WATER_LILIES;
 
     public static void registerConfiguredFeatures() {
 
@@ -192,10 +191,6 @@ public class TethysConfiguredFeatures {
 
         CAVE_SCATTERED_GHOST_TREES = register("parallel_world:cave_scattered_ghost_trees", GHOST_TREE.decorate(Decorator.CAVE_SURFACE.configure(
                 new CaveSurfaceDecoratorConfig(VerticalSurfaceType.FLOOR, 12))).rangeOf(YOffset.getBottom(), YOffset.fixed(40)).spreadHorizontally().repeat(20));
-
-        PINK_DIAMOND_ORE_TETHYS = register("parallel_world:pink_diamond_ore_tethys", Feature.ORE.configure(
-                new OreFeatureConfig(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD, TethysBlocks.PINK_DIAMOND_ORE.getDefaultState(), 5)).
-                rangeOf(YOffset.getBottom(), YOffset.fixed(40))).spreadHorizontally().repeat(4);
         PORIFERAN = register("parallel_world:poriferan",  TethysFeatures.UNLOCKED_TREE_FEATURE.configure(
                 (new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(TethysBlocks.PORIFERAN_STEM.getDefaultState()),
                         new StraightTrunkPlacer(4, 2, 0),
@@ -212,6 +207,5 @@ public class TethysConfiguredFeatures {
                         new TwoLayersFeatureSize(1, 0, 1))).build()));
         SWAMP_OAK_SHRUBS = register("parallel_world:swamp_oak_shrubs", SWAMP_OAK_SHRUB.rangeOf(YOffset.fixed(50), YOffset.fixed(70)).
                 decorate(Dimension.WATER_MAX_DEPTH_DECORATOR.configure(new WaterMaxDepthDecoratorConfig(2))).spreadHorizontally().repeat(10));
-        WATER_LILIES = register("parallel_world:waterlilies", Feature.RANDOM_PATCH.configure((new RandomPatchFeatureConfig.Builder(new SimpleBlockStateProvider(Blocks.LILY_PAD.getDefaultState()), SimpleBlockPlacer.INSTANCE)).tries(5).build()).decorate(ConfiguredFeatures.Decorators.SPREAD_32_ABOVE).repeat(2));
     }
 }
