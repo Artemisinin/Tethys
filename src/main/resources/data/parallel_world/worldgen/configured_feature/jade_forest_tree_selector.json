@@ -2,35 +2,35 @@
 	"config": {
 		"features": [
 			{
-				"feature": "parallel_world:basswood_tree",
+				"feature": "parallel_world:basswood_tree_bees",
 				"chance": 0.25
 			},
 		    {
-				"feature": "parallel_world:blackcurrant_tree",
+				"feature": "parallel_world:blackcurrant_tree_bees",
 				"chance": 0.25
 		    },
 		    {
-				"feature": "parallel_world:elderberry_tree",
+				"feature": "parallel_world:elderberry_tree_bees",
 				"chance": 0.15
 		    },
 		    {
-				"feature": "parallel_world:sweetgum_tree",
+				"feature": "parallel_world:sweetgum_tree_bees",
 				"chance": 0.05
 		    },
 		    {
-				"feature": "parallel_world:ginkgo_tree",
+				"feature": "parallel_world:ginkgo_tree_bees",
 				"chance": 0.05
 		    },
 		    {
-				"feature": "parallel_world:dogwood_tree",
+				"feature": "parallel_world:dogwood_tree_bees",
 				"chance": 0.03
 		    },
 		    {
-				"feature": "parallel_world:cherry_tree",
+				"feature": "parallel_world:cherry_tree_bees",
 				"chance": 0.03
 		    }
 		],
-		"default": "parallel_world:basswood_tree"
+		"default": "parallel_world:basswood_tree_bees"
 		},
 	"type": "minecraft:random_selector"
 }

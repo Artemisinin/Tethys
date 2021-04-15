@@ -26,7 +26,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
-import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.stat.Stats;
 import net.minecraft.tag.BlockTags;
@@ -42,16 +41,8 @@ import com.artemis.parallel_world.block.*;
 import java.util.EnumSet;
 import java.util.Random;
 import java.util.Set;
-import java.util.function.Predicate;
 
 public class TethysTurtleEntity extends TurtleEntity {
-
-    public TethysTurtleEntity(EntityType<? extends TethysTurtleEntity> entityType, World world) {
-        super(entityType, world);
-        this.setPathfindingPenalty(PathNodeType.WATER, 0.0F);
-        this.moveControl = new TethysTurtleEntity.TurtleMoveControl(this);
-        this.stepHeight = 1.0F;
-    }
 
     private static final TrackedData<BlockPos> HOME_POS = DataTracker.registerData(TethysTurtleEntity.class, TrackedDataHandlerRegistry.BLOCK_POS);
     private static final TrackedData<Boolean> HAS_EGG = DataTracker.registerData(TethysTurtleEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
@@ -60,6 +51,13 @@ public class TethysTurtleEntity extends TurtleEntity {
     private static final TrackedData<Boolean> LAND_BOUND = DataTracker.registerData(TethysTurtleEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
     private static final TrackedData<Boolean> ACTIVELY_TRAVELLING = DataTracker.registerData(TethysTurtleEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
     private int sandDiggingCounter;
+
+    public TethysTurtleEntity(EntityType<? extends TurtleEntity> entityType, World world) {
+        super(entityType, world);
+        this.setPathfindingPenalty(PathNodeType.WATER, 0.0F);
+        this.moveControl = new TethysTurtleEntity.TurtleMoveControl(this);
+        this.stepHeight = 1.0F;
+    }
 
     @Nullable
     @Override
@@ -83,10 +81,6 @@ public class TethysTurtleEntity extends TurtleEntity {
         this.goalSelector.add(9, new TethysTurtleEntity.WanderOnLandGoal(this, 1.0D, 100));
     }
 
-    public void setHomePos(BlockPos pos) {
-        this.dataTracker.set(HOME_POS, pos);
-    }
-
     private BlockPos getHomePos() {
         return (BlockPos)this.dataTracker.get(HOME_POS);
     }
@@ -99,16 +93,8 @@ public class TethysTurtleEntity extends TurtleEntity {
         return this.dataTracker.get(TRAVEL_POS);
     }
 
-    public boolean hasEgg() {
-        return this.dataTracker.get(HAS_EGG);
-    }
-
     private void setHasEgg(boolean hasEgg) {
         this.dataTracker.set(HAS_EGG, hasEgg);
-    }
-
-    public boolean isDiggingSand() {
-        return this.dataTracker.get(DIGGING_SAND);
     }
 
     private void setDiggingSand(boolean diggingSand) {
@@ -119,6 +105,7 @@ public class TethysTurtleEntity extends TurtleEntity {
     private boolean isLandBound() {
         return this.dataTracker.get(LAND_BOUND);
     }
+
     private void setLandBound(boolean landBound) {
         this.dataTracker.set(LAND_BOUND, landBound);
     }
@@ -131,15 +118,11 @@ public class TethysTurtleEntity extends TurtleEntity {
         this.dataTracker.set(ACTIVELY_TRAVELLING, travelling);
     }
 
-    @Nullable
-    protected SoundEvent getAmbientSound() {
-        return !this.isTouchingWater() && this.onGround && !this.isBaby() ? SoundEvents.ENTITY_TURTLE_AMBIENT_LAND : super.getAmbientSound();
-    }
-
     protected EntityNavigation createNavigation(World world) {
         return new TethysTurtleEntity.TurtleSwimNavigation(this, world);
     }
 
+    @Override
     public float getPathfindingFavor(BlockPos pos, WorldView world) {
         if (!this.isLandBound() && world.getFluidState(pos).isIn(FluidTags.WATER)) {
             return 10.0F;
@@ -156,20 +139,6 @@ public class TethysTurtleEntity extends TurtleEntity {
             if (TethysTurtleEggBlock.isSand(this.world, blockPos)) {
                 this.world.syncWorldEvent(2001, blockPos, Block.getRawIdFromState(Blocks.SAND.getDefaultState()));
             }
-        }
-    }
-
-    @Override
-    public void travel(Vec3d movementInput) {
-        if (this.canMoveVoluntarily() && this.isTouchingWater()) {
-            this.updateVelocity(0.1F, movementInput);
-            this.move(MovementType.SELF, this.getVelocity());
-            this.setVelocity(this.getVelocity().multiply(0.9D));
-            if (this.getTarget() == null && (!this.isLandBound() || !this.getHomePos().isWithinDistance(this.getPos(), 20.0D))) {
-                this.setVelocity(this.getVelocity().add(0.0D, -0.005D, 0.0D));
-            }
-        } else {
-            super.travel(movementInput);
         }
     }
 

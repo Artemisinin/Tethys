@@ -15,8 +15,8 @@ public class BasswoodSaplingGenerator extends SaplingGenerator {
     }
 
     @Nullable
-    protected ConfiguredFeature<TreeFeatureConfig, ?> createTreeFeature(Random random, boolean bl) {
-        return (ConfiguredFeature<TreeFeatureConfig, ?>) TethysConfiguredFeatures.BASSWOOD_TREE;
+    protected ConfiguredFeature<TreeFeatureConfig, ?> createTreeFeature(Random random, boolean bees) {
+        return bees ? (ConfiguredFeature<TreeFeatureConfig, ?>) TethysConfiguredFeatures.BASSWOOD_TREE_BEES : (ConfiguredFeature<TreeFeatureConfig, ?>) TethysConfiguredFeatures.BASSWOOD_TREE;
     }
 }
 

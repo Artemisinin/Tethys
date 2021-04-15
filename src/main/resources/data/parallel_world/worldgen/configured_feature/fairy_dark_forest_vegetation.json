@@ -20,15 +20,15 @@
             "chance": 0.50
           },
           {
-            "feature": "minecraft:birch",
+            "feature": "minecraft:birch_bees_005",
             "chance": 0.2
           },
           {
-            "feature": "minecraft:fancy_oak",
+            "feature": "minecraft:fancy_oak_bees_005",
             "chance": 0.1
           }
         ],
-        "default": "minecraft:oak"
+        "default": "minecraft:oak_bees_005"
       },
       "type": "minecraft:random_selector"
     },

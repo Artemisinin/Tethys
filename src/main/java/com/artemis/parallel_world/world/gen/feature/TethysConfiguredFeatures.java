@@ -54,18 +54,24 @@ public class TethysConfiguredFeatures {
 
     // Rainbow trees
     public static ConfiguredFeature<?,?> BASSWOOD_TREE;
+    public static ConfiguredFeature<?,?> BASSWOOD_TREE_BEES;
     public static ConfiguredFeature<?,?> BLACKCURRANT_TREE;
+    public static ConfiguredFeature<?,?> BLACKCURRANT_TREE_BEES;
     public static ConfiguredFeature<?,?> CHERRY_TREE;
+    public static ConfiguredFeature<?,?> CHERRY_TREE_BEES;
     public static ConfiguredFeature<?,?> DOGWOOD_TREE;
+    public static ConfiguredFeature<?,?> DOGWOOD_TREE_BEES;
     public static ConfiguredFeature<?,?> ELDERBERRY_TREE;
+    public static ConfiguredFeature<?,?> ELDERBERRY_TREE_BEES;
     public static ConfiguredFeature<?,?> GINKGO_TREE;
+    public static ConfiguredFeature<?,?> GINKGO_TREE_BEES;
     public static ConfiguredFeature<?,?> SWEETGUM_TREE;
+    public static ConfiguredFeature<?,?> SWEETGUM_TREE_BEES;
 
     // Misc
     public static ConfiguredFeature<?,?> BURNED_TREE;
     public static ConfiguredFeature<?,?> CAVE_SCATTERED_GHOST_TREES;
     public static ConfiguredFeature<?,?> GHOST_TREE;
-    public static ConfiguredFeature<?,?> PINK_DIAMOND_ORE_TETHYS;
     public static ConfiguredFeature<?,?> PORIFERAN;
     public static ConfiguredFeature<?,?> SCATTERED_PORIFERANS;
     public static ConfiguredFeature<?,?> SWAMP_OAK_SHRUB;
@@ -130,6 +136,8 @@ public class TethysConfiguredFeatures {
                         new SimpleBlockStateProvider(TethysBlocks.BASSWOOD_LEAVES.getDefaultState()),
                         new LargeOakFoliagePlacer(ConstantIntProvider.create(2), ConstantIntProvider.create(4), 4),
                         new TwoLayersFeatureSize(0, 0, 0, OptionalInt.of(4)))).ignoreVines().build()));
+        BASSWOOD_TREE_BEES = register("parallel_world:basswood_tree_bees", Feature.TREE.configure(((TreeFeatureConfig)BASSWOOD_TREE.getConfig()).
+                setTreeDecorators(ImmutableList.of(ConfiguredFeatures.Decorators.REGULAR_BEEHIVES_TREES))));
 
         BLACKCURRANT_TREE = register("parallel_world:blackcurrant_tree", Feature.TREE.configure(
                 (new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(TethysBlocks.BLACKCURRANT_LOG.getDefaultState()),
@@ -137,6 +145,8 @@ public class TethysConfiguredFeatures {
                         new SimpleBlockStateProvider(TethysBlocks.BLACKCURRANT_LEAVES.getDefaultState()),
                         new BlobFoliagePlacer(ConstantIntProvider.create(2), ConstantIntProvider.create(0), 3),
                         new TwoLayersFeatureSize(0, 0, 0))).ignoreVines().build()));
+        BLACKCURRANT_TREE_BEES = register("parallel_world:blackcurrant_tree_bees", Feature.TREE.configure(((TreeFeatureConfig)BLACKCURRANT_TREE.getConfig()).
+                setTreeDecorators(ImmutableList.of(ConfiguredFeatures.Decorators.REGULAR_BEEHIVES_TREES))));
 
         CHERRY_TREE = register("parallel_world:cherry_tree", Feature.TREE.configure(
                 (new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(TethysBlocks.CHERRY_LOG.getDefaultState()),
@@ -144,6 +154,8 @@ public class TethysConfiguredFeatures {
                         new SimpleBlockStateProvider(TethysBlocks.CHERRY_LEAVES.getDefaultState()),
                         new BlobFoliagePlacer(ConstantIntProvider.create(2), ConstantIntProvider.create(0), 3),
                         new TwoLayersFeatureSize(0, 0, 0))).ignoreVines().build()));
+        CHERRY_TREE_BEES = register("parallel_world:cherry_tree_bees", Feature.TREE.configure(((TreeFeatureConfig)CHERRY_TREE.getConfig()).
+                setTreeDecorators(ImmutableList.of(ConfiguredFeatures.Decorators.REGULAR_BEEHIVES_TREES))));
 
         DOGWOOD_TREE = register("parallel_world:dogwood_tree", Feature.TREE.configure(
                 (new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(TethysBlocks.DOGWOOD_LOG.getDefaultState()),
@@ -151,6 +163,8 @@ public class TethysConfiguredFeatures {
                         new SimpleBlockStateProvider(TethysBlocks.DOGWOOD_LEAVES.getDefaultState()),
                         new BlobFoliagePlacer(ConstantIntProvider.create(2), ConstantIntProvider.create(0), 3),
                         new TwoLayersFeatureSize(0, 0, 0))).ignoreVines().build()));
+        DOGWOOD_TREE_BEES = register("parallel_world:dogwood_tree_bees", Feature.TREE.configure(((TreeFeatureConfig)DOGWOOD_TREE.getConfig()).
+                setTreeDecorators(ImmutableList.of(ConfiguredFeatures.Decorators.REGULAR_BEEHIVES_TREES))));
 
         ELDERBERRY_TREE = register("parallel_world:elderberry_tree", Feature.TREE.configure(
                 (new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(TethysBlocks.ELDERBERRY_LOG.getDefaultState()),
@@ -158,6 +172,8 @@ public class TethysConfiguredFeatures {
                         new SimpleBlockStateProvider(TethysBlocks.ELDERBERRY_LEAVES.getDefaultState()),
                         new BlobFoliagePlacer(ConstantIntProvider.create(2), ConstantIntProvider.create(0), 3),
                         new TwoLayersFeatureSize(0, 0, 0))).ignoreVines().build()));
+        ELDERBERRY_TREE_BEES = register("parallel_world:elderberry_tree_bees", Feature.TREE.configure(((TreeFeatureConfig)ELDERBERRY_TREE.getConfig()).
+                setTreeDecorators(ImmutableList.of(ConfiguredFeatures.Decorators.REGULAR_BEEHIVES_TREES))));
 
         GINKGO_TREE = register("parallel_world:ginkgo_tree", Feature.TREE.configure(
                 (new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(TethysBlocks.GINKGO_LOG.getDefaultState()),
@@ -165,6 +181,8 @@ public class TethysConfiguredFeatures {
                         new SimpleBlockStateProvider(TethysBlocks.GINKGO_LEAVES.getDefaultState()),
                         new BlobFoliagePlacer(ConstantIntProvider.create(3), ConstantIntProvider.create(0), 3),
                         new TwoLayersFeatureSize(0, 0, 0))).ignoreVines().build()));
+        GINKGO_TREE_BEES = register("parallel_world:ginkgo_tree_bees", Feature.TREE.configure(((TreeFeatureConfig)GINKGO_TREE.getConfig()).
+                setTreeDecorators(ImmutableList.of(ConfiguredFeatures.Decorators.REGULAR_BEEHIVES_TREES))));
 
         SWEETGUM_TREE = register("parallel_world:sweetgum_tree", Feature.TREE.configure(
                 (new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(TethysBlocks.SWEETGUM_LOG.getDefaultState()),
@@ -172,6 +190,8 @@ public class TethysConfiguredFeatures {
                         new SimpleBlockStateProvider(TethysBlocks.SWEETGUM_LEAVES.getDefaultState()),
                         new LargeOakFoliagePlacer(ConstantIntProvider.create(2), ConstantIntProvider.create(4), 4),
                         new TwoLayersFeatureSize(0, 0, 0, OptionalInt.of(4)))).ignoreVines().build()));
+        SWEETGUM_TREE_BEES = register("parallel_world:sweetgum_tree_bees", Feature.TREE.configure(((TreeFeatureConfig)SWEETGUM_TREE.getConfig()).
+                setTreeDecorators(ImmutableList.of(ConfiguredFeatures.Decorators.REGULAR_BEEHIVES_TREES))));
 
         // Misc
         BURNED_TREE = register ("parallel_world:burned_tree", Feature.TREE.configure(
@@ -185,8 +205,8 @@ public class TethysConfiguredFeatures {
                 (new SimpleBlockStateProvider(Blocks.POLISHED_BASALT.getDefaultState()),
                         new ForkingTrunkPlacer(2,4,4),
                         new SimpleBlockStateProvider(TethysBlocks.CAVE_GLOWLEAF.getDefaultState()),
-                        new BushFoliagePlacer(ConstantIntProvider.create(2), ConstantIntProvider.create(0), 3),
-                        //new AcaciaFoliagePlacer(ConstantIntProvider.create(2,0), ConstantIntProvider.create(0,0)),
+                        //new BushFoliagePlacer(ConstantIntProvider.create(2), ConstantIntProvider.create(0), 3),
+                        new AcaciaFoliagePlacer(ConstantIntProvider.create(2), ConstantIntProvider.create(0)),
         new TwoLayersFeatureSize(1,0,2))).build()));
 
         CAVE_SCATTERED_GHOST_TREES = register("parallel_world:cave_scattered_ghost_trees", GHOST_TREE.decorate(Decorator.CAVE_SURFACE.configure(
@@ -197,15 +217,17 @@ public class TethysConfiguredFeatures {
                         new SimpleBlockStateProvider(TethysBlocks.PORIFERAN_CHUNK.getDefaultState()),
                         new PineFoliagePlacer(ConstantIntProvider.create(1), ConstantIntProvider.create(0),ConstantIntProvider.create(4)),
                         new TwoLayersFeatureSize(1, 1, 1))).build()));
-        SCATTERED_PORIFERANS = register("parallel_world:scattered_poriferans", PORIFERAN.rangeOf(YOffset.fixed(30), YOffset.fixed(50)).
-                decorate(Dimension.WATER_MIN_DEPTH_DECORATOR.configure(new WaterMinDepthDecoratorConfig(10))).spreadHorizontally().repeat(40));
+        SCATTERED_PORIFERANS = register("parallel_world:scattered_poriferans", PORIFERAN.decorate(ConfiguredFeatures.Decorators.SQUARE_TOP_SOLID_HEIGHTMAP).
+                decorate(Dimension.WATER_MIN_DEPTH_DECORATOR.configure(new WaterMinDepthDecoratorConfig(10))).decorate(Dimension.WATER_MAX_DEPTH_DECORATOR.configure(new WaterMaxDepthDecoratorConfig(50))).repeat(120));
         SWAMP_OAK_SHRUB = register("parallel_world:swamp_oak_shrub", Feature.TREE.configure(
                 (new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(Blocks.OAK_LOG.getDefaultState()),
                         new StraightTrunkPlacer(2, 1, 0),
                         new SimpleBlockStateProvider(Blocks.OAK_LEAVES.getDefaultState()),
                         new BushFoliagePlacer(ConstantIntProvider.create(2), ConstantIntProvider.create(1), 2),
-                        new TwoLayersFeatureSize(1, 0, 1))).build()));
-        SWAMP_OAK_SHRUBS = register("parallel_world:swamp_oak_shrubs", SWAMP_OAK_SHRUB.rangeOf(YOffset.fixed(50), YOffset.fixed(70)).
-                decorate(Dimension.WATER_MAX_DEPTH_DECORATOR.configure(new WaterMaxDepthDecoratorConfig(2))).spreadHorizontally().repeat(10));
+                        new TwoLayersFeatureSize(1, 0, 1))).decorators(ImmutableList.of(LeavesVineTreeDecorator.INSTANCE)).build()));
+        SWAMP_OAK_SHRUBS = register("parallel_world:swamp_oak_shrubs", SWAMP_OAK_SHRUB.decorate(ConfiguredFeatures.Decorators.HEIGHTMAP_OCEAN_FLOOR).
+                decorate(Dimension.WATER_MAX_DEPTH_DECORATOR.configure(new WaterMaxDepthDecoratorConfig(2))).
+                //decorate(Dimension.WATER_MIN_DEPTH_DECORATOR.configure(new WaterMinDepthDecoratorConfig(1))).
+                repeat(40));
     }
 }

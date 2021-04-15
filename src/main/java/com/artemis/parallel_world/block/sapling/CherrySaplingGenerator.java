@@ -12,7 +12,7 @@ public class CherrySaplingGenerator extends SaplingGenerator {
     }
 
     @Nullable
-    protected ConfiguredFeature<TreeFeatureConfig, ?> createTreeFeature(Random random, boolean bl) {
-        return (ConfiguredFeature<TreeFeatureConfig, ?>) TethysConfiguredFeatures.CHERRY_TREE;
+    protected ConfiguredFeature<TreeFeatureConfig, ?> createTreeFeature(Random random, boolean bees) {
+        return bees ? (ConfiguredFeature<TreeFeatureConfig, ?>) TethysConfiguredFeatures.CHERRY_TREE : (ConfiguredFeature<TreeFeatureConfig, ?>) TethysConfiguredFeatures.CHERRY_TREE;
     }
 }
