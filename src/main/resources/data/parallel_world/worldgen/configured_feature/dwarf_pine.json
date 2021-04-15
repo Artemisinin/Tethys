@@ -25,11 +25,14 @@
       "config": {
 		  "outer": {
 			  "config": {
-				  "bottom_inclusive": {
-					  "absolute": 75
-				  },
-				  "top_inclusive": {
-					  "absolute": 120
+				  "height": {
+					  "min_inclusive": {
+						  "absolute": 75
+					  },
+					  "max_inclusive": {
+						  "absolute": 120
+					  },
+					  "type": "minecraft:uniform"
 				  }
 			  },
 			  "type": "minecraft:range"

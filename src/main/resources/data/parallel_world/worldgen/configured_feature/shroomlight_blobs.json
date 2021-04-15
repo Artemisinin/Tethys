@@ -7,9 +7,9 @@
             "feature": {
               "config": {
                 "target": {
-					"Properties": {
-					"snowy": "false"
-					},
+                  "Properties": {
+                    "snowy": "false"
+                  },
                   "Name": "minecraft:grass_block"
                 },
                 "state": {
@@ -29,14 +29,17 @@
               "type": "minecraft:netherrack_replace_blobs"
             },
             "decorator": {
-		  "config": {
-			"bottom_inclusive": {
-			  "above_bottom": 0
-			},
-			"top_inclusive": {
-			  "below_top": 0
-			}
-		  },
+              "config": {
+                "height": {
+                  "min_inclusive": {
+                    "above_bottom": 0
+                  },
+                  "max_inclusive": {
+                    "below_top": 0
+                  },
+                  "type": "minecraft:uniform"
+                }
+              },
               "type": "minecraft:range"
             }
           },

@@ -5,19 +5,33 @@
         "feature": {
           "config": {
             "feature": {
-              "config": {},
-              "type": "parallel_world:sky_island_glowstone"
+              "config": {
+                "targets": [
+                  {
+                    "target": {
+                      "block": "minecraft:andesite",
+                      "predicate_type": "minecraft:block_match"
+                    },
+                    "state": {
+                      "Name": "parallel_world:copper_ore_andesite"
+                    }
+                  }
+                ],
+                "size": 10,
+                "discard_chance_on_air_exposure": 0.0
+              },
+              "type": "minecraft:ore"
             },
             "decorator": {
               "config": {
                 "height": {
                   "min_inclusive": {
-                    "above_bottom": 20
+                    "absolute": 0
                   },
                   "max_inclusive": {
-                    "absolute": 45
+                    "absolute": 96
                   },
-                  "type": "minecraft:uniform"
+                  "type": "minecraft:trapezoid"
                 }
               },
               "type": "minecraft:range"
@@ -34,7 +48,7 @@
     },
     "decorator": {
       "config": {
-        "count": 5
+        "count": 10
       },
       "type": "minecraft:count"
     }

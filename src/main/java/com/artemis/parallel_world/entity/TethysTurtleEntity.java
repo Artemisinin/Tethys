@@ -200,7 +200,7 @@ public class TethysTurtleEntity extends TurtleEntity {
                 double g = MathHelper.sqrt(d * d + e * e + f * f);
                 e /= g;
                 float h = (float)(MathHelper.atan2(f, d) * 57.3D) - 90.0F;
-                this.turtle.yaw = this.changeAngle(this.turtle.yaw, h, 90.0F);
+                this.turtle.yaw = this.wrapDegrees(this.turtle.yaw, h, 90.0F);
                 this.turtle.bodyYaw = this.turtle.yaw;
                 float i = (float)(this.speed * this.turtle.getAttributeValue(EntityAttributes.GENERIC_MOVEMENT_SPEED));
                 this.turtle.setMovementSpeed(MathHelper.lerp(0.125F, this.turtle.getMovementSpeed(), i));

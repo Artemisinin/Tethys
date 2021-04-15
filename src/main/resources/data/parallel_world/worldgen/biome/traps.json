@@ -38,31 +38,44 @@
     ],
     [],
     [
-	  "minecraft:ore_dirt",
+      "parallel_world:ores/ore_tethys_coal",
+      "parallel_world:ores/ore_tethys_copper",
+      "parallel_world:ores/ore_tethys_iron",
+      "parallel_world:ores/ore_tethys_gold",
+      "parallel_world:ores/ore_tethys_gold_extra",
+      "parallel_world:ores/ore_tethys_lapis_rare",
+      "parallel_world:ores/ore_tethys_redstone_common",
+      "parallel_world:ores/ore_tethys_diamond_rare",
+      "minecraft:ore_dirt",
       "minecraft:ore_gravel",
       "minecraft:ore_granite",
       "minecraft:ore_diorite",
       "minecraft:ore_andesite",
-      "minecraft:ore_coal_lower",
-      "minecraft:ore_iron_middle",
-      "minecraft:ore_copper",
-      "minecraft:ore_gold_extra",
-      "minecraft:ore_lapis_buried",
       "minecraft:disk_sand",
       "minecraft:disk_clay",
       "minecraft:disk_gravel"
 	],
     [
-      "minecraft:glow_lichen",
+      "parallel_world:ores/ore_copper_andesite",
+      "parallel_world:ores/ore_copper_diorite",
+      "parallel_world:ores/ore_copper_granite",
+      "parallel_world:ores/ore_iron_andesite",
+      "parallel_world:ores/ore_iron_diorite",
+      "parallel_world:ores/ore_iron_granite",
+      "parallel_world:ores/ore_gold_andesite",
+      "parallel_world:ores/ore_gold_diorite",
+      "parallel_world:ores/ore_gold_granite",
       "minecraft:patch_fire",
       "minecraft:ore_magma",
-      "minecraft:spring_closed_double",
-	  "minecraft:brown_mushroom_normal",
-      "minecraft:red_mushroom_normal"
+      "minecraft:spring_closed_double"
     ],
     [
-      "minecraft:spring_lava_double"
-    ]
+      "minecraft:glow_lichen",
+      "minecraft:spring_lava_double",
+      "minecraft:brown_mushroom_normal",
+      "minecraft:red_mushroom_normal"
+    ],
+    []
   ],
   "starts": [],
   "spawners": {

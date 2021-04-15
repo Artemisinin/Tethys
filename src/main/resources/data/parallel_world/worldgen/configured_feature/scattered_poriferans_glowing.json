@@ -7,11 +7,14 @@
             "feature": "parallel_world:poriferan_glow",
             "decorator": {
               "config": {
-                "bottom_inclusive": {
-                  "above_bottom": 5
-                },
-                "top_inclusive": {
-                  "absolute": 15
+                "height": {
+                  "min_inclusive": {
+                    "above_bottom": 5
+                  },
+                  "max_inclusive": {
+                    "absolute": 15
+                  },
+                  "type": "minecraft:uniform"
                 }
               },
               "type": "minecraft:range"

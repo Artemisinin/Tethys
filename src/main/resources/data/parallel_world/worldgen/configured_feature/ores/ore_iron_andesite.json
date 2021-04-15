@@ -13,7 +13,7 @@
                       "predicate_type": "minecraft:block_match"
                     },
                     "state": {
-                      "Name": "minecraft:copper_ore_andesite"
+                      "Name": "parallel_world:iron_ore_andesite"
                     }
                   }
                 ],
@@ -24,11 +24,14 @@
             },
             "decorator": {
               "config": {
-                "bottom_inclusive": {
-                  "above_bottom": 5
-                },
-                "top_inclusive": {
-                  "below_top": 10
+                "height": {
+                  "min_inclusive": {
+                    "absolute": 0
+                  },
+                  "max_inclusive": {
+                    "absolute": 96
+                  },
+                  "type": "minecraft:trapezoid"
                 }
               },
               "type": "minecraft:range"

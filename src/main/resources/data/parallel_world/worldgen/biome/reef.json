@@ -18,10 +18,10 @@
     "liquid": []
   },
   "features": [
-	[
-		"parallel_world:seagen/seabed_sandstone",
-		"parallel_world:seagen/seabed_sand"
-	],
+    [
+      "parallel_world:seagen/seabed_sandstone",
+      "parallel_world:seagen/seabed_sand"
+    ],
     [],
     [],
     [],
@@ -29,14 +29,14 @@
     [],
     [],
     [],
-    [		
-	  "minecraft:patch_sugar_cane",
+    [
+      "minecraft:patch_sugar_cane",
       "minecraft:warm_ocean_vegetation",
       "minecraft:seagrass_warm",
       "minecraft:sea_pickle"
     ],
     [
-	  "minecraft:freeze_top_layer"
+      "minecraft:freeze_top_layer"
     ]
   ],
   "starts": [

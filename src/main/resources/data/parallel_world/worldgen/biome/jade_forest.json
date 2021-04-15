@@ -1,36 +1,36 @@
-{	
+{
 	"scale": 0.35,
 	"effects": {
-	    "mood_sound": {
-		  "sound": "minecraft:ambient.cave",
-		  "tick_delay": 6000,
-		  "block_search_extent": 8,
-		  "offset": 2.0
+		"mood_sound": {
+			"sound": "minecraft:ambient.cave",
+			"tick_delay": 6000,
+			"block_search_extent": 8,
+			"offset": 2.0
 		},
 		"fog_color": 13623551,
 		"foliage_color": 686656,
 		"grass_color": 282396,
-		"sky_color": 8300530, 
-		"water_color": 4031231, 
+		"sky_color": 8300530,
+		"water_color": 4031231,
 		"water_fog_color": 2041677,
-		"grass_color_modifier": "none"				
+		"grass_color_modifier": "none"
 	},
 	"surface_builder": "parallel_world:default",
 	"carvers": {
 		"air": [
-		  "minecraft:cave",
-		  "minecraft:canyon"
+			"minecraft:cave",
+			"minecraft:canyon"
 		]
 	},
 	"features": [
 		[
-		"parallel_world:seagen/seabed_sandstone",
-		"parallel_world:seagen/seabed_sand"
+			"parallel_world:seagen/seabed_sandstone",
+			"parallel_world:seagen/seabed_sand"
 		],
 		[
-		  "minecraft:lake_water",
-		  "minecraft:lake_lava"
-	    ],
+			"minecraft:lake_water",
+			"minecraft:lake_lava"
+		],
 		[],
 		[
 			"minecraft:amethyst_geode",
@@ -39,131 +39,144 @@
 		[],
 		[],
 		[
-		  "minecraft:ore_dirt",
-		  "minecraft:ore_gravel",
-		  "minecraft:ore_granite",
-		  "minecraft:ore_diorite",
-		  "minecraft:ore_andesite",
-		  "minecraft:ore_coal_lower",
-		  "minecraft:ore_iron_middle",
-		  "minecraft:ore_copper",
-		  "minecraft:ore_gold_extra",
-		  "minecraft:disk_sand",
-		  "minecraft:disk_clay",
-		  "minecraft:disk_gravel"
-		],
-		[],
-		[
-		  "parallel_world:sky_island_glowstone",
-		  "parallel_world:jade_forest_vegetation",
-		  "minecraft:glow_lichen",
-		  "minecraft:warm_ocean_vegetation",
-		  "minecraft:patch_tall_grass_2",
-		  "minecraft:plain_vegetation",
-		  "minecraft:flower_plain_decorated",
-		  "minecraft:patch_grass_plain",
-		  "minecraft:brown_mushroom_normal",
-		  "minecraft:red_mushroom_normal",
-		  "minecraft:patch_sugar_cane",
-		  "minecraft:patch_pumpkin",
-		  "minecraft:spring_water",
-		  "minecraft:spring_lava",
-		  "minecraft:seagrass_warm",
-		  "minecraft:sea_pickle"
+			"parallel_world:ores/ore_tethys_coal",
+			"parallel_world:ores/ore_tethys_copper",
+			"parallel_world:ores/ore_tethys_iron",
+			"parallel_world:ores/ore_tethys_gold",
+			"parallel_world:ores/ore_tethys_lapis_common",
+			"parallel_world:ores/ore_tethys_redstone_rare",
+			"parallel_world:ores/ore_tethys_emerald_rare",
+			"parallel_world:ores/ore_tethys_diamond_rare",
+			"minecraft:ore_dirt",
+			"minecraft:ore_gravel",
+			"minecraft:ore_granite",
+			"minecraft:ore_diorite",
+			"minecraft:ore_andesite",
+			"minecraft:disk_clay",
+			"minecraft:disk_sand"
 		],
 		[
-		  "minecraft:freeze_top_layer"
+			"parallel_world:ores/ore_copper_andesite",
+			"parallel_world:ores/ore_copper_diorite",
+			"parallel_world:ores/ore_copper_granite",
+			"parallel_world:ores/ore_iron_andesite",
+			"parallel_world:ores/ore_iron_diorite",
+			"parallel_world:ores/ore_iron_granite",
+			"parallel_world:ores/ore_gold_andesite",
+			"parallel_world:ores/ore_gold_diorite",
+			"parallel_world:ores/ore_gold_granite"
+		],
+		[
+			"parallel_world:sky_island_glowstone",
+			"parallel_world:jade_forest_vegetation",
+			"minecraft:glow_lichen",
+			"minecraft:warm_ocean_vegetation",
+			"minecraft:patch_tall_grass_2",
+			"minecraft:plain_vegetation",
+			"minecraft:flower_plain_decorated",
+			"minecraft:patch_grass_plain",
+			"minecraft:brown_mushroom_normal",
+			"minecraft:red_mushroom_normal",
+			"minecraft:patch_sugar_cane",
+			"minecraft:patch_pumpkin",
+			"minecraft:spring_water",
+			"minecraft:spring_lava",
+			"minecraft:seagrass_warm",
+			"minecraft:sea_pickle"
+		],
+		[
+			"minecraft:freeze_top_layer"
 		]
-    ],
+	],
 	"starts": [
 		"minecraft:village_plains",
 		"minecraft:stronghold"
-		],
+	],
 	"spawners": {
 		"monster": [],
 		"creature": [
-		  {
-			"type": "minecraft:sheep",
-			"weight": 12,
-			"minCount": 4,
-			"maxCount": 4
-		  },
-		  {
-			"type": "minecraft:pig",
-			"weight": 10,
-			"minCount": 4,
-			"maxCount": 4
-		  },
-		  {
-			"type": "minecraft:chicken",
-			"weight": 10,
-			"minCount": 4,
-			"maxCount": 4
-		  },
-		  {
-			"type": "minecraft:cow",
-			"weight": 8,
-			"minCount": 4,
-			"maxCount": 4
-		  },
-		  {
-			"type": "minecraft:chicken",
-			"weight": 10,
-			"minCount": 4,
-			"maxCount": 4
-		  },
-		  {
-			"type": "minecraft:parrot",
-			"weight": 40,
-			"minCount": 1,
-			"maxCount": 2
-		  },
-		  {
-			"type": "minecraft:turtle",
-			"weight": 5,
-			"minCount": 2,
-			"maxCount": 5
-		  }
+			{
+				"type": "minecraft:sheep",
+				"weight": 12,
+				"minCount": 4,
+				"maxCount": 4
+			},
+			{
+				"type": "minecraft:pig",
+				"weight": 10,
+				"minCount": 4,
+				"maxCount": 4
+			},
+			{
+				"type": "minecraft:chicken",
+				"weight": 10,
+				"minCount": 4,
+				"maxCount": 4
+			},
+			{
+				"type": "minecraft:cow",
+				"weight": 8,
+				"minCount": 4,
+				"maxCount": 4
+			},
+			{
+				"type": "minecraft:chicken",
+				"weight": 10,
+				"minCount": 4,
+				"maxCount": 4
+			},
+			{
+				"type": "minecraft:parrot",
+				"weight": 40,
+				"minCount": 1,
+				"maxCount": 2
+			},
+			{
+				"type": "minecraft:turtle",
+				"weight": 5,
+				"minCount": 2,
+				"maxCount": 5
+			}
 		],
 		"ambient": [
-		  {
-			"type": "minecraft:bat",
-			"weight": 10,
-			"minCount": 8,
-			"maxCount": 8
-		  }
+			{
+				"type": "minecraft:bat",
+				"weight": 10,
+				"minCount": 8,
+				"maxCount": 8
+			}
 		],
 		"underground_water_creature": [],
 		"water_creature": [
-		  {
-			"type": "minecraft:squid",
-			"weight": 10,
-			"minCount": 4,
-			"maxCount": 4
-		  },
-		  {
-			"type": "minecraft:dolphin",
-			"weight": 2,
-			"minCount": 1,
-			"maxCount": 2
-		  }
+			{
+				"type": "minecraft:squid",
+				"weight": 10,
+				"minCount": 4,
+				"maxCount": 4
+			},
+			{
+				"type": "minecraft:dolphin",
+				"weight": 2,
+				"minCount": 1,
+				"maxCount": 2
+			}
 		],
 		"water_ambient": [
-		  {
-			"type": "minecraft:pufferfish",
-			"weight": 15,
-			"minCount": 1,
-			"maxCount": 3
-		  },
-		  {
-			"type": "minecraft:tropical_fish",
-			"weight": 25,
-			"minCount": 8,
-			"maxCount": 8
-		  }
+			{
+				"type": "minecraft:pufferfish",
+				"weight": 15,
+				"minCount": 1,
+				"maxCount": 3
+			},
+			{
+				"type": "minecraft:tropical_fish",
+				"weight": 25,
+				"minCount": 8,
+				"maxCount": 8
+			}
 		],
-		"misc": []			
-		},
+		"misc": []
+	},
 	"spawn_costs": {},
 	"player_spawn_friendly": true,
 	"precipitation": "rain",

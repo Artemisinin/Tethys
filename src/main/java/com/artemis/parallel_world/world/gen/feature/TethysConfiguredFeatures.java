@@ -2,31 +2,23 @@ package com.artemis.parallel_world.world.gen.feature;
 
 import com.artemis.parallel_world.Dimension;
 import com.artemis.parallel_world.block.TethysBlocks;
-import com.artemis.parallel_world.mixin.LeavesBlockMixin;
-import com.artemis.parallel_world.world.gen.decorator.WaterMaxDepthDecorator;
 import com.artemis.parallel_world.world.gen.decorator.WaterMaxDepthDecoratorConfig;
 import com.artemis.parallel_world.world.gen.decorator.WaterMinDepthDecoratorConfig;
-import com.artemis.parallel_world.world.gen.tree.GlowfruitTreeDecorator;
 import com.google.common.collect.ImmutableList;
-import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
-import net.minecraft.block.LeavesBlock;
-import net.minecraft.state.property.Properties;
 import net.minecraft.util.math.VerticalSurfaceType;
 import net.minecraft.util.registry.BuiltinRegistries;
 import net.minecraft.util.registry.Registry;
-import net.minecraft.world.Heightmap;
-import net.minecraft.world.gen.CountConfig;
 import net.minecraft.util.math.intprovider.ConstantIntProvider;
 
 import net.minecraft.world.gen.YOffset;
 import net.minecraft.world.gen.decorator.CaveSurfaceDecoratorConfig;
-import net.minecraft.world.gen.decorator.CountExtraDecoratorConfig;
 import net.minecraft.world.gen.decorator.Decorator;
+import net.minecraft.world.gen.decorator.RangeDecoratorConfig;
 import net.minecraft.world.gen.feature.*;
 import net.minecraft.world.gen.feature.size.TwoLayersFeatureSize;
 import net.minecraft.world.gen.foliage.*;
-import net.minecraft.world.gen.placer.SimpleBlockPlacer;
+import net.minecraft.world.gen.heightprovider.UniformHeightProvider;
 import net.minecraft.world.gen.stateprovider.SimpleBlockStateProvider;
 import net.minecraft.world.gen.treedecorator.LeavesVineTreeDecorator;
 import net.minecraft.world.gen.trunk.ForkingTrunkPlacer;
@@ -210,7 +202,8 @@ public class TethysConfiguredFeatures {
         new TwoLayersFeatureSize(1,0,2))).build()));
 
         CAVE_SCATTERED_GHOST_TREES = register("parallel_world:cave_scattered_ghost_trees", GHOST_TREE.decorate(Decorator.CAVE_SURFACE.configure(
-                new CaveSurfaceDecoratorConfig(VerticalSurfaceType.FLOOR, 12))).rangeOf(YOffset.getBottom(), YOffset.fixed(40)).spreadHorizontally().repeat(20));
+                new CaveSurfaceDecoratorConfig(VerticalSurfaceType.FLOOR, 12))).
+                range(new RangeDecoratorConfig(UniformHeightProvider.create(YOffset.getBottom(), YOffset.fixed(40)))).spreadHorizontally().repeat(20));
         PORIFERAN = register("parallel_world:poriferan",  TethysFeatures.UNLOCKED_TREE_FEATURE.configure(
                 (new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(TethysBlocks.PORIFERAN_STEM.getDefaultState()),
                         new StraightTrunkPlacer(4, 2, 0),
