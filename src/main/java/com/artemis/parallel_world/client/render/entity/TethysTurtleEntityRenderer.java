@@ -18,9 +18,8 @@ import net.minecraft.util.Identifier;
 public class TethysTurtleEntityRenderer extends MobEntityRenderer<TethysTurtleEntity,TethysTurtleEntityModel<TethysTurtleEntity>> {
     private static final Identifier TEXTURE = new Identifier("parallel_world:textures/entity/tethys_turtle.png");
 
-    // Originally turtles were bigger, with different renderer they are smaller, need to figure out how to grow them.
     public TethysTurtleEntityRenderer(Context context) {
-        super(context, new TethysTurtleEntityModel(context.getPart(TethysEntityModelLayers.TETHYS_TURTLE_MODEL_LAYER)), 0.7F);
+        super(context, new TethysTurtleEntityModel(context.getPart(TethysEntityModelLayers.TETHYS_TURTLE_MODEL_LAYER)), 1.0F);
     }
 
     public void render(TethysTurtleEntity tethysTurtleEntity, float f, float g, MatrixStack matrixStack, VertexConsumerProvider vertexConsumerProvider, int i) {

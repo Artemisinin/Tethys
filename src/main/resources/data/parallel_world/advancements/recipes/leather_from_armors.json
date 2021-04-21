@@ -18,50 +18,11 @@
           }
         ]
       }
-    },
-    "has_the_recipe": {
-      "trigger": "minecraft:recipe_unlocked",
-      "conditions": [
-        "has_leather_armors",
-        "has_chestplate_recipe",
-        "has_pants_recipe",
-        "has_boots_recipe",
-        "has_helmet_recipe"
-      ]
-    }
-  },
-
-  "has_chestplate_recipe": {
-    "trigger": "minecraft:recipe_unlocked",
-    "conditions": {
-      "recipe": "parallel_world:leather_from_armor"
-    }
-  },
-  "has_pants_recipe": {
-    "trigger": "minecraft:recipe_unlocked,",
-    "conditions": {
-      "recipe":  "parallel_world:leather_from_pants"
-    }
-  },
-  "has_boots_recipe": {
-    "trigger": "minecraft:recipe_unlocked",
-    "conditions": {
-      "recipe": "parallel_world:leather_from_boots"
-    }
-  },
-  "has_helmet_recipe": {
-    "trigger": "minecraft:recipe_unlocked",
-    "conditions": {
-      "recipe": "parallel_world:leather_from_helmet"
     }
   },
   "requirements": [
     [
-      "has_leather_armors",
-      "has_chestplate_recipe",
-      "has_pants_recipe",
-      "has_boots_recipe",
-      "has_helmet_recipe"
+      "has_leather_armors"
     ]
   ]
 }

@@ -22,7 +22,8 @@
   "surface_builder": "parallel_world:wasteland",
   "carvers": {
     "air": [
-      "minecraft:cave"
+      "minecraft:cave",
+      "parallel_world:wasteland_crack"
     ]
   },
   "features": [

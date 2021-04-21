@@ -53,7 +53,7 @@ public class WaterStriderEntityModel<T extends WaterStriderEntity> extends Anima
 	}
 
 		float upperLegRoll = 1.85F;
-		float lowerLegRoll = -1.85F;
+		float lowerLegRoll = -1.0F;
 
 	public static ModelData getModelData() {
 		ModelData modelData = new ModelData();
@@ -64,59 +64,60 @@ public class WaterStriderEntityModel<T extends WaterStriderEntity> extends Anima
 		// Head
 		ModelPartData head = core.addChild("head", ModelPartBuilder.create().
 				cuboid("main", -1.0F, -0.5F, -1.0F, 2,1,2, 21, 10).
-				cuboid("proboscis", 0.5F, -0.125F, -2.5F, 1,3,1, headPartDilation, 21, 4),
-				ModelTransform.pivot(0.0F, 19.0F, -6.5F));
+				cuboid("proboscis", -0.5F, -0.125F, -1.5F, 1,3,1, headPartDilation, 21, 4),
+				ModelTransform.pivot(0.0F, 19.0F, -7.5F));
 		ModelPartBuilder antenna = ModelPartBuilder.create().cuboid(-0.5F, -0.5F, -0.5F, 1,3,1,headPartDilation, 21,0);
-		head.addChild("right_antenna", antenna, ModelTransform.pivot(-0.75F, -1.0F, -1.0F));
-		head.addChild("left_antenna", antenna, ModelTransform.pivot(0.75F, -1.0F, -1.0F));
+		head.addChild("right_antenna", antenna, ModelTransform.pivot(-0.75F, -2.0F, -0.5F));
+		head.addChild("left_antenna", antenna, ModelTransform.pivot(0.75F, -2.0F, -0.5F));
 
 		// Body
 		core.addChild("body", ModelPartBuilder.create().
-				cuboid("main", -2.0F, -1.0F, -3.5F, 4, 2, 11, 0, 3).
-				cuboid("spike1", -0.5F, -2.0F, -2.0F, 1, 1, 1, 4, 0).
-				cuboid("spike2", -0.5F, -3.0F, 0.0F, 1, 2, 1, 4, 0).
-				cuboid("spike3", -0.5F, -3.0F, 2.0F, 1, 2, 1, 4, 0).
-				cuboid("spike4", -0.5F, -2.0F, 4.0F, 1, 1, 1, 4, 0),
+				cuboid("main", -2.0F, -1.0F, -3.0F, 4, 2, 11, 0, 3).
+				cuboid("spike1", -0.5F, -2.0F, -1.5F, 1, 1, 1, 4, 0).
+				cuboid("spike2", -0.5F, -3.0F, 0.5F, 1, 2, 1, 4, 0).
+				cuboid("spike3", -0.5F, -3.0F, 2.5F, 1, 2, 1, 4, 0).
+				cuboid("spike4", -0.5F, -2.0F, 4.5F, 1, 1, 1, 4, 0),
 		ModelTransform.pivot(0.0F, 19.0F, -3.0F));
 
 		// Legs
-		ModelPartBuilder upper_leg = ModelPartBuilder.create().cuboid(-0.5F, -0.5F, -0.5F, 1, 3, 1, upperLegDilation).uv(0,0);
-		ModelPartBuilder lower_leg = ModelPartBuilder.create().cuboid(-0.5F, -0.5F, -0.5F, 1, 4, 1).uv(0,0);
+		ModelPartBuilder upper_leg = ModelPartBuilder.create().cuboid(-0.5F, -0.5F, -0.5F, 1, 6, 1, upperLegDilation).uv(0,0);
+		ModelPartBuilder lower_leg = ModelPartBuilder.create().cuboid(-0.5F, -0.5F, -0.5F, 1, 10, 1).uv(0,0);
+
 		// Right leg
 		ModelPartData rightLegUpper1 = core.addChild("right_leg_upper_1", upper_leg,
 				ModelTransform.pivot(-1.5F, 19.0F, -5.25F));
 		rightLegUpper1.addChild("right_leg_lower_1", lower_leg,
-				ModelTransform.pivot(0.25F, 3.0F, 0.0F));
+				ModelTransform.pivot(0.25F, 6.0F, 0.0F));
 		ModelPartData rightLegUpper2 = core.addChild("right_leg_upper_2", upper_leg,
 				ModelTransform.pivot(-1.5F, 19.0F, -2.75F));
 		rightLegUpper2.addChild("right_leg_lower_2", lower_leg,
-				ModelTransform.pivot(0.25F, 3.0F, 0.0F));
+				ModelTransform.pivot(0.25F, 6.0F, 0.0F));
 		ModelPartData rightLegUpper3 = core.addChild("right_leg_upper_3", upper_leg,
 				ModelTransform.pivot(-1.5F, 19.0F, -0.25F));
 		rightLegUpper3.addChild("right_leg_lower_3", lower_leg,
-				ModelTransform.pivot(0.25F, 3.0F, 0.0F));
+				ModelTransform.pivot(0.25F, 6.0F, 0.0F));
 		ModelPartData rightLegUpper4 = core.addChild("right_leg_upper_4", upper_leg,
 				ModelTransform.pivot(-1.5F, 19.0F, 2.25F));
 		rightLegUpper4.addChild("right_leg_lower_4", lower_leg,
-				ModelTransform.pivot(0.25F, 3.0F, 0.0F));
+				ModelTransform.pivot(0.25F, 6.0F, 0.0F));
 
 		// Left leg
 		ModelPartData leftLegUpper1 = core.addChild("left_leg_upper_1", upper_leg,
 				ModelTransform.pivot(1.5F, 19.0F, -5.25F));
 		leftLegUpper1.addChild("left_leg_lower_1", lower_leg,
-				ModelTransform.pivot(-0.25F, 3.0F, 0.0F));
+				ModelTransform.pivot(-0.25F, 6.0F, 0.0F));
 		ModelPartData leftLegUpper2 = core.addChild("left_leg_upper_2", upper_leg,
 				ModelTransform.pivot(1.5F, 19.0F, -2.75F));
 		leftLegUpper2.addChild("left_leg_lower_2", lower_leg,
-				ModelTransform.pivot(-0.25F, 3.0F, 0.0F));
+				ModelTransform.pivot(-0.25F, 6.0F, 0.0F));
 		ModelPartData leftLegUpper3 = core.addChild("left_leg_upper_3", upper_leg,
 				ModelTransform.pivot(1.5F, 19.0F, -0.25F));
 		leftLegUpper3.addChild("left_leg_lower_3", lower_leg,
-				ModelTransform.pivot(-0.25F, 3.0F, 0.0F));
+				ModelTransform.pivot(-0.25F, 6.0F, 0.0F));
 		ModelPartData leftLegUpper4 = core.addChild("left_leg_upper_4", upper_leg,
 				ModelTransform.pivot(1.5F, 19.0F, 2.25F));
 		leftLegUpper4.addChild("left_leg_lower_4", lower_leg,
-				ModelTransform.pivot(-0.25F, 3.0F, 0.0F));
+				ModelTransform.pivot(-0.25F, 6.0F, 0.0F));
 
 		return modelData;
 	}
@@ -150,5 +151,9 @@ public class WaterStriderEntityModel<T extends WaterStriderEntity> extends Anima
 	this.rightLegLower1.roll = this.rightLegLower2.roll = this.rightLegLower3.roll = this.rightLegLower4.roll = lowerLegRoll;
 	this.leftLegUpper1.roll = this.leftLegUpper2.roll = this.leftLegUpper3.roll = this.leftLegUpper4.roll = -upperLegRoll;
 	this.leftLegLower1.roll = this.leftLegLower2.roll = this.leftLegLower3.roll = this.leftLegLower4.roll = -lowerLegRoll;
+	this.rightLegUpper1.pitch = this.leftLegUpper1.pitch = -0.12F;
+	this.rightLegUpper2.pitch = this.leftLegUpper2.pitch = -0.06F;
+	this.rightLegUpper3.pitch = this.leftLegUpper3.pitch = 0.06F;
+	this.rightLegUpper4.pitch = this.leftLegUpper4.pitch = 0.12F;
 	}
 }

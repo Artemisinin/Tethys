@@ -6,6 +6,7 @@ import com.artemis.parallel_world.item.TethysItems;
 import com.artemis.parallel_world.mixin.DecoratorRegisterInvoker;
 import com.artemis.parallel_world.mixin.TreeDecoratorTypeRegisterInvoker;
 import com.artemis.parallel_world.world.gen.TethysBiomes;
+import com.artemis.parallel_world.world.gen.carver.TethysConfiguredCarvers;
 import com.artemis.parallel_world.world.gen.decorator.WaterMaxDepthDecorator;
 import com.artemis.parallel_world.world.gen.decorator.WaterMaxDepthDecoratorConfig;
 import com.artemis.parallel_world.world.gen.decorator.WaterMinDepthDecorator;
@@ -53,6 +54,7 @@ public class Dimension implements ModInitializer {
         TethysBlocks.registerBlocks();
         TethysItems.registerItems();
         TethysBlocks.registerFlammability();
+        TethysConfiguredCarvers.registerCarvers();
         WATER_MAX_DEPTH_DECORATOR = DecoratorRegisterInvoker.invokeRegister("parallel_world:water_max_depth_decorator", new WaterMaxDepthDecorator(WaterMaxDepthDecoratorConfig.CODEC));
         WATER_MIN_DEPTH_DECORATOR = DecoratorRegisterInvoker.invokeRegister("parallel_world:water_min_depth_decorator", new WaterMinDepthDecorator(WaterMinDepthDecoratorConfig.CODEC));
         GLOWFRUIT = TreeDecoratorTypeRegisterInvoker.invokeRegister("parallel_world:glowfruit", GlowfruitTreeDecorator.CODEC);

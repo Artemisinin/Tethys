@@ -1,7 +1,10 @@
 package com.artemis.parallel_world.entity;
 
+import com.artemis.parallel_world.entity.goal.GoBackToWaterGoal;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
+import net.minecraft.block.FluidBlock;
+import net.minecraft.block.ShapeContext;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnReason;
 import net.minecraft.entity.ai.FuzzyTargeting;
@@ -38,15 +41,16 @@ public class WaterStriderEntity extends PathAwareEntity {
     }
 
     protected void initGoals() {
-        this.goalSelector.add(1, new WaterStriderEntity.GoBackToWaterGoal(this, 0.3D));
+        this.goalSelector.add(1, new GoBackToWaterGoal(this, 0.3D, 12, 4));
         this.goalSelector.add(2, new FleePlayerGoal(this, PlayerEntity.class, 8.0F, 1.0D, 1.0D));
-        this.goalSelector.add(2, new WaterStriderWanderFarGoal(this, 0.8D));
+        this.goalSelector.add(3, new WaterStriderWanderWater(this, 0.8D));
+        this.goalSelector.add(3, new WaterStriderWanderLand(this, 0.3D));
     }
 
     public void tick() {
-        super.tick();
         this.updateFloating();
         this.checkBlockCollision();
+        super.tick();
     }
 
     protected EntityNavigation createNavigation(World world) {
@@ -61,10 +65,10 @@ public class WaterStriderEntity extends PathAwareEntity {
     }
 
     public float getPathfindingFavor(BlockPos pos, WorldView world) {
-        if (world.getBlockState(pos).isAir() && world.getBlockState(pos.down()).getFluidState().isIn(FluidTags.WATER)) {
+        if (world.getBlockState(pos).getFluidState().isIn(FluidTags.WATER)) {
             return 10.0F;
         } else {
-            return this.isSubmergedInWater() ? Float.NEGATIVE_INFINITY : 0.0F;
+            return this.world.getFluidState(this.getBlockPos().down()).isIn(FluidTags.WATER) ? Float.NEGATIVE_INFINITY : 0.0F;
         }
     }
 
@@ -97,14 +101,24 @@ public class WaterStriderEntity extends PathAwareEntity {
     }
 
     private void updateFloating() {
-        if (world.getBlockState(this.getBlockPos().down()).getFluidState().isIn(FluidTags.WATER) && world.getBlockState(this.getBlockPos()).isAir()) {
-            this.onGround = true;
-            this.setVelocity(getVelocity().add(0.0D, 0.05D, 0.0D));
+
+        if (this.isTouchingWater()) {
+            ShapeContext shapeContext = ShapeContext.of(this);
+            if (shapeContext.isAbove(FluidBlock.COLLISION_SHAPE, this.getBlockPos(), true) && !this.world.getFluidState(this.getBlockPos().up()).isIn(FluidTags.WATER)) {
+                this.onGround = true;
+                this.setVelocity(this.getVelocity().add(0.0D, 0.07D, 0.0D));
+            } else {
+                this.setVelocity(this.getVelocity().add(0.0D, 0.08D, 0.0D));
+            }
         }
-        else if (this.getBlockState().getFluidState().isIn(FluidTags.WATER)) {
-            this.onGround = false;
-            this.setVelocity(getVelocity().add(0.0D, 0.08D, 0.0D));
-        }
+//        if (world.getBlockState(this.getBlockPos().down()).getFluidState().isIn(FluidTags.WATER) && world.getBlockState(this.getBlockPos()).isAir()) {
+//            this.onGround = true;
+//            this.setVelocity(getVelocity().add(0.0D, 0.07D, 0.0D));
+//        }
+//        else if (this.getBlockState().getFluidState().isIn(FluidTags.WATER)) {
+//            this.onGround = false;
+//            this.setVelocity(getVelocity().add(0.0D, 0.08D, 0.0D));
+//        }
     }
 
     protected void fall(double heightDifference, boolean onGround, BlockState landedState, BlockPos landedPosition) {
@@ -118,35 +132,6 @@ public class WaterStriderEntity extends PathAwareEntity {
 
     // Goals
 
-    static class GoBackToWaterGoal extends MoveToTargetPosGoal {
-        private final WaterStriderEntity waterStrider;
-
-        private GoBackToWaterGoal(WaterStriderEntity waterStrider, double speed) {
-            super(waterStrider, speed, 12, 4);
-            this.waterStrider = waterStrider;
-        }
-
-        public BlockPos getTargetPos() {
-            return this.targetPos;
-        }
-
-        public boolean shouldContinue() {
-            return !this.waterStrider.isInsideWaterOrBubbleColumn() && this.isTargetPos(this.waterStrider.world, this.targetPos);
-        }
-
-        public boolean canStart() {
-            return !this.waterStrider.isInsideWaterOrBubbleColumn() && super.canStart();
-        }
-
-        public boolean shouldResetPath() {
-            return this.tryingTime % 20 == 0;
-        }
-
-        protected boolean isTargetPos(WorldView world, BlockPos pos) {
-            return world.getBlockState(pos).isOf(Blocks.WATER) && world.getBlockState(pos.up()).canPathfindThrough(world, pos, NavigationType.LAND);
-        }
-    }
-
     static class FleePlayerGoal extends FleeEntityGoal<PlayerEntity> {
 
         private final TargetPredicate withinRangePredicate = (new TargetPredicate()).setBaseMaxDistance(this.fleeDistance).setPredicate(inclusionSelector.and(extraInclusionSelector));
@@ -157,7 +142,7 @@ public class WaterStriderEntity extends PathAwareEntity {
 
         public boolean canStart() {
             this.targetEntity = this.mob.world.getClosestEntity(this.classToFleeFrom, this.withinRangePredicate, this.mob, this.mob.getX(), this.mob.getY(), this.mob.getZ(), this.mob.getBoundingBox().expand((double) this.fleeDistance, 3.0D, (double) this.fleeDistance));
-            if (this.targetEntity == null) {
+            if (this.targetEntity == null || !this.mob.world.getFluidState(this.mob.getBlockPos().down()).isIn(FluidTags.WATER)) {
                 return false;
             } else {
                 Vec3d vec3d = NoPenaltyTargeting.find(this.mob, 16, 0, this.targetEntity.getPos());
@@ -173,14 +158,35 @@ public class WaterStriderEntity extends PathAwareEntity {
         }
     }
 
-    static class WaterStriderWanderFarGoal extends WanderAroundFarGoal {
+    static class WaterStriderWanderWater extends WanderAroundGoal {
 
-        public WaterStriderWanderFarGoal(PathAwareEntity mob, double speed) {
+        public WaterStriderWanderWater(PathAwareEntity mob, double speed) {
             super(mob, speed);
         }
 
+        @Override
+        public boolean canStart() {
+            return super.canStart() && mob.world.getFluidState(mob.getBlockPos().down()).isIn(FluidTags.WATER);
+        }
+
         protected Vec3d getWanderTarget() {
-            Vec3d vec3d = FuzzyTargeting.find(this.mob, 15, 0);
+            return NoPenaltyTargeting.find(this.mob, 12, 0);
+        }
+    }
+
+    static class WaterStriderWanderLand extends WanderAroundFarGoal {
+
+        public WaterStriderWanderLand(PathAwareEntity mob, double speed) {
+            super(mob, speed);
+        }
+
+        @Override
+        public boolean canStart() {
+            return super.canStart() && !mob.world.getFluidState(mob.getBlockPos().down()).isIn(FluidTags.WATER);
+        }
+
+        protected Vec3d getWanderTarget() {
+            Vec3d vec3d = FuzzyTargeting.find(this.mob, 15, 4);
             return vec3d == null ? super.getWanderTarget() : vec3d;
         }
     }
