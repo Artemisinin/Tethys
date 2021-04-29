@@ -219,7 +219,7 @@ public class TethysConfiguredFeatures {
                         new BushFoliagePlacer(ConstantIntProvider.create(2), ConstantIntProvider.create(1), 2),
                         new TwoLayersFeatureSize(1, 0, 1))).decorators(ImmutableList.of(LeavesVineTreeDecorator.INSTANCE)).build()));
         SWAMP_OAK_SHRUBS = register("parallel_world:swamp_oak_shrubs", SWAMP_OAK_SHRUB.decorate(ConfiguredFeatures.Decorators.HEIGHTMAP_OCEAN_FLOOR).
-                decorate(Dimension.WATER_MAX_DEPTH_DECORATOR.configure(new WaterMaxDepthDecoratorConfig(2))).
+                //decorate(Dimension.WATER_MAX_DEPTH_DECORATOR.configure(new WaterMaxDepthDecoratorConfig(2))).
                 //decorate(Dimension.WATER_MIN_DEPTH_DECORATOR.configure(new WaterMinDepthDecoratorConfig(1))).
                 repeat(40));
     }

@@ -35,7 +35,7 @@ public class GlowfruitTreeDecorator extends TreeDecorator {
         return Dimension.GLOWFRUIT;
     }
 
-    public void generate(TestableWorld world, BiConsumer<BlockPos, BlockState> biConsumer, Random random, List<BlockPos> leavesPositions, List<BlockPos> logPositions) {
+    public void generate(TestableWorld world, BiConsumer<BlockPos, BlockState> biConsumer, Random random, List<BlockPos> logPositionsList, List<BlockPos> leavesPositions) {
         leavesPositions.forEach((pos) -> {
             if (random.nextInt(12) == 0 && leavesPositions.contains(pos.up())) {
                 biConsumer.accept(pos, TethysBlocks.GLOWFRUIT.getStateManager().getDefaultState().with(LeavesBlock.DISTANCE, 1).with(LeavesBlock.PERSISTENT, false).with(Properties.WATERLOGGED, false));

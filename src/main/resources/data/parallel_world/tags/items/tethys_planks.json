@@ -1,0 +1,12 @@
+{
+  "replace": false,
+  "values": [
+    "parallel_world:basswood_planks",
+    "parallel_world:blackcurrant_planks",
+    "parallel_world:cherry_planks",
+    "parallel_world:dogwood_planks",
+    "parallel_world:elderberry_planks",
+    "parallel_world:ginkgo_planks",
+    "parallel_world:sweetgum_planks"
+  ]
+}

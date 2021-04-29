@@ -5,12 +5,12 @@
   "compatibilityLevel": "JAVA_8",
   "mixins": [
     "DecoratorRegisterInvoker",
-    "FeatureMixin",
     "FoliagePlacerMixin",
     "GetTopPositionInvoker",
     "IcebergFeatureMixin",
     "LargeTreeSaplingGeneratorMixin",
     "LeavesBlockMixin",
+    "RegisterCompostableItemInvoker",
     "SaplingGeneratorMixin",
     "SpawnRestrictionMixin",
     "StructureStartMixin",

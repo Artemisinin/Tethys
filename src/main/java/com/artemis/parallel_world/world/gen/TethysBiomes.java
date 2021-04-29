@@ -10,6 +10,7 @@ import net.minecraft.world.biome.DefaultBiomeCreator;
 
 public class TethysBiomes {
     // This is basically all to fix the null biome "Received invalid biome id: -1" spam that started with 20w14a.
+    // Sadly:  It didn't work.
     // However, adding a json biome to the registry will allow it to be added to vanilla dimensions.
 
     public static final RegistryKey<Biome> AMAZON_KEY = RegistryKey.of(Registry.BIOME_KEY, new Identifier("parallel_world", "amazon"));

@@ -35,7 +35,7 @@ public class DimensionClient implements ClientModInitializer {
 
     public void receiveEntityPacket() {
         ClientSidePacketRegistry.INSTANCE.register(GlowLichenBallEntity.GLOW_LICHEN_BALL_SPAWN_PACKET, (ctx, byteBuf) -> {
-            EntityType<?> et = Registry.ENTITY_TYPE.get(byteBuf.readVarInt());
+            EntityType<?> entityType = Registry.ENTITY_TYPE.get(byteBuf.readVarInt());
             UUID uuid = byteBuf.readUuid();
             int entityId = byteBuf.readVarInt();
             Vec3d pos = EntitySpawnPacket.PacketBufUtil.readVec3d(byteBuf);
@@ -44,16 +44,16 @@ public class DimensionClient implements ClientModInitializer {
             ctx.getTaskQueue().execute(() -> {
                 if (MinecraftClient.getInstance().world == null)
                     throw new IllegalStateException("Tried to spawn entity in a null world!");
-                Entity e = et.create(MinecraftClient.getInstance().world);
-                if (e == null)
-                    throw new IllegalStateException("Failed to create instance of entity \"" + Registry.ENTITY_TYPE.getId(et) + "\"!");
-                e.updateTrackedPosition(pos);
-                e.setPos(pos.x, pos.y, pos.z);
-                e.pitch = pitch;
-                e.yaw = yaw;
-                e.setEntityId(entityId);
-                e.setUuid(uuid);
-                MinecraftClient.getInstance().world.addEntity(entityId, e);
+                Entity entity = entityType.create(MinecraftClient.getInstance().world);
+                if (entity == null)
+                    throw new IllegalStateException("Failed to create instance of entity \"" + Registry.ENTITY_TYPE.getId(entityType) + "\"!");
+                entity.updateTrackedPosition(pos);
+                entity.setPos(pos.x, pos.y, pos.z);
+                entity.pitch = pitch;
+                entity.yaw = yaw;
+                entity.setEntityId(entityId);
+                entity.setUuid(uuid);
+                MinecraftClient.getInstance().world.addEntity(entityId, entity);
             });
         });
     }

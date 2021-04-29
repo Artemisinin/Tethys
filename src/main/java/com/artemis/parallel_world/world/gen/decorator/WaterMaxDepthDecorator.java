@@ -13,44 +13,27 @@ import java.util.stream.Stream;
 public class WaterMaxDepthDecorator extends Decorator<WaterMaxDepthDecoratorConfig> {
     public WaterMaxDepthDecorator(Codec<WaterMaxDepthDecoratorConfig> codec) {super(codec);}
 
-//    public Stream<BlockPos> getPositions(DecoratorContext decoratorContext, Random random, WaterMaxDepthDecoratorConfig waterMinDepthDecoratorConfig, BlockPos blockPos) {
-//
-//        int blocksUp = 1;
-//        while (blocksUp <= waterMinDepthDecoratorConfig.maxSubmersion) {
-//            BlockPos pos = blockPos.offset(Direction.Axis.Y, blocksUp);
-//            // Check to see if the offset block is water.
-//            if (decoratorContext.getWorld().testBlockState(pos, (state) -> state.getFluidState().isEqualAndStill(Fluids.WATER))) {
-//                // Check to see if we've reached the required minimum.
-//                if (blocksUp == waterMinDepthDecoratorConfig.maxSubmersion) {
-//                    // If yes, we have hit minimum required depth, send back the block position tested.
-//                    return Stream.of(blockPos);
-//                } else {
-//                    // This position might still be valid because there is water but we need to check more.
-//                    // Offset the block again and check the next.
-//                    blocksUp++;
-//                }
-//            } else {
-//                // We are below the minimum required depth and encountered a block that is not water, return empty stream for this position.
-//                return Stream.of();
-//            }
-//        }
-//        return Stream.of();
-//    }
-
-    public Stream<BlockPos> getPositions(DecoratorContext decoratorContext, Random random, WaterMaxDepthDecoratorConfig waterMaxDepthDecoratorConfig, BlockPos blockPos) {
+    public Stream<BlockPos> getPositions(DecoratorContext decoratorContext, Random random, WaterMaxDepthDecoratorConfig waterMinDepthDecoratorConfig, BlockPos blockPos) {
 
         int blocksUp = 1;
-        while (blocksUp <= waterMaxDepthDecoratorConfig.maxSubmersion + 1) {
+        while (blocksUp <= waterMinDepthDecoratorConfig.maxSubmersion) {
             BlockPos pos = blockPos.offset(Direction.Axis.Y, blocksUp);
-            // If a non-water block is encountered, return block position in stream since it is not submerged. Currently allows *flowing* water.
-            if (!decoratorContext.getWorld().testBlockState(pos, (state) -> state.getFluidState().isEqualAndStill(Fluids.WATER))) {
-                return Stream.of(blockPos);
-            // Otherwise it was a water block, so increment to check the next block.
+            // Check to see if the offset block is water.
+            if (decoratorContext.getWorld().testBlockState(pos, (state) -> state.getFluidState().isEqualAndStill(Fluids.WATER))) {
+                // Check to see if we've reached the required minimum.
+                if (blocksUp == waterMinDepthDecoratorConfig.maxSubmersion) {
+                    // If yes, we have hit minimum required depth, send back the block position tested.
+                    return Stream.of(blockPos);
+                } else {
+                    // This position might still be valid because there is water but we need to check more.
+                    // Offset the block again and check the next.
+                    blocksUp++;
+                }
             } else {
-                blocksUp++;
+                // We are below the minimum required depth and encountered a block that is not water, return empty stream for this position.
+                return Stream.of();
             }
         }
-        // We ran through the maximum water height allowed and found more water above, so this would be invalid placement.
         return Stream.of();
     }
 }

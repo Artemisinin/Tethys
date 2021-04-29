@@ -8,11 +8,8 @@
         {
           "height": 1,
           "block": "minecraft:dirt"
-        },
-        {
-          "height": 2,
-          "block": "minecraft:water"
         }
+
       ],
       "biome": "parallel_world:test_biome",
       "structures": {

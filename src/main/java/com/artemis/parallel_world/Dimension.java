@@ -2,6 +2,7 @@ package com.artemis.parallel_world;
 
 import com.artemis.parallel_world.block.*;
 import com.artemis.parallel_world.entity.TethysEntities;
+import com.artemis.parallel_world.item.TethysCompostableItems;
 import com.artemis.parallel_world.item.TethysItems;
 import com.artemis.parallel_world.mixin.DecoratorRegisterInvoker;
 import com.artemis.parallel_world.mixin.TreeDecoratorTypeRegisterInvoker;
@@ -53,6 +54,7 @@ public class Dimension implements ModInitializer {
         TethysBiomes.registerBiomes();
         TethysBlocks.registerBlocks();
         TethysItems.registerItems();
+        TethysCompostableItems.registerCompostableItems();
         TethysBlocks.registerFlammability();
         TethysConfiguredCarvers.registerCarvers();
         WATER_MAX_DEPTH_DECORATOR = DecoratorRegisterInvoker.invokeRegister("parallel_world:water_max_depth_decorator", new WaterMaxDepthDecorator(WaterMaxDepthDecoratorConfig.CODEC));
@@ -69,7 +71,7 @@ public class Dimension implements ModInitializer {
 
         // Add configured features to overworld biomes
         BiomeModifications.addFeature(BiomeSelectors.foundInOverworld(), GenerationStep.Feature.UNDERGROUND_ORES, RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier("parallel_world", "cave_scattered_ghost_trees")));
-        BiomeModifications.addFeature(BiomeSelectors.includeByKey(OCEAN), GenerationStep.Feature.VEGETAL_DECORATION, RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier("parallel_world", "scattered_poriferans")));
+        //BiomeModifications.addFeature(BiomeSelectors.includeByKey(OCEAN), GenerationStep.Feature.VEGETAL_DECORATION, RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier("parallel_world", "scattered_poriferans")));
         BiomeModifications.addFeature(BiomeSelectors.categories(Biome.Category.SWAMP), GenerationStep.Feature.VEGETAL_DECORATION, RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier("parallel_world", "swamp_oak_shrubs")));
     }
 }
