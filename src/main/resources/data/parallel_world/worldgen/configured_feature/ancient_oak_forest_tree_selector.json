@@ -1,0 +1,16 @@
+{
+  "config": {
+    "features": [
+      {
+        "feature": "parallel_world:ancient_oak",
+        "chance": 0.35
+      },
+      {
+        "feature": "minecraft:fancy_oak_bees_005",
+        "chance": 0.60
+      }
+    ],
+    "default": "minecraft:oak_bees_005"
+  },
+  "type": "minecraft:random_selector"
+}

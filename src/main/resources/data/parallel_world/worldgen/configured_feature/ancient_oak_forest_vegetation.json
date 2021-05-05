@@ -1,0 +1,53 @@
+{
+  "config": {
+    "feature": {
+      "config": {
+        "feature": {
+          "config": {
+            "features": [
+              {
+                "feature": "minecraft:huge_red_mushroom",
+                "chance": 0.02
+              },
+              {
+                "feature": "minecraft:huge_brown_mushroom",
+                "chance": 0.02
+              },
+              {
+                "feature": "parallel_world:ancient_oak_forest_tree_selector",
+                "chance": 0.95
+              }
+            ],
+            "default": "minecraft:oak_bees_005"
+          },
+          "type": "minecraft:random_selector"
+        },
+        "decorator": {
+          "config": {
+            "outer": {
+              "config": {},
+              "type": "minecraft:square"
+            },
+            "inner": {
+              "config": {
+                "heightmap": "MOTION_BLOCKING"
+              },
+              "type": "minecraft:heightmap"
+            }
+          },
+          "type": "minecraft:decorated"
+        }
+      },
+      "type": "minecraft:decorated"
+    },
+    "decorator": {
+      "config": {
+        "count": 12,
+        "extra_chance": 0.1,
+        "extra_count": 0
+      },
+      "type": "minecraft:count_extra"
+    }
+  },
+  "type": "minecraft:decorated"
+}

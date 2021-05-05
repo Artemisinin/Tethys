@@ -4,6 +4,7 @@ import com.artemis.parallel_world.Dimension;
 import com.artemis.parallel_world.block.TethysBlocks;
 import com.artemis.parallel_world.world.gen.decorator.WaterMaxDepthDecoratorConfig;
 import com.artemis.parallel_world.world.gen.decorator.WaterMinDepthDecoratorConfig;
+import com.artemis.parallel_world.world.gen.trunk.HugeTreeTrunkPlacer;
 import com.google.common.collect.ImmutableList;
 import net.minecraft.block.Blocks;
 import net.minecraft.util.math.VerticalSurfaceType;
@@ -16,6 +17,7 @@ import net.minecraft.world.gen.decorator.CaveSurfaceDecoratorConfig;
 import net.minecraft.world.gen.decorator.Decorator;
 import net.minecraft.world.gen.decorator.RangeDecoratorConfig;
 import net.minecraft.world.gen.feature.*;
+import net.minecraft.world.gen.feature.size.ThreeLayersFeatureSize;
 import net.minecraft.world.gen.feature.size.TwoLayersFeatureSize;
 import net.minecraft.world.gen.foliage.*;
 import net.minecraft.world.gen.heightprovider.UniformHeightProvider;
@@ -68,6 +70,8 @@ public class TethysConfiguredFeatures {
     public static ConfiguredFeature<?,?> SCATTERED_PORIFERANS;
     public static ConfiguredFeature<?,?> SWAMP_OAK_SHRUB;
     public static ConfiguredFeature<?,?> SWAMP_OAK_SHRUBS;
+
+    //public static ConfiguredFeature<?,?> TEST_GIANT_TREE;
 
     public static void registerConfiguredFeatures() {
 
@@ -222,5 +226,12 @@ public class TethysConfiguredFeatures {
                 //decorate(Dimension.WATER_MAX_DEPTH_DECORATOR.configure(new WaterMaxDepthDecoratorConfig(2))).
                 //decorate(Dimension.WATER_MIN_DEPTH_DECORATOR.configure(new WaterMinDepthDecoratorConfig(1))).
                 repeat(40));
+
+//        TEST_GIANT_TREE = register("parallel_world:test_giant_tree", Feature.TREE.configure(
+//                (new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(Blocks.DARK_OAK_LOG.getDefaultState()),
+//                        new HugeTreeTrunkPlacer(10,6,6),
+//                        new SimpleBlockStateProvider(Blocks.DARK_OAK_LEAVES.getDefaultState()),
+//                        new LargeOakFoliagePlacer(ConstantIntProvider.create(2), ConstantIntProvider.create(4), 4),
+//                new TwoLayersFeatureSize(0, 0, 0, OptionalInt.of(12)))).build()).decorate(ConfiguredFeatures.Decorators.SQUARE_HEIGHTMAP_OCEAN_FLOOR_NO_WATER));
     }
 }

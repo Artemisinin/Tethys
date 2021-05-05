@@ -11,6 +11,7 @@
     "LargeTreeSaplingGeneratorMixin",
     "LeavesBlockMixin",
     "RegisterCompostableItemInvoker",
+    "TrunkPlacerTypeRegisterInvoker",
     "SaplingGeneratorMixin",
     "SpawnRestrictionMixin",
     "StructureStartMixin",
