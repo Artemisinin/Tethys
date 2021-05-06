@@ -81,6 +81,5 @@ public class Dimension implements ModInitializer {
         //BiomeModifications.addFeature(BiomeSelectors.includeByKey(OCEAN), GenerationStep.Feature.VEGETAL_DECORATION, RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier("parallel_world", "scattered_poriferans")));
         BiomeModifications.addFeature(BiomeSelectors.categories(Biome.Category.SWAMP), GenerationStep.Feature.VEGETAL_DECORATION, RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier("parallel_world", "swamp_oak_shrubs")));
 
-        //BiomeModifications.addFeature(BiomeSelectors.foundInOverworld(), GenerationStep.Feature.VEGETAL_DECORATION, RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier("parallel_world", "test_giant_tree")));
     }
 }

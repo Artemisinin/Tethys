@@ -27,7 +27,7 @@ public class GlowLichenBallItem extends Item {
         if (!world.isClient) {
             GlowLichenBallEntity glowLichenBallEntity = new GlowLichenBallEntity(world, user);
             glowLichenBallEntity.setItem(itemStack);
-            glowLichenBallEntity.setProperties(user, user.pitch, user.yaw, 0.0F, 1.5F, 1.0F);
+            glowLichenBallEntity.setProperties(user, user.getPitch(), user.getYaw(), 0.0F, 1.5F, 1.0F);
             world.spawnEntity(glowLichenBallEntity);
         }
 

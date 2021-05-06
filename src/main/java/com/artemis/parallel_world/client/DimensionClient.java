@@ -11,7 +11,6 @@ import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
-import net.fabricmc.fabric.api.client.rendereregistry.v1.EntityRendererRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.fabricmc.fabric.api.network.ClientSidePacketRegistry;
 import net.minecraft.block.Blocks;
@@ -20,12 +19,12 @@ import net.minecraft.client.color.block.BlockColorProvider;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.registry.Registry;
 
 
 import java.util.UUID;
+import java.util.concurrent.atomic.AtomicReference;
 
 import static com.artemis.parallel_world.block.TethysBlocks.*;
 
@@ -39,8 +38,8 @@ public class DimensionClient implements ClientModInitializer {
             UUID uuid = byteBuf.readUuid();
             int entityId = byteBuf.readVarInt();
             Vec3d pos = EntitySpawnPacket.PacketBufUtil.readVec3d(byteBuf);
-            float pitch = EntitySpawnPacket.PacketBufUtil.readAngle(byteBuf);
-            float yaw = EntitySpawnPacket.PacketBufUtil.readAngle(byteBuf);
+            AtomicReference<Float> pitch = new AtomicReference<>(EntitySpawnPacket.PacketBufUtil.readAngle(byteBuf));
+            AtomicReference<Float> yaw = new AtomicReference<>(EntitySpawnPacket.PacketBufUtil.readAngle(byteBuf));
             ctx.getTaskQueue().execute(() -> {
                 if (MinecraftClient.getInstance().world == null)
                     throw new IllegalStateException("Tried to spawn entity in a null world!");
@@ -49,8 +48,8 @@ public class DimensionClient implements ClientModInitializer {
                     throw new IllegalStateException("Failed to create instance of entity \"" + Registry.ENTITY_TYPE.getId(entityType) + "\"!");
                 entity.updateTrackedPosition(pos);
                 entity.setPos(pos.x, pos.y, pos.z);
-                entity.pitch = pitch;
-                entity.yaw = yaw;
+                pitch.set(entity.getPitch());
+                yaw.set(entity.getYaw());
                 entity.setEntityId(entityId);
                 entity.setUuid(uuid);
                 MinecraftClient.getInstance().world.addEntity(entityId, entity);

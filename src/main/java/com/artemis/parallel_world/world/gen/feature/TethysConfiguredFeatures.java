@@ -71,7 +71,6 @@ public class TethysConfiguredFeatures {
     public static ConfiguredFeature<?,?> SWAMP_OAK_SHRUB;
     public static ConfiguredFeature<?,?> SWAMP_OAK_SHRUBS;
 
-    //public static ConfiguredFeature<?,?> TEST_GIANT_TREE;
 
     public static void registerConfiguredFeatures() {
 
@@ -227,11 +226,5 @@ public class TethysConfiguredFeatures {
                 //decorate(Dimension.WATER_MIN_DEPTH_DECORATOR.configure(new WaterMinDepthDecoratorConfig(1))).
                 repeat(40));
 
-//        TEST_GIANT_TREE = register("parallel_world:test_giant_tree", Feature.TREE.configure(
-//                (new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(Blocks.DARK_OAK_LOG.getDefaultState()),
-//                        new HugeTreeTrunkPlacer(10,6,6),
-//                        new SimpleBlockStateProvider(Blocks.DARK_OAK_LEAVES.getDefaultState()),
-//                        new LargeOakFoliagePlacer(ConstantIntProvider.create(2), ConstantIntProvider.create(4), 4),
-//                new TwoLayersFeatureSize(0, 0, 0, OptionalInt.of(12)))).build()).decorate(ConfiguredFeatures.Decorators.SQUARE_HEIGHTMAP_OCEAN_FLOOR_NO_WATER));
     }
 }
