@@ -33,7 +33,7 @@ import net.minecraft.world.gen.trunk.StraightTrunkPlacer;
 import java.util.OptionalInt;
 import java.util.Random;
 
-public class TethysConfiguredFeatures {
+public class TethysConfiguredFeatures extends ConfiguredFeatures {
 
     private static <FC extends FeatureConfig> ConfiguredFeature<FC, ?> register(String id, ConfiguredFeature<?, ?> configuredFeature)
     {

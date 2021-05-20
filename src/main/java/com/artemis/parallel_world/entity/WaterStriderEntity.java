@@ -134,7 +134,7 @@ public class WaterStriderEntity extends PathAwareEntity {
 
     static class FleePlayerGoal extends FleeEntityGoal<PlayerEntity> {
 
-        private final TargetPredicate withinRangePredicate = (new TargetPredicate()).setBaseMaxDistance(this.fleeDistance).setPredicate(inclusionSelector.and(extraInclusionSelector));
+        private final TargetPredicate withinRangePredicate = TargetPredicate.createAttackable().setBaseMaxDistance(this.fleeDistance).setPredicate(inclusionSelector.and(extraInclusionSelector));
 
         public FleePlayerGoal(PathAwareEntity mob, Class<PlayerEntity> fleeFromType, float distance, double slowSpeed, double fastSpeed) {
             super(mob, fleeFromType, distance, slowSpeed, fastSpeed);
