@@ -64,6 +64,7 @@
       "parallel_world:ores/ore_gold_granite"
     ],
     [
+      "parallel_world:test_lycopod",
       "parallel_world:heath_berry_bushes",
       "parallel_world:heather_patch",
       "parallel_world:heath_vegetation",

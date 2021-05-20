@@ -9,11 +9,11 @@ import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.DefaultBiomeCreator;
 
 public class TethysBiomes {
-    // This is basically all to fix the null biome "Received invalid biome id: -1" spam that started with 20w14a.
-    // Sadly:  It didn't work.
-    // However, adding a json biome to the registry will allow it to be added to vanilla dimensions.
+
+    // Adding a json biome to the registry will allow it to be added to vanilla dimensions.
 
     public static final RegistryKey<Biome> AMAZON_KEY = RegistryKey.of(Registry.BIOME_KEY, new Identifier("parallel_world", "amazon"));
+    public static final RegistryKey<Biome> ANCIENT_OAK_FOREST_KEY = RegistryKey.of(Registry.BIOME_KEY, new Identifier("parallel_world", "ancient_oak_forest"));
     public static final RegistryKey<Biome> BAMBOO_FOREST_KEY = RegistryKey.of(Registry.BIOME_KEY, new Identifier("parallel_world", "bamboo_forest"));
     public static final RegistryKey<Biome> CRYSTAL_FOREST_KEY = RegistryKey.of(Registry.BIOME_KEY, new Identifier("parallel_world", "crystal_forest"));
     public static final RegistryKey<Biome> END_DESERT_KEY = RegistryKey.of(Registry.BIOME_KEY, new Identifier("parallel_world", "end_desert"));
@@ -35,6 +35,7 @@ public class TethysBiomes {
     public static void registerBiomes() {
         // Create dummy registry entry
         Registry.register(BuiltinRegistries.BIOME, new Identifier("parallel_world", "amazon"), DefaultBiomeCreator.createTheVoid());
+        Registry.register(BuiltinRegistries.BIOME, new Identifier("parallel_world", "ancient_oak_forest"), DefaultBiomeCreator.createTheVoid());
         Registry.register(BuiltinRegistries.BIOME, new Identifier("parallel_world", "bamboo_forest"), DefaultBiomeCreator.createTheVoid());
         Registry.register(BuiltinRegistries.BIOME, new Identifier("parallel_world", "crystal_forest"), DefaultBiomeCreator.createTheVoid());
         Registry.register(BuiltinRegistries.BIOME, new Identifier("parallel_world", "end_desert"), DefaultBiomeCreator.createTheVoid());
@@ -55,6 +56,7 @@ public class TethysBiomes {
 
         // Add biome to BuiltinBiomes list
         BuiltinBiomesAccessor.getBY_RAW_ID().put(BuiltinRegistries.BIOME.getRawId(BuiltinRegistries.BIOME.get(AMAZON_KEY)), AMAZON_KEY);
+        BuiltinBiomesAccessor.getBY_RAW_ID().put(BuiltinRegistries.BIOME.getRawId(BuiltinRegistries.BIOME.get(ANCIENT_OAK_FOREST_KEY)), ANCIENT_OAK_FOREST_KEY);
         BuiltinBiomesAccessor.getBY_RAW_ID().put(BuiltinRegistries.BIOME.getRawId(BuiltinRegistries.BIOME.get(BAMBOO_FOREST_KEY)), BAMBOO_FOREST_KEY);
         BuiltinBiomesAccessor.getBY_RAW_ID().put(BuiltinRegistries.BIOME.getRawId(BuiltinRegistries.BIOME.get(CRYSTAL_FOREST_KEY)), CRYSTAL_FOREST_KEY);
         BuiltinBiomesAccessor.getBY_RAW_ID().put(BuiltinRegistries.BIOME.getRawId(BuiltinRegistries.BIOME.get(END_DESERT_KEY)), END_DESERT_KEY);

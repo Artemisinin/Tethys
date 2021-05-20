@@ -25,7 +25,8 @@
     [],
     [
       "parallel_world:swamp_oak_shrubs",
-      "minecraft:birch_tall"
+      "minecraft:trees_birch",
+      "parallel_world:test_lycopod"
     ],
     [],
     [],
