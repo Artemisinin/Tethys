@@ -3,6 +3,7 @@ package com.artemis.parallel_world.world.gen.tree;
 
 import com.artemis.parallel_world.Dimension;
 import com.artemis.parallel_world.block.TethysBlocks;
+import com.artemis.parallel_world.mixin.TreeDecoratorTypeRegisterInvoker;
 import com.mojang.serialization.Codec;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.LeavesBlock;
@@ -21,6 +22,9 @@ import java.util.Set;
 import java.util.function.BiConsumer;
 
 public class GlowfruitTreeDecorator extends TreeDecorator {
+
+    public static TreeDecoratorType<GlowfruitTreeDecorator> GLOWFRUIT;
+
     public static final GlowfruitTreeDecorator INSTANCE = new GlowfruitTreeDecorator();
 
     public static final Codec<GlowfruitTreeDecorator> CODEC = Codec.unit(() -> {
@@ -32,7 +36,7 @@ public class GlowfruitTreeDecorator extends TreeDecorator {
 
     @Override
     protected TreeDecoratorType<?> getType() {
-        return Dimension.GLOWFRUIT;
+        return GlowfruitTreeDecorator.GLOWFRUIT;
     }
 
     public void generate(TestableWorld world, BiConsumer<BlockPos, BlockState> biConsumer, Random random, List<BlockPos> logPositionsList, List<BlockPos> leavesPositions) {
@@ -41,6 +45,10 @@ public class GlowfruitTreeDecorator extends TreeDecorator {
                 biConsumer.accept(pos, TethysBlocks.GLOWFRUIT.getStateManager().getDefaultState().with(LeavesBlock.DISTANCE, 1).with(LeavesBlock.PERSISTENT, false).with(Properties.WATERLOGGED, false));
             }
         });
+    }
+
+    public static void registerGlowfruitTreeDecorator() {
+        GLOWFRUIT = TreeDecoratorTypeRegisterInvoker.invokeRegister("parallel_world:glowfruit", GlowfruitTreeDecorator.CODEC);
     }
 
 }

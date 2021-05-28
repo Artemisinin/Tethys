@@ -12,7 +12,7 @@ import net.minecraft.world.gen.feature.TreeFeature;
 import net.minecraft.world.gen.feature.TreeFeatureConfig;
 import net.minecraft.world.gen.foliage.FoliagePlacer;
 
-import static com.artemis.parallel_world.Dimension.VALID_GROUND_BLOCKS;
+import static com.artemis.parallel_world.block.TethysBlocks.VALID_GROUND_BLOCKS;
 
 
 public class UnlockedTreeFeature extends TreeFeature {

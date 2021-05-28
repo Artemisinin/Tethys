@@ -2,6 +2,7 @@ package com.artemis.parallel_world.item;
 
 import com.artemis.parallel_world.block.TethysBlocks;
 import com.artemis.parallel_world.entity.TethysEntities;
+import com.artemis.parallel_world.mixin.RegisterCompostableItemInvoker;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
@@ -145,5 +146,30 @@ public class TethysItems {
         Registry.register(Registry.ITEM, new Identifier("parallel_world", "tethys_turtle_spawn_egg"), new SpawnEggItem(TethysEntities.TETHYS_TURTLE, 4750419, 4599642, (new Item.Settings()).group(ItemGroup.MISC)));
         Registry.register(Registry.ITEM, new Identifier("parallel_world", "water_strider_spawn_egg"), new SpawnEggItem(TethysEntities.WATER_STRIDER, 5263602, 987033, (new Item.Settings()).group(ItemGroup.MISC)));
 
+    }
+
+    public static void registerCompostableItems() {
+        RegisterCompostableItemInvoker.invokeRegisterCompostableItem(0.3F, TethysItems.BASSWOOD_LEAVES);
+        RegisterCompostableItemInvoker.invokeRegisterCompostableItem(0.3F, TethysItems.BASSWOOD_SAPLING);
+        RegisterCompostableItemInvoker.invokeRegisterCompostableItem(0.3F, TethysItems.BLACKCURRANT_LEAVES);
+        RegisterCompostableItemInvoker.invokeRegisterCompostableItem(0.3F, TethysItems.BLACKCURRANT_SAPLING);
+        RegisterCompostableItemInvoker.invokeRegisterCompostableItem(0.3F, TethysItems.CAVE_GLOWLEAF);
+        RegisterCompostableItemInvoker.invokeRegisterCompostableItem(0.3F, TethysItems.CHERRY_LEAVES);
+        RegisterCompostableItemInvoker.invokeRegisterCompostableItem(0.3F, TethysItems.CHERRY_SAPLING);
+        RegisterCompostableItemInvoker.invokeRegisterCompostableItem(0.3F, TethysItems.DOGWOOD_LEAVES);
+        RegisterCompostableItemInvoker.invokeRegisterCompostableItem(0.3F, TethysItems.DOGWOOD_SAPLING);
+        RegisterCompostableItemInvoker.invokeRegisterCompostableItem(0.3F, TethysItems.ELDERBERRY_LEAVES);
+        RegisterCompostableItemInvoker.invokeRegisterCompostableItem(0.3F, TethysItems.ELDERBERRY_SAPLING);
+        RegisterCompostableItemInvoker.invokeRegisterCompostableItem(0.3F, TethysItems.GINKGO_LEAVES);
+        RegisterCompostableItemInvoker.invokeRegisterCompostableItem(0.3F, TethysItems.GINKGO_SAPLING);
+        RegisterCompostableItemInvoker.invokeRegisterCompostableItem(0.85F, TethysItems.GLOWFRUIT);
+        RegisterCompostableItemInvoker.invokeRegisterCompostableItem(0.5F, TethysItems.GLOW_LICHEN_BALL);
+        RegisterCompostableItemInvoker.invokeRegisterCompostableItem(0.5F, TethysItems.PINK_MUSHROOM_BLOCK);
+        RegisterCompostableItemInvoker.invokeRegisterCompostableItem(0.5F, TethysItems.PORIFERAN_CHUNK);
+        RegisterCompostableItemInvoker.invokeRegisterCompostableItem(0.5F, TethysItems.PORIFERAN_CHUNK_GLOW);
+        RegisterCompostableItemInvoker.invokeRegisterCompostableItem(0.5F, TethysItems.PORIFERAN_STEM);
+        RegisterCompostableItemInvoker.invokeRegisterCompostableItem(0.3F, TethysItems.SWEETGUM_LEAVES);
+        RegisterCompostableItemInvoker.invokeRegisterCompostableItem(0.3F, TethysItems.SWEETGUM_SAPLING);
+        RegisterCompostableItemInvoker.invokeRegisterCompostableItem(0.5F, TethysItems.WHITE_MUSHROOM_BLOCK);
     }
 }

@@ -2,7 +2,6 @@ package com.artemis.parallel_world;
 
 import com.artemis.parallel_world.block.*;
 import com.artemis.parallel_world.entity.TethysEntities;
-import com.artemis.parallel_world.item.TethysCompostableItems;
 import com.artemis.parallel_world.item.TethysItems;
 import com.artemis.parallel_world.mixin.DecoratorRegisterInvoker;
 import com.artemis.parallel_world.mixin.TreeDecoratorTypeRegisterInvoker;
@@ -14,18 +13,16 @@ import com.artemis.parallel_world.world.gen.decorator.WaterMaxDepthDecoratorConf
 import com.artemis.parallel_world.world.gen.decorator.WaterMinDepthDecorator;
 import com.artemis.parallel_world.world.gen.decorator.WaterMinDepthDecoratorConfig;
 import com.artemis.parallel_world.world.gen.feature.TethysConfiguredFeatures;
+import com.artemis.parallel_world.world.gen.feature.TethysDecorators;
 import com.artemis.parallel_world.world.gen.feature.TethysFeatures;
 import com.artemis.parallel_world.world.gen.surfacebuilder.TethysSurfaceBuilder;
 import com.artemis.parallel_world.world.gen.tree.GlowfruitTreeDecorator;
 import com.artemis.parallel_world.world.gen.trunk.HugeTreeTrunkPlacer;
+import com.artemis.parallel_world.world.gen.trunk.TethysTrunkPlacers;
 import net.fabricmc.api.ModInitializer;
 
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
-import net.fabricmc.fabric.api.tag.TagRegistry;
-import net.fabricmc.fabric.impl.biome.modification.BiomeSelectionContextImpl;
-import net.minecraft.block.Block;
-import net.minecraft.tag.Tag;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.util.registry.RegistryKey;
@@ -34,7 +31,6 @@ import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.decorator.Decorator;
 import net.minecraft.world.gen.treedecorator.TreeDecoratorType;
 import net.minecraft.world.gen.trunk.TrunkPlacerType;
-import org.lwjgl.system.CallbackI;
 
 
 import static net.minecraft.world.biome.BiomeKeys.*;
@@ -42,12 +38,8 @@ import static net.minecraft.world.biome.BiomeKeys.*;
 
 public class Dimension implements ModInitializer {
 
-    public static TreeDecoratorType<GlowfruitTreeDecorator> GLOWFRUIT;
-    public static TrunkPlacerType<HugeTreeTrunkPlacer> HUGE_TREE_TRUNK_PLACER;
-    public static Tag.Identified<Block> SOIL_BLOCKS;
-    public static Tag.Identified<Block> VALID_GROUND_BLOCKS;
-    public static Decorator<WaterMaxDepthDecoratorConfig> WATER_MAX_DEPTH_DECORATOR;
-    public static Decorator<WaterMinDepthDecoratorConfig> WATER_MIN_DEPTH_DECORATOR;
+
+
 
     @Override
     public void onInitialize() {
@@ -56,31 +48,29 @@ public class Dimension implements ModInitializer {
         // Custom portal not working in snapshot at the moment.
         //CustomPortalApiRegistry.addPortal(Blocks.POLISHED_BLACKSTONE, PortalIgnitionSource.WATER, new Identifier("parallel_world", "tethys"), 23, 140, 176);
 
-        // Register many things
-        TethysBiomes.registerBiomes();
+        // Register blocks and items
         TethysBlocks.registerBlocks();
-        TethysItems.registerItems();
-        TethysCompostableItems.registerCompostableItems();
         TethysBlocks.registerFlammability();
+        TethysBlocks.registerBlockTags();
+        TethysItems.registerItems();
+        TethysItems.registerCompostableItems();
+
+        // Register worldgen elements
+        TethysBiomes.registerBiomes();
+        TethysSurfaceBuilder.registerSurfaceBuilders();
         TethysConfiguredCarvers.registerCarvers();
-        HUGE_TREE_TRUNK_PLACER = TrunkPlacerTypeRegisterInvoker.invokeRegister("parallel_world:huge_tree_trunk_placer", HugeTreeTrunkPlacer.CODEC);
-        WATER_MAX_DEPTH_DECORATOR = DecoratorRegisterInvoker.invokeRegister("parallel_world:water_max_depth_decorator", new WaterMaxDepthDecorator(WaterMaxDepthDecoratorConfig.CODEC));
-        WATER_MIN_DEPTH_DECORATOR = DecoratorRegisterInvoker.invokeRegister("parallel_world:water_min_depth_decorator", new WaterMinDepthDecorator(WaterMinDepthDecoratorConfig.CODEC));
-        GLOWFRUIT = TreeDecoratorTypeRegisterInvoker.invokeRegister("parallel_world:glowfruit", GlowfruitTreeDecorator.CODEC);
+        GlowfruitTreeDecorator.registerGlowfruitTreeDecorator();
+        TethysTrunkPlacers.registerTrunkPlacers();
+        TethysDecorators.registerDecorators();
         TethysFeatures.registerFeatures();
         TethysConfiguredFeatures.registerConfiguredFeatures();
-        TethysEntities.registerEntities();
-        TethysSurfaceBuilder.registerSurfaceBuilders();
 
-        // Register tags
-        SOIL_BLOCKS = (Tag.Identified<Block>) TagRegistry.block(new Identifier("parallel_world", "soil_blocks"));
-        VALID_GROUND_BLOCKS = (Tag.Identified<Block>) TagRegistry.block(new Identifier("parallel_world", "valid_ground_blocks"));
+        // Register entities
+        TethysEntities.registerEntities();
 
         // Add configured features to overworld biomes
         BiomeModifications.addFeature(BiomeSelectors.foundInOverworld(), GenerationStep.Feature.UNDERGROUND_ORES, RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier("parallel_world", "cave_scattered_ghost_trees")));
-        //BiomeModifications.addFeature(BiomeSelectors.includeByKey(OCEAN), GenerationStep.Feature.VEGETAL_DECORATION, RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier("parallel_world", "scattered_poriferans")));
+        BiomeModifications.addFeature(BiomeSelectors.includeByKey(OCEAN), GenerationStep.Feature.VEGETAL_DECORATION, RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier("parallel_world", "scattered_poriferans")));
         BiomeModifications.addFeature(BiomeSelectors.categories(Biome.Category.SWAMP), GenerationStep.Feature.VEGETAL_DECORATION, RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier("parallel_world", "swamp_oak_shrubs")));
-
-        BiomeModifications.addFeature(BiomeSelectors.vanilla(), GenerationStep.Feature.VEGETAL_DECORATION, RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier("parallel_world", "test_lycopod")));
     }
 }

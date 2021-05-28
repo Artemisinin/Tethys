@@ -9,7 +9,6 @@
           "height": 1,
           "block": "minecraft:grass_block"
         }
-
       ],
       "biome": "parallel_world:test_biome",
       "features": true,

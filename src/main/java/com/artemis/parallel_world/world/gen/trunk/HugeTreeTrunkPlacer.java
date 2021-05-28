@@ -37,7 +37,7 @@ public class HugeTreeTrunkPlacer extends TrunkPlacer {
 
     @Override
     protected TrunkPlacerType<?> getType() {
-        return Dimension.HUGE_TREE_TRUNK_PLACER;
+        return TethysTrunkPlacers.HUGE_TREE_TRUNK_PLACER;
     }
 
     @Override

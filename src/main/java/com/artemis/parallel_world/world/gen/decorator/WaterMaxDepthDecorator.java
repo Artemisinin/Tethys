@@ -16,7 +16,7 @@ public class WaterMaxDepthDecorator extends Decorator<WaterMaxDepthDecoratorConf
     public Stream<BlockPos> getPositions(DecoratorContext decoratorContext, Random random, WaterMaxDepthDecoratorConfig waterMaxDepthDecoratorConfig, BlockPos blockPos) {
 
         int blocksUp = 1;
-        while (blocksUp <= waterMaxDepthDecoratorConfig.maxSubmersion) {
+        while (blocksUp <= waterMaxDepthDecoratorConfig.maxSubmersion + 1) {
             BlockPos pos = blockPos.offset(Direction.Axis.Y, blocksUp);
             // If a non-water block is encountered, return block position in stream since it is not submerged. Currently allows *flowing* water.
             if (!decoratorContext.getWorld().testBlockState(pos, (state) -> state.getFluidState().isEqualAndStill(Fluids.WATER))) {

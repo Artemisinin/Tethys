@@ -3,9 +3,11 @@ package com.artemis.parallel_world.block;
 import com.artemis.parallel_world.block.sapling.*;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
+import net.fabricmc.fabric.api.tag.TagRegistry;
 import net.minecraft.block.*;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.sound.BlockSoundGroup;
+import net.minecraft.tag.Tag;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
 import net.minecraft.util.registry.Registry;
@@ -88,6 +90,9 @@ public class TethysBlocks {
     public static final Block SWEETGUM_LOG = new PillarBlock(FabricBlockSettings.of(Material.WOOD).hardness(2.0f));
     public static final CustomSaplingBlock SWEETGUM_SAPLING = new CustomSaplingBlock(new SweetgumSaplingGenerator(), AbstractBlock.Settings.of(Material.PLANT).ticksRandomly().breakInstantly().sounds(BlockSoundGroup.GRASS).nonOpaque().noCollision());
 
+    // Block Tags
+    public static Tag.Identified<Block> SOIL_BLOCKS;
+    public static Tag.Identified<Block> VALID_GROUND_BLOCKS;
 
     public static void registerBlocks() {
 
@@ -214,5 +219,10 @@ public class TethysBlocks {
         FlammableBlockRegistry.getDefaultInstance().add(SWEETGUM_PLANKS, 20, 5);
         FlammableBlockRegistry.getDefaultInstance().add(SWEETGUM_SAPLING, 100, 60);
 
+    }
+
+    public static void registerBlockTags() {
+        SOIL_BLOCKS = (Tag.Identified<Block>) TagRegistry.block(new Identifier("parallel_world", "soil_blocks"));
+        VALID_GROUND_BLOCKS = (Tag.Identified<Block>) TagRegistry.block(new Identifier("parallel_world", "valid_ground_blocks"));
     }
 }

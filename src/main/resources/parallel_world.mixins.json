@@ -11,12 +11,12 @@
     "LargeTreeSaplingGeneratorMixin",
     "LeavesBlockMixin",
     "RegisterCompostableItemInvoker",
-    "TrunkPlacerTypeRegisterInvoker",
     "SaplingGeneratorMixin",
     "SpawnRestrictionMixin",
     "StructureStartMixin",
     "TreeDecoratorTypeRegisterInvoker",
     "TrunkPlacerMixin",
+    "TrunkPlacerTypeRegisterInvoker",
     "VillageFeatureMixin"
   ],
   "client": [

@@ -5,6 +5,7 @@ import com.artemis.parallel_world.block.TethysBlocks;
 import com.artemis.parallel_world.world.gen.decorator.WaterMaxDepthDecoratorConfig;
 import com.artemis.parallel_world.world.gen.decorator.WaterMinDepthDecoratorConfig;
 import com.artemis.parallel_world.world.gen.trunk.HugeTreeTrunkPlacer;
+import com.artemis.parallel_world.world.gen.trunk.ScaleTreeTrunkPlacer;
 import com.google.common.collect.ImmutableList;
 import net.minecraft.block.Blocks;
 import net.minecraft.util.math.MathHelper;
@@ -150,7 +151,7 @@ public class TethysConfiguredFeatures extends ConfiguredFeatures {
                 setTreeDecorators(ImmutableList.of(ConfiguredFeatures.Decorators.REGULAR_BEEHIVES_TREES))));
         DOGWOOD_TREE = register("parallel_world:dogwood_tree", Feature.TREE.configure((new TreeFeatureConfig.Builder(
                 new SimpleBlockStateProvider(TethysBlocks.DOGWOOD_LOG.getDefaultState()),
-                new StraightTrunkPlacer(3, 0, 5),
+                new StraightTrunkPlacer(3, 2, 0),
                 new SimpleBlockStateProvider(TethysBlocks.DOGWOOD_LEAVES.getDefaultState()),
                 new BlobFoliagePlacer(ConstantIntProvider.create(2), ConstantIntProvider.create(0), 3),
                 new TwoLayersFeatureSize(0, 0, 0))).ignoreVines().build()));
@@ -158,7 +159,7 @@ public class TethysConfiguredFeatures extends ConfiguredFeatures {
                 setTreeDecorators(ImmutableList.of(ConfiguredFeatures.Decorators.REGULAR_BEEHIVES_TREES))));
         ELDERBERRY_TREE = register("parallel_world:elderberry_tree", Feature.TREE.configure((new TreeFeatureConfig.Builder(
                 new SimpleBlockStateProvider(TethysBlocks.ELDERBERRY_LOG.getDefaultState()),
-                new StraightTrunkPlacer(4, 2, 0),
+                new StraightTrunkPlacer(4, 3, 0),
                 new SimpleBlockStateProvider(TethysBlocks.ELDERBERRY_LEAVES.getDefaultState()),
                 new BlobFoliagePlacer(ConstantIntProvider.create(2), ConstantIntProvider.create(0), 3),
                 new TwoLayersFeatureSize(0, 0, 0))).ignoreVines().build()));
@@ -197,7 +198,8 @@ public class TethysConfiguredFeatures extends ConfiguredFeatures {
                 new TwoLayersFeatureSize(1,0,2))).build()));
         CAVE_SCATTERED_GHOST_TREES = register("parallel_world:cave_scattered_ghost_trees", GHOST_TREE.decorate(Decorator.CAVE_SURFACE.configure(
                 new CaveSurfaceDecoratorConfig(VerticalSurfaceType.FLOOR, 12))).
-                range(new RangeDecoratorConfig(UniformHeightProvider.create(YOffset.getBottom(), YOffset.fixed(40)))).spreadHorizontally().repeat(20));
+                range(new RangeDecoratorConfig(UniformHeightProvider.create(YOffset.getBottom(), YOffset.fixed(40)))).
+                decorate(TethysDecorators.WATER_MAX_DEPTH_DECORATOR.configure(new WaterMaxDepthDecoratorConfig(0))).spreadHorizontally().repeat(20));
         PORIFERAN = register("parallel_world:poriferan",  TethysFeatures.UNLOCKED_TREE_FEATURE.configure((new TreeFeatureConfig.Builder(
                 new SimpleBlockStateProvider(TethysBlocks.PORIFERAN_STEM.getDefaultState()),
                 new StraightTrunkPlacer(4, 2, 0),
@@ -205,7 +207,8 @@ public class TethysConfiguredFeatures extends ConfiguredFeatures {
                 new PineFoliagePlacer(ConstantIntProvider.create(1), ConstantIntProvider.create(0),ConstantIntProvider.create(4)),
                 new TwoLayersFeatureSize(1, 1, 1))).build()));
         SCATTERED_PORIFERANS = register("parallel_world:scattered_poriferans", PORIFERAN.decorate(ConfiguredFeatures.Decorators.SQUARE_TOP_SOLID_HEIGHTMAP).
-                decorate(Dimension.WATER_MIN_DEPTH_DECORATOR.configure(new WaterMinDepthDecoratorConfig(10))).decorate(Dimension.WATER_MAX_DEPTH_DECORATOR.configure(new WaterMaxDepthDecoratorConfig(50))).repeat(120));
+                decorate(TethysDecorators.WATER_MIN_DEPTH_DECORATOR.configure(new WaterMinDepthDecoratorConfig(10))).
+                decorate(TethysDecorators.WATER_MAX_DEPTH_DECORATOR.configure(new WaterMaxDepthDecoratorConfig(50))).repeat(120));
         SWAMP_OAK_SHRUB = register("parallel_world:swamp_oak_shrub", Feature.TREE.configure((new TreeFeatureConfig.Builder(
                 new SimpleBlockStateProvider(Blocks.OAK_LOG.getDefaultState()),
                 new StraightTrunkPlacer(2, 1, 0),
@@ -213,15 +216,15 @@ public class TethysConfiguredFeatures extends ConfiguredFeatures {
                 new BushFoliagePlacer(ConstantIntProvider.create(2), ConstantIntProvider.create(1), 2),
                 new TwoLayersFeatureSize(1, 0, 1))).decorators(ImmutableList.of(LeavesVineTreeDecorator.INSTANCE)).build()));
         SWAMP_OAK_SHRUBS = register("parallel_world:swamp_oak_shrubs", SWAMP_OAK_SHRUB.decorate(ConfiguredFeatures.Decorators.HEIGHTMAP_OCEAN_FLOOR).
-                decorate(Dimension.WATER_MAX_DEPTH_DECORATOR.configure(new WaterMaxDepthDecoratorConfig(2))).
-                //decorate(Dimension.WATER_MIN_DEPTH_DECORATOR.configure(new WaterMinDepthDecoratorConfig(1))).
+                decorate(TethysDecorators.WATER_MAX_DEPTH_DECORATOR.configure(new WaterMaxDepthDecoratorConfig(3))).
+                decorate(TethysDecorators.WATER_MIN_DEPTH_DECORATOR.configure(new WaterMinDepthDecoratorConfig(1))).
                 repeat(40));
 
         TEST_LYCOPOD = register("parallel_world:test_lycopod", Feature.TREE.configure((new TreeFeatureConfig.Builder(
-                new SimpleBlockStateProvider(Blocks.MUSHROOM_STEM.getDefaultState()),
-                new ForkingTrunkPlacer((new Random().nextInt(4) + 8), (new Random().nextInt(2) + 2), (new Random().nextInt(2) + 2)),
-                new SimpleBlockStateProvider(Blocks.NETHER_WART_BLOCK.getDefaultState()),
-                new PineFoliagePlacer(ConstantIntProvider.create(3), ConstantIntProvider.create(0), ConstantIntProvider.create(3)), new TwoLayersFeatureSize(1, 0, 2))).ignoreVines().build()).
-                decorate(ConfiguredFeatures.Decorators.SQUARE_HEIGHTMAP_OCEAN_FLOOR_NO_WATER).repeat(3));
+                new SimpleBlockStateProvider(Blocks.ACACIA_LOG.getDefaultState()),
+                new ScaleTreeTrunkPlacer(6, 3, 3),
+                new SimpleBlockStateProvider(Blocks.JUNGLE_LEAVES.getDefaultState()),
+                new PineFoliagePlacer(ConstantIntProvider.create(1), ConstantIntProvider.create(0), ConstantIntProvider.create(3)), new TwoLayersFeatureSize(1, 0, 2))).ignoreVines().build()).
+                decorate(ConfiguredFeatures.Decorators.SQUARE_HEIGHTMAP_OCEAN_FLOOR_NO_WATER));
     }
 }

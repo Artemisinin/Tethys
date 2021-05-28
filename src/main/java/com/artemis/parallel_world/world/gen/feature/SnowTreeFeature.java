@@ -28,20 +28,20 @@ public class SnowTreeFeature extends TreeFeature {
 
     @Override
     protected boolean generate(StructureWorldAccess world, Random random, BlockPos pos, BiConsumer<BlockPos, BlockState> logsBiConsumer, BiConsumer<BlockPos, BlockState> leavesBiConsumer, TreeFeatureConfig config) {
-        int i = config.trunkPlacer.getHeight(random);
-        int j = config.foliagePlacer.getRandomHeight(random, i, config);
-        int k = i - j;
+        int height = config.trunkPlacer.getHeight(random);
+        int j = config.foliagePlacer.getRandomHeight(random, height, config);
+        int k = height - j;
         int l = config.foliagePlacer.getRandomRadius(random, k);
         int r;
 
-        if (pos.getY() >= world.getBottomY() + 1 && pos.getY() + i + 1 <= world.getTopY()) {
+        if (pos.getY() >= world.getBottomY() + 1 && pos.getY() + height + 1 <= world.getTopY()) {
             // Check to make sure there are blocks overhead.
             if (!this.canPlaceTreeOn(world, pos.down())) {
                 return false;
             } else {
                 OptionalInt optionalInt = config.minimumSize.getMinClippedHeight();
-                r = ((GetTopPositionInvoker) this).invokeGetTopPosition(world, i, pos, config);
-                if (r >= i || optionalInt.isPresent() && r >= optionalInt.getAsInt()) {
+                r = ((GetTopPositionInvoker) this).invokeGetTopPosition(world, height, pos, config);
+                if (r >= height || optionalInt.isPresent() && r >= optionalInt.getAsInt()) {
                     List<FoliagePlacer.TreeNode> list = config.trunkPlacer.generate(world, logsBiConsumer, random, r, pos, config);
                     list.forEach((node) -> config.foliagePlacer.generate(world, leavesBiConsumer, random, config, r, node, j, l));
                     return true;
