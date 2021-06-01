@@ -1,10 +1,7 @@
 package com.artemis.parallel_world.world.gen.surfacebuilder;
 
-import com.artemis.parallel_world.world.gen.surfacebuilder.SkyIslandSurfaceBuilder;
 import com.mojang.serialization.Codec;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.util.registry.BuiltinRegistries;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.chunk.Chunk;
@@ -14,8 +11,7 @@ import java.util.Random;
 
 public abstract class TethysSurfaceBuilder <C extends SurfaceConfig> extends SurfaceBuilder {
 
-    public static SurfaceBuilder<TernarySurfaceConfig> TETHYS_DEFAULT;
-    public static SurfaceBuilder<TernarySurfaceConfig> TETHYS_GIANT_TREE_TAIGA;
+    public static SurfaceBuilder<TernarySurfaceConfig> TETHYS_SWAMP;
 
     public TethysSurfaceBuilder(Codec codec) {
         super(codec);
@@ -31,7 +27,6 @@ public abstract class TethysSurfaceBuilder <C extends SurfaceConfig> extends Sur
 
     public static void registerSurfaceBuilders()
     {
-        TETHYS_DEFAULT = register("parallel_world:tethys_default", new SkyIslandSurfaceBuilder(TernarySurfaceConfig.CODEC));
-        TETHYS_GIANT_TREE_TAIGA = register("parallel_world:giant_tree_taiga", new TethysGiantTreeTaigaSurfaceBuilder(TernarySurfaceConfig.CODEC));
+        TETHYS_SWAMP = register("parallel_world:tethys_swamp", new TethysSwampSurfaceBuilder(TernarySurfaceConfig.CODEC));
     }
 }

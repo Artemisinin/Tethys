@@ -42,10 +42,19 @@
       },
       "type": "minecraft:simple_state_provider"
     },
+    "sapling_provider": {
+      "state": {
+        "Properties": {
+          "stage": "0"
+        },
+        "Name": "minecraft:oak_sapling"
+      },
+      "type": "minecraft:simple_state_provider"
+    },
     "foliage_placer": {
       "radius": 2,
-      "offset": 4,
-      "height": 4,
+      "offset": 3,
+      "height": 3,
       "type": "minecraft:fancy_foliage_placer"
     }
   },

@@ -7,11 +7,11 @@
       "Name": "minecraft:grass_block"
     },
     "under_material": {
-      "Name": "minecraft:sand"
+      "Name": "minecraft:dirt"
     },
     "underwater_material": {
-      "Name": "minecraft:sand"
+      "Name": "minecraft:dirt"
     }
   },
-  "type": "minecraft:default"
+  "type": "parallel_world:tethys_swamp"
 }

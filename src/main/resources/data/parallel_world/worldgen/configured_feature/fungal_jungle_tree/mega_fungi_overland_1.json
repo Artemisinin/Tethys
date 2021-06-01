@@ -41,6 +41,15 @@
       },
       "type": "minecraft:simple_state_provider"
     },
+    "sapling_provider": {
+      "state": {
+        "Properties": {
+          "stage": "0"
+        },
+        "Name": "minecraft:birch_sapling"
+      },
+      "type": "minecraft:simple_state_provider"
+    },
     "foliage_placer": {
       "radius": 2,
       "offset": 0,

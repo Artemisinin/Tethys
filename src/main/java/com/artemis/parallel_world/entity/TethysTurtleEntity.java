@@ -340,7 +340,7 @@ public class TethysTurtleEntity extends AnimalEntity {
                 double d = this.targetX - this.turtle.getX();
                 double e = this.targetY - this.turtle.getY();
                 double f = this.targetZ - this.turtle.getZ();
-                double g = MathHelper.sqrt(d * d + e * e + f * f);
+                double g = MathHelper.sqrt((float) (d * d + e * e + f * f));
                 e /= g;
                 float h = (float)(MathHelper.atan2(f, d) * 57.2957763671875D) - 90.0F;
                 this.turtle.setYaw(this.wrapDegrees(this.turtle.getYaw(), h, 90.0F));

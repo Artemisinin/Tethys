@@ -12,7 +12,7 @@
     "water_color": 4435182,
     "water_fog_color": 270131
   },
-  "surface_builder": "parallel_world:full_sand",
+  "surface_builder": "minecraft:full_sand",
   "carvers": {
     "air": [],
     "liquid": []

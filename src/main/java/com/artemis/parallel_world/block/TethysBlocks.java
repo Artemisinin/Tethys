@@ -44,6 +44,12 @@ public class TethysBlocks {
     public static final Block PORIFERAN_CHUNK_GLOW = new Block(FabricBlockSettings.of(Material.STONE).hardness(0.5f).requiresTool().luminance(5).strength(0.8F));
     public static final Block PORIFERAN_STEM = new PillarBlock(FabricBlockSettings.of(Material.WOOD).strength(0.2F).sounds(BlockSoundGroup.WOOD));
 
+    // Sapling providers (for feature generation checks)
+    public static final Block GRAVEL_GROUND_SAPLING_PROVIDER = new GravelGroundSaplingProvider(AbstractBlock.Settings.copy(Blocks.OAK_SAPLING));
+    public static final Block SANDY_DARKNESS_SAPLING_PROVIDER = new SandyDarknessSaplingProvider(AbstractBlock.Settings.copy(Blocks.OAK_SAPLING));
+    public static final Block SNOWY_GROUND_SAPLING_PROVIDER = new SnowyGroundSaplingProvider(AbstractBlock.Settings.copy(Blocks.OAK_SAPLING));
+    public static final Block STONY_GROUND_SAPLING_PROVIDER = new StonyGroundSaplingProvider(AbstractBlock.Settings.copy(Blocks.OAK_SAPLING));
+
     // Tethys turtle eggs
     public static final Block TETHYS_TURTLE_EGG = new TethysTurtleEggBlock((AbstractBlock.Settings.of(Material.EGG).strength(0.5F).sounds(BlockSoundGroup.METAL).ticksRandomly().nonOpaque()));
 
@@ -132,6 +138,12 @@ public class TethysBlocks {
         Registry.register(Registry.BLOCK, new Identifier("parallel_world", "poriferan_chunk"), PORIFERAN_CHUNK);
         Registry.register(Registry.BLOCK, new Identifier("parallel_world", "poriferan_chunk_glow"), PORIFERAN_CHUNK_GLOW);
         Registry.register(Registry.BLOCK, new Identifier("parallel_world", "poriferan_stem"), PORIFERAN_STEM);
+
+        // Sapling providers (for feature generation checks)
+        Registry.register(Registry.BLOCK, new Identifier("parallel_world", "gravel_ground_sapling_provider"), GRAVEL_GROUND_SAPLING_PROVIDER);
+        Registry.register(Registry.BLOCK, new Identifier("parallel_world", "sandy_darkness_sapling_provider"), SANDY_DARKNESS_SAPLING_PROVIDER);
+        Registry.register(Registry.BLOCK, new Identifier("parallel_world", "snowy_ground_sapling_provider"), SNOWY_GROUND_SAPLING_PROVIDER);
+        Registry.register(Registry.BLOCK, new Identifier("parallel_world", "stony_ground_sapling_provider"), STONY_GROUND_SAPLING_PROVIDER);
 
         // Tethys turtle eggs
         Registry.register(Registry.BLOCK, new Identifier("parallel_world", "tethys_turtle_egg"), TETHYS_TURTLE_EGG);
@@ -223,6 +235,6 @@ public class TethysBlocks {
 
     public static void registerBlockTags() {
         SOIL_BLOCKS = (Tag.Identified<Block>) TagRegistry.block(new Identifier("parallel_world", "soil_blocks"));
-        VALID_GROUND_BLOCKS = (Tag.Identified<Block>) TagRegistry.block(new Identifier("parallel_world", "valid_ground_blocks"));
+        //VALID_GROUND_BLOCKS = (Tag.Identified<Block>) TagRegistry.block(new Identifier("parallel_world", "valid_ground_blocks"));
     }
 }

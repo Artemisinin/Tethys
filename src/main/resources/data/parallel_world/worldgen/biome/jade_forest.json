@@ -15,7 +15,7 @@
 		"water_fog_color": 2041677,
 		"grass_color_modifier": "none"
 	},
-	"surface_builder": "parallel_world:default",
+	"surface_builder": "minecraft:grass",
 	"carvers": {
 		"air": [
 			"minecraft:cave",

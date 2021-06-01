@@ -229,7 +229,8 @@ public class FlyingCatEntityModel<T extends FlyingCatEntity> extends AnimalModel
 			this.lowerTail.pitch = 2.7F;
 		} else if (flying) {
 			this.animationState = 4;
-			if (Entity.squaredHorizontalLength(flyingCatEntity.getVelocity()) < 1.0E-7D) {
+			//if (Entity.squaredHorizontalLength(flyingCatEntity.getVelocity()) < 1.0E-7D) {
+			if (flyingCatEntity.getVelocity().method_37268() < 1.0E-7D) {
 				this.rightFrontLeg.pitch += 0.0F;
 				this.leftFrontLeg.pitch += 0.0F;
 				this.rightBackLeg.pitch += 0.0F;

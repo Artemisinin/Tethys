@@ -32,6 +32,15 @@
       },
       "type": "minecraft:simple_state_provider"
     },
+    "sapling_provider": {
+      "state": {
+        "Properties": {
+          "stage": "0"
+        },
+        "Name": "parallel_world:sandy_darkness_sapling_provider"
+      },
+      "type": "minecraft:simple_state_provider"
+    },
     "foliage_placer": {
       "radius": 1,
       "offset": 0,
@@ -51,5 +60,5 @@
       "type": "minecraft:straight_trunk_placer"
     }
   },
-  "type": "parallel_world:dark_ocean_floor_tree"
+  "type": "minecraft:tree"
 }
