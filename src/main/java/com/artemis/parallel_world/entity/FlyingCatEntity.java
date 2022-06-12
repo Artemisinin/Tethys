@@ -2,7 +2,9 @@ package com.artemis.parallel_world.entity;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
+import net.minecraft.block.LeavesBlock;
 import net.minecraft.entity.*;
+import net.minecraft.entity.ai.FuzzyTargeting;
 import net.minecraft.entity.ai.control.FlightMoveControl;
 import net.minecraft.entity.ai.control.MoveControl;
 import net.minecraft.entity.ai.goal.*;
@@ -14,6 +16,7 @@ import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.mob.MobEntity;
+import net.minecraft.entity.mob.PathAwareEntity;
 import net.minecraft.entity.passive.*;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
@@ -25,13 +28,15 @@ import net.minecraft.sound.SoundEvents;
 import net.minecraft.tag.BlockTags;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.ServerWorldAccess;
+import net.minecraft.util.math.Direction;
+import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
-import net.minecraft.world.WorldView;
 import org.jetbrains.annotations.Nullable;
 import net.minecraft.entity.ai.goal.TemptGoal;
 
+import java.util.Iterator;
 import java.util.Random;
 
 
@@ -195,5 +200,50 @@ public class FlyingCatEntity extends TameableEntity {
         return !this.isTamed() && this.age > 2400;
     }
 
+    private static class FlyOntoTreeGoal extends FlyGoal {
+        public FlyOntoTreeGoal(PathAwareEntity pathAwareEntity, double d) {
+            super(pathAwareEntity, d);
+        }
+
+        @Nullable
+        protected Vec3d getWanderTarget() {
+            Vec3d vec3d = null;
+            if (this.mob.isTouchingWater()) {
+                vec3d = FuzzyTargeting.find(this.mob, 15, 15);
+            }
+
+            if (this.mob.getRandom().nextFloat() >= this.probability) {
+                vec3d = this.locateTree();
+            }
+
+            return vec3d == null ? super.getWanderTarget() : vec3d;
+        }
+
+        @Nullable
+        private Vec3d locateTree() {
+            BlockPos blockPos = this.mob.getBlockPos();
+            BlockPos.Mutable mutable = new BlockPos.Mutable();
+            BlockPos.Mutable mutable2 = new BlockPos.Mutable();
+            Iterable<BlockPos> iterable = BlockPos.iterate(MathHelper.floor(this.mob.getX() - 3.0D), MathHelper.floor(this.mob.getY() - 6.0D), MathHelper.floor(this.mob.getZ() - 3.0D), MathHelper.floor(this.mob.getX() + 3.0D), MathHelper.floor(this.mob.getY() + 6.0D), MathHelper.floor(this.mob.getZ() + 3.0D));
+            Iterator var5 = iterable.iterator();
+
+            BlockPos blockPos2;
+            boolean bl;
+            do {
+                do {
+                    if (!var5.hasNext()) {
+                        return null;
+                    }
+
+                    blockPos2 = (BlockPos)var5.next();
+                } while(blockPos.equals(blockPos2));
+
+                BlockState blockState = this.mob.world.getBlockState(mutable2.set(blockPos2, Direction.DOWN));
+                bl = blockState.getBlock() instanceof LeavesBlock || blockState.isIn(BlockTags.LOGS);
+            } while(!bl || !this.mob.world.isAir(blockPos2) || !this.mob.world.isAir(mutable.set(blockPos2, Direction.UP)));
+
+            return Vec3d.ofBottomCenter(blockPos2);
+        }
+    }
 
 }

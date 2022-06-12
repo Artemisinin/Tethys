@@ -1,12 +1,11 @@
 package com.artemis.parallel_world.world.gen;
 
-import net.fabricmc.fabric.mixin.biome.BuiltinBiomesAccessor;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.BuiltinRegistries;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.util.registry.RegistryKey;
 import net.minecraft.world.biome.Biome;
-import net.minecraft.world.biome.DefaultBiomeCreator;
+import net.minecraft.world.biome.OverworldBiomeCreator;
 
 public class TethysBiomes {
 
@@ -34,28 +33,28 @@ public class TethysBiomes {
 
     public static void registerBiomes() {
         // Create dummy registry entry
-        Registry.register(BuiltinRegistries.BIOME, new Identifier("parallel_world", "amazon"), DefaultBiomeCreator.createTheVoid());
-        Registry.register(BuiltinRegistries.BIOME, new Identifier("parallel_world", "ancient_oak_forest"), DefaultBiomeCreator.createTheVoid());
-        Registry.register(BuiltinRegistries.BIOME, new Identifier("parallel_world", "bamboo_forest"), DefaultBiomeCreator.createTheVoid());
-        Registry.register(BuiltinRegistries.BIOME, new Identifier("parallel_world", "crystal_forest"), DefaultBiomeCreator.createTheVoid());
-        Registry.register(BuiltinRegistries.BIOME, new Identifier("parallel_world", "end_desert"), DefaultBiomeCreator.createTheVoid());
-        Registry.register(BuiltinRegistries.BIOME, new Identifier("parallel_world", "fairy_dark_forest"), DefaultBiomeCreator.createTheVoid());
-        Registry.register(BuiltinRegistries.BIOME, new Identifier("parallel_world", "fairy_flower_forest"), DefaultBiomeCreator.createTheVoid());
-        Registry.register(BuiltinRegistries.BIOME, new Identifier("parallel_world", "fungal_jungle"), DefaultBiomeCreator.createTheVoid());
-        Registry.register(BuiltinRegistries.BIOME, new Identifier("parallel_world", "heath"), DefaultBiomeCreator.createTheVoid());
-        Registry.register(BuiltinRegistries.BIOME, new Identifier("parallel_world", "ice_bergs"), DefaultBiomeCreator.createTheVoid());
-        Registry.register(BuiltinRegistries.BIOME, new Identifier("parallel_world", "ice_spires"), DefaultBiomeCreator.createTheVoid());
-        Registry.register(BuiltinRegistries.BIOME, new Identifier("parallel_world", "jade_forest"), DefaultBiomeCreator.createTheVoid());
-        Registry.register(BuiltinRegistries.BIOME, new Identifier("parallel_world", "mycelium"), DefaultBiomeCreator.createTheVoid());
-        Registry.register(BuiltinRegistries.BIOME, new Identifier("parallel_world", "rainbow_forest"), DefaultBiomeCreator.createTheVoid());
-        Registry.register(BuiltinRegistries.BIOME, new Identifier("parallel_world", "reef"), DefaultBiomeCreator.createTheVoid());
-        Registry.register(BuiltinRegistries.BIOME, new Identifier("parallel_world", "sequoia_forest"), DefaultBiomeCreator.createTheVoid());
-        Registry.register(BuiltinRegistries.BIOME, new Identifier("parallel_world", "snow_forest"), DefaultBiomeCreator.createTheVoid());
-        Registry.register(BuiltinRegistries.BIOME, new Identifier("parallel_world", "traps"), DefaultBiomeCreator.createTheVoid());
-        Registry.register(BuiltinRegistries.BIOME, new Identifier("parallel_world", "wasteland"), DefaultBiomeCreator.createTheVoid());
+        Registry.register(BuiltinRegistries.BIOME, new Identifier("parallel_world", "amazon"), OverworldBiomeCreator.createTheVoid());
+        Registry.register(BuiltinRegistries.BIOME, new Identifier("parallel_world", "ancient_oak_forest"), OverworldBiomeCreator.createTheVoid());
+        Registry.register(BuiltinRegistries.BIOME, new Identifier("parallel_world", "bamboo_forest"), OverworldBiomeCreator.createTheVoid());
+        Registry.register(BuiltinRegistries.BIOME, new Identifier("parallel_world", "crystal_forest"), OverworldBiomeCreator.createTheVoid());
+        Registry.register(BuiltinRegistries.BIOME, new Identifier("parallel_world", "end_desert"), OverworldBiomeCreator.createTheVoid());
+        Registry.register(BuiltinRegistries.BIOME, new Identifier("parallel_world", "fairy_dark_forest"), OverworldBiomeCreator.createTheVoid());
+        Registry.register(BuiltinRegistries.BIOME, new Identifier("parallel_world", "fairy_flower_forest"), OverworldBiomeCreator.createTheVoid());
+        Registry.register(BuiltinRegistries.BIOME, new Identifier("parallel_world", "fungal_jungle"), OverworldBiomeCreator.createTheVoid());
+        Registry.register(BuiltinRegistries.BIOME, new Identifier("parallel_world", "heath"), OverworldBiomeCreator.createTheVoid());
+        Registry.register(BuiltinRegistries.BIOME, new Identifier("parallel_world", "ice_bergs"), OverworldBiomeCreator.createTheVoid());
+        Registry.register(BuiltinRegistries.BIOME, new Identifier("parallel_world", "ice_spires"), OverworldBiomeCreator.createTheVoid());
+        Registry.register(BuiltinRegistries.BIOME, new Identifier("parallel_world", "jade_forest"), OverworldBiomeCreator.createTheVoid());
+        Registry.register(BuiltinRegistries.BIOME, new Identifier("parallel_world", "mycelium"), OverworldBiomeCreator.createTheVoid());
+        Registry.register(BuiltinRegistries.BIOME, new Identifier("parallel_world", "rainbow_forest"), OverworldBiomeCreator.createTheVoid());
+        Registry.register(BuiltinRegistries.BIOME, new Identifier("parallel_world", "reef"), OverworldBiomeCreator.createTheVoid());
+        Registry.register(BuiltinRegistries.BIOME, new Identifier("parallel_world", "sequoia_forest"), OverworldBiomeCreator.createTheVoid());
+        Registry.register(BuiltinRegistries.BIOME, new Identifier("parallel_world", "snow_forest"), OverworldBiomeCreator.createTheVoid());
+        Registry.register(BuiltinRegistries.BIOME, new Identifier("parallel_world", "traps"), OverworldBiomeCreator.createTheVoid());
+        Registry.register(BuiltinRegistries.BIOME, new Identifier("parallel_world", "wasteland"), OverworldBiomeCreator.createTheVoid());
 
         // Add biome to BuiltinBiomes list
-        BuiltinBiomesAccessor.getBY_RAW_ID().put(BuiltinRegistries.BIOME.getRawId(BuiltinRegistries.BIOME.get(AMAZON_KEY)), AMAZON_KEY);
+/*        BuiltinBiomesAccessor.getBY_RAW_ID().put(BuiltinRegistries.BIOME.getRawId(BuiltinRegistries.BIOME.get(AMAZON_KEY)), AMAZON_KEY);
         BuiltinBiomesAccessor.getBY_RAW_ID().put(BuiltinRegistries.BIOME.getRawId(BuiltinRegistries.BIOME.get(ANCIENT_OAK_FOREST_KEY)), ANCIENT_OAK_FOREST_KEY);
         BuiltinBiomesAccessor.getBY_RAW_ID().put(BuiltinRegistries.BIOME.getRawId(BuiltinRegistries.BIOME.get(BAMBOO_FOREST_KEY)), BAMBOO_FOREST_KEY);
         BuiltinBiomesAccessor.getBY_RAW_ID().put(BuiltinRegistries.BIOME.getRawId(BuiltinRegistries.BIOME.get(CRYSTAL_FOREST_KEY)), CRYSTAL_FOREST_KEY);
@@ -73,6 +72,6 @@ public class TethysBiomes {
         BuiltinBiomesAccessor.getBY_RAW_ID().put(BuiltinRegistries.BIOME.getRawId(BuiltinRegistries.BIOME.get(SEQUOIA_FOREST_KEY)), SEQUOIA_FOREST_KEY);
         BuiltinBiomesAccessor.getBY_RAW_ID().put(BuiltinRegistries.BIOME.getRawId(BuiltinRegistries.BIOME.get(SNOW_FOREST_KEY)), SNOW_FOREST_KEY);
         BuiltinBiomesAccessor.getBY_RAW_ID().put(BuiltinRegistries.BIOME.getRawId(BuiltinRegistries.BIOME.get(TRAPS_KEY)), TRAPS_KEY);
-        BuiltinBiomesAccessor.getBY_RAW_ID().put(BuiltinRegistries.BIOME.getRawId(BuiltinRegistries.BIOME.get(WASTELAND_KEY)), WASTELAND_KEY);
+        BuiltinBiomesAccessor.getBY_RAW_ID().put(BuiltinRegistries.BIOME.getRawId(BuiltinRegistries.BIOME.get(WASTELAND_KEY)), WASTELAND_KEY);*/
     }
 }
