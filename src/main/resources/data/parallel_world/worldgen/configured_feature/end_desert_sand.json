@@ -1,36 +1,25 @@
 {
+  "type": "minecraft:delta_feature",
   "config": {
-    "feature": {
-      "config": {
-        "contents": {
-          "Name": "minecraft:end_stone"
-        },
-        "rim": {
-          "Name": "minecraft:sandstone"
-        },
-        "size": {
-          "type": "minecraft:uniform",
-          "value": {
-            "min_inclusive": 1,
-            "max_inclusive": 4
-          }
-        },
-        "rim_size": {
-          "type": "minecraft:uniform",
-          "value": {
-            "min_inclusive": 0,
-            "max_inclusive": 1
-          }
-        }
-      },
-      "type": "minecraft:delta_feature"
+    "contents": {
+      "Name": "minecraft:end_stone"
     },
-    "decorator": {
-      "config": {
-        "count": 20
-      },
-      "type": "minecraft:count_multilayer"
+    "rim": {
+      "Name": "minecraft:sandstone"
+    },
+    "size": {
+      "type": "minecraft:uniform",
+      "value": {
+        "min_inclusive": 1,
+        "max_inclusive": 4
+      }
+    },
+    "rim_size": {
+      "type": "minecraft:uniform",
+      "value": {
+        "min_inclusive": 0,
+        "max_inclusive": 1
+      }
     }
-  },
-  "type": "minecraft:decorated"
+  }
 }

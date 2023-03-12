@@ -1,5 +1,4 @@
 {
-  "scale": 0.05,
   "effects": {
     "mood_sound": {
       "sound": "minecraft:ambient.cave",
@@ -12,29 +11,24 @@
     "water_color": 3750089,
     "water_fog_color": 329011
   },
-  "surface_builder": "parallel_world:deep_snow",
   "carvers": {
-    "air": [
-      "minecraft:cave",
-      "minecraft:canyon"
-    ]
+    "air": []
   },
   "features": [
     [
       "parallel_world:seagen/seabed_sandstone",
       "parallel_world:seagen/seabed_sand"
     ],
-    [
-      "minecraft:lake_water"
-    ],
     [],
     [
-      "minecraft:amethyst_geode",
+      "minecraft:amethyst_geode"
+    ],
+    [
       "minecraft:monster_room"
     ],
     [
-	  "minecraft:iceberg_blue",
-	  "minecraft:iceberg_packed",
+      "minecraft:iceberg_packed",
+      "minecraft:iceberg_blue",
       "minecraft:ice_patch"
     ],
     [],
@@ -48,11 +42,14 @@
       "parallel_world:ores/ore_tethys_diamond_common",
       "minecraft:ore_dirt",
       "minecraft:ore_gravel",
-      "minecraft:ore_granite",
-      "minecraft:ore_diorite",
-      "minecraft:ore_andesite",
-      "minecraft:disk_clay",
-      "minecraft:disk_sand"
+      "minecraft:ore_granite_upper",
+      "minecraft:ore_granite_lower",
+      "minecraft:ore_diorite_upper",
+      "minecraft:ore_diorite_lower",
+      "minecraft:ore_andesite_upper",
+      "minecraft:ore_andesite_lower",
+      "minecraft:disk_sand",
+      "minecraft:disk_clay"
     ],
     [
       "parallel_world:ores/ore_copper_andesite",
@@ -66,14 +63,15 @@
       "parallel_world:ores/ore_gold_granite"
     ],
     [
+      "minecraft:spring_water"
+    ],
+    [
       "parallel_world:alpine_evergreens_ycap",
-      "parallel_world:dwarf_pine",
+      "parallel_world:dwarf_pines",
       "parallel_world:scattered_poriferans_glowing",
       "minecraft:glow_lichen",
-	  "minecraft:kelp_cold",
       "minecraft:flower_default",
-      "minecraft:spring_water",
-      "minecraft:spring_lava"
+	  "minecraft:kelp_cold"
     ],
     [
 	  "minecraft:freeze_top_layer"
@@ -176,10 +174,7 @@
 	"misc": []
   },
   "spawn_costs": {},
-  "player_spawn_friendly": false,
   "precipitation": "snow",
   "temperature": 0.0,
-  "downfall": 0.5,
-  "category": "icy",
-  "depth": 0.15
+  "downfall": 0.5
 }

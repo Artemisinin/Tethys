@@ -1,57 +1,39 @@
 {
+  "type": "minecraft:random_selector",
   "config": {
-    "feature": {
-  "config": {
-    "feature": {
-      "config": {
-        "features": [
-          {
-            "feature": "parallel_world:fungal_jungle_tree/mega_fungi_overland_1",
-            "chance": 0.24
-          },
-          {
-            "feature": "parallel_world:fungal_jungle_tree/mega_fungi_overland_2",
-            "chance": 0.25
-          },
-          {
-            "feature": "parallel_world:fungal_jungle_tree/mega_fungi_overland_3",
-            "chance": 0.25
-          },
-          {
-            "feature": "parallel_world:fungal_jungle_tree/mega_fungi_overland_4",
-            "chance": 0.25
-          }
-        ],
-        "default": "parallel_world:fungal_jungle_tree/mega_fungi_overland_1"
+    "features": [
+      {
+        "feature": {
+          "feature": "parallel_world:fungal_jungle_tree/mega_fungi_overland_1",
+          "placement": []
+        },
+        "chance": 0.24
       },
-      "type": "minecraft:random_selector"
-    },
-        "decorator": {
-          "config": {
-            "outer": {
-              "config": {},
-              "type": "minecraft:square"
-            },
-            "inner": {
-              "config": {
-                "heightmap": "MOTION_BLOCKING"
-              },
-              "type": "minecraft:heightmap"
-            }
-          },
-          "type": "minecraft:decorated"
-        }
+      {
+        "feature": {
+          "feature": "parallel_world:fungal_jungle_tree/mega_fungi_overland_2",
+          "placement": []
+        },
+        "chance": 0.25
       },
-      "type": "minecraft:decorated"
-    },
-    "decorator": {
-      "config": {
-        "count": 100,
-        "extra_chance": 0.5,
-        "extra_count": 50
+      {
+        "feature": {
+          "feature": "parallel_world:fungal_jungle_tree/mega_fungi_overland_3",
+          "placement": []
+        },
+        "chance": 0.25
       },
-      "type": "minecraft:count_extra"
+      {
+        "feature": {
+          "feature": "parallel_world:fungal_jungle_tree/mega_fungi_overland_4",
+          "placement": []
+        },
+        "chance": 0.25
+      }
+    ],
+    "default": {
+      "feature": "parallel_world:fungal_jungle_tree/mega_fungi_overland_1",
+      "placement": []
     }
-  },
-  "type": "minecraft:decorated"
+  }
 }

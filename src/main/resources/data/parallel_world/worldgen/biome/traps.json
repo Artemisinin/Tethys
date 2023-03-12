@@ -1,5 +1,4 @@
 {
-  "scale": 0.4,
   "effects": {
     "mood_sound": {
       "sound": "minecraft:ambient.cave",
@@ -18,11 +17,8 @@
     "water_color": 8235263,
     "water_fog_color": 2041677
   },
-  "surface_builder": "minecraft:basalt_deltas",
   "carvers": {
-    "air": [
-      "minecraft:cave"
-    ]
+    "air": []
   },
   "features": [
     [
@@ -33,8 +29,8 @@
     [],
     [],
     [
-      "parallel_world:traps_lava",
-      "minecraft:small_basalt_columns"
+      "minecraft:small_basalt_columns",
+      "parallel_world:traps_lava"
     ],
     [],
     [
@@ -48,9 +44,12 @@
       "parallel_world:ores/ore_tethys_diamond_rare",
       "minecraft:ore_dirt",
       "minecraft:ore_gravel",
-      "minecraft:ore_granite",
-      "minecraft:ore_diorite",
-      "minecraft:ore_andesite",
+      "minecraft:ore_granite_upper",
+      "minecraft:ore_granite_lower",
+      "minecraft:ore_diorite_upper",
+      "minecraft:ore_diorite_lower",
+      "minecraft:ore_andesite_upper",
+      "minecraft:ore_andesite_lower",
       "minecraft:disk_sand",
       "minecraft:disk_clay",
       "minecraft:disk_gravel"
@@ -65,17 +64,18 @@
       "parallel_world:ores/ore_gold_andesite",
       "parallel_world:ores/ore_gold_diorite",
       "parallel_world:ores/ore_gold_granite",
-      "minecraft:patch_fire",
-      "minecraft:ore_magma",
-      "minecraft:spring_closed_double"
+      "minecraft:patch_fire"
     ],
+    [],
     [
       "minecraft:glow_lichen",
-      "minecraft:spring_lava_double",
       "minecraft:brown_mushroom_normal",
       "minecraft:red_mushroom_normal"
     ],
-    []
+    [
+      "minecraft:ore_magma",
+      "minecraft:spring_closed_double"
+    ]
   ],
   "starts": [],
   "spawners": {
@@ -145,10 +145,7 @@
     "misc": []
   },
   "spawn_costs": {},
-  "player_spawn_friendly": false,
   "precipitation": "none",
   "temperature": 2.0,
-  "downfall": 0.0,
-  "category": "desert",
-  "depth": 0.35
+  "downfall": 0.0
 }

@@ -1,5 +1,4 @@
 {
-  "scale": 0.3,
   "effects": {
     "mood_sound": {
       "sound": "minecraft:ambient.cave",
@@ -12,25 +11,19 @@
     "water_color": 4159204,
     "water_fog_color": 329011
   },
-  "surface_builder": "minecraft:grass",
   "carvers": {
-    "air": [
-      "minecraft:cave",
-      "minecraft:canyon"
-    ]
+    "air": []
   },
   "features": [
     [
       "parallel_world:seagen/seabed_sandstone",
       "parallel_world:seagen/seabed_sand"
     ],
-    [
-      "minecraft:lake_water",
-      "minecraft:lake_lava"
-    ],
     [],
     [
-      "minecraft:amethyst_geode",
+      "minecraft:amethyst_geode"
+    ],
+    [
       "minecraft:monster_room"
     ],
     [],
@@ -47,9 +40,12 @@
       "parallel_world:ores/ore_pink_diamond",
       "minecraft:ore_dirt",
       "minecraft:ore_gravel",
-      "minecraft:ore_granite",
-      "minecraft:ore_diorite",
-      "minecraft:ore_andesite",
+      "minecraft:ore_granite_upper",
+      "minecraft:ore_granite_lower",
+      "minecraft:ore_diorite_upper",
+      "minecraft:ore_diorite_lower",
+      "minecraft:ore_andesite_upper",
+      "minecraft:ore_andesite_lower",
       "minecraft:disk_sand",
       "minecraft:disk_clay",
       "minecraft:disk_gravel"
@@ -66,17 +62,19 @@
       "parallel_world:ores/ore_gold_granite"
     ],
     [
+      "minecraft:spring_water"
+    ],
+    [
+      "parallel_world:glow_vines",
       "minecraft:glow_lichen",
-      "minecraft:forest_flower_vegetation_common",
-      "minecraft:forest_flower_trees",
-      "minecraft:flower_forest",
+      "minecraft:flower_forest_flowers",
+      "minecraft:trees_flower_forest",
+      "minecraft:flower_flower_forest",
       "minecraft:patch_grass_badlands",
       "minecraft:brown_mushroom_normal",
       "minecraft:red_mushroom_normal",
       "minecraft:patch_sugar_cane",
       "minecraft:patch_pumpkin",
-      "minecraft:spring_water",
-      "minecraft:spring_lava",
       "minecraft:seagrass_warm",
       "minecraft:sea_pickle"
     ],
@@ -211,10 +209,7 @@
     "misc": []
   },
   "spawn_costs": {},
-  "player_spawn_friendly": true,
   "precipitation": "rain",
   "temperature": 0.7,
-  "downfall": 0.8,
-  "category": "forest",
-  "depth": 0.3
+  "downfall": 0.8
 }

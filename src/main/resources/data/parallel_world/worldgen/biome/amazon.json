@@ -1,37 +1,38 @@
 {
-  "scale": 0.1,
+  "carvers": {
+    "air": []
+  },
+  "downfall": 0.9,
   "effects": {
-    "mood_sound": {
-      "sound": "minecraft:ambient.cave",
-      "tick_delay": 6000,
-      "block_search_extent": 8,
-      "offset": 2.0
-    },
-    "grass_color_modifier": "swamp",
-    "sky_color": 7907327,
-    "foliage_color": 6460465,
     "fog_color": 12638463,
+    "foliage_color": 6460465,
+    "grass_color_modifier": "swamp",
+    "mood_sound": {
+      "block_search_extent": 8,
+      "offset": 2.0,
+      "sound": "minecraft:ambient.cave",
+      "tick_delay": 6000
+    },
+    "music": {
+      "max_delay": 24000,
+      "min_delay": 12000,
+      "replace_current_music": false,
+      "sound": "minecraft:music.overworld.swamp"
+    },
+    "sky_color": 7907327,
     "water_color": 6388580,
     "water_fog_color": 2302743
-  },
-  "surface_builder": "parallel_world:amazon",
-  "carvers": {
-    "air": [
-      "minecraft:cave",
-      "minecraft:canyon"
-    ]
   },
   "features": [
     [
 		"parallel_world:seagen/seabed_sandstone",
 		"parallel_world:seagen/seabed_sand"
 	],
-    [
-      "minecraft:lake_water"
-    ],
     [],
     [
-      "minecraft:amethyst_geode",
+      "minecraft:amethyst_geode"
+    ],
+    [
       "minecraft:monster_room"
     ],
     [],
@@ -47,11 +48,14 @@
       "parallel_world:ores/ore_tethys_diamond_rare",
       "minecraft:ore_dirt",
       "minecraft:ore_gravel",
-      "minecraft:ore_granite",
-      "minecraft:ore_diorite",
-      "minecraft:ore_andesite",
-      "minecraft:disk_clay",
-	  "minecraft:disk_sand"
+      "minecraft:ore_granite_upper",
+      "minecraft:ore_granite_lower",
+      "minecraft:ore_diorite_upper",
+      "minecraft:ore_diorite_lower",
+      "minecraft:ore_andesite_upper",
+      "minecraft:ore_andesite_lower",
+      "minecraft:disk_sand",
+      "minecraft:disk_clay"
     ],
     [
       "parallel_world:ores/ore_copper_andesite",
@@ -65,29 +69,27 @@
       "parallel_world:ores/ore_gold_granite"
     ],
     [
+      "minecraft:spring_water"
+    ],
+    [
 	  "parallel_world:patch_water_lilies",
       "minecraft:glow_lichen",
-      "minecraft:sea_pickle",
 	  "minecraft:trees_jungle",
-	  "minecraft:patch_melon",
       "minecraft:flower_swamp",
       "minecraft:brown_mushroom_swamp",
       "minecraft:red_mushroom_swamp",
-      "minecraft:brown_mushroom_normal",
-      "minecraft:red_mushroom_normal",
       "minecraft:patch_sugar_cane_swamp",
       "minecraft:patch_pumpkin",
-      "minecraft:spring_water",
-      "minecraft:spring_lava",
-      "minecraft:seagrass_swamp"
+      "minecraft:patch_melon",
+      "minecraft:seagrass_swamp",
+      "minecraft:sea_pickle"
     ],
     [
       "minecraft:freeze_top_layer"
     ]
   ],
-  "starts": [
-    "minecraft:swamp_hut"
-  ],
+  "precipitation": "rain",
+  "spawn_costs": {},
   "spawners": {
     "monster": [
       {
@@ -187,27 +189,21 @@
     ],
     "underground_water_creature": [],
     "water_creature": [],
-		"water_ambient": [
-		  {
-			"type": "minecraft:cod",
-			"weight": 15,
-			"minCount": 1,
-			"maxCount": 3
-		  },
-		  {
-			"type": "minecraft:salmon",
-			"weight": 25,
-			"minCount": 8,
-			"maxCount": 8
-		  }
-		],
+    "water_ambient": [
+      {
+        "type": "minecraft:cod",
+        "weight": 15,
+        "minCount": 1,
+        "maxCount": 3
+      },
+      {
+        "type": "minecraft:salmon",
+        "weight": 25,
+        "minCount": 8,
+        "maxCount": 8
+      }
+    ],
     "misc": []
   },
-  "spawn_costs": {},
-  "player_spawn_friendly": false,
-  "precipitation": "rain",
-  "temperature": 0.8,
-  "downfall": 0.9,
-  "category": "swamp",
-  "depth": 0.4
+  "temperature": 0.8
 }

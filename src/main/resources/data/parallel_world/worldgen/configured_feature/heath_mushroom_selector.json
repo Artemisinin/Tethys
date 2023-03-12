@@ -1,20 +1,32 @@
 {
+  "type": "minecraft:random_selector",
   "config": {
     "features": [
       {
-        "feature": "parallel_world:huge_heath_mushroom_brown",
+        "feature": {
+          "feature": "parallel_world:huge_heath_mushroom_brown",
+          "placement": []
+        },
         "chance": 0.30
       },
       {
-        "feature": "parallel_world:huge_heath_mushroom_white",
+        "feature": {
+          "feature": "parallel_world:huge_heath_mushroom_white",
+          "placement": []
+        },
         "chance": 0.30
       },
       {
-        "feature": "parallel_world:huge_heath_mushroom_pink",
+        "feature": {
+          "feature": "parallel_world:huge_heath_mushroom_pink",
+          "placement": []
+        },
         "chance": 0.20
       }
     ],
-    "default": "minecraft:huge_brown_mushroom"
-  },
-  "type": "minecraft:random_selector"
+    "default": {
+      "feature": "minecraft:huge_brown_mushroom",
+      "placement": []
+    }
+  }
 }

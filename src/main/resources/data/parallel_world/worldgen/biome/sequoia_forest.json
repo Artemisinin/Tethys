@@ -1,5 +1,4 @@
 {
-  "scale": 0.2,
   "effects": {
     "mood_sound": {
       "sound": "minecraft:ambient.cave",
@@ -12,27 +11,21 @@
     "water_color": 4159204,
     "water_fog_color": 329011
   },
-  "surface_builder": "minecraft:giant_tree_taiga",
   "carvers": {
-    "air": [
-      "minecraft:cave",
-      "minecraft:canyon"
-    ]
+    "air": []
   },
   "features": [
     [
 		"parallel_world:seagen/seabed_sandstone",
 		"parallel_world:seagen/seabed_sand"
 	],
+    [],
     [
-      "minecraft:lake_water",
-      "minecraft:lake_lava"
+      "minecraft:forest_rock",
+      "minecraft:amethyst_geode"
     ],
     [
-      "minecraft:forest_rock"
-    ],
-    [
-      "minecraft:amethyst_geode",
+
       "minecraft:monster_room"
     ],
     [],
@@ -47,9 +40,12 @@
       "parallel_world:ores/ore_tethys_diamond_rare",
       "minecraft:ore_dirt",
       "minecraft:ore_gravel",
-      "minecraft:ore_granite",
-      "minecraft:ore_diorite",
-      "minecraft:ore_andesite",
+      "minecraft:ore_granite_upper",
+      "minecraft:ore_granite_lower",
+      "minecraft:ore_diorite_upper",
+      "minecraft:ore_diorite_lower",
+      "minecraft:ore_andesite_upper",
+      "minecraft:ore_andesite_lower",
       "minecraft:disk_sand",
       "minecraft:disk_clay",
       "minecraft:disk_gravel"
@@ -66,21 +62,20 @@
       "parallel_world:ores/ore_gold_granite"
     ],
     [
+      "minecraft:spring_water"
+    ],
+    [
       "minecraft:glow_lichen",
       "minecraft:patch_large_fern",
-      "minecraft:trees_giant",
+      "minecraft:trees_old_growth_pine_taiga",
       "minecraft:flower_default",
       "minecraft:patch_grass_taiga",
       "minecraft:patch_dead_bush",
-      "minecraft:brown_mushroom_giant",
-      "minecraft:red_mushroom_giant",
       "minecraft:brown_mushroom_normal",
       "minecraft:red_mushroom_normal",
       "minecraft:patch_sugar_cane",
       "minecraft:patch_pumpkin",
-      "minecraft:spring_water",
-      "minecraft:spring_lava",
-      "minecraft:patch_berry_sparse"
+      "minecraft:patch_berry_rare"
     ],
     [
       "minecraft:freeze_top_layer"
@@ -199,10 +194,7 @@
     "misc": []
   },
   "spawn_costs": {},
-  "player_spawn_friendly": false,
   "precipitation": "rain",
   "temperature": 0.3,
-  "downfall": 0.8,
-  "category": "taiga",
-  "depth": 0.2
+  "downfall": 0.8
 }

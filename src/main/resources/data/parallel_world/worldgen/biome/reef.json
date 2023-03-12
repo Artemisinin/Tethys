@@ -1,5 +1,4 @@
 {
-  "scale": -0.1,
   "effects": {
     "mood_sound": {
       "sound": "minecraft:ambient.cave",
@@ -12,7 +11,6 @@
     "water_color": 4435182,
     "water_fog_color": 270131
   },
-  "surface_builder": "minecraft:full_sand",
   "carvers": {
     "air": [],
     "liquid": []
@@ -30,6 +28,8 @@
     [],
     [],
     [
+      "parallel_world:glow_vines",
+      "minecraft:glow_lichen",
       "minecraft:patch_sugar_cane",
       "minecraft:warm_ocean_vegetation",
       "minecraft:seagrass_warm",
@@ -140,10 +140,7 @@
     "misc": []
   },
   "spawn_costs": {},
-  "player_spawn_friendly": false,
   "precipitation": "rain",
   "temperature": 0.5,
-  "downfall": 0.5,
-  "category": "ocean",
-  "depth": 0.1
+  "downfall": 0.5
 }

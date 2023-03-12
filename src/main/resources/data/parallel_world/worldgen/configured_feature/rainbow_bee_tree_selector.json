@@ -1,0 +1,36 @@
+{
+	"config": {
+		"features": [
+			{
+				"feature": "parallel_world:rainbow_tree/basswood_tree_bees_checked",
+				"chance": 0.15
+			},
+			{
+			    "feature": "parallel_world:rainbow_tree/blackcurrant_tree_bees_checked",
+				"chance": 0.15
+			},
+			{
+			    "feature": "parallel_world:rainbow_tree/cherry_tree_bees_checked",
+				"chance": 0.15
+			},
+			{
+			    "feature": "parallel_world:rainbow_tree/dogwood_tree_bees_checked",
+				"chance": 0.15
+			},
+			{
+			    "feature": "parallel_world:rainbow_tree/elderberry_tree_bees_checked",
+				"chance": 0.15
+			},
+            {
+                "feature": "parallel_world:rainbow_tree/ginkgo_tree_bees_checked",
+                "chance": 0.15
+            },
+			{
+			    "feature": "parallel_world:rainbow_tree/sweetgum_tree_bees_checked",
+				"chance": 0.15
+			}
+        ],
+        "default": "parallel_world:oak_bees_005_checked"
+    },
+    "type": "minecraft:random_selector"
+}

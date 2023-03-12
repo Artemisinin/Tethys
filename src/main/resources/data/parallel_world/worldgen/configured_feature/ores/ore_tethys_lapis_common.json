@@ -1,46 +1,27 @@
 {
+  "type": "minecraft:ore",
   "config": {
-    "feature": {
-      "config": {
-        "feature": {
-          "config": {
-            "targets": [
-              {
-                "target": {
-                  "tag": "minecraft:stone_ore_replaceables",
-                  "predicate_type": "minecraft:tag_match"
-                },
-                "state": {
-                  "Name": "minecraft:lapis_ore"
-                }
-              }
-            ],
-            "size": 14,
-            "discard_chance_on_air_exposure": 0.0
-          },
-          "type": "minecraft:ore"
+    "discard_chance_on_air_exposure": 0.0,
+    "size": 14,
+    "targets": [
+      {
+        "state": {
+          "Name": "minecraft:lapis_ore"
         },
-        "decorator": {
-          "config": {
-            "height": {
-              "min_inclusive": {
-                "absolute": 0
-              },
-              "max_inclusive": {
-                "absolute": 45
-              },
-              "type": "minecraft:trapezoid"
-            }
-          },
-          "type": "minecraft:range"
+        "target": {
+          "predicate_type": "minecraft:tag_match",
+          "tag": "minecraft:stone_ore_replaceables"
         }
       },
-      "type": "minecraft:decorated"
-    },
-    "decorator": {
-      "config": {},
-      "type": "minecraft:square"
-    }
-  },
-  "type": "minecraft:decorated"
+      {
+        "state": {
+          "Name": "minecraft:deepslate_lapis_ore"
+        },
+        "target": {
+          "predicate_type": "minecraft:tag_match",
+          "tag": "minecraft:deepslate_ore_replaceables"
+        }
+      }
+    ]
+  }
 }

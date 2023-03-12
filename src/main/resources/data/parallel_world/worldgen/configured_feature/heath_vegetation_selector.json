@@ -1,0 +1,35 @@
+{
+  "type": "minecraft:random_selector",
+  "config": {
+    "default": "parallel_world:shrub/shrub_spruce_short_checked",
+    "features": [
+      {
+        "feature": {
+          "feature": "parallel_world:heath_mushroom_selector",
+          "placement": []
+        },
+        "chance": 0.15
+      },
+      {
+        "feature": "parallel_world:shrub/shrub_birch_checked",
+        "chance": 0.15
+      },
+      {
+        "feature": "parallel_world:shrub/shrub_dark_oak_short_checked",
+        "chance": 0.15
+      },
+      {
+        "feature": "parallel_world:shrub/shrub_dark_oak_tall_checked",
+        "chance": 0.15
+      },
+      {
+        "feature": "parallel_world:shrub/shrub_oak_checked",
+        "chance": 0.15
+      },
+      {
+        "feature": "parallel_world:shrub/shrub_spruce_tall_checked",
+        "chance": 0.15
+      }
+    ]
+  }
+}

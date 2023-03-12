@@ -1,5 +1,4 @@
 {
-  "scale": 0.25,
   "effects": {
     "mood_sound": {
       "sound": "minecraft:ambient.cave",
@@ -14,25 +13,19 @@
     "water_color": 4166372,
     "water_fog_color": 329011
   },
-  "surface_builder": "minecraft:grass",
   "carvers": {
-    "air": [
-      "minecraft:cave",
-      "minecraft:canyon"
-    ]
+    "air": []
   },
   "features": [
     [
 		"parallel_world:seagen/seabed_sandstone",
 		"parallel_world:seagen/seabed_sand"
 	],
-    [
-      "minecraft:lake_water",
-      "minecraft:lake_lava"
-    ],
     [],
     [
-      "minecraft:amethyst_geode",
+      "minecraft:amethyst_geode"
+    ],
+    [
       "minecraft:monster_room"
     ],
     [],
@@ -47,9 +40,12 @@
       "parallel_world:ores/ore_tethys_diamond_rare",
 	  "minecraft:ore_dirt",
       "minecraft:ore_gravel",
-      "minecraft:ore_granite",
-      "minecraft:ore_diorite",
-      "minecraft:ore_andesite",
+      "minecraft:ore_granite_upper",
+      "minecraft:ore_granite_lower",
+      "minecraft:ore_diorite_upper",
+      "minecraft:ore_diorite_lower",
+      "minecraft:ore_andesite_upper",
+      "minecraft:ore_andesite_lower",
       "minecraft:disk_sand",
       "minecraft:disk_clay",
       "minecraft:disk_gravel"
@@ -66,6 +62,9 @@
       "parallel_world:ores/ore_gold_granite"
     ],
     [
+      "minecraft:spring_water"
+    ],
+    [
       "parallel_world:fungal_jungle_vegetation",
       "minecraft:glow_lichen",
       "minecraft:bamboo_light",
@@ -75,10 +74,8 @@
       "minecraft:red_mushroom_normal",
       "minecraft:patch_sugar_cane",
       "minecraft:patch_pumpkin",
-      "minecraft:spring_water",
-      "minecraft:spring_lava",
-      "minecraft:patch_melon",
-      "minecraft:vines"
+      "minecraft:vines",
+      "minecraft:patch_melon"
     ],
     [
       "minecraft:freeze_top_layer"
@@ -171,12 +168,6 @@
         "maxCount": 4
       },
       {
-        "type": "minecraft:chicken",
-        "weight": 10,
-        "minCount": 4,
-        "maxCount": 4
-      },
-      {
         "type": "minecraft:parrot",
         "weight": 40,
         "minCount": 1,
@@ -216,10 +207,7 @@
     "misc": []
   },
   "spawn_costs": {},
-  "player_spawn_friendly": true,
   "precipitation": "rain",
   "temperature": 0.65,
-  "downfall": 0.9,
-  "category": "jungle",
-  "depth": 0.25
+  "downfall": 0.9
 }

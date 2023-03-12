@@ -1,43 +1,4 @@
 {
-  "config": {
-    "feature": {
-      "config": {
-        "feature": {
-          "config": {
-            "feature": {
-              "config": {},
-              "type": "parallel_world:sky_island_glowstone"
-            },
-            "decorator": {
-              "config": {
-                "height": {
-                  "min_inclusive": {
-                    "above_bottom": 20
-                  },
-                  "max_inclusive": {
-                    "absolute": 45
-                  },
-                  "type": "minecraft:uniform"
-                }
-              },
-              "type": "minecraft:range"
-            }
-          },
-          "type": "minecraft:decorated"
-        },
-        "decorator": {
-          "config": {},
-          "type": "minecraft:square"
-        }
-      },
-      "type": "minecraft:decorated"
-    },
-    "decorator": {
-      "config": {
-        "count": 5
-      },
-      "type": "minecraft:count"
-    }
-  },
-  "type": "minecraft:decorated"
+  "type": "parallel_world:sky_island_glowstone",
+  "config": {}
 }

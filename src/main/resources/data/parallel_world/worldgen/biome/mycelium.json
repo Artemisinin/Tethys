@@ -1,5 +1,4 @@
 {
-  "scale": 0.2,
   "effects": {
     "mood_sound": {
       "sound": "minecraft:ambient.cave",
@@ -13,25 +12,20 @@
     "water_color": 6657504,
     "water_fog_color": 329011
   },
-  "surface_builder": "parallel_world:mycelium",
   "carvers": {
-    "air": [
-      "minecraft:cave",
-      "minecraft:canyon"
-    ]
+    "air": []
   },
   "features": [
     [
 		"parallel_world:seagen/seabed_sandstone",
 		"parallel_world:seagen/seabed_sand"
 	],
-    [
-      "minecraft:lake_water",
-      "minecraft:lake_lava"
-    ],
     [],
     [
-      "minecraft:amethyst_geode",
+      "minecraft:amethyst_geode"
+    ],
+    [
+
       "minecraft:monster_room"
     ],
     [],
@@ -46,11 +40,14 @@
       "parallel_world:ores/ore_tethys_diamond_rare",
       "minecraft:ore_dirt",
       "minecraft:ore_gravel",
-      "minecraft:ore_granite",
-      "minecraft:ore_diorite",
-      "minecraft:ore_andesite",
-      "minecraft:disk_clay",
-      "minecraft:disk_sand"
+      "minecraft:ore_granite_upper",
+      "minecraft:ore_granite_lower",
+      "minecraft:ore_diorite_upper",
+      "minecraft:ore_diorite_lower",
+      "minecraft:ore_andesite_upper",
+      "minecraft:ore_andesite_lower",
+      "minecraft:disk_sand",
+      "minecraft:disk_clay"
     ],
     [
       "parallel_world:ores/ore_copper_andesite",
@@ -64,14 +61,15 @@
       "parallel_world:ores/ore_gold_granite"
     ],
     [
+      "minecraft:spring_water"
+    ],
+    [
       "parallel_world:mycelium_vegetation",
       "minecraft:glow_lichen",
-	  "minecraft:patch_melon",
-	  "minecraft:sea_pickle",
       "minecraft:patch_sugar_cane",
       "minecraft:patch_pumpkin",
-      "minecraft:spring_water",
-      "minecraft:spring_lava"
+      "minecraft:patch_melon",
+      "minecraft:sea_pickle"
     ],
     [
       "minecraft:freeze_top_layer"
@@ -117,10 +115,7 @@
     "misc": []
   },
   "spawn_costs": {},
-  "player_spawn_friendly": true,
   "precipitation": "rain",
   "temperature": 0.9,
-  "downfall": 1.0,
-  "category": "mushroom",
-  "depth": 0.25
+  "downfall": 1.0
 }

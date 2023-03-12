@@ -1,36 +1,61 @@
 {
+	"type": "minecraft:random_selector",
 	"config": {
-        "features": [
+		"features": [
 			{
-            "feature": "parallel_world:crystal_tree/crystal_tree_cyan",
-            "chance": 0.25
-			},
-			{	
-            "feature": "parallel_world:crystal_tree/crystal_tree_green",
-            "chance": 0.10
-			},
-			{
-            "feature": "parallel_world:crystal_tree/crystal_tree_pink",
-            "chance": 0.20
+				"feature": {
+					"feature": "parallel_world:crystal_tree/crystal_tree_cyan",
+					"placement": []
+				},
+				"chance": 0.25
 			},
 			{
-            "feature": "parallel_world:crystal_tree/crystal_tree_purple",
-            "chance": 0.25
+				"feature": {
+					"feature": "parallel_world:crystal_tree/crystal_tree_green",
+					"placement": []
+				},
+				"chance": 0.10
 			},
 			{
-            "feature": "parallel_world:crystal_tree/crystal_tree_lime",
-            "chance": 0.20
+				"feature": {
+				"feature": "parallel_world:crystal_tree/crystal_tree_pink",
+					"placement": []
+			},
+				"chance": 0.20
 			},
 			{
-			"feature": "parallel_world:crystal_tree/crystal_pine_green",
-			"chance": 0.40
+				"feature": {
+					"feature": "parallel_world:crystal_tree/crystal_tree_purple",
+					"placement": []
+				},
+				"chance": 0.25
 			},
 			{
-			"feature": "parallel_world:crystal_tree/crystal_bush_red",
-			"chance": 0.3
+				"feature": {
+				"feature": "parallel_world:crystal_tree/crystal_tree_lime",
+					"placement": []
+				},
+				"chance": 0.20
+			},
+			{
+				"feature": {
+
+				"feature": "parallel_world:crystal_tree/crystal_pine_green",
+					"placement": []
+				},
+				"chance": 0.40
+			},
+			{
+				"feature": {
+							"feature": "parallel_world:crystal_tree/crystal_bush_red",
+					"placement": []
+				},
+				"chance": 0.3
 			}
 		],
-        "default": "parallel_world:crystal_tree/crystal_tree_white"
-	},
-    "type": "minecraft:random_selector"
+		"default": {
+			"feature": "parallel_world:crystal_tree/crystal_tree_white",
+			"placement": []
+		}
+	}
 }

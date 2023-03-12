@@ -1,5 +1,4 @@
 {
-	"scale": 0.2,
 	"effects": {
 		"mood_sound": {
 			"sound": "minecraft:ambient.cave",
@@ -15,24 +14,19 @@
 		"water_fog_color": 8992511,
 		"grass_color_modifier": "none"
 	},
-	"surface_builder": "minecraft:grass",
 	"carvers": {
-		"air": [
-			"minecraft:cave",
-			"minecraft:canyon"
-		]
+		"air": []
 	},
 	"features": [
 		[
 			"parallel_world:seagen/seabed_sandstone",
 			"parallel_world:seagen/seabed_sand"
 		],
-		[
-			"minecraft:lake_water"
-		],
 		[],
 		[
-			"minecraft:amethyst_geode",
+			"minecraft:amethyst_geode"
+		],
+		[
 			"minecraft:monster_room"
 		],
 		[],
@@ -48,9 +42,12 @@
 			"parallel_world:ores/ore_pink_diamond",
 			"minecraft:ore_dirt",
 			"minecraft:ore_gravel",
-			"minecraft:ore_granite",
-			"minecraft:ore_diorite",
-			"minecraft:ore_andesite",
+			"minecraft:ore_granite_upper",
+			"minecraft:ore_granite_lower",
+			"minecraft:ore_diorite_upper",
+			"minecraft:ore_diorite_lower",
+			"minecraft:ore_andesite_upper",
+			"minecraft:ore_andesite_lower",
 			"minecraft:disk_sand",
 			"minecraft:disk_clay",
 			"minecraft:disk_gravel"
@@ -67,19 +64,21 @@
 			"parallel_world:ores/ore_gold_granite"
 		],
 		[
+			"minecraft:spring_water"
+		],
+		[
 			"parallel_world:rainbow_vegetation",
 			"parallel_world:sky_island_glowstone",
+			"parallel_world:glow_vines",
 			"minecraft:glow_lichen",
-			"minecraft:warm_ocean_vegetation",
-			"minecraft:forest_flower_vegetation_common",
+			"minecraft:forest_flowers",
 			"minecraft:patch_tall_grass_2",
-			"minecraft:plain_vegetation",
-			"minecraft:flower_plain_decorated",
+			"minecraft:flower_plains",
 			"minecraft:patch_grass_plain",
 			"minecraft:brown_mushroom_normal",
 			"minecraft:red_mushroom_normal",
 			"minecraft:patch_pumpkin",
-			"minecraft:spring_water",
+			"minecraft:warm_ocean_vegetation",
 			"minecraft:seagrass_warm",
 			"minecraft:sea_pickle"
 		],
@@ -121,12 +120,6 @@
 			{
 				"type": "minecraft:cow",
 				"weight": 8,
-				"minCount": 4,
-				"maxCount": 4
-			},
-			{
-				"type": "minecraft:chicken",
-				"weight": 10,
 				"minCount": 4,
 				"maxCount": 4
 			},
@@ -177,10 +170,7 @@
 		"misc": []
 	},
 	"spawn_costs": {},
-	"player_spawn_friendly": true,
 	"precipitation": "rain",
-	"category":"plains",
-	"depth": 0.3,
 	"temperature": 0.95,
 	"downfall": 1
 }

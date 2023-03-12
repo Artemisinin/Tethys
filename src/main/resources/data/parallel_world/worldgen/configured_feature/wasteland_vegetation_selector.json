@@ -1,0 +1,29 @@
+{
+	"type": "minecraft:random_selector",
+	"config": {
+		"features": [
+			{
+				"feature": {
+					"feature": "parallel_world:coal_pillar",
+					"placement": []
+				},
+				"chance": 0.30
+			},
+			{
+				"feature": {
+					"feature": "parallel_world:burned_tree",
+					"placement": []
+				},
+				"chance": 0.30
+			},
+			{
+				"feature":"parallel_world:scattered_blackstone",
+				"chance": 0.40
+			}
+		],
+		"default": {
+			"feature": "parallel_world:burned_tree",
+			"placement": []
+		}
+	}
+}

@@ -1,0 +1,17 @@
+{
+  "feature": "parallel_world:rainbow_tree/dogwood_tree_bees",
+  "placement": [
+    {
+      "type": "minecraft:block_predicate_filter",
+      "predicate": {
+        "type": "minecraft:would_survive",
+        "state": {
+          "Name": "parallel_world:dogwood_sapling",
+          "Properties": {
+            "stage": "0"
+          }
+        }
+      }
+    }
+  ]
+}

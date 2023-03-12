@@ -1,6 +1,6 @@
 {
   "name": "parallel_world:village/flower_forest/zombie/streets",
-  "fallback": "parallel_world:village/snowy/terminators",
+  "fallback": "minecraft:village/snowy/terminators",
   "elements": [
     {
       "weight": 2,

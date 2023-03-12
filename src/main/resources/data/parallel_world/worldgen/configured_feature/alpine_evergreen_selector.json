@@ -1,20 +1,32 @@
 {
+  "type": "minecraft:random_selector",
   "config": {
+    "default": {
+      "feature": "parallel_world:snow_pine",
+      "placement": []
+    },
     "features": [
       {
-        "feature": "parallel_world:snow_pine",
+        "feature": {
+          "feature": "parallel_world:snow_pine",
+          "placement": []
+        },
         "chance": 0.50
       },
       {
-        "feature": "parallel_world:snow_spruce",
+        "feature": {
+          "feature": "parallel_world:snow_spruce",
+          "placement": []
+        },
         "chance": 0.30
       },
       {
-        "feature": "parallel_world:snow_spruce_shrub",
+        "feature": {
+          "feature": "parallel_world:snow_spruce_shrub",
+          "placement": []
+        },
         "chance": 0.10
       }
-    ],
-    "default": "parallel_world:snow_pine"
-  },
-  "type": "minecraft:random_selector"
+    ]
+  }
 }

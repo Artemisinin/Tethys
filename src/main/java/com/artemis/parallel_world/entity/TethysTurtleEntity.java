@@ -1,7 +1,6 @@
 package com.artemis.parallel_world.entity;
 
 import com.artemis.parallel_world.block.TethysTurtleEggBlock;
-import com.artemis.parallel_world.entity.goal.GoBackToWaterGoal;
 import net.minecraft.advancement.criterion.Criteria;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -26,23 +25,21 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.recipe.Ingredient;
+import net.minecraft.registry.tag.BlockTags;
+import net.minecraft.registry.tag.FluidTags;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.stat.Stats;
-import net.minecraft.tag.BlockTags;
-import net.minecraft.tag.FluidTags;
-import net.minecraft.tag.Tag;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
+import net.minecraft.util.math.random.Random;
 import net.minecraft.world.*;
 import org.jetbrains.annotations.Nullable;
 import com.artemis.parallel_world.block.*;
-
-import java.util.Random;
 
 
 public class TethysTurtleEntity extends AnimalEntity {
@@ -417,10 +414,9 @@ public class TethysTurtleEntity extends AnimalEntity {
             BlockPos turtlePos = this.turtle.getBlockPos();
             BlockPos belowTurtlePos = turtlePos.down();
             BlockState belowTurtleBlockState = this.turtle.world.getBlockState(belowTurtlePos);
-            Block belowTurtleBlock = belowTurtleBlockState.getBlock();
-            Tag<Block> blockSandTag = BlockTags.SAND;
+            // Block belowTurtleBlock = belowTurtleBlockState.getBlock();
             if (this.hasReached()) {
-                if (blockSandTag.contains(belowTurtleBlock)) {
+                if (belowTurtleBlockState.isIn(BlockTags.SAND)) {
                     // Attempt to stick turtle to bottom of ocean.
                     this.turtle.setVelocity(0.0D, -0.1D, 0.0D);
                     if (this.turtle.sandDiggingCounter < 1) {
@@ -525,13 +521,13 @@ public class TethysTurtleEntity extends AnimalEntity {
 
             if (this.turtle.getNavigation().isIdle()) {
                 Vec3d vec3d = Vec3d.ofBottomCenter(blockPos);
-                Vec3d vec3d2 = NoPenaltyTargeting.find(this.turtle, 16, 3, vec3d, 0.3141592741012573D);
+                Vec3d vec3d2 = NoPenaltyTargeting.findTo(this.turtle, 16, 3, vec3d, 0.3141592741012573D);
                 if (vec3d2 == null) {
-                    vec3d2 = NoPenaltyTargeting.find(this.turtle, 8, 7, vec3d, 1.57D);
+                    vec3d2 = NoPenaltyTargeting.findTo(this.turtle, 8, 7, vec3d, 1.57D);
                 }
 
                 if (vec3d2 != null && !bl && !this.turtle.world.getBlockState(new BlockPos(vec3d2)).isOf(Blocks.WATER)) {
-                    vec3d2 = NoPenaltyTargeting.find(this.turtle, 16, 5, vec3d, 1.57D);
+                    vec3d2 = NoPenaltyTargeting.findTo(this.turtle, 16, 5, vec3d, 1.57D);
                 }
 
                 if (vec3d2 == null) {
@@ -577,9 +573,9 @@ public class TethysTurtleEntity extends AnimalEntity {
         public void tick() {
             if (this.turtle.getNavigation().isIdle()) {
                 Vec3d vec3d = Vec3d.ofBottomCenter(this.turtle.getTravelPos());
-                Vec3d vec3d2 = NoPenaltyTargeting.find(this.turtle, 16, 3, vec3d, 0.3141592741012573D);
+                Vec3d vec3d2 = NoPenaltyTargeting.findTo(this.turtle, 16, 3, vec3d, 0.3141592741012573D);
                 if (vec3d2 == null) {
-                    vec3d2 = NoPenaltyTargeting.find(this.turtle, 8, 7, vec3d, 1.57D);
+                    vec3d2 = NoPenaltyTargeting.findTo(this.turtle, 8, 7, vec3d, 1.57D);
                 }
 
                 if (vec3d2 != null) {
@@ -620,7 +616,7 @@ public class TethysTurtleEntity extends AnimalEntity {
             if (this.mob.getAttacker() == null && !this.mob.isOnFire()) {
                 return false;
             } else {
-                BlockPos blockPos = this.locateClosestWater(this.mob.world, this.mob, 7, 4);
+                BlockPos blockPos = this.locateClosestWater(this.mob.world, this.mob, 7);
                 if (blockPos != null) {
                     this.targetX = blockPos.getX();
                     this.targetY = blockPos.getY();

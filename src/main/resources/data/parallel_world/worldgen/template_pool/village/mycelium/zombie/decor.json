@@ -5,7 +5,7 @@
     {
       "weight": 4,
       "element": {
-        "location": "parallel_world:mycelium/savanna_lamp_post_01",
+        "location": "parallel_world:village/mycelium/savanna_lamp_post_01",
         "processors": "minecraft:zombie_savanna",
         "projection": "rigid",
         "element_type": "minecraft:legacy_single_pool_element"

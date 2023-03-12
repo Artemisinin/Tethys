@@ -41,7 +41,7 @@
     {
       "weight": 1,
       "element": {
-        "location": "parallel_world:mycelium/terminators/terminator_05",
+        "location": "parallel_world:village/mycelium/terminators/terminator_05",
         "processors": "minecraft:street_savanna",
         "projection": "terrain_matching",
         "element_type": "minecraft:legacy_single_pool_element"

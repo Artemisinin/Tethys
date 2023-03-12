@@ -1,63 +1,30 @@
 {
+  "type": "minecraft:flower",
   "config": {
     "feature": {
-      "config": {
-        "feature": {
-          "config": {
-            "feature": {
-              "config": {
-                "can_replace": false,
-                "project": true,
-                "need_water": false,
-                "xspread": 10,
-                "yspread": 10,
-                "zspread": 10,
-                "whitelist": [],
-                "blacklist": [],
-                "tries": 64,
-                "state_provider": {
-                  "state": {
-                    "Name": "parallel_world:heather"
-                  },
-                  "type": "minecraft:simple_state_provider"
-                },
-                "block_placer": {
-                  "type": "minecraft:simple_block_placer"
-                }
-              },
-              "type": "minecraft:flower"
-            },
-            "decorator": {
-              "config": {},
-              "type": "minecraft:spread_32_above"
+      "feature": {
+        "type": "minecraft:simple_block",
+        "config": {
+          "to_place": {
+            "type": "minecraft:simple_state_provider",
+            "state": {
+              "Name": "parallel_world:heather"
             }
-          },
-          "type": "minecraft:decorated"
-        },
-        "decorator": {
-          "config": {
-            "outer": {
-              "config": {},
-              "type": "minecraft:square"
-            },
-            "inner": {
-              "config": {
-                "heightmap": "WORLD_SURFACE"
-              },
-              "type": "minecraft:heightmap"
-            }
-          },
-          "type": "minecraft:decorated"
+          }
         }
       },
-      "type": "minecraft:decorated"
+      "placement": [
+        {
+          "type": "minecraft:block_predicate_filter",
+          "predicate": {
+            "type": "minecraft:matching_blocks",
+            "blocks": "minecraft:air"
+          }
+        }
+      ]
     },
-    "decorator": {
-      "config": {
-        "count": 40
-      },
-      "type": "minecraft:count"
-    }
-  },
-  "type": "minecraft:decorated"
+    "tries": 64,
+    "xz_spread": 10,
+    "y_spread": 10
+  }
 }

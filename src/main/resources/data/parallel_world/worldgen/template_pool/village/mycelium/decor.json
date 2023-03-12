@@ -14,15 +14,10 @@
     {
       "weight": 4,
       "element": {
-        "feature": "minecraft:huge_brown_mushroom",
-        "projection": "rigid",
-        "element_type": "minecraft:feature_pool_element"
-      }
-    },
-    {
-      "weight": 4,
-      "element": {
-        "feature": "minecraft:huge_red_mushroom",
+        "feature": {
+          "feature": "minecraft:huge_red_mushroom",
+          "placement": []
+        },
         "projection": "rigid",
         "element_type": "minecraft:feature_pool_element"
       }

@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:netherrack_replace_blobs",
+  "config": {
+    "target": {
+      "Name": "minecraft:blackstone"
+    },
+    "state": {
+      "Properties": {
+      },
+      "Name": "minecraft:gravel"
+    },
+    "radius": {
+      "type": "minecraft:uniform",
+      "value": {
+        "min_inclusive": 1,
+        "max_inclusive": 5
+      }
+    }
+  }
+}

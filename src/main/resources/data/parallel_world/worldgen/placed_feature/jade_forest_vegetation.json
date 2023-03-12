@@ -1,0 +1,46 @@
+{
+	"feature": "parallel_world:jade_forest_vegetation_selector",
+	"placement": [
+		{
+			"type": "minecraft:count",
+			"count": {
+				"type": "minecraft:weighted_list",
+				"distribution": [
+					{
+						"weight": 7,
+						"data": 6
+					},
+					{
+						"weight": 3,
+						"data": 5
+					}
+				]
+			}
+		},
+		{
+			"type": "minecraft:in_square"
+		},
+		{
+			"type": "minecraft:heightmap",
+			"heightmap": "MOTION_BLOCKING"
+		},
+		{
+			"type": "minecraft:biome"
+		},
+		{
+			"type": "minecraft:block_predicate_filter",
+			"predicate": {
+				"type": "minecraft:would_survive",
+				"state": {
+					"Name": "minecraft:oak_sapling",
+					"Properties": {
+						"age": "0",
+						"hanging": "false",
+						"stage": "0",
+						"waterlogged": "false"
+					}
+				}
+			}
+		}
+	]
+}

@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:netherrack_replace_blobs",
+  "config": {
+    "target": {
+      "Name": "minecraft:grass_block",
+      "Properties": {
+        "snowy": "false"
+      }
+    },
+    "state": {
+      "Properties": {
+        "axis": "y"
+      },
+      "Name": "minecraft:shroomlight"
+    },
+    "radius": {
+      "type": "minecraft:uniform",
+      "value": {
+        "min_inclusive": 0,
+        "max_inclusive": 0
+      }
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+	"feature": "parallel_world:wasteland_vegetation_selector",
+	"placement": [
+		{
+			"type": "minecraft:count",
+			"count": {
+				"type": "minecraft:weighted_list",
+				"distribution": [
+					{
+						"data": 18,
+						"weight": 7
+					},
+					{
+						"data": 20,
+						"weight": 3
+					}
+				]
+			}
+		},
+		{
+			"type": "minecraft:in_square"
+		},
+		{
+			"type": "minecraft:heightmap",
+			"heightmap": "MOTION_BLOCKING"
+		},
+		{
+			"type": "minecraft:biome"
+		}
+	]
+}

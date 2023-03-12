@@ -1,5 +1,4 @@
 {
-  "scale": 0.35,
   "effects": {
     "mood_sound": {
       "sound": "minecraft:ambient.cave",
@@ -13,22 +12,15 @@
     "water_color": 3557818,
     "water_fog_color": 329011
   },
-  "surface_builder": "parallel_world:heath",
   "carvers": {
-    "air": [
-      "minecraft:cave",
-      "minecraft:canyon"
-    ]
+    "air": []
   },
   "features": [
     [
 		"parallel_world:seagen/seabed_sandstone",
 		"parallel_world:seagen/seabed_sand"
 	],
-    [
-      "minecraft:lake_water",
-      "minecraft:lake_lava"
-    ],
+    [],
     [],
     [
       "minecraft:amethyst_geode",
@@ -46,11 +38,14 @@
       "parallel_world:ores/ore_tethys_diamond_rare",
       "minecraft:ore_dirt",
       "minecraft:ore_gravel",
-      "minecraft:ore_granite",
-      "minecraft:ore_diorite",
-      "minecraft:ore_andesite",
-      "minecraft:disk_clay",
-      "minecraft:disk_sand"
+      "minecraft:ore_granite_upper",
+      "minecraft:ore_granite_lower",
+      "minecraft:ore_diorite_upper",
+      "minecraft:ore_diorite_lower",
+      "minecraft:ore_andesite_upper",
+      "minecraft:ore_andesite_lower",
+      "minecraft:disk_sand",
+      "minecraft:disk_clay"
     ],
     [
       "parallel_world:ores/ore_copper_andesite",
@@ -64,21 +59,21 @@
       "parallel_world:ores/ore_gold_granite"
     ],
     [
-      "parallel_world:test_lycopod",
+      "minecraft:spring_water"
+    ],
+    [
       "parallel_world:heath_berry_bushes",
-      "parallel_world:heather_patch",
+      "parallel_world:patch_heather",
       "parallel_world:heath_vegetation",
+      "minecraft:glow_lichen",
+      "minecraft:patch_tall_grass",
+      "minecraft:flower_default",
+      "minecraft:patch_grass_forest",
+      "minecraft:patch_dead_bush",
       "minecraft:brown_mushroom_normal",
       "minecraft:red_mushroom_normal",
-      "minecraft:patch_grass_forest",
-      "minecraft:patch_tall_grass",
-      "minecraft:patch_tall_grass_2",
-      "minecraft:patch_dead_bush",
       "minecraft:seagrass_cold",
-      "minecraft:flower_default",
-      "minecraft:sea_pickle",
-      "minecraft:spring_water",
-      "minecraft:spring_lava"
+      "minecraft:sea_pickle"
     ],
     [
       "minecraft:freeze_top_layer"
@@ -175,12 +170,6 @@
         "weight": 8,
         "minCount": 4,
         "maxCount": 4
-      },
-      {
-        "type": "minecraft:chicken",
-        "weight": 10,
-        "minCount": 4,
-        "maxCount": 4
       }
     ],
     "ambient": [
@@ -217,10 +206,7 @@
     "misc": []
   },
   "spawn_costs": {},
-  "player_spawn_friendly": true,
   "precipitation": "rain",
   "temperature": 0.5,
-  "downfall": 0.6,
-  "category": "forest",
-  "depth": 0.25
+  "downfall": 0.6
 }

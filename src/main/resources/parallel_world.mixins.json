@@ -4,11 +4,9 @@
   "package": "com.artemis.parallel_world.mixin",
   "compatibilityLevel": "JAVA_16",
   "mixins": [
-    "FoliagePlacerMixin",
     "GetTopPositionInvoker",
     "IcebergFeatureMixin",
     "LargeTreeSaplingGeneratorMixin",
-    "LeavesBlockMixin",
     "PlacementModifierRegisterInvoker",
     "RegisterCompostableItemInvoker",
     "SaplingGeneratorMixin",
@@ -16,8 +14,7 @@
     "StructureStartMixin",
     "TreeDecoratorTypeRegisterInvoker",
     "TrunkPlacerMixin",
-    "TrunkPlacerTypeRegisterInvoker",
-    "VillageFeatureMixin"
+    "TrunkPlacerTypeRegisterInvoker"
   ],
   "client": [
   ],

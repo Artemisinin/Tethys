@@ -1,0 +1,45 @@
+{
+	"feature": "parallel_world:snow_spruce_shrub",
+	"placement": [
+		{
+			"type": "minecraft:count",
+			"count": {
+				"type": "minecraft:uniform",
+				"value": {
+					"min_inclusive": 5,
+					"max_inclusive": 10
+				}
+			}
+		},
+		{
+			"type": "minecraft:in_square"
+		},
+		{
+			"type": "minecraft:height_range",
+			"height": {
+				"type": "minecraft:uniform",
+				"max_inclusive": {
+					"absolute": 120
+				},
+				"min_inclusive": {
+					"absolute": 75
+				}
+			}
+		},
+		{
+			"type": "minecraft:block_predicate_filter",
+			"predicate": {
+				"type": "minecraft:matching_blocks",
+				"blocks": "minecraft:snow_block",
+				"offset": [
+					0,
+					-1,
+					0
+				]
+			}
+		},
+		{
+			"type": "minecraft:biome"
+		}
+	]
+}

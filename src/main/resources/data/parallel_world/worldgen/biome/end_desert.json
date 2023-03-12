@@ -1,5 +1,4 @@
 {
-  "scale": 0.3,
   "effects": {
     "mood_sound": {
       "sound": "minecraft:ambient.cave",
@@ -12,24 +11,19 @@
     "water_color": 3557818,
     "water_fog_color": 329011
   },
-  "surface_builder": "minecraft:desert",
-  "carvers": {    
-	"air": [
-      "minecraft:cave",
-      "minecraft:canyon"
-    ]
+  "carvers": {
+    "air": []
   },
   "features": [
     [
 		"parallel_world:seagen/seabed_sandstone",
 		"parallel_world:seagen/seabed_sand"
 	],
-    [
-      "minecraft:lake_lava"	
-	],
     [],
     [
-      "minecraft:amethyst_geode",
+      "minecraft:amethyst_geode"
+    ],
+    [
       "minecraft:monster_room"
 	],
     [],
@@ -45,9 +39,12 @@
       "parallel_world:ores/ore_tethys_diamond_rare",
 	  "minecraft:ore_dirt",
       "minecraft:ore_gravel",
-      "minecraft:ore_granite",
-      "minecraft:ore_diorite",
-      "minecraft:ore_andesite",
+      "minecraft:ore_granite_upper",
+      "minecraft:ore_granite_lower",
+      "minecraft:ore_diorite_upper",
+      "minecraft:ore_diorite_lower",
+      "minecraft:ore_andesite_upper",
+      "minecraft:ore_andesite_lower",
       "minecraft:disk_sand",
       "minecraft:disk_clay",
       "minecraft:disk_gravel"
@@ -64,6 +61,9 @@
       "parallel_world:ores/ore_gold_granite"
     ],
     [
+      "minecraft:spring_water"
+    ],
+    [
       "parallel_world:end_desert_chorus_plant",
 	  "parallel_world:end_desert_sand", 
       "minecraft:glow_lichen",
@@ -74,9 +74,7 @@
       "minecraft:red_mushroom_normal",
       "minecraft:patch_sugar_cane_desert",
       "minecraft:patch_pumpkin",
-      "minecraft:patch_cactus_desert",
-      "minecraft:spring_water",
-      "minecraft:spring_lava"
+      "minecraft:patch_cactus_desert"
     ],
 	[
       "minecraft:freeze_top_layer"
@@ -145,10 +143,7 @@
     "misc": []
   },
   "spawn_costs": {},
-  "player_spawn_friendly": false,
   "precipitation": "none",
   "temperature": 2.0,
-  "downfall": 0.0,
-  "category": "desert",
-  "depth": 0.15
+  "downfall": 0.0
 }

@@ -1,6 +1,6 @@
 {
-  "name": "parallel_world:mycelium/zombie/houses",
-  "fallback": "parallel_world:mycelium/zombie/terminators",
+  "name": "parallel_world:village/mycelium/zombie/houses",
+  "fallback": "parallel_world:village/mycelium/zombie/terminators",
   "elements": [
     {
       "weight": 2,

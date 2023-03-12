@@ -5,7 +5,7 @@
     {
       "weight": 2,
       "element": {
-        "location": "parallel_world:mycelium/houses/mycelium_small_house_1",
+        "location": "parallel_world:village/mycelium/houses/mycelium_small_house_1",
         "processors": "minecraft:empty",
         "projection": "rigid",
         "element_type": "minecraft:legacy_single_pool_element"
@@ -14,7 +14,7 @@
     {
       "weight": 2,
       "element": {
-        "location": "parallel_world:mycelium/houses/mycelium_small_house_2",
+        "location": "parallel_world:village/mycelium/houses/mycelium_small_house_2",
         "processors": "minecraft:empty",
         "projection": "rigid",
         "element_type": "minecraft:legacy_single_pool_element"
@@ -23,7 +23,7 @@
     {
       "weight": 2,
       "element": {
-        "location": "parallel_world:mycelium/houses/mycelium_small_house_3",
+        "location": "parallel_world:village/mycelium/houses/mycelium_small_house_3",
         "processors": "minecraft:empty",
         "projection": "rigid",
         "element_type": "minecraft:legacy_single_pool_element"
@@ -32,7 +32,7 @@
     {
       "weight": 2,
       "element": {
-        "location": "parallel_world:mycelium/houses/mycelium_small_house_4",
+        "location": "parallel_world:village/mycelium/houses/mycelium_small_house_4",
         "processors": "minecraft:empty",
         "projection": "rigid",
         "element_type": "minecraft:legacy_single_pool_element"
@@ -41,7 +41,7 @@
     {
       "weight": 2,
       "element": {
-        "location": "parallel_world:mycelium/houses/mycelium_small_house_5",
+        "location": "parallel_world:village/mycelium/houses/mycelium_small_house_5",
         "processors": "minecraft:empty",
         "projection": "rigid",
         "element_type": "minecraft:legacy_single_pool_element"
@@ -50,7 +50,7 @@
     {
       "weight": 2,
       "element": {
-        "location": "parallel_world:mycelium/houses/mycelium_small_house_6",
+        "location": "parallel_world:village/mycelium/houses/mycelium_small_house_6",
         "processors": "minecraft:empty",
         "projection": "rigid",
         "element_type": "minecraft:legacy_single_pool_element"
@@ -59,7 +59,7 @@
     {
       "weight": 2,
       "element": {
-        "location": "parallel_world:mycelium/houses/mycelium_small_house_7",
+        "location": "parallel_world:village/mycelium/houses/mycelium_small_house_7",
         "processors": "minecraft:empty",
         "projection": "rigid",
         "element_type": "minecraft:legacy_single_pool_element"
@@ -68,7 +68,7 @@
     {
       "weight": 2,
       "element": {
-        "location": "parallel_world:mycelium/houses/mycelium_small_house_8",
+        "location": "parallel_world:village/mycelium/houses/mycelium_small_house_8",
         "processors": "minecraft:empty",
         "projection": "rigid",
         "element_type": "minecraft:legacy_single_pool_element"
@@ -77,7 +77,7 @@
 	{
       "weight": 2,
       "element": {
-        "location": "parallel_world:mycelium/houses/mycelium_butchers_shop_1",
+        "location": "parallel_world:village/mycelium/houses/mycelium_butchers_shop_1",
         "processors": "minecraft:empty",
         "projection": "rigid",
         "element_type": "minecraft:legacy_single_pool_element"
@@ -86,7 +86,7 @@
     {
       "weight": 2,
       "element": {
-        "location": "parallel_world:mycelium/houses/mycelium_butchers_shop_2",
+        "location": "parallel_world:village/mycelium/houses/mycelium_butchers_shop_2",
         "processors": "minecraft:empty",
         "projection": "rigid",
         "element_type": "minecraft:legacy_single_pool_element"
@@ -95,7 +95,7 @@
     {
       "weight": 1,
       "element": {
-        "location": "parallel_world:mycelium/houses/mycelium_armorer_1",
+        "location": "parallel_world:village/mycelium/houses/mycelium_armorer_1",
         "processors": "minecraft:empty",
         "projection": "rigid",
         "element_type": "minecraft:legacy_single_pool_element"
@@ -104,7 +104,7 @@
     {
       "weight": 2,
       "element": {
-        "location": "parallel_world:mycelium/houses/mycelium_animal_pen_1",
+        "location": "parallel_world:village/mycelium/houses/mycelium_animal_pen_1",
         "processors": "minecraft:empty",
         "projection": "rigid",
         "element_type": "minecraft:legacy_single_pool_element"
@@ -113,7 +113,7 @@
     {
       "weight": 2,
       "element": {
-        "location": "parallel_world:mycelium/houses/mycelium_animal_pen_2",
+        "location": "parallel_world:village/mycelium/houses/mycelium_animal_pen_2",
         "processors": "minecraft:empty",
         "projection": "rigid",
         "element_type": "minecraft:legacy_single_pool_element"
@@ -122,7 +122,7 @@
     {
       "weight": 2,
       "element": {
-        "location": "parallel_world:mycelium/houses/mycelium_animal_pen_3",
+        "location": "parallel_world:village/mycelium/houses/mycelium_animal_pen_3",
         "processors": "minecraft:empty",
         "projection": "rigid",
         "element_type": "minecraft:legacy_single_pool_element"
@@ -131,7 +131,7 @@
 	{
       "weight": 2,
       "element": {
-        "location": "parallel_world:mycelium/houses/mycelium_cartographer_1",
+        "location": "parallel_world:village/mycelium/houses/mycelium_cartographer_1",
         "processors": "minecraft:empty",
         "projection": "rigid",
         "element_type": "minecraft:legacy_single_pool_element"
@@ -140,7 +140,7 @@
 	{
       "weight": 3,
       "element": {
-        "location": "parallel_world:mycelium/houses/mycelium_fisher_cottage_1",
+        "location": "parallel_world:village/mycelium/houses/mycelium_fisher_cottage_1",
         "processors": "minecraft:empty",
         "projection": "rigid",
         "element_type": "minecraft:legacy_single_pool_element"
@@ -158,7 +158,7 @@
 	    {
       "weight": 2,
       "element": {
-        "location": "parallel_world:mycelium/houses/mycelium_fletcher_house_1",
+        "location": "parallel_world:village/mycelium/houses/mycelium_fletcher_house_1",
         "processors": "minecraft:empty",
         "projection": "rigid",
         "element_type": "minecraft:legacy_single_pool_element"
@@ -167,7 +167,7 @@
 	{
       "weight": 4,
       "element": {
-        "location": "parallel_world:mycelium/houses/mycelium_large_farm_1",
+        "location": "parallel_world:village/mycelium/houses/mycelium_large_farm_1",
         "processors": "minecraft:empty",
         "projection": "rigid",
         "element_type": "minecraft:legacy_single_pool_element"
@@ -176,7 +176,7 @@
     {
       "weight": 6,
       "element": {
-        "location": "parallel_world:mycelium/houses/mycelium_large_farm_2",
+        "location": "parallel_world:village/mycelium/houses/mycelium_large_farm_2",
         "processors": "minecraft:empty",
         "projection": "rigid",
         "element_type": "minecraft:legacy_single_pool_element"
@@ -185,7 +185,7 @@
 	{
       "weight": 4,
       "element": {
-        "location": "parallel_world:mycelium/houses/mycelium_small_farm",
+        "location": "parallel_world:village/mycelium/houses/mycelium_small_farm",
         "processors": "minecraft:farm_savanna",
         "projection": "rigid",
         "element_type": "minecraft:legacy_single_pool_element"
@@ -194,7 +194,7 @@
 	{
       "weight": 2,
       "element": {
-        "location": "parallel_world:mycelium/houses/mycelium_library_1",
+        "location": "parallel_world:village/mycelium/houses/mycelium_library_1",
         "processors": "minecraft:empty",
         "projection": "rigid",
         "element_type": "minecraft:legacy_single_pool_element"
@@ -203,7 +203,7 @@
 	{
       "weight": 2,
       "element": {
-        "location": "parallel_world:mycelium/houses/mycelium_mason_1",
+        "location": "parallel_world:village/mycelium/houses/mycelium_mason_1",
         "processors": "minecraft:empty",
         "projection": "rigid",
         "element_type": "minecraft:legacy_single_pool_element"
@@ -212,7 +212,7 @@
 	{
       "weight": 2,
       "element": {
-        "location": "parallel_world:mycelium/houses/mycelium_medium_house_1",
+        "location": "parallel_world:village/mycelium/houses/mycelium_medium_house_1",
         "processors": "minecraft:empty",
         "projection": "rigid",
         "element_type": "minecraft:legacy_single_pool_element"
@@ -221,7 +221,7 @@
 	{
       "weight": 2,
       "element": {
-        "location": "parallel_world:mycelium/houses/mycelium_medium_house_2",
+        "location": "parallel_world:village/mycelium/houses/mycelium_medium_house_2",
         "processors": "minecraft:empty",
         "projection": "rigid",
         "element_type": "minecraft:legacy_single_pool_element"
@@ -230,7 +230,7 @@
 	{
       "weight": 7,
       "element": {
-        "location": "parallel_world:mycelium/houses/mycelium_shepherd_1",
+        "location": "parallel_world:village/mycelium/houses/mycelium_shepherd_1",
         "processors": "minecraft:empty",
         "projection": "rigid",
         "element_type": "minecraft:legacy_single_pool_element"
@@ -239,7 +239,7 @@
 	{
       "weight": 2,
       "element": {
-        "location": "parallel_world:mycelium/houses/mycelium_tool_smith_1",
+        "location": "parallel_world:village/mycelium/houses/mycelium_tool_smith_1",
         "processors": "minecraft:empty",
         "projection": "rigid",
         "element_type": "minecraft:legacy_single_pool_element"
@@ -248,7 +248,7 @@
 	{
       "weight": 2,
       "element": {
-        "location": "parallel_world:mycelium/houses/mycelium_weaponsmith_1",
+        "location": "parallel_world:village/mycelium/houses/mycelium_weaponsmith_1",
         "processors": "minecraft:empty",
         "projection": "rigid",
         "element_type": "minecraft:legacy_single_pool_element"
@@ -257,7 +257,7 @@
 	{
       "weight": 2,
       "element": {
-        "location": "parallel_world:mycelium/houses/mycelium_weaponsmith_2",
+        "location": "parallel_world:village/mycelium/houses/mycelium_weaponsmith_2",
         "processors": "minecraft:empty",
         "projection": "rigid",
         "element_type": "minecraft:legacy_single_pool_element"
@@ -266,7 +266,7 @@
 	{
       "weight": 2,
       "element": {
-        "location": "parallel_world:mycelium/houses/mycelium_temple_1",
+        "location": "parallel_world:village/mycelium/houses/mycelium_temple_1",
         "processors": "minecraft:empty",
         "projection": "rigid",
         "element_type": "minecraft:legacy_single_pool_element"
@@ -275,7 +275,7 @@
 	{
       "weight": 2,
       "element": {
-        "location": "parallel_world:mycelium/houses/mycelium_temple_2",
+        "location": "parallel_world:village/mycelium/houses/mycelium_temple_2",
         "processors": "minecraft:empty",
         "projection": "rigid",
         "element_type": "minecraft:legacy_single_pool_element"

@@ -1,5 +1,4 @@
 {
-  "scale": 0.3,
   "effects": {
     "mood_sound": {
       "sound": "minecraft:ambient.cave",
@@ -19,39 +18,37 @@
     "water_color": 8235263,
     "water_fog_color": 2041677
   },
-  "surface_builder": "parallel_world:wasteland",
   "carvers": {
-    "air": [
-      "minecraft:cave",
-      "parallel_world:wasteland_crack"
-    ]
+    "air": []
   },
   "features": [
     [
-	  "parallel_world:seagen/seabed_sandstone",
-	  "parallel_world:seagen/seabed_sand"
-	],
-    [
-	  "parallel_world:traps_lava",
-	  "minecraft:lake_lava"
-	],
-    [],
+      "parallel_world:seagen/seabed_sandstone",
+      "parallel_world:seagen/seabed_sand"
+    ],
     [],
     [],
     [],
     [
-	  "parallel_world:coarse_dirt_blobs_wasteland",
-	  "parallel_world:gravel_blobs",
-	  "parallel_world:scattered_obsidian",
-	  "minecraft:ore_dirt",
+      "parallel_world:traps_lava"
+    ],
+    [],
+    [
+      "parallel_world:coal_pillars",
+      "parallel_world:coarse_dirt_blobs_wasteland",
+      "parallel_world:gravel_blobs_wasteland",
+      "parallel_world:scattered_obsidian",
+      "minecraft:ore_dirt",
       "minecraft:ore_gravel",
-      "minecraft:ore_granite",
-      "minecraft:ore_diorite",
-      "minecraft:ore_andesite",
+      "minecraft:ore_granite_upper",
+      "minecraft:ore_granite_lower",
+      "minecraft:ore_diorite_upper",
+      "minecraft:ore_diorite_lower",
+      "minecraft:ore_andesite_upper",
+      "minecraft:ore_andesite_lower",
       "minecraft:disk_sand",
       "minecraft:disk_clay",
-      "minecraft:disk_gravel",
-      "minecraft:ore_magma"
+      "minecraft:disk_gravel"
     ],
     [
       "parallel_world:ores/ore_copper_andesite",
@@ -62,17 +59,20 @@
       "parallel_world:ores/ore_iron_granite",
       "parallel_world:ores/ore_gold_andesite",
       "parallel_world:ores/ore_gold_diorite",
-      "parallel_world:ores/ore_gold_granite",
-      "parallel_world:sky_island_glowstone",
+      "parallel_world:ores/ore_gold_granite"
+    ],
+    [],
+    [
       "parallel_world:wasteland_vegetation",
+      "parallel_world:sky_island_glowstone",
       "minecraft:glow_lichen",
-	  "minecraft:spring_delta",
-      "minecraft:spring_closed_double",
-	  "minecraft:brown_mushroom_normal",
+      "minecraft:brown_mushroom_normal",
       "minecraft:red_mushroom_normal"
     ],
     [
-	  "minecraft:spring_lava_double"
+      "minecraft:spring_delta",
+      "minecraft:ore_magma",
+      "minecraft:spring_closed_double"
     ]
   ],
   "starts": [],
@@ -136,10 +136,7 @@
     "misc": []
   },
   "spawn_costs": {},
-  "player_spawn_friendly": false,
   "precipitation": "none",
   "temperature": 2.0,
-  "downfall": 0.0,
-  "category": "desert",
-  "depth": 0.3
+  "downfall": 0.0
 }

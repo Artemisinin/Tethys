@@ -1,35 +1,24 @@
 {
+  "type": "minecraft:huge_fungus",
   "config": {
-    "feature": {
-      "config": {
-        "hat_state": {
-          "Name": "minecraft:nether_wart_block"
-        },
-        "decor_state": {
-          "Name": "minecraft:nether_wart_block"
-        },
-        "planted": false,
-        "valid_base_block": {
-			"Properties": {
-				"snowy": "false"
-				},
-			"Name": "minecraft:grass_block"
-        },
-        "stem_state": {
-          "Properties": {
-            "axis": "y"
-          },
-          "Name": "minecraft:crimson_stem"
-        }
-      },
-      "type": "minecraft:huge_fungus"
+    "decor_state": {
+      "Name": "minecraft:nether_wart_block"
     },
-    "decorator": {
-      "config": {
-        "count": 1
+    "hat_state": {
+      "Name": "minecraft:nether_wart_block"
+    },
+    "planted": false,
+    "stem_state": {
+      "Properties": {
+        "axis": "y"
       },
-      "type": "minecraft:count_multilayer"
+      "Name": "minecraft:crimson_stem"
+    },
+    "valid_base_block": {
+      "Properties": {
+        "snowy": "false"
+      },
+      "Name": "minecraft:grass_block"
     }
-  },
-  "type": "minecraft:decorated"
+  }
 }
