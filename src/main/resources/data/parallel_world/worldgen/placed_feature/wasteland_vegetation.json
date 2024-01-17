@@ -22,7 +22,24 @@
 		},
 		{
 			"type": "minecraft:heightmap",
-			"heightmap": "MOTION_BLOCKING"
+			"heightmap": "OCEAN_FLOOR"
+		},
+		{
+			"type": "minecraft:block_predicate_filter",
+			"predicate": {
+				"type": "minecraft:matching_blocks",
+				"blocks": [
+					"minecraft:blackstone",
+					"minecraft:gravel",
+					"minecraft:dirt",
+					"minecraft:coarse_dirt"
+				],
+				"offset": [
+					0,
+					-1,
+					0
+				]
+			}
 		},
 		{
 			"type": "minecraft:biome"

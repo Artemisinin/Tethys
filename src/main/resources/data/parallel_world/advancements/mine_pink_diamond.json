@@ -16,12 +16,14 @@
     "hidden": false
   },
   "criteria": {
-    "diamond": {
+    "pink_diamond": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "item": "parallel_world:pink_diamond"
+            "items": [
+              "parallel_world:pink_diamond"
+            ]
           }
         ]
       }
@@ -29,7 +31,7 @@
   },
   "requirements": [
     [
-      "diamond"
+      "pink_diamond"
     ]
   ]
 }

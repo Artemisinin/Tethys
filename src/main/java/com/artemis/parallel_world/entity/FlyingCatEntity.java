@@ -81,10 +81,6 @@ public class FlyingCatEntity extends TameableEntity {
 
     public void tick() {
         super.tick();
-        // Why is my math not working.
-//        if (this.locomotionToggle < 900) {
-//            int increment = random.nextInt(10);
-//            locomotionToggle += increment;
         if (this.locomotionToggle <600) {
             locomotionToggle++;
         } else if (this.flying(true)) {

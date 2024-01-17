@@ -2,10 +2,13 @@
   "config": {
     "decorators": [],
     "ignore_vines": false,
-    "force_dirt": false,
+    "force_dirt": true,
     "dirt_provider": {
       "state": {
-        "Name": "minecraft:snow_block"
+        "Properties": {
+          "axis": "y"
+        },
+        "Name": "minecraft:spruce_log"
       },
       "type": "minecraft:simple_state_provider"
     },

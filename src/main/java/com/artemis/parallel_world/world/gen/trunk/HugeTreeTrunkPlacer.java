@@ -68,11 +68,12 @@ public class HugeTreeTrunkPlacer extends TrunkPlacer {
             }
         }
 
+        // How high above the trunk do the branches reach.
         int maxBranchTipY = topPosition + 8;
+        // These two lines set how far up the trunk the branches begin.
         int l = MathHelper.floor((double)maxBranchTipY * 0.618D);
-        // Math.pow here squares the value.
-        int m = Math.min(1, MathHelper.floor(1.382D + Math.pow((double) maxBranchTipY / 13.0D, 2.0D)));
         int minBranchY = placementPos.getY() + l;
+
         // Sorry about this...
         int branchPlacementHeight = maxBranchTipY;
         List<HugeTreeTrunkPlacer.BranchPosition> branchPositions = Lists.newArrayList();
@@ -80,6 +81,8 @@ public class HugeTreeTrunkPlacer extends TrunkPlacer {
 
         midBranchPositions = Lists.newArrayList();
 
+        // Math.pow here squares the value.
+        int m = Math.min(1, MathHelper.floor(1.382D + Math.pow((double) maxBranchTipY / 13.0D, 2.0D)));
         for(; branchPlacementHeight >= 0; --branchPlacementHeight) {
             float f = shouldGenerateBranch(maxBranchTipY, branchPlacementHeight);
             if (!(f < 0.0F)) {
@@ -196,11 +199,11 @@ public class HugeTreeTrunkPlacer extends TrunkPlacer {
         return (double)height >= (double)treeHeight * 0.2D;
     }
 
-    private void makeBranches(TestableWorld testableWorld, BiConsumer<BlockPos, BlockState> biConsumer, Random random, int i, BlockPos blockPos, List<HugeTreeTrunkPlacer.BranchPosition> list, TreeFeatureConfig treeFeatureConfig) {
-        Iterator var8 = list.iterator();
+    private void makeBranches(TestableWorld testableWorld, BiConsumer<BlockPos, BlockState> biConsumer, Random random, int i, BlockPos blockPos, List<HugeTreeTrunkPlacer.BranchPosition> branchPositionList, TreeFeatureConfig treeFeatureConfig) {
+        Iterator branchPositionIterator = branchPositionList.iterator();
 
-        while(var8.hasNext()) {
-            HugeTreeTrunkPlacer.BranchPosition branchPosition = (HugeTreeTrunkPlacer.BranchPosition)var8.next();
+        while(branchPositionIterator.hasNext()) {
+            HugeTreeTrunkPlacer.BranchPosition branchPosition = (HugeTreeTrunkPlacer.BranchPosition)branchPositionIterator.next();
             int j = branchPosition.getEndY();
             BlockPos blockPos2 = new BlockPos(blockPos.getX(), j, blockPos.getZ());
             if (!blockPos2.equals(branchPosition.node.getCenter()) && this.isHighEnough(i, j - blockPos.getY())) {

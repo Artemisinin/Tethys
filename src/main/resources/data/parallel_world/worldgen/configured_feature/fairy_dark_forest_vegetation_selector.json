@@ -1,7 +1,7 @@
 {
   "type": "minecraft:random_selector",
   "config": {
-    "default": "parallel_world:oak_bees_005_checked",
+    "default": "minecraft:oak_bees_002",
     "features": [
       {
         "feature": "parallel_world:dark_oak_glowfruit_checked",
@@ -19,7 +19,7 @@
         "chance": 0.1
       },
       {
-        "feature": "parallel_world:birch_bees_005_checked",
+        "feature": "minecraft:birch_bees_002",
         "chance": 0.2
       },
       {

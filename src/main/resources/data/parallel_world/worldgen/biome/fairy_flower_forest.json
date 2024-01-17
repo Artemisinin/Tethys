@@ -21,7 +21,7 @@
     ],
     [],
     [
-      "minecraft:amethyst_geode"
+      "parallel_world:tethys_amethyst_geode"
     ],
     [
       "minecraft:monster_room"
@@ -29,7 +29,6 @@
     [],
     [],
     [
-      "parallel_world:shroomlight_blobs",
       "parallel_world:ores/ore_tethys_coal",
       "parallel_world:ores/ore_tethys_copper",
       "parallel_world:ores/ore_tethys_iron",
@@ -65,18 +64,22 @@
       "minecraft:spring_water"
     ],
     [
+      "parallel_world:fairy_flower_forest_flowers",
+      "parallel_world:generic_forest_vegetation_shaded",
       "parallel_world:glow_vines",
+      "parallel_world:patch_glow_flowers",
+      "parallel_world:patch_grass_shaded",
       "minecraft:glow_lichen",
       "minecraft:flower_forest_flowers",
       "minecraft:trees_flower_forest",
-      "minecraft:flower_flower_forest",
       "minecraft:patch_grass_badlands",
       "minecraft:brown_mushroom_normal",
+      "minecraft:brown_mushroom_nether",
       "minecraft:red_mushroom_normal",
+      "minecraft:red_mushroom_nether",
       "minecraft:patch_sugar_cane",
       "minecraft:patch_pumpkin",
-      "minecraft:seagrass_warm",
-      "minecraft:sea_pickle"
+      "minecraft:seagrass_warm"
     ],
     [
       "minecraft:freeze_top_layer"
@@ -183,27 +186,34 @@
         "maxCount": 8
       }
     ],
-    "underground_water_creature": [],
-    "water_creature": [
+    "underground_water_creature": [
       {
-        "type": "minecraft:squid",
-        "weight": 10,
-        "minCount": 4,
-        "maxCount": 4
+        "type": "minecraft:glow_squid",
+        "maxCount": 2,
+        "minCount": 1,
+        "weight": 10
       }
     ],
     "water_ambient": [
       {
         "type": "minecraft:cod",
-        "weight": 15,
+        "maxCount": 6,
+        "minCount": 3,
+        "weight": 10
+      }
+    ],
+    "water_creature": [
+      {
+        "type": "minecraft:squid",
+        "maxCount": 4,
         "minCount": 1,
-        "maxCount": 3
+        "weight": 1
       },
       {
-        "type": "minecraft:salmon",
-        "weight": 25,
-        "minCount": 8,
-        "maxCount": 8
+        "type": "minecraft:dolphin",
+        "maxCount": 2,
+        "minCount": 1,
+        "weight": 1
       }
     ],
     "misc": []

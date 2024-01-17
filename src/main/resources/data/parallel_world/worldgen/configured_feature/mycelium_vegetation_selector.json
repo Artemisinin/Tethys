@@ -10,7 +10,10 @@
 				"chance": 0.3
 			},
 			{
-				"feature": "parallel_world:mycelium_mushroom_patch",
+				"feature": {
+					"feature": "parallel_world:mycelium_mushroom_patch",
+					"placement": []
+				},
 				"chance": 0.3
 			},
 			{

@@ -30,7 +30,7 @@
 	],
     [],
     [
-      "minecraft:amethyst_geode"
+      "parallel_world:tethys_amethyst_geode"
     ],
     [
       "minecraft:monster_room"
@@ -69,20 +69,25 @@
       "parallel_world:ores/ore_gold_granite"
     ],
     [
-      "minecraft:spring_water"
+      "minecraft:spring_water",
+      "parallel_world:swamp_water"
     ],
     [
-	  "parallel_world:patch_water_lilies",
+      "parallel_world:jungle_vegetation_shaded",
+      "parallel_world:patch_grass_shaded",
+      "parallel_world:patch_water_lilies",
+      "parallel_world:seagrass_swamp",
+      "parallel_world:sea_pickle",
       "minecraft:glow_lichen",
 	  "minecraft:trees_jungle",
       "minecraft:flower_swamp",
       "minecraft:brown_mushroom_swamp",
+      "minecraft:brown_mushroom_nether",
       "minecraft:red_mushroom_swamp",
+      "minecraft:red_mushroom_nether",
       "minecraft:patch_sugar_cane_swamp",
       "minecraft:patch_pumpkin",
-      "minecraft:patch_melon",
-      "minecraft:seagrass_swamp",
-      "minecraft:sea_pickle"
+      "minecraft:patch_melon"
     ],
     [
       "minecraft:freeze_top_layer"
@@ -187,20 +192,34 @@
         "maxCount": 8
       }
     ],
-    "underground_water_creature": [],
-    "water_creature": [],
+    "underground_water_creature": [
+      {
+        "type": "minecraft:glow_squid",
+        "maxCount": 4,
+        "minCount": 1,
+        "weight": 10
+      }
+    ],
     "water_ambient": [
       {
         "type": "minecraft:cod",
-        "weight": 15,
+        "maxCount": 6,
+        "minCount": 3,
+        "weight": 10
+      }
+    ],
+    "water_creature": [
+      {
+        "type": "minecraft:squid",
+        "maxCount": 4,
         "minCount": 1,
-        "maxCount": 3
+        "weight": 1
       },
       {
-        "type": "minecraft:salmon",
-        "weight": 25,
-        "minCount": 8,
-        "maxCount": 8
+        "type": "minecraft:dolphin",
+        "maxCount": 2,
+        "minCount": 1,
+        "weight": 1
       }
     ],
     "misc": []

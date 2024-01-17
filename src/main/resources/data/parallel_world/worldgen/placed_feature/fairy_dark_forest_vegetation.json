@@ -6,7 +6,7 @@
       "count": 16
     },
     {
-    "type": "minecraft:in_square"
+      "type": "minecraft:in_square"
     },
     {
       "type": "minecraft:surface_water_depth_filter",

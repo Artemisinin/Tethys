@@ -17,6 +17,7 @@ import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.util.Identifier;
+import net.minecraft.world.dimension.DimensionOptions;
 import net.minecraft.world.gen.GenerationStep;
 
 
@@ -25,15 +26,19 @@ import static net.minecraft.world.biome.BiomeKeys.*;
 
 public class Dimension implements ModInitializer {
 
-
-
+    // If sea level is updated in the noise file this needs to be updated.
+    public static final int TETHYS_SEA_LEVEL = 20;
 
     @Override
     public void onInitialize() {
 
+
         // Add portal
         // Custom portal not working in snapshot at the moment.
         //CustomPortalApiRegistry.addPortal(Blocks.POLISHED_BLACKSTONE, PortalIgnitionSource.WATER, new Identifier("parallel_world", "tethys"), 23, 140, 176);
+
+        // Register entities
+        TethysEntities.registerEntities();
 
         // Register blocks and items
         TethysBlocks.registerBlocks();
@@ -52,9 +57,6 @@ public class Dimension implements ModInitializer {
         TethysFeatures.registerFeatures();
         //TethysConfiguredFeatures.registerConfiguredFeatures();
         //TethysConfiguredFeatures.registerPlacedFeatures();
-
-        // Register entities
-        TethysEntities.registerEntities();
 
         // Add configured features to overworld biomes
         //BiomeModifications.addFeature(BiomeSelectors.foundInOverworld(), GenerationStep.Feature.UNDERGROUND_ORES, RegistryKey.of(RegistryKeys.PLACED_FEATURE, new Identifier("parallel_world", "cave_scattered_ghost_trees")));

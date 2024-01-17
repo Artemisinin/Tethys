@@ -7,11 +7,11 @@
         "type": "minecraft:weighted_list",
         "distribution": [
           {
-            "data": 10,
+            "data": 60,
             "weight": 9
           },
           {
-            "data": 11,
+            "data": 70,
             "weight": 1
           }
         ]
@@ -21,12 +21,16 @@
       "type": "minecraft:in_square"
     },
     {
-      "type": "minecraft:surface_water_depth_filter",
-      "max_water_depth": 0
-    },
-    {
-      "type": "minecraft:heightmap",
-      "heightmap": "OCEAN_FLOOR"
+      "type": "minecraft:height_range",
+      "height": {
+        "type": "minecraft:uniform",
+        "max_inclusive": {
+          "absolute": 120
+        },
+        "min_inclusive": {
+          "above_bottom": 30
+        }
+      }
     },
     {
       "type": "minecraft:block_predicate_filter",

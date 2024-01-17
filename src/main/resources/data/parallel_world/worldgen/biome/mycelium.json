@@ -22,7 +22,7 @@
 	],
     [],
     [
-      "minecraft:amethyst_geode"
+      "parallel_world:tethys_amethyst_geode"
     ],
     [
 
@@ -65,7 +65,9 @@
     ],
     [
       "parallel_world:mycelium_vegetation",
+      "parallel_world:mycelium_vegetation_shaded",
       "minecraft:glow_lichen",
+      "minecraft:brown_mushroom_nether",
       "minecraft:patch_sugar_cane",
       "minecraft:patch_pumpkin",
       "minecraft:patch_melon",
@@ -109,9 +111,36 @@
         "maxCount": 8
       }
     ],
-    "underground_water_creature": [],
-    "water_creature": [],
-    "water_ambient": [],
+    "underground_water_creature": [
+      {
+        "type": "minecraft:glow_squid",
+        "maxCount": 2,
+        "minCount": 1,
+        "weight": 10
+      }
+    ],
+    "water_ambient": [
+      {
+        "type": "minecraft:cod",
+        "maxCount": 6,
+        "minCount": 3,
+        "weight": 10
+      }
+    ],
+    "water_creature": [
+      {
+        "type": "minecraft:squid",
+        "maxCount": 4,
+        "minCount": 1,
+        "weight": 1
+      },
+      {
+        "type": "minecraft:dolphin",
+        "maxCount": 2,
+        "minCount": 1,
+        "weight": 1
+      }
+    ],
     "misc": []
   },
   "spawn_costs": {},

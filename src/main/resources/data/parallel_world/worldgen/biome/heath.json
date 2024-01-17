@@ -13,7 +13,9 @@
     "water_fog_color": 329011
   },
   "carvers": {
-    "air": []
+    "air": [
+      "parallel_world:tethys_cave"
+    ]
   },
   "features": [
     [
@@ -21,9 +23,10 @@
 		"parallel_world:seagen/seabed_sand"
 	],
     [],
-    [],
     [
-      "minecraft:amethyst_geode",
+      "parallel_world:tethys_amethyst_geode"
+    ],
+    [
       "minecraft:monster_room"
     ],
     [],
@@ -62,18 +65,23 @@
       "minecraft:spring_water"
     ],
     [
+      "parallel_world:brown_mushroom_shaded",
       "parallel_world:heath_berry_bushes",
-      "parallel_world:patch_heather",
+      "parallel_world:heath_huge_mushrooms_shaded",
       "parallel_world:heath_vegetation",
+      "parallel_world:patch_grass_shaded",
+      "parallel_world:patch_heather",
+      "parallel_world:sea_pickle",
       "minecraft:glow_lichen",
       "minecraft:patch_tall_grass",
       "minecraft:flower_default",
       "minecraft:patch_grass_forest",
       "minecraft:patch_dead_bush",
       "minecraft:brown_mushroom_normal",
+      "minecraft:brown_mushroom_nether",
       "minecraft:red_mushroom_normal",
-      "minecraft:seagrass_cold",
-      "minecraft:sea_pickle"
+      "minecraft:red_mushroom_nether",
+      "minecraft:seagrass_cold"
     ],
     [
       "minecraft:freeze_top_layer"
@@ -180,29 +188,36 @@
         "maxCount": 8
       }
     ],
-    "underground_water_creature": [],
+    "underground_water_creature": [
+      {
+        "type": "minecraft:glow_squid",
+        "maxCount": 6,
+        "minCount": 4,
+        "weight": 10
+      }
+    ],
+    "water_ambient": [
+      {
+        "type": "minecraft:cod",
+        "maxCount": 6,
+        "minCount": 3,
+        "weight": 10
+      }
+    ],
     "water_creature": [
-		  {
-			"type": "minecraft:squid",
-			"weight": 10,
-			"minCount": 4,
-			"maxCount": 4
-		  }
-		],
-		"water_ambient": [
-		  {
-			"type": "minecraft:cod",
-			"weight": 15,
-			"minCount": 1,
-			"maxCount": 3
-		  },
-		  {
-			"type": "minecraft:salmon",
-			"weight": 25,
-			"minCount": 8,
-			"maxCount": 8
-		  }
-		],
+      {
+        "type": "minecraft:squid",
+        "maxCount": 4,
+        "minCount": 1,
+        "weight": 1
+      },
+      {
+        "type": "minecraft:dolphin",
+        "maxCount": 2,
+        "minCount": 1,
+        "weight": 1
+      }
+    ],
     "misc": []
   },
   "spawn_costs": {},

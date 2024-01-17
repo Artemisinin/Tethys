@@ -1,6 +1,10 @@
 {
-  "feature": "parallel_world:shroomlight_blob",
+  "feature": "parallel_world:swamp_water",
   "placement": [
+    {
+      "type": "minecraft:count",
+      "count": 20
+    },
     {
       "type": "minecraft:in_square"
     },
@@ -9,8 +13,7 @@
       "heightmap": "MOTION_BLOCKING"
     },
     {
-      "type": "minecraft:rarity_filter",
-      "chance": 2
+      "type": "minecraft:biome"
     }
   ]
 }

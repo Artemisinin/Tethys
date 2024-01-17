@@ -7,6 +7,8 @@ import net.minecraft.block.*;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
+import net.minecraft.registry.RegistryKeys;
+import net.minecraft.registry.tag.TagKey;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
@@ -18,7 +20,8 @@ public class TethysBlocks {
     public static final Block CAVE_GLOWLEAF = new Block(FabricBlockSettings.of(Material.LEAVES).hardness(0.2f).nonOpaque().luminance(6));
     public static final Block BLUE_CALCITE_LOG = new PillarBlock(FabricBlockSettings.of(Material.STONE).hardness(2.0f));
     public static final Block GLOWFRUIT = new LeavesBlock(FabricBlockSettings.of(Material.LEAVES).nonOpaque().luminance(9).hardness(0.2f).sounds(BlockSoundGroup.GRASS).ticksRandomly());
-    public static final Block HEATHER = new FlowerBlock(StatusEffects.LUCK, 7, AbstractBlock.Settings.of(Material.REPLACEABLE_PLANT).noCollision().breakInstantly().sounds(BlockSoundGroup.GRASS));
+    public static final Block GLOW_FLOWER = new FlowerBlock(StatusEffects.NIGHT_VISION, 5, AbstractBlock.Settings.of(Material.REPLACEABLE_PLANT).noCollision().breakInstantly().nonOpaque().luminance(state -> 9).sounds(BlockSoundGroup.GRASS));
+    public static final Block HEATHER = new FlowerBlock(StatusEffects.LUCK, 7, AbstractBlock.Settings.of(Material.REPLACEABLE_PLANT).noCollision().breakInstantly().nonOpaque().sounds(BlockSoundGroup.GRASS));
     // Mushroom blocks
     public static final Block PINK_MUSHROOM_BLOCK = new MushroomBlock(AbstractBlock.Settings.of(Material.WOOD, MapColor.DULL_PINK).strength(0.2F).sounds(BlockSoundGroup.WOOD));
     public static final Block WHITE_MUSHROOM_BLOCK = new MushroomBlock(AbstractBlock.Settings.of(Material.WOOD, MapColor.OFF_WHITE).strength(0.2F).sounds(BlockSoundGroup.WOOD));
@@ -95,9 +98,10 @@ public class TethysBlocks {
     public static final Block SWEETGUM_LOG = new PillarBlock(FabricBlockSettings.of(Material.WOOD).hardness(2.0f));
     public static final SaplingBlock SWEETGUM_SAPLING = new SaplingBlock(new SweetgumSaplingGenerator(), AbstractBlock.Settings.of(Material.PLANT).ticksRandomly().breakInstantly().sounds(BlockSoundGroup.GRASS).nonOpaque().noCollision());
 
+
     // Block Tags
-    //public static TagKey<Block> SOIL_BLOCKS;
-    //public static TagKey<Block> VALID_GROUND_BLOCKS;
+    public static TagKey<Block> CORAL_BLOCKS;
+    public static TagKey<Block> DIRT_OR_STONE;
 
     public static void registerBlocks() {
 
@@ -110,6 +114,9 @@ public class TethysBlocks {
 
         // Glowfruit
         Registry.register(Registries.BLOCK, new Identifier("parallel_world", "glowfruit"), GLOWFRUIT);
+
+        // Glow Flower
+        Registry.register(Registries.BLOCK, new Identifier("parallel_world", "glow_flower"), GLOW_FLOWER);
 
         // Heather
         Registry.register(Registries.BLOCK, new Identifier("parallel_world", "heather"), HEATHER);
@@ -233,8 +240,8 @@ public class TethysBlocks {
     }
 
     public static void registerBlockTags() {
-        // I don't think this is actually needed now?
-        //SOIL_BLOCKS = TagKey.of(Registry.BLOCK_KEY, new Identifier("parallel_world", "soil_blocks"));
-        //VALID_GROUND_BLOCKS = TagKey.of(Registry.BLOCK_KEY, new Identifier("parallel_world", "valid_ground_blocks"));
+
+        CORAL_BLOCKS = TagKey.of(RegistryKeys.BLOCK, new Identifier("parallel_world", "coral_blocks"));
+        DIRT_OR_STONE = TagKey.of(RegistryKeys.BLOCK, new Identifier("parallel_world", "dirt_or_stone"));
     }
 }

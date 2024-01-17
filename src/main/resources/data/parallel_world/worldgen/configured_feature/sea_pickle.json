@@ -1,0 +1,6 @@
+{
+  "type": "parallel_world:tethys_sea_pickle",
+  "config": {
+    "count": 10
+  }
+}

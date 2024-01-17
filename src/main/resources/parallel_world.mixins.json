@@ -4,17 +4,22 @@
   "package": "com.artemis.parallel_world.mixin",
   "compatibilityLevel": "JAVA_16",
   "mixins": [
+    "CoralFeatureMixin",
     "GetTopPositionInvoker",
-    "IcebergFeatureMixin",
-    "LargeTreeSaplingGeneratorMixin",
+    "GlowSquidMixin",
     "PlacementModifierRegisterInvoker",
     "RegisterCompostableItemInvoker",
-    "SaplingGeneratorMixin",
     "SpawnRestrictionMixin",
     "StructureStartMixin",
     "TreeDecoratorTypeRegisterInvoker",
-    "TrunkPlacerMixin",
-    "TrunkPlacerTypeRegisterInvoker"
+    "TrunkPlacerTypeRegisterInvoker",
+    "WorldSeaLevelMixin",
+    "saplingblocks.BirchSaplingMixin",
+    "saplingblocks.DarkOakSaplingMixin",
+    "saplingblocks.JungleSaplingMixin",
+    "saplingblocks.OakSaplingMixin",
+    "saplingblocks.SaplingGeneratorMixin",
+    "saplingblocks.SpruceSaplingMixin"
   ],
   "client": [
   ],

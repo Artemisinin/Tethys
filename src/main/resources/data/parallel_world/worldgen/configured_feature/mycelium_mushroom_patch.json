@@ -1,0 +1,23 @@
+{
+	"type": "minecraft:random_boolean_selector",
+	"config": {
+		"feature_true": {
+			"feature": "minecraft:patch_brown_mushroom",
+			"placement": [
+				{
+					"type": "minecraft:rarity_filter",
+					"chance": 4
+				}
+			]
+		},
+		"feature_false": {
+			"feature": "minecraft:patch_red_mushroom",
+			"placement": [
+				{
+					"type": "minecraft:rarity_filter",
+					"chance": 4
+				}
+			]
+		}
+	}
+}

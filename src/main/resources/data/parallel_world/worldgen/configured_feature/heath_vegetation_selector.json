@@ -16,11 +16,11 @@
       },
       {
         "feature": "parallel_world:shrub/shrub_dark_oak_short_checked",
-        "chance": 0.15
+        "chance": 0.12
       },
       {
         "feature": "parallel_world:shrub/shrub_dark_oak_tall_checked",
-        "chance": 0.15
+        "chance": 0.12
       },
       {
         "feature": "parallel_world:shrub/shrub_oak_checked",
@@ -28,7 +28,11 @@
       },
       {
         "feature": "parallel_world:shrub/shrub_spruce_tall_checked",
-        "chance": 0.15
+        "chance": 0.12
+      },
+      {
+        "feature": "parallel_world:azalea_tree_tethys_checked",
+        "chance": 0.08
       }
     ]
   }

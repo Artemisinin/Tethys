@@ -25,15 +25,17 @@
     [],
     [],
     [],
-    [],
+    [
+      "parallel_world:seagen/seabed_sand_disk"
+    ],
     [],
     [
       "parallel_world:glow_vines",
+      "parallel_world:sea_pickle",
+      "parallel_world:seagrass_warm",
+      "parallel_world:warm_ocean_vegetation",
       "minecraft:glow_lichen",
-      "minecraft:patch_sugar_cane",
-      "minecraft:warm_ocean_vegetation",
-      "minecraft:seagrass_warm",
-      "minecraft:sea_pickle"
+      "minecraft:patch_sugar_cane"
     ],
     [
       "minecraft:freeze_top_layer"
@@ -102,7 +104,14 @@
         "maxCount": 8
       }
     ],
-    "underground_water_creature": [],
+    "underground_water_creature": [
+      {
+        "type": "minecraft:glow_squid",
+        "maxCount": 4,
+        "minCount": 2,
+        "weight": 10
+      }
+    ],
     "water_creature": [
       {
         "type": "parallel_world:tethys_turtle",
@@ -113,8 +122,8 @@
       {
         "type": "minecraft:squid",
         "weight": 10,
-        "minCount": 4,
-        "maxCount": 4
+        "minCount": 2,
+        "maxCount": 2
       },
       {
         "type": "minecraft:dolphin",
@@ -135,6 +144,12 @@
         "weight": 25,
         "minCount": 8,
         "maxCount": 8
+      },
+      {
+        "type": "parallel_world:water_strider",
+        "weight": 15,
+        "minCount": 3,
+        "maxCount": 5
       }
     ],
     "misc": []

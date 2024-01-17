@@ -28,5 +28,10 @@
     "fabric": "*",
     "minecraft": "1.19.3",
     "java": ">=17"
+  },
+  "custom": {
+    "loom:injected_interfaces": {
+      "net/minecraft/SaplingGenerator": ["parallel_world/block/sapling/GetVariableConfiguredTreeFeature"]
+    }
   }
 }

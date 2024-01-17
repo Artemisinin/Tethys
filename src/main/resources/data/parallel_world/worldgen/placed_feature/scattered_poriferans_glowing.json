@@ -23,10 +23,13 @@
     {
       "type": "minecraft:block_predicate_filter",
       "predicate": {
-        "type": "minecraft:would_survive",
-        "state": {
-          "Name": "minecraft:seagrass"
-        }
+        "type": "minecraft:matching_blocks",
+        "blocks": "minecraft:sand",
+        "offset": [
+          0,
+          -1,
+          0
+        ]
       }
     }
   ]

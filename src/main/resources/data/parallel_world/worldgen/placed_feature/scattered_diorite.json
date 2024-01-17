@@ -2,6 +2,9 @@
   "feature": "parallel_world:pile_diorite",
   "placement": [
     {
+      "type": "minecraft:in_square"
+    },
+    {
       "type": "minecraft:count",
       "count": {
         "type": "minecraft:uniform",
@@ -12,23 +15,31 @@
       }
     },
     {
-      "type": "minecraft:in_square"
-    },
-    {
-      "type": "minecraft:heightmap",
-      "heightmap": "WORLD_SURFACE"
+      "type": "minecraft:block_predicate_filter",
+      "predicate": {
+        "type": "minecraft:matching_block_tag",
+        "tag": "minecraft:dirt",
+        "offset": [
+          0,
+          -1,
+          0
+        ]
+      }
     },
     {
       "type": "minecraft:height_range",
       "height": {
         "type": "minecraft:uniform",
         "max_inclusive": {
-          "absolute": 120
+          "absolute": 176
         },
         "min_inclusive": {
           "absolute": 30
         }
       }
+    },
+    {
+      "type": "minecraft:biome"
     }
   ]
 }
