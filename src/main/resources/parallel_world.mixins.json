@@ -5,8 +5,11 @@
   "compatibilityLevel": "JAVA_16",
   "mixins": [
     "CoralFeatureMixin",
+    "FillLayerFeatureConfigMixin",
     "GetTopPositionInvoker",
     "GlowSquidMixin",
+    "IceSpikeFeatureMixin",
+    "NoiseChunkGeneratorMixin",
     "PlacementModifierRegisterInvoker",
     "RegisterCompostableItemInvoker",
     "SpawnRestrictionMixin",

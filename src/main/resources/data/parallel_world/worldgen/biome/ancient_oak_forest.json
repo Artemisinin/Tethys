@@ -22,6 +22,9 @@
   },
   "features": [
     [
+      "parallel_world:seagen/seabed_bedrock_1",
+      "parallel_world:seagen/seabed_bedrock_2",
+      "parallel_world:seagen/seabed_bedrock_3",
       "parallel_world:seagen/seabed_sandstone",
       "parallel_world:seagen/seabed_sand"
     ],
@@ -145,6 +148,12 @@
       }
     ],
     "creature": [
+      {
+        "type": "parallel_world:flying_cat",
+        "weight": 50,
+        "minCount": 2,
+        "maxCount": 4
+      },
       {
         "type": "minecraft:sheep",
         "weight": 12,

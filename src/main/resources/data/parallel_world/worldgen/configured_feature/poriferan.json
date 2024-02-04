@@ -4,7 +4,7 @@
     "force_dirt": false,
     "dirt_provider": {
       "state": {
-        "Name": "minecraft:dirt_block"
+        "Name": "minecraft:sand"
       },
       "type": "minecraft:simple_state_provider"
     },

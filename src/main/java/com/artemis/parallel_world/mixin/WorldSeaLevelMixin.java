@@ -21,6 +21,5 @@ public abstract class WorldSeaLevelMixin {
         if (this.getDimensionKey().getValue().equals(new Identifier("parallel_world:tethys"))) {
             cir.setReturnValue(Dimension.TETHYS_SEA_LEVEL);
         }
-        else cir.setReturnValue(63);
     }
 }

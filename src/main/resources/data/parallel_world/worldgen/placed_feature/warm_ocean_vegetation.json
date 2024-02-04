@@ -5,7 +5,7 @@
       "type": "minecraft:noise_based_count",
       "noise_factor": 400.0,
       "noise_offset": 0.0,
-      "noise_to_count_ratio": 20
+      "noise_to_count_ratio": 5
     },
     {
       "type": "minecraft:in_square"
@@ -15,10 +15,10 @@
       "height": {
         "type": "minecraft:uniform",
         "max_inclusive": {
-          "absolute": 20
+          "absolute": -5
         },
         "min_inclusive": {
-          "absolute": 5
+          "above_bottom": 5
         }
       }
     },

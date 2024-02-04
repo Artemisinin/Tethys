@@ -18,9 +18,9 @@
 			},
 			{
 				"feature": {
-				"feature": "parallel_world:crystal_tree/crystal_tree_pink",
+					"feature": "parallel_world:crystal_tree/crystal_tree_pink",
 					"placement": []
-			},
+				},
 				"chance": 0.20
 			},
 			{
@@ -32,22 +32,21 @@
 			},
 			{
 				"feature": {
-				"feature": "parallel_world:crystal_tree/crystal_tree_lime",
+					"feature": "parallel_world:crystal_tree/crystal_tree_lime",
 					"placement": []
 				},
 				"chance": 0.20
 			},
 			{
 				"feature": {
-
-				"feature": "parallel_world:crystal_tree/crystal_pine_green",
+					"feature": "parallel_world:crystal_tree/crystal_pine_green",
 					"placement": []
 				},
 				"chance": 0.40
 			},
 			{
 				"feature": {
-							"feature": "parallel_world:crystal_tree/crystal_bush_red",
+					"feature": "parallel_world:crystal_tree/crystal_bush_red",
 					"placement": []
 				},
 				"chance": 0.3

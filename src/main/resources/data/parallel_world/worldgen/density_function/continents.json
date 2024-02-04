@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:range_choice",
+  "input": "minecraft:y",
+  "min_inclusive": -64,
+  "max_exclusive": 0,
+  "when_in_range": "minecraft:overworld/continents",
+  "when_out_of_range": {
+    "type": "minecraft:range_choice",
+    "input": "minecraft:y",
+    "min_inclusive": 0,
+    "max_exclusive": 30,
+    "when_in_range": "parallel_world:continents_no_land",
+    "when_out_of_range": "parallel_world:continents_no_oceans"
+  }
+}

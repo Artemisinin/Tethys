@@ -32,16 +32,18 @@ public class DomeDiskFeature extends Feature<DomeDiskFeatureConfig> {
         BlockPos.Mutable mutable = new BlockPos.Mutable();
         int placedBlocks = 0;
 
-        while ((layerY <= topY) || (radiusX > 0 && radiusZ > 0)) {
+        while ((layerY <= topY) || (radiusX > 1 && radiusZ > 1)) {
             for (BlockPos currentPos : BlockPos.iterateOutwards(startPos, radiusX, 0, radiusZ)) {
-                // If the current position is occupied by a nonreplaceable block or on top of a non-solid block, skip it.
-                if (!domeDiskFeatureConfig.target().test(structureWorldAccess, currentPos) ||
-                        !structureWorldAccess.testBlockState(currentPos.down(), state -> {
+                // If the current position is not over a solid block, stop.
+                if (!structureWorldAccess.testBlockState(currentPos.down(), state -> {
                             Material material = state.getMaterial();
                             return material.isSolid();
-                        })) continue;
-                // Continue or break?
-                if (currentPos.getManhattanDistance(startPos) > (Math.max(radiusX, radiusZ))) continue;
+                        })) break;
+                // If the current position is not a target block or is not the placed block, continue to next position.
+                if (!domeDiskFeatureConfig.target().test(structureWorldAccess, currentPos) ||
+                        !structureWorldAccess.getBlockState(currentPos.down()).isOf(placedBlockState.getBlock())) continue;
+                // If the position is too far from the center, stop.
+                if (currentPos.getManhattanDistance(startPos) > (Math.max(radiusX, radiusZ))) break;
                 this.setBlockState(structureWorldAccess, mutable.set(currentPos), placedBlockState);
                 this.markBlocksAboveForPostProcessing(structureWorldAccess, currentPos);
                 ++placedBlocks;

@@ -16,15 +16,11 @@ import net.minecraft.world.gen.foliage.FoliagePlacer;
 import net.minecraft.world.gen.trunk.TrunkPlacer;
 import net.minecraft.world.gen.trunk.TrunkPlacerType;
 
-import java.util.Iterator;
 import java.util.List;
-import java.util.Objects;
 import java.util.function.BiConsumer;
 
 
 public class HugeTreeTrunkPlacer extends TrunkPlacer {
-
-    protected List<HugeTreeTrunkPlacer.MidBranchPosition> midBranchPositions;
 
     public HugeTreeTrunkPlacer(int baseHeight, int firstRandomHeight, int secondRandomHeight) {
         super(baseHeight, firstRandomHeight, secondRandomHeight);
@@ -38,151 +34,197 @@ public class HugeTreeTrunkPlacer extends TrunkPlacer {
     }
 
     @Override
-    public List<FoliagePlacer.TreeNode> generate(TestableWorld testableWorld, BiConsumer<BlockPos, BlockState> biConsumer, Random random, int topPosition, BlockPos placementPos, TreeFeatureConfig treeFeatureConfig) {
+    public List<FoliagePlacer.TreeNode> generate(TestableWorld testableWorld, BiConsumer<BlockPos, BlockState> biConsumer, Random random, int trunkHeight, BlockPos placementPos, TreeFeatureConfig treeFeatureConfig) {
+        // This whole shebang is supposed to set dirt, place trunks, and send a list of nodes to place foliage at to the foliage placer.
 
         BlockPos substratePos = placementPos.down();
         setToDirt(testableWorld, biConsumer, random, substratePos, treeFeatureConfig);
         setToDirt(testableWorld, biConsumer, random, substratePos.east(), treeFeatureConfig);
         setToDirt(testableWorld, biConsumer, random, substratePos.south(), treeFeatureConfig);
         setToDirt(testableWorld, biConsumer, random, substratePos.south().east(), treeFeatureConfig);
-        BlockPos.Mutable mutable = new BlockPos.Mutable();
 
-        for(int trunkY = 0; trunkY < topPosition; ++trunkY) {
+        // Build the tree trunk kinda tapering at the top.
+        BlockPos.Mutable mutable = new BlockPos.Mutable();
+        // Pick randomly which column gets generated at the top of the trunk in the loop below.
+        int columnX;
+        int columnZ;
+        if (random.nextBoolean()) {
+            columnX = 1;
+            columnZ = 0;
+        } else {
+            columnX = 0;
+            columnZ = 1;
+        }
+        for(int trunkY = 0; trunkY <= trunkHeight; ++trunkY) {
+            // Sets a full column at the top left corner of the 4x4 grid.
             setLog(testableWorld, biConsumer, random, mutable, treeFeatureConfig, placementPos, 0, trunkY, 0);
-            if (trunkY <= this.baseHeight) {
+            // Fills in additional columns in the 4x4 grid depending on height.
+            if (trunkY <= trunkHeight/4) {
                 setLog(testableWorld, biConsumer, random, mutable, treeFeatureConfig, placementPos, 1, trunkY, 0);
                 setLog(testableWorld, biConsumer, random, mutable, treeFeatureConfig, placementPos, 1, trunkY, 1);
                 setLog(testableWorld, biConsumer, random, mutable, treeFeatureConfig, placementPos, 0, trunkY, 1);
             }
-            if (trunkY > this.baseHeight && trunkY <= (this.baseHeight + this.firstRandomHeight)) {
+            if (trunkY > trunkHeight/4 && trunkY <= trunkHeight/2) {
                 setLog(testableWorld, biConsumer, random, mutable, treeFeatureConfig, placementPos, 1, trunkY, 0);
                 setLog(testableWorld, biConsumer, random, mutable, treeFeatureConfig, placementPos, 0, trunkY, 1);
             }
-            if (trunkY > (this.baseHeight + this.firstRandomHeight) && trunkY < (this.baseHeight + this.firstRandomHeight + this.secondRandomHeight)) {
-                if (random.nextInt(5) <= 2) {
-                    setLog(testableWorld, biConsumer, random, mutable, treeFeatureConfig, placementPos, 1, trunkY, 0);
+            if (trunkY > trunkHeight/2 && trunkY <= trunkHeight * 3/4) {
+                setLog(testableWorld, biConsumer, random, mutable, treeFeatureConfig, placementPos, columnX, trunkY, columnZ);
+            }
+        }
+        int minBranchBaseHeight = MathHelper.floor((double)trunkHeight * 0.33);
+        int branchNumberAtY;
+
+        List<FoliagePlacer.TreeNode> treeNodes = Lists.newArrayList();
+        // Add foliage nodes at 1/2, 3/4, and top of tree.
+        treeNodes.add(new FoliagePlacer.TreeNode(placementPos.add(0, trunkHeight,0),0, false));
+        treeNodes.add(new FoliagePlacer.TreeNode(placementPos.add(0, trunkHeight*3/4, 0), 0, true));
+        treeNodes.add(new FoliagePlacer.TreeNode(placementPos.add(0, trunkHeight/2, 0), 0, true));
+
+        // This is supposed to find the point where a branch comes out of the trunk. That should then get passed on
+        // to select the positions to be turned into logs.
+        // Goal is to decide where to start each branch. How many branches? Which height? Which direction?
+        int branchTopHeight = trunkHeight-random.nextBetween(3, 6);
+        for(int branchPlacementHeight = branchTopHeight; branchPlacementHeight >= minBranchBaseHeight; --branchPlacementHeight) {
+            switch (random.nextBetween(0,20)) {
+                case 1, 2, 3, 4, 5 -> branchNumberAtY = 1;
+                case 6, 7 -> branchNumberAtY = 2;
+                default -> branchNumberAtY = 0;
+            }
+            for(int p = 1; p <= branchNumberAtY; ++p) {
+                //// If we're not supposed to put a branch at this y at all, go on to the next y level.
+                //if (branchNumberAtY == 0) {
+                //    continue;
+                //}
+                double placementAngle = random.nextFloat() * 2.0F * Math.PI;
+                double branchX;
+                double branchZ;
+                // set X and Z value and accommodate for 4x4 trunk.
+                // The Z axis runs THE OPPOSITE WAY from what you would think.
+                // The additional trunk blocks are placed at x+1 and z+1.
+                if (Math.sin(placementAngle) >= 0.707) {
+                    //Branch should grow from north side of trunk northward.
+                    // Randomly add 1 to x to shift from left to right of trunk.
+                    branchX = random.nextBoolean() ? 1 : 0;
+                    branchZ = 0;
+                } else
+                if (Math.sin(placementAngle) <= -0.707) {
+                    // Branch should grow from south side of trunk southward.
+                    // Randomly add +1 to x to shift from left to right of trunk.
+                    branchX = random.nextBoolean() ? 1 : 0;
+                    branchZ = 1;
+                } else
+                if (Math.cos(placementAngle) < 0) {
+                    // Branch should grow from west side of trunk westward.
+                    // Randomly add +1 to x to shift from left to right of trunk.
+                    branchX = 0;
+                    branchZ = random.nextBoolean() ? 1 : 0;
                 }
                 else {
-                    setLog(testableWorld, biConsumer, random, mutable, treeFeatureConfig, placementPos, 0, trunkY, 1);
+                    // Branch should grow from east side of trunk eastward.
+                    // Randomly add +1 to x to shift from left to right of trunk.
+                    branchX = 1;
+                    branchZ = random.nextBoolean() ? 1 : 0;
+                }
+                BlockPos branchPos = placementPos.add(branchX, branchPlacementHeight, branchZ);
+                // Check positions and add to the list of branchPositions, but don't make them yet.
+                List<BlockPos> singleBranchLogPositions = this.checkBranch(testableWorld, branchPos, placementAngle, random);
+                if (!singleBranchLogPositions.isEmpty()) {
+                    for (BlockPos logPosition : singleBranchLogPositions) {
+                        this.getAndSetState(testableWorld, biConsumer, random, logPosition, treeFeatureConfig,
+                                state -> state.withIfExists(PillarBlock.AXIS, this.getLogAxis(branchPos, logPosition)));
+                    }
+                    treeNodes.add(new FoliagePlacer.TreeNode(singleBranchLogPositions.get(singleBranchLogPositions.size() - 1), 0, false));
+                    int index = (int) Math.floor(singleBranchLogPositions.size()/2);
+                    treeNodes.add(new FoliagePlacer.TreeNode(singleBranchLogPositions.get(index), 0, false));
                 }
             }
         }
-
-        // How high above the trunk do the branches reach.
-        int maxBranchTipY = topPosition + 8;
-        // These two lines set how far up the trunk the branches begin.
-        int l = MathHelper.floor((double)maxBranchTipY * 0.618D);
-        int minBranchY = placementPos.getY() + l;
-
-        // Sorry about this...
-        int branchPlacementHeight = maxBranchTipY;
-        List<HugeTreeTrunkPlacer.BranchPosition> branchPositions = Lists.newArrayList();
-        branchPositions.add(new HugeTreeTrunkPlacer.BranchPosition(placementPos.up(branchPlacementHeight), minBranchY + 10));
-
-        midBranchPositions = Lists.newArrayList();
-
-        // Math.pow here squares the value.
-        int m = Math.min(1, MathHelper.floor(1.382D + Math.pow((double) maxBranchTipY / 13.0D, 2.0D)));
-        for(; branchPlacementHeight >= 0; --branchPlacementHeight) {
-            float f = shouldGenerateBranch(maxBranchTipY, branchPlacementHeight);
-            if (!(f < 0.0F)) {
-                for(int p = 0; p < m; ++p) {
-                    double g = 1.0D * (double)f * ((double)random.nextFloat() + 0.328D);
-                    double placementAngle = (double)(random.nextFloat() * 2.0F) * 3.14D;
-                    double branchX = g * Math.sin(placementAngle) + 0.5D;
-                    double branchZ = g * Math.cos(placementAngle) + 0.5D;
-                    // accommodate for 4x4 trunk
-                    if (Math.sin(placementAngle) >= 0) {
-                        branchX++;
-                    }
-                    if (Math.cos(placementAngle) >= 0) {
-                        branchZ++;
-                    }
-                    BlockPos branchPos = placementPos.add(branchX, (branchPlacementHeight - 1), branchZ);
-                    // This adjusts the angle of the branches--small numbers they spread out flatter, large numbers they angle up sharply.
-                    BlockPos branchPosOffsetUp = branchPos.up(4);
-                    if (this.makeOrCheckBranch(testableWorld, biConsumer, random, branchPos, branchPosOffsetUp, false, treeFeatureConfig)) {
-                        int deltaX = placementPos.getX() - branchPos.getX();
-                        int deltaZ = placementPos.getZ() - branchPos.getZ();
-                        double u = (double)branchPos.getY() - Math.sqrt((deltaX * deltaX + deltaZ * deltaZ)) * 0.381D;
-                        int v = u > (double)minBranchY ? minBranchY : (int)u;
-                        BlockPos blockPos4 = new BlockPos(placementPos.getX(), v, placementPos.getZ());
-                        if (this.makeOrCheckBranch(testableWorld, biConsumer, random, blockPos4, branchPos, false, treeFeatureConfig)) {
-                            branchPositions.add(new HugeTreeTrunkPlacer.BranchPosition(branchPos, blockPos4.getY()));
-                        }
-                    }
-                }
-            }
-        }
-        this.makeOrCheckBranch(testableWorld, biConsumer, random, placementPos, placementPos.up(l), true, treeFeatureConfig);
-        this.makeBranches(testableWorld, biConsumer, random, maxBranchTipY, placementPos, branchPositions, treeFeatureConfig);
-        List<FoliagePlacer.TreeNode> treeNodes = Lists.newArrayList();
-        Iterator branchPositionIterator = branchPositions.iterator();
-        while(branchPositionIterator.hasNext()) {
-            HugeTreeTrunkPlacer.BranchPosition branchPosition = (HugeTreeTrunkPlacer.BranchPosition)branchPositionIterator.next();
-            if (this.isHighEnough(maxBranchTipY, branchPosition.getEndY() - placementPos.getY())) {
-                treeNodes.add(branchPosition.node);
-            }
-        }
-
-        Iterator midBranchPositionIterator = midBranchPositions.iterator();
-        while(midBranchPositionIterator.hasNext()) {
-            HugeTreeTrunkPlacer.MidBranchPosition midBranchPosition = (MidBranchPosition) midBranchPositionIterator.next();
-            if (this.isHighEnough(maxBranchTipY, midBranchPosition.getEndY() - placementPos.getY())) {
-                treeNodes.add(midBranchPosition.node);
-            }
-        }
-
         return treeNodes;
     }
 
-    private void setLog(TestableWorld testableWorld, BiConsumer<BlockPos, BlockState> biConsumer, Random random, BlockPos.Mutable mutable, TreeFeatureConfig treeFeatureConfig, BlockPos blockPos, int i, int j, int k) {
-        mutable.set(blockPos, i, j, k);
-        trySetState(testableWorld, biConsumer, random, mutable, treeFeatureConfig);
-    }
+    private List<BlockPos> checkBranch(TestableWorld testableWorld, BlockPos branchPos, Double placementAngle, Random random) {
 
-    private boolean makeOrCheckBranch(TestableWorld testableWorld, BiConsumer<BlockPos, BlockState> biConsumer, Random random, BlockPos branchPos, BlockPos branchPosOffsetUp, boolean makeBranch, TreeFeatureConfig treeFeatureConfig) {
-        if (!makeBranch && Objects.equals(branchPos, branchPosOffsetUp)) {
-            return true;
-        } else {
-            BlockPos blockPos3 = branchPosOffsetUp.add(-branchPos.getX(), -branchPos.getY(), -branchPos.getZ());
-            int longestSide = this.getLongestSide(blockPos3);
-            float xContribution = (float)blockPos3.getX() / (float)longestSide;
-            float yContribution = (float)blockPos3.getY() / (float)longestSide;
-            float zContribution = (float)blockPos3.getZ() / (float)longestSide;
-
-            for(int length = 0; length <= longestSide; ++length) {
-                BlockPos branchBlockPos = branchPos.add((0.5F + (float)length * xContribution), (0.5F + (float)length * yContribution), (0.5F + (float)length * zContribution));
-                if (makeBranch) {
-                    this.getAndSetState(testableWorld, biConsumer, random, branchBlockPos, treeFeatureConfig,
-                            (blockState) -> blockState.with(PillarBlock.AXIS, this.getLogAxis(branchPos, branchBlockPos)));
-                    if (length > 0 && longestSide > 4 && (Math.floor(longestSide / length) == 2)) {
-                        midBranchPositions.add(new HugeTreeTrunkPlacer.MidBranchPosition(branchBlockPos, branchPos.getY()));
-                    }
-
-                } else if (!TreeFeature.canReplace(testableWorld, branchBlockPos)) {
-                    return false;
+        List<BlockPos> branchPositions = Lists.newArrayList();
+        branchPositions.add(branchPos);
+        int xFactor;
+        int zFactor;
+        // Multiply by the change in x or z axis to make sure branches also build along -x and -z.
+        if (Math.sin(placementAngle) >= 0.707) {
+            xFactor = 0;
+            zFactor = -1;
+        } else
+        if (Math.sin(placementAngle) <= -0.707) {
+            xFactor = 0;
+            zFactor = 1;
+        } else
+        if (Math.cos(placementAngle) < 0) {
+            xFactor = -1;
+            zFactor = 0;
+        }
+        else {
+            xFactor = 1;
+            zFactor = 0;
+        }
+        int length = random.nextBetween(4, 7);
+        int delta = 0;
+        int deltaX = 0;
+        int deltaY = 0;
+        int deltaZ = 0;
+        int shift = 0;
+        int xShift = 0;
+        int zShift = 0;
+        for (int logNumber = 0; logNumber <= length; ++logNumber) {
+            // The first 2 blocks should go directly out from the trunk.
+            if (logNumber < 3) {
+                ++delta;
+                deltaY = 0;
+            } else {
+                double proportion = (double) logNumber / length;
+                int chance = proportion >= 0.5 ? 2 : 4;
+                if (random.nextBetween(1, chance) != 1) {
+                    ++delta;
+                    deltaY = random.nextBoolean() ? ++deltaY : deltaY;
+                } else {
+                    ++deltaY;
+                }
+                switch (random.nextBetween(1, 8)) {
+                    case 1 -> shift = -1;
+                    case 2 -> shift = 1;
+                    default -> shift = 0;
                 }
             }
-            return true;
+            if (xFactor != 0) {
+                deltaX = delta;
+                zShift = shift;
+            } else {
+                deltaZ = delta;
+                xShift = shift;
+            }
+            BlockPos branchBlockPos = branchPos.add(deltaX*xFactor + xShift, deltaY, deltaZ*zFactor + zShift);
+            if (TreeFeature.canReplace(testableWorld, branchBlockPos)) {
+                branchPositions.add(branchBlockPos);
+            }
+            else break;
+            // Need to fix this to add side branches maybe eventually.
+            //if (length > 0 && longestSide > 4 && (Math.floor(longestSide / length) == 2)) {
+            //    branchPositions.add(new HugeTreeTrunkPlacer.BranchPosition(branchBlockPos, branchPos.getY()));
+            // }
         }
-    }
-
-    private int getLongestSide(BlockPos offset) {
-        int absX = MathHelper.abs(offset.getX());
-        int absY = MathHelper.abs(offset.getY());
-        int absZ = MathHelper.abs(offset.getZ());
-        return Math.max(absX, Math.max(absY, absZ));
+        return branchPositions;
     }
 
     private Direction.Axis getLogAxis(BlockPos branchStart, BlockPos branchEnd) {
+        // Set default axis.
         Direction.Axis axis = Direction.Axis.Y;
         int deltaY = Math.abs(branchEnd.getY() - branchStart.getY());
         int deltaX = Math.abs(branchEnd.getX() - branchStart.getX());
         int deltaZ = Math.abs(branchEnd.getZ() - branchStart.getZ());
         int deltaMaxHorizontal = Math.max(deltaX, deltaZ);
+        // I feel like there's a better way than setting it to Y again.
         if (deltaY > deltaMaxHorizontal + 3) {
-            axis = Direction.Axis.Y;
+            //axis = Direction.Axis.Y;
+            return axis;
         }
         else if (deltaMaxHorizontal > 0) {
             if (deltaX == deltaMaxHorizontal) {
@@ -191,69 +233,11 @@ public class HugeTreeTrunkPlacer extends TrunkPlacer {
                 axis = Direction.Axis.Z;
             }
         }
-
         return axis;
     }
 
-    private boolean isHighEnough(int treeHeight, int height) {
-        return (double)height >= (double)treeHeight * 0.2D;
-    }
-
-    private void makeBranches(TestableWorld testableWorld, BiConsumer<BlockPos, BlockState> biConsumer, Random random, int i, BlockPos blockPos, List<HugeTreeTrunkPlacer.BranchPosition> branchPositionList, TreeFeatureConfig treeFeatureConfig) {
-        Iterator branchPositionIterator = branchPositionList.iterator();
-
-        while(branchPositionIterator.hasNext()) {
-            HugeTreeTrunkPlacer.BranchPosition branchPosition = (HugeTreeTrunkPlacer.BranchPosition)branchPositionIterator.next();
-            int j = branchPosition.getEndY();
-            BlockPos blockPos2 = new BlockPos(blockPos.getX(), j, blockPos.getZ());
-            if (!blockPos2.equals(branchPosition.node.getCenter()) && this.isHighEnough(i, j - blockPos.getY())) {
-                this.makeOrCheckBranch(testableWorld, biConsumer, random, blockPos2, branchPosition.node.getCenter(), true, treeFeatureConfig);
-            }
-        }
-    }
-
-    private static float shouldGenerateBranch(int i, int j) {
-        if ((float)j < (float)i * 0.3F) {
-            return -1.0F;
-        } else {
-            float f = (float)i / 2.0F;
-            float g = f - (float)j;
-            float h = MathHelper.sqrt(f * f - g * g);
-            if (g == 0.0F) {
-                h = f;
-            } else if (Math.abs(g) >= f) {
-                return 0.0F;
-            }
-
-            return h * 0.5F;
-        }
-    }
-
-    static class BranchPosition {
-        private final FoliagePlacer.TreeNode node;
-        private final int endY;
-
-        public BranchPosition(BlockPos pos, int width) {
-            this.node = new FoliagePlacer.TreeNode(pos, 0, false);
-            this.endY = width;
-        }
-
-        public int getEndY() {
-            return this.endY;
-        }
-    }
-
-    static class MidBranchPosition {
-        private final FoliagePlacer.TreeNode node;
-        private final int endY;
-
-        public MidBranchPosition(BlockPos pos, int width) {
-            this.node = new FoliagePlacer.TreeNode(pos, 0, false);
-            this.endY = width;
-        }
-
-        public int getEndY() {
-            return this.endY;
-        }
+    private void setLog(TestableWorld testableWorld, BiConsumer<BlockPos, BlockState> biConsumer, Random random, BlockPos.Mutable mutable, TreeFeatureConfig treeFeatureConfig, BlockPos blockPos, int x, int y, int z) {
+        mutable.set(blockPos, x, y, z);
+        this.trySetState(testableWorld, biConsumer, random, mutable, treeFeatureConfig);
     }
 }

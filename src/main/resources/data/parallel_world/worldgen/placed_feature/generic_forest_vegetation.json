@@ -1,5 +1,5 @@
 {
-  "feature": "parallel_world:ancient_oak_forest_vegetation_selector",
+  "feature": "parallel_world:generic_forest_vegetation_selector",
   "placement": [
     {
       "type": "minecraft:count",
@@ -7,12 +7,12 @@
         "type": "minecraft:weighted_list",
         "distribution": [
           {
-            "data": 10,
-            "weight": 9
+            "weight": 6,
+            "data": 12
           },
           {
-            "data": 11,
-            "weight": 1
+            "weight": 4,
+            "data": 10
           }
         ]
       }
@@ -22,7 +22,7 @@
     },
     {
       "type": "minecraft:heightmap",
-      "heightmap": "OCEAN_FLOOR"
+      "heightmap": "OCEAN_FLOOR_WG"
     },
     {
       "type": "minecraft:biome"

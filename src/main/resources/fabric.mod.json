@@ -31,7 +31,9 @@
   },
   "custom": {
     "loom:injected_interfaces": {
-      "net/minecraft/SaplingGenerator": ["parallel_world/block/sapling/GetVariableConfiguredTreeFeature"]
+      "net/minecraft/SaplingGenerator": [
+        "parallel_world/block/sapling/GetVariableConfiguredTreeFeature"
+      ]
     }
   }
 }

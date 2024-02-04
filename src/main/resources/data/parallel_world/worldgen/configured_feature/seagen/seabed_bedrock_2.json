@@ -2,8 +2,8 @@
   "type": "parallel_world:water_replacing_fill_layer",
   "config": {
     "state": {
-      "Name": "minecraft:sand"
+      "Name": "minecraft:bedrock"
     },
-    "height": -60
+    "height": -63
   }
 }

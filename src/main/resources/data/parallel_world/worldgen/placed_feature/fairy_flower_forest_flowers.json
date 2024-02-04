@@ -1,12 +1,12 @@
 {
-  "feature": "minecraft:flower_flower_forest",
+  "feature": "parallel_world:fairy_flower_forest_flower_selector",
   "placement": [
     {
       "type": "minecraft:in_square"
     },
     {
       "type": "minecraft:count_on_every_layer",
-      "count": 20
+      "count": 15
     },
     {
       "type": "minecraft:height_range",
@@ -18,6 +18,13 @@
         "min_inclusive": {
           "above_bottom": 30
         }
+      }
+    },
+    {
+      "type": "minecraft:block_predicate_filter",
+      "predicate": {
+        "type": "minecraft:matching_blocks",
+        "blocks": "minecraft:air"
       }
     },
     {

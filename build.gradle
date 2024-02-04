@@ -22,18 +22,25 @@ dependencies {
     // Fabric API. This is technically optional, but you probably want it anyway.
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
+    // Sodium
+    modImplementation "maven.modrinth:sodium:mc1.19.3-0.4.9"
+
     // PSA: Some older mods, compiled on Loom 0.2.1, might have outdated Maven POMs.
     // You may need to force-disable transitiveness on them.
 
     // Add custom portals mod.
-    // Not working in snapshot at the moment.
-    //modImplementation "net.kyrptonaught:customportalapi:0.0.1-beta20-1.17"
-    //include "net.kyrptonaught:customportalapi:0.0.1-beta20-1.17"
+    modImplementation "net.kyrptonaught:customportalapi:0.0.1-beta63-1.19.3"
+    include "net.kyrptonaught:customportalapi:0.0.1-beta63-1.19.3"
 
     repositories {
         // Add mod for accessing dimension.
-        // Not working in snapshot at the moment.
-        //maven { url "https://dl.bintray.com/kyrptonaught/customportalapi/" }
+        maven {
+            url = "https://maven.kyrptonaught.dev"
+        }
+
+        maven {
+            url = "https://api.modrinth.com/maven"
+        }
     }
 }
 
