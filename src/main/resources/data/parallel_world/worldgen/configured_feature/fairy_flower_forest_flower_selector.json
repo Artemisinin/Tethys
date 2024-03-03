@@ -1,82 +1,107 @@
 {
-  "type": "minecraft:simple_block",
+  "type": "minecraft:flower",
   "config": {
-    "to_place": {
-      "type": "minecraft:weighted_state_provider",
-      "entries": [
+    "feature": {
+      "feature": {
+        "type": "minecraft:simple_block",
+        "config": {
+          "to_place": {
+            "type": "minecraft:weighted_state_provider",
+            "entries": [
+              {
+                "data": {
+                  "Name": "parallel_world:glow_flower"
+                },
+                "weight": 1
+              },
+              {
+                "data": {
+                  "Name": "minecraft:dandelion"
+                },
+                "weight": 2
+              },
+              {
+                "data": {
+                  "Name": "minecraft:poppy"
+                },
+                "weight": 2
+              },
+              {
+                "data": {
+                  "Name": "minecraft:allium"
+                },
+                "weight": 1
+              },
+              {
+                "data": {
+                  "Name": "minecraft:azure_bluet"
+                },
+                "weight": 2
+              },
+              {
+                "data": {
+                  "Name": "minecraft:red_tulip"
+                },
+                "weight": 1
+              },
+              {
+                "data": {
+                  "Name": "minecraft:orange_tulip"
+                },
+                "weight": 1
+              },
+              {
+                "data": {
+                  "Name": "minecraft:white_tulip"
+                },
+                "weight": 1
+              },
+              {
+                "data": {
+                  "Name": "minecraft:pink_tulip"
+                },
+                "weight": 1
+              },
+              {
+                "data": {
+                  "Name": "minecraft:oxeye_daisy"
+                },
+                "weight": 1
+              },
+              {
+                "data": {
+                  "Name": "minecraft:cornflower"
+                },
+                "weight": 1
+              },
+              {
+                "data": {
+                  "Name": "minecraft:lily_of_the_valley"
+                },
+                "weight": 1
+              },
+              {
+                "data": {
+                  "Name": "minecraft:blue_orchid"
+                },
+                "weight": 1
+              }
+            ]
+          }
+        }
+      },
+      "placement": [
         {
-          "data": {
-            "Name": "minecraft:dandelion"
-          },
-          "weight": 2
-        },
-        {
-          "data": {
-            "Name": "minecraft:poppy"
-          },
-          "weight": 2
-        },
-        {
-          "data": {
-            "Name": "minecraft:allium"
-          },
-          "weight": 1
-        },
-        {
-          "data": {
-            "Name": "minecraft:azure_bluet"
-          },
-          "weight": 2
-        },
-        {
-          "data": {
-            "Name": "minecraft:red_tulip"
-          },
-          "weight": 1
-        },
-        {
-          "data": {
-            "Name": "minecraft:orange_tulip"
-          },
-          "weight": 1
-        },
-        {
-          "data": {
-            "Name": "minecraft:white_tulip"
-          },
-          "weight": 1
-        },
-        {
-          "data": {
-            "Name": "minecraft:pink_tulip"
-          },
-          "weight": 1
-        },
-        {
-          "data": {
-            "Name": "minecraft:oxeye_daisy"
-          },
-          "weight": 1
-        },
-        {
-          "data": {
-            "Name": "minecraft:cornflower"
-          },
-          "weight": 1
-        },
-        {
-          "data": {
-            "Name": "minecraft:lily_of_the_valley"
-          },
-          "weight": 1
-        },
-        {
-          "data": {
-            "Name": "minecraft:blue_orchid"
-          },
-          "weight": 1
+          "type": "minecraft:block_predicate_filter",
+          "predicate": {
+            "type": "minecraft:matching_blocks",
+            "blocks": "minecraft:air"
+          }
         }
       ]
-    }
+    },
+    "tries": 96,
+    "xz_spread": 6,
+    "y_spread": 2
   }
 }

@@ -1,10 +1,9 @@
-package com.artemis.parallel_world.world.gen.tree;
+package com.artemis.parallel_world.world.gen.treedecorator;
 
 
 import com.artemis.parallel_world.block.TethysBlocks;
 import com.artemis.parallel_world.mixin.TreeDecoratorTypeRegisterInvoker;
 import com.mojang.serialization.Codec;
-import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.LeavesBlock;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.state.property.Properties;

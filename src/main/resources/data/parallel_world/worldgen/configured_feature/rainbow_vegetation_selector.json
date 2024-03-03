@@ -11,14 +11,14 @@
           "feature": "parallel_world:rainbow_tree_selector",
           "placement": []
         },
-        "chance": 0.65
+        "chance": 0.70
       },
       {
         "feature": {
           "feature": "parallel_world:rainbow_bee_tree_selector",
           "placement": []
         },
-        "chance": 0.15
+        "chance": 0.10
       },
       {
         "feature": "parallel_world:fancy_oak_bees_005_checked",

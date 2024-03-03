@@ -18,7 +18,10 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public class GlowSquidMixin {
     @Inject(method = "canSpawn", at = @At(value = "RETURN"), cancellable = true)
     private static void canSpawnTethys(EntityType<? extends LivingEntity> type, ServerWorldAccess world, SpawnReason reason, BlockPos pos, Random random, CallbackInfoReturnable<Boolean> cir) {
-       if (world.getSeaLevel() == Dimension.TETHYS_SEA_LEVEL && world.getBaseLightLevel(pos, 0) == 0 && world.getBlockState(pos).isOf(Blocks.WATER)) {
+       if (world.getSeaLevel() == Dimension.TETHYS_SEA_LEVEL &&
+               pos.getY() < Dimension.TETHYS_SEA_LEVEL &&
+               world.getBaseLightLevel(pos, 0) == 0 &&
+               world.getBlockState(pos).isOf(Blocks.WATER)) {
            cir.setReturnValue(true);
        }
        cir.cancel();

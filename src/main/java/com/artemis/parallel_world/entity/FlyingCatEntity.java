@@ -89,7 +89,7 @@ public class FlyingCatEntity extends TameableEntity {
                 MoveControl walkingControl = new MoveControl(this);
                 this.moveControl = walkingControl;
                 MobNavigation walkingNav = new MobNavigation(this, world);
-                walkingNav.setCanPathThroughDoors(true);
+                walkingNav.setCanEnterOpenDoors(true);
                 walkingNav.setCanPathThroughDoors(true);
                 this.navigation = walkingNav;
                 this.locomotionToggle = 0;
@@ -185,9 +185,6 @@ public class FlyingCatEntity extends TameableEntity {
     }
 
     public static boolean canSpawn(EntityType<? extends FlyingCatEntity> type, WorldAccess world, SpawnReason spawnReason, BlockPos pos, Random random) {
-        if (pos.getY() < 35) {
-            return false;
-        }
         BlockState blockState = world.getBlockState(pos.down());
         return blockState.isOf(Blocks.GRASS_BLOCK) || blockState.isIn(BlockTags.LEAVES);
     }

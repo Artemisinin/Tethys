@@ -1,6 +1,6 @@
 {
   "replace": false,
   "values": [
-    "parallel_world:reef"
+    "#parallel_world:warm_biomes"
   ]
 }

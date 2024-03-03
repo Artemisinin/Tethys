@@ -64,7 +64,7 @@ public class TethysConfiguredFeatures extends ConfiguredFeatures {
 */
 
 /*
-    // Tethys tree builders
+    // Tethys treedecorator builders
     // Shrubs
      private static TreeFeatureConfig.Builder shrub_birch() {
         return (new TreeFeatureConfig.Builder(

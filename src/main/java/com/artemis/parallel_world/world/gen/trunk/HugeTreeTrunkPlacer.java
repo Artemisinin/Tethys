@@ -43,7 +43,7 @@ public class HugeTreeTrunkPlacer extends TrunkPlacer {
         setToDirt(testableWorld, biConsumer, random, substratePos.south(), treeFeatureConfig);
         setToDirt(testableWorld, biConsumer, random, substratePos.south().east(), treeFeatureConfig);
 
-        // Build the tree trunk kinda tapering at the top.
+        // Build the treedecorator trunk kinda tapering at the top.
         BlockPos.Mutable mutable = new BlockPos.Mutable();
         // Pick randomly which column gets generated at the top of the trunk in the loop below.
         int columnX;
@@ -76,7 +76,7 @@ public class HugeTreeTrunkPlacer extends TrunkPlacer {
         int branchNumberAtY;
 
         List<FoliagePlacer.TreeNode> treeNodes = Lists.newArrayList();
-        // Add foliage nodes at 1/2, 3/4, and top of tree.
+        // Add foliage nodes at 1/2, 3/4, and top of treedecorator.
         treeNodes.add(new FoliagePlacer.TreeNode(placementPos.add(0, trunkHeight,0),0, false));
         treeNodes.add(new FoliagePlacer.TreeNode(placementPos.add(0, trunkHeight*3/4, 0), 0, true));
         treeNodes.add(new FoliagePlacer.TreeNode(placementPos.add(0, trunkHeight/2, 0), 0, true));

@@ -11,76 +11,16 @@
 					"biome": "parallel_world:amazon",
 					"parameters": {
 						"continentalness": [
-							0.1,
-							0.5
+							-1.0,
+							1.0
 						],
 						"depth": [
-							0.5,
-							0.9
-						],
-						"erosion": [
-							0.3,
-							1.0
-						],
-						"humidity": [
-							0.0,
-							0.5
-						],
-						"offset": 0.0,
-						"temperature": [
-							0.5,
-							1.0
-						],
-						"weirdness": [
-							0.0,
-							0.4
-						]
-					}
-				},
-				{
-					"biome": "parallel_world:amazon",
-					"parameters": {
-						"continentalness": [
-							0.1,
-							0.5
-						],
-						"depth": [
-							0.5,
-							0.9
-						],
-						"erosion": [
-							0.3,
-							1.0
-						],
-						"humidity": [
-							0.0,
-							0.5
-						],
-						"offset": 0.0,
-						"temperature": [
-							0.5,
-							1.0
-						],
-						"weirdness": [
-							-0.4,
-							0.0
-						]
-					}
-				},
-				{
-					"biome": "parallel_world:ancient_oak_forest",
-					"parameters": {
-						"continentalness": [
 							0.4,
-							1.0
-						],
-						"depth": [
-							0.0,
-							0.45
+							0.6
 						],
 						"erosion": [
-							-0.1,
-							0.4
+							-1.0,
+							1.0
 						],
 						"humidity": [
 							0.0,
@@ -88,12 +28,12 @@
 						],
 						"offset": 0.0,
 						"temperature": [
-							-0.2,
-							0.5
+							-0.33,
+							0.33
 						],
 						"weirdness": [
 							-1.0,
-							-0.566
+							1.0
 						]
 					}
 				},
@@ -101,28 +41,58 @@
 					"biome": "parallel_world:ancient_oak_forest",
 					"parameters": {
 						"continentalness": [
-							0.4,
+							-1.0,
 							1.0
 						],
 						"depth": [
-							0.0,
-							0.45
+							-0.62,
+							-0.24
 						],
 						"erosion": [
-							-0.1,
-							0.4
+							-1.0,
+							1.0
 						],
 						"humidity": [
-							0.0,
-							0.5
+							-0.33,
+							0.33
 						],
 						"offset": 0.0,
 						"temperature": [
-							-0.2,
-							0.5
+							-1.0,
+							0.33
 						],
 						"weirdness": [
-							0.566,
+							-1.0,
+							1.0
+						]
+					}
+				},
+				{
+					"biome": "parallel_world:ancient_oak_forest",
+					"parameters": {
+						"continentalness": [
+							-1.0,
+							1.0
+						],
+						"depth": [
+							-0.62,
+							-0.24
+						],
+						"erosion": [
+							-1.0,
+							1.0
+						],
+						"humidity": [
+							0.0,
+							0.33
+						],
+						"offset": 0.0,
+						"temperature": [
+							0.33,
+							1.0
+						],
+						"weirdness": [
+							-1.0,
 							1.0
 						]
 					}
@@ -131,59 +101,29 @@
 					"biome": "parallel_world:bamboo_forest",
 					"parameters": {
 						"continentalness": [
-							-0.2,
-							0.3
+							-1.0,
+							1.0
 						],
 						"depth": [
-							0.3,
-							0.7
+							0.52,
+							0.9
 						],
 						"erosion": [
-							0.0,
-							0.5
+							-1.0,
+							1.0
 						],
 						"humidity": [
-							0.5,
-							1.0
+							-1.0,
+							-0.33
 						],
 						"offset": 0.0,
 						"temperature": [
-							0.5,
-							1.0
+							-1.0,
+							-0.33
 						],
 						"weirdness": [
-							-0.4,
-							0.0
-						]
-					}
-				},
-				{
-					"biome": "parallel_world:bamboo_forest",
-					"parameters": {
-						"continentalness": [
-							-0.2,
-							0.3
-						],
-						"depth": [
-							0.3,
-							0.7
-						],
-						"erosion": [
-							0.0,
-							0.5
-						],
-						"humidity": [
-							0.5,
+							-1.0,
 							1.0
-						],
-						"offset": 0.0,
-						"temperature": [
-							0.5,
-							1.0
-						],
-						"weirdness": [
-							0.0,
-							0.4
 						]
 					}
 				},
@@ -191,59 +131,29 @@
 					"biome": "parallel_world:crystal_forest",
 					"parameters": {
 						"continentalness": [
-							-0.2,
-							0.8
+							-1.0,
+							1.0
 						],
 						"depth": [
 							-1.0,
-							-0.6
+							-0.7
 						],
 						"erosion": [
-							-0.2,
-							0.2
-						],
-						"humidity": [
-							0.2,
-							0.4
-						],
-						"offset": 0.0,
-						"temperature": [
-							-0.3,
-							0.0
-						],
-						"weirdness": [
-							-0.56,
-							-0.4
-						]
-					}
-				},
-				{
-					"biome": "parallel_world:crystal_forest",
-					"parameters": {
-						"continentalness": [
-							-0.2,
-							0.8
-						],
-						"depth": [
 							-1.0,
-							-0.6
-						],
-						"erosion": [
-							-0.2,
-							0.2
+							1.0
 						],
 						"humidity": [
-							0.2,
-							0.4
+							-1.0,
+							0.33
 						],
 						"offset": 0.0,
 						"temperature": [
-							-0.3,
-							0.0
+							-1.0,
+							-0.33
 						],
 						"weirdness": [
-							0.4,
-							0.56
+							-1.0,
+							1.0
 						]
 					}
 				},
@@ -251,59 +161,29 @@
 					"biome": "parallel_world:fairy_dark_forest",
 					"parameters": {
 						"continentalness": [
-							-0.2,
+							-1.0,
 							1.0
 						],
 						"depth": [
-							-0.4,
-							0.1
+							-0.24,
+							0.14
 						],
 						"erosion": [
-							0.0,
-							0.5
+							-1.0,
+							1.0
 						],
 						"humidity": [
-							0.0,
-							0.5
+							-1.0,
+							0.0
 						],
 						"offset": 0.0,
 						"temperature": [
-							-0.2,
-							1.0
+							-1.0,
+							0.33
 						],
 						"weirdness": [
-							-0.56,
-							-0.4
-						]
-					}
-				},
-				{
-					"biome": "parallel_world:fairy_dark_forest",
-					"parameters": {
-						"continentalness": [
-							-0.2,
+							-1.0,
 							1.0
-						],
-						"depth": [
-							-0.4,
-							0.1
-						],
-						"erosion": [
-							0.0,
-							0.5
-						],
-						"humidity": [
-							0.0,
-							0.5
-						],
-						"offset": 0.0,
-						"temperature": [
-							-0.2,
-							1.0
-						],
-						"weirdness": [
-							0.4,
-							0.56
 						]
 					}
 				},
@@ -311,59 +191,29 @@
 					"biome": "parallel_world:fairy_flower_forest",
 					"parameters": {
 						"continentalness": [
-							-0.2,
-							0.1
+							-1.0,
+							1.0
 						],
 						"depth": [
-							-0.3,
-							0.0
+							0.14,
+							0.52
 						],
 						"erosion": [
-							-0.8,
-							-0.4
+							-1.0,
+							1.0
 						],
 						"humidity": [
 							-1.0,
-							-0.35
-						],
-						"offset": 0.0,
-						"temperature": [
-							-0.15,
-							0.2
-						],
-						"weirdness": [
-							-0.56,
-							-0.4
-						]
-					}
-				},
-				{
-					"biome": "parallel_world:fairy_flower_forest",
-					"parameters": {
-						"continentalness": [
-							-0.2,
-							0.1
-						],
-						"depth": [
-							-0.3,
 							0.0
 						],
-						"erosion": [
-							-0.8,
-							-0.4
-						],
-						"humidity": [
-							-1.0,
-							-0.35
-						],
 						"offset": 0.0,
 						"temperature": [
-							-0.15,
-							0.2
+							0.0,
+							1.0
 						],
 						"weirdness": [
-							0.4,
-							0.56
+							-1.0,
+							1.0
 						]
 					}
 				},
@@ -371,59 +221,29 @@
 					"biome": "parallel_world:end_desert",
 					"parameters": {
 						"continentalness": [
-							-0.19,
-							0.03
-						],
-						"depth": [
-							0.0,
+							-1.0,
 							1.0
 						],
+						"depth": [
+							-0.62,
+							-0.24
+						],
 						"erosion": [
-							-0.375,
-							0.05
+							-1.0,
+							1.0
 						],
 						"humidity": [
 							-1.0,
-							-0.35
+							0.0
 						],
 						"offset": 0.0,
 						"temperature": [
-							0.55,
+							0.33,
 							1.0
 						],
 						"weirdness": [
-							-0.933,
-							-0.566
-						]
-					}
-				},
-				{
-					"biome": "parallel_world:end_desert",
-					"parameters": {
-						"continentalness": [
-							-0.19,
-							0.03
-						],
-						"depth": [
-							0.0,
-							1.0
-						],
-						"erosion": [
-							-0.375,
-							0.05
-						],
-						"humidity": [
 							-1.0,
-							-0.35
-						],
-						"offset": 0.0,
-						"temperature": [
-							0.55,
 							1.0
-						],
-						"weirdness": [
-							0.566,
-							0.933
 						]
 					}
 				},
@@ -431,59 +251,29 @@
 					"biome": "parallel_world:fungal_jungle",
 					"parameters": {
 						"continentalness": [
-							-0.2,
-							-0.1
+							-1.0,
+							1.0
 						],
 						"depth": [
-							-0.25,
-							0.5
+							0.52,
+							0.9
 						],
 						"erosion": [
 							-1.0,
-							-0.375
+							1.0
 						],
 						"humidity": [
-							0.1,
-							0.3
+							0.0,
+							1.0
 						],
 						"offset": 0.0,
 						"temperature": [
-							0.2,
+							0.33,
 							1.0
 						],
 						"weirdness": [
-							0,
-							0.15
-						]
-					}
-				},
-				{
-					"biome": "parallel_world:fungal_jungle",
-					"parameters": {
-						"continentalness": [
-							-0.2,
-							-0.1
-						],
-						"depth": [
-							0.25,
-							0.5
-						],
-						"erosion": [
 							-1.0,
-							-0.375
-						],
-						"humidity": [
-							0.1,
-							0.3
-						],
-						"offset": 0.0,
-						"temperature": [
-							0.2,
 							1.0
-						],
-						"weirdness": [
-							0,
-							0.15
 						]
 					}
 				},
@@ -491,59 +281,29 @@
 					"biome": "parallel_world:heath",
 					"parameters": {
 						"continentalness": [
-							0.4,
+							-1.0,
 							1.0
 						],
 						"depth": [
-							-0.5,
-							-0.2
+							-0.62,
+							-0.24
 						],
 						"erosion": [
-							-0.4,
-							-0.2
-						],
-						"humidity": [
-							0.1,
-							0.3
-						],
-						"offset": 0.0,
-						"temperature": [
-							-0.45,
-							-0.2
-						],
-						"weirdness": [
-							-0.4,
-							-0.2
-						]
-					}
-				},
-				{
-					"biome": "parallel_world:heath",
-					"parameters": {
-						"continentalness": [
-							0.4,
+							-1.0,
 							1.0
 						],
-						"depth": [
-							-0.5,
-							-0.2
-						],
-						"erosion": [
-							-0.4,
-							-0.2
-						],
 						"humidity": [
-							0.1,
-							0.3
+							0.33,
+							1.0
 						],
 						"offset": 0.0,
 						"temperature": [
-							-0.45,
-							-0.2
+							-1.0,
+							1.0
 						],
 						"weirdness": [
-							0.2,
-							0.4
+							-1.0,
+							1.0
 						]
 					}
 				},
@@ -554,67 +314,13 @@
 							-1.0,
 							1.0
 						],
-						"depth": 1.0,
-						"erosion": [
-							-1.0,
-							1.0
-						],
-						"humidity": [
-							-1.0,
-							1.0
-						],
-						"offset": 0.0,
-						"temperature": [
-							-1.0,
-							-0.45
-						],
-						"weirdness": [
-							-0.766,
-							-0.4
-						]
-					}
-				},
-				{
-					"biome": "parallel_world:ice_bergs",
-					"parameters": {
-						"continentalness": [
-							-1.0,
-							1.0
-						],
-						"depth": 1.0,
-						"erosion": [
-							-1.0,
-							1.0
-						],
-						"humidity": [
-							-1.0,
-							1.0
-						],
-						"offset": 0.0,
-						"temperature": [
-							-1.0,
-							-0.45
-						],
-						"weirdness": [
-							0.4,
-							0.766
-						]
-					}
-				},
-				{
-					"biome": "parallel_world:ice_spires",
-					"parameters": {
-						"continentalness": [
-							-1.0,
-							0.5
-						],
 						"depth": [
-							-1.5,
-							-1.2
+							0.8,
+							1.5
 						],
 						"erosion": [
 							-1.0,
-							-0.2
+							1.0
 						],
 						"humidity": [
 							-1.0,
@@ -623,11 +329,11 @@
 						"offset": 0.0,
 						"temperature": [
 							-1.0,
-							-0.45
+							-0.5
 						],
 						"weirdness": [
-							0.766,
-							0.933
+							-1.0,
+							1.0
 						]
 					}
 				},
@@ -639,8 +345,8 @@
 							1.0
 						],
 						"depth": [
-							-1.5,
-							-1.2
+							-1.0,
+							-0.62
 						],
 						"erosion": [
 							-1.0,
@@ -653,11 +359,11 @@
 						"offset": 0.0,
 						"temperature": [
 							-1.0,
-							-0.45
+							0.33
 						],
 						"weirdness": [
-							-0.933,
-							-0.766
+							-1.0,
+							1.0
 						]
 					}
 				},
@@ -665,179 +371,149 @@
 					"biome": "parallel_world:jade_forest",
 					"parameters": {
 						"continentalness": [
-							-0.1,
-							0.4
+							-1.0,
+							1.0
 						],
 						"depth": [
-							-0.4,
-							-0.1
+							-0.24,
+							0.14
 						],
 						"erosion": [
-							-0.8,
-							-0.3
-						],
-						"humidity": [
-							-0.2,
-							0.2
-						],
-						"offset": 0.0,
-						"temperature": [
-							-0.75,
-							-0.25
-						],
-						"weirdness": [
-							-0.566,
-							-0.266
-						]
-					}
-				},
-				{
-					"biome": "parallel_world:jade_forest",
-					"parameters": {
-						"continentalness": [
-							-0.1,
-							0.4
-						],
-						"depth": [
-							-0.4,
-							-0.1
-						],
-						"erosion": [
-							-0.8,
-							-0.3
-						],
-						"humidity": [
-							-0.2,
-							0.2
-						],
-						"offset": 0.0,
-						"temperature": [
-							-0.75,
-							-0.25
-						],
-						"weirdness": [
-							0.266,
-							0.566
-						]
-					}
-				},
-				{
-					"biome": "parallel_world:mycelium",
-					"parameters": {
-						"continentalness": [
-							0.0,
-							0.4
-						],
-						"depth": [
-							-0.4,
-							0.1
-						],
-						"erosion": [
-							0.6,
+							-1.0,
 							1.0
 						],
 						"humidity": [
 							0.0,
-							0.5
+							1.0
 						],
 						"offset": 0.0,
 						"temperature": [
-							-0.25,
-							0.25
+							-1.0,
+							0.33
 						],
 						"weirdness": [
-							-0.566,
-							-0.4
+							-1.0,
+							1.0
 						]
 					}
 				},
 				{
-					"biome": "parallel_world:mycelium",
+					"biome": "parallel_world:mangrove_swamp",
 					"parameters": {
 						"continentalness": [
-							0.0,
-							0.4
+							-1.0,
+							1.0
 						],
 						"depth": [
-							-0.4,
-							0.1
+							0.9,
+							1.05
 						],
 						"erosion": [
-							0.6,
+							-1.0,
 							1.0
 						],
 						"humidity": [
-							0.0,
-							0.5
-						],
-						"offset": 0.0,
-						"temperature": [
-							-0.25,
-							0.25
-						],
-						"weirdness": [
-							0.4,
-							0.566
-						]
-					}
-				},
-				{
-					"biome": "parallel_world:rainbow_forest",
-					"parameters": {
-						"continentalness": [
-							-0.1,
-							0.6
-						],
-						"depth": [
-							-0.2,
-							0.3
-						],
-						"erosion": [
-							0.5,
-							0.8
-						],
-						"humidity": [
-							0.1,
-							0.3
-						],
-						"offset": 0.0,
-						"temperature": [
-							-0.2,
-							0.2
-						],
-						"weirdness": [
-							-0.266,
-							-0.05
-						]
-					}
-				},
-				{
-					"biome": "parallel_world:rainbow_forest",
-					"parameters": {
-						"continentalness": [
-							-0.1,
-							0.6
-						],
-						"depth": [
-							-0.2,
-							0.3
-						],
-						"erosion": [
 							0.25,
-							0.5
-						],
-						"humidity": [
-							0.1,
-							0.3
+							1.0
 						],
 						"offset": 0.0,
 						"temperature": [
-							-0.2,
-							0.2
+							-1.0,
+							1.0
 						],
 						"weirdness": [
-							0.05,
-							0.266
+							-1.0,
+							1.0
+						]
+					}
+				},
+				{
+					"biome": "parallel_world:marsh",
+					"parameters": {
+						"continentalness": [
+							-1.0,
+							1.0
+						],
+						"depth": [
+							0.8,
+							0.9
+						],
+						"erosion": [
+							-1.0,
+							1.0
+						],
+						"humidity": [
+							-1.0,
+							0.25
+						],
+						"offset": 0.0,
+						"temperature": [
+							-1.0,
+							1.0
+						],
+						"weirdness": [
+							-1.0,
+							1.0
+						]
+					}
+				},
+				{
+					"biome": "parallel_world:mycelium",
+					"parameters": {
+						"continentalness": [
+							-1.0,
+							1.0
+						],
+						"depth": [
+							0.14,
+							0.52
+						],
+						"erosion": [
+							-1.0,
+							1.0
+						],
+						"humidity": [
+							0.0,
+							1.0
+						],
+						"offset": 0.0,
+						"temperature": [
+							0.0,
+							1.0
+						],
+						"weirdness": [
+							-1.0,
+							1.0
+						]
+					}
+				},
+				{
+					"biome": "parallel_world:rainbow_forest",
+					"parameters": {
+						"continentalness": [
+							-1.0,
+							1.0
+						],
+						"depth": [
+							0.14,
+							0.52
+						],
+						"erosion": [
+							-1.0,
+							1.0
+						],
+						"humidity": [
+							-0.33,
+							1.0
+						],
+						"offset": 0.0,
+						"temperature": [
+							-1.0,
+							0.0
+						],
+						"weirdness": [
+							-1.0,
+							1.0
 						]
 					}
 				},
@@ -848,7 +524,10 @@
 							-1.0,
 							1.0
 						],
-						"depth": 1.0,
+						"depth": [
+							1.0,
+							1.5
+						],
 						"erosion": [
 							-1.0,
 							1.0
@@ -875,7 +554,10 @@
 							-1.0,
 							1.0
 						],
-						"depth": 1.0,
+						"depth": [
+							1.0,
+							1.5
+						],
 						"erosion": [
 							-1.0,
 							1.0
@@ -899,59 +581,29 @@
 					"biome": "parallel_world:sequoia_forest",
 					"parameters": {
 						"continentalness": [
-							0.2,
-							0.65
+							-1.0,
+							1.0
 						],
 						"depth": [
-							-0.5,
-							-0.2
+							-0.62,
+							-0.24
 						],
 						"erosion": [
-							-0.375,
-							-0.150
+							-1.0,
+							1.0
 						],
 						"humidity": [
-							-0.3,
-							0.1
+							-1.0,
+							-0.33
 						],
 						"offset": 0.0,
 						"temperature": [
-							-0.5,
-							-0.3
+							-1.0,
+							0.33
 						],
 						"weirdness": [
-							-0.4,
-							-0.266
-						]
-					}
-				},
-				{
-					"biome": "parallel_world:sequoia_forest",
-					"parameters": {
-						"continentalness": [
-							0.2,
-							0.65
-						],
-						"depth": [
-							-0.5,
-							-0.2
-						],
-						"erosion": [
-							-0.375,
-							-0.150
-						],
-						"humidity": [
-							-0.3,
-							0.1
-						],
-						"offset": 0.0,
-						"temperature": [
-							-0.5,
-							-0.3
-						],
-						"weirdness": [
-							0.266,
-							0.4
+							-1.0,
+							1.0
 						]
 					}
 				},
@@ -959,59 +611,29 @@
 					"biome": "parallel_world:snow_forest",
 					"parameters": {
 						"continentalness": [
-							0.03,
-							0.3
+							-1.0,
+							1.0
 						],
 						"depth": [
-							-0.9,
-							-0.6
+							-1.0,
+							-0.62
 						],
 						"erosion": [
-							-0.375,
-							-0.2225
+							-1.0,
+							1.0
 						],
 						"humidity": [
-							0.1,
-							0.3
+							-1.0,
+							1.0
 						],
 						"offset": 0.0,
 						"temperature": [
-							-1.0,
-							-0.45
+							0.33,
+							1.0
 						],
 						"weirdness": [
-							-0.266,
-							-0.05
-						]
-					}
-				},
-				{
-					"biome": "parallel_world:snow_forest",
-					"parameters": {
-						"continentalness": [
-							0.03,
-							0.3
-						],
-						"depth": [
-							-0.9,
-							-0.6
-						],
-						"erosion": [
-							-0.375,
-							-0.2225
-						],
-						"humidity": [
-							0.1,
-							0.3
-						],
-						"offset": 0.0,
-						"temperature": [
 							-1.0,
-							-0.45
-						],
-						"weirdness": [
-							0.05,
-							0.266
+							1.0
 						]
 					}
 				},
@@ -1019,59 +641,29 @@
 					"biome": "parallel_world:traps",
 					"parameters": {
 						"continentalness": [
-							-0.11,
+							-1.0,
 							1.0
 						],
 						"depth": [
-							-0.6,
-							-0.3
+							-0.24,
+							0.14
 						],
 						"erosion": [
 							-1.0,
-							-0.7799
-						],
-						"humidity": [
-							-1.0,
-							-0.35
-						],
-						"offset": 0.0,
-						"temperature": [
-							0.2,
-							0.55
-						],
-						"weirdness": [
-							-0.566,
-							-0.266
-						]
-					}
-				},
-				{
-					"biome": "parallel_world:traps",
-					"parameters": {
-						"continentalness": [
-							-0.11,
 							1.0
 						],
-						"depth": [
-							-0.6,
-							-0.3
-						],
-						"erosion": [
-							-1.0,
-							-0.7799
-						],
 						"humidity": [
 							-1.0,
-							-0.35
+							1.0
 						],
 						"offset": 0.0,
 						"temperature": [
-							0.2,
-							0.55
+							0.33,
+							1.0
 						],
 						"weirdness": [
-							0.266,
-							0.566
+							-1.0,
+							1.0
 						]
 					}
 				},
@@ -1079,59 +671,29 @@
 					"biome": "parallel_world:wasteland",
 					"parameters": {
 						"continentalness": [
-							-0.11,
+							-1.0,
 							1.0
 						],
 						"depth": [
-							-0.4,
-							0.24
+							0.14,
+							0.52
 						],
 						"erosion": [
 							-1.0,
-							-0.7799
-						],
-						"humidity": [
-							-0.7,
-							-0.35
-						],
-						"offset": 0.0,
-						"temperature": [
-							0.2,
-							0.55
-						],
-						"weirdness": [
-							-0.566,
-							-0.266
-						]
-					}
-				},
-				{
-					"biome": "parallel_world:wasteland",
-					"parameters": {
-						"continentalness": [
-							-0.11,
 							1.0
 						],
-						"depth": [
-							-0.4,
-							0.24
-						],
-						"erosion": [
-							-1.0,
-							-0.7799
-						],
 						"humidity": [
-							-0.7,
-							-0.35
+							-1.0,
+							-0.33
 						],
 						"offset": 0.0,
 						"temperature": [
-							0.2,
-							0.55
+							-1.0,
+							0.0
 						],
 						"weirdness": [
-							0.266,
-							0.566
+							-1.0,
+							1.0
 						]
 					}
 				}

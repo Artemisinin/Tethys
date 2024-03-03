@@ -81,6 +81,24 @@
     ]
   ],
   "starts": [],
+  "spawn_costs": {
+    "minecraft:spider": {
+      "charge": 0.7,
+      "energy_budget": 0.15
+    },
+    "minecraft:zombie": {
+      "charge": 0.7,
+      "energy_budget": 0.15
+    },
+    "minecraft:skeleton": {
+      "charge": 0.7,
+      "energy_budget": 0.15
+    },
+    "minecraft:creeper": {
+      "charge": 0.7,
+      "energy_budget": 0.15
+    }
+  },
   "spawners": {
     "monster": [
       {
@@ -140,7 +158,6 @@
     "water_ambient": [],
     "misc": []
   },
-  "spawn_costs": {},
   "precipitation": "none",
   "temperature": 2.0,
   "downfall": 0.0

@@ -96,6 +96,24 @@
   "starts": [
     "minecraft:stronghold"
   ],
+  "spawn_costs": {
+    "minecraft:spider": {
+      "charge": 0.7,
+      "energy_budget": 0.15
+    },
+    "minecraft:zombie": {
+      "charge": 0.7,
+      "energy_budget": 0.15
+    },
+    "minecraft:skeleton": {
+      "charge": 0.7,
+      "energy_budget": 0.15
+    },
+    "minecraft:creeper": {
+      "charge": 0.7,
+      "energy_budget": 0.15
+    }
+  },
   "spawners": {
     "monster": [
       {
@@ -149,12 +167,6 @@
     ],
     "creature": [
       {
-        "type": "parallel_world:flying_cat",
-        "weight": 50,
-        "minCount": 2,
-        "maxCount": 4
-      },
-      {
         "type": "minecraft:sheep",
         "weight": 12,
         "minCount": 4,
@@ -168,7 +180,7 @@
       },
       {
         "type": "minecraft:chicken",
-        "weight": 10,
+        "weight": 5,
         "minCount": 4,
         "maxCount": 4
       },
@@ -225,7 +237,6 @@
     ],
     "misc": []
   },
-  "spawn_costs": {},
   "precipitation": "rain",
   "temperature": 0.6,
   "downfall": 0.8

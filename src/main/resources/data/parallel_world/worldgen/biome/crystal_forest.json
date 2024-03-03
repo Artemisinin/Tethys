@@ -82,6 +82,24 @@
   "starts": [
     "minecraft:village_taiga"
   ],
+  "spawn_costs": {
+    "minecraft:spider": {
+      "charge": 0.7,
+      "energy_budget": 0.15
+    },
+    "minecraft:zombie": {
+      "charge": 0.7,
+      "energy_budget": 0.15
+    },
+    "minecraft:skeleton": {
+      "charge": 0.7,
+      "energy_budget": 0.15
+    },
+    "minecraft:creeper": {
+      "charge": 0.7,
+      "energy_budget": 0.15
+    }
+  },
   "spawners": {
     "monster": [
       {
@@ -139,6 +157,12 @@
         "weight": 4,
         "minCount": 2,
         "maxCount": 3
+      },
+      {
+        "type": "minecraft:goat",
+        "maxCount": 8,
+        "minCount": 1,
+        "weight": 5
       }
     ],
     "ambient": [
@@ -181,7 +205,6 @@
     ],
     "misc": []
   },
-  "spawn_costs": {},
   "precipitation": "snow",
   "temperature": 0.0,
   "downfall": 0.5

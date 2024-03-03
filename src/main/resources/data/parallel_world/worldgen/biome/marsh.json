@@ -1,0 +1,240 @@
+{
+  "carvers": {
+    "air": []
+  },
+  "downfall": 0.9,
+  "effects": {
+    "fog_color": 12638463,
+    "foliage_color": 6460465,
+    "grass_color_modifier": "swamp",
+    "mood_sound": {
+      "block_search_extent": 8,
+      "offset": 2.0,
+      "sound": "minecraft:ambient.cave",
+      "tick_delay": 6000
+    },
+    "music": {
+      "max_delay": 24000,
+      "min_delay": 12000,
+      "replace_current_music": false,
+      "sound": "minecraft:music.overworld.swamp"
+    },
+    "sky_color": 7907327,
+    "water_color": 6794707,
+    "water_fog_color": 267827
+  },
+  "features": [
+    [
+      "parallel_world:seagen/seabed_bedrock_1",
+      "parallel_world:seagen/seabed_bedrock_2",
+      "parallel_world:seagen/seabed_bedrock_3",
+      "parallel_world:seagen/seabed_sandstone",
+      "parallel_world:seagen/seabed_sand"
+    ],
+    [],
+    [
+      "parallel_world:tethys_amethyst_geode"
+    ],
+    [
+      "minecraft:monster_room"
+    ],
+    [],
+    [],
+    [
+      "parallel_world:ores/ore_tethys_coal",
+      "parallel_world:ores/ore_tethys_copper",
+      "parallel_world:ores/ore_tethys_iron",
+      "parallel_world:ores/ore_tethys_gold",
+      "parallel_world:ores/ore_tethys_gold_extra",
+      "parallel_world:ores/ore_tethys_lapis_rare",
+      "parallel_world:ores/ore_tethys_redstone_rare",
+      "parallel_world:ores/ore_tethys_diamond_rare",
+      "minecraft:ore_dirt",
+      "minecraft:ore_gravel",
+      "minecraft:ore_granite_upper",
+      "minecraft:ore_granite_lower",
+      "minecraft:ore_diorite_upper",
+      "minecraft:ore_diorite_lower",
+      "minecraft:ore_andesite_upper",
+      "minecraft:ore_andesite_lower",
+      "minecraft:disk_sand",
+      "minecraft:disk_clay"
+    ],
+    [
+      "parallel_world:ores/ore_copper_andesite",
+      "parallel_world:ores/ore_copper_diorite",
+      "parallel_world:ores/ore_copper_granite",
+      "parallel_world:ores/ore_iron_andesite",
+      "parallel_world:ores/ore_iron_diorite",
+      "parallel_world:ores/ore_iron_granite",
+      "parallel_world:ores/ore_gold_andesite",
+      "parallel_world:ores/ore_gold_diorite",
+      "parallel_world:ores/ore_gold_granite"
+    ],
+    [
+      "minecraft:spring_water",
+      "parallel_world:swamp_water"
+    ],
+    [
+      "parallel_world:patch_grass_shaded",
+      "parallel_world:patch_marsh_grass",
+      "parallel_world:seagrass_swamp",
+      "parallel_world:sea_pickle",
+      "minecraft:glow_lichen",
+      "minecraft:flower_swamp",
+      "minecraft:brown_mushroom_swamp",
+      "minecraft:brown_mushroom_nether",
+      "minecraft:red_mushroom_swamp",
+      "minecraft:red_mushroom_nether",
+      "minecraft:patch_sugar_cane_swamp",
+      "minecraft:patch_pumpkin",
+      "minecraft:patch_melon"
+    ],
+    [
+      "minecraft:freeze_top_layer"
+    ]
+  ],
+  "precipitation": "rain",
+  "spawn_costs": {
+    "minecraft:spider": {
+      "charge": 0.7,
+      "energy_budget": 0.15
+    },
+    "minecraft:zombie": {
+      "charge": 0.7,
+      "energy_budget": 0.15
+    },
+    "minecraft:skeleton": {
+      "charge": 0.7,
+      "energy_budget": 0.15
+    },
+    "minecraft:creeper": {
+      "charge": 0.7,
+      "energy_budget": 0.15
+    }
+  },
+  "spawners": {
+    "monster": [
+      {
+        "type": "minecraft:spider",
+        "weight": 100,
+        "minCount": 4,
+        "maxCount": 4
+      },
+      {
+        "type": "minecraft:zombie",
+        "weight": 95,
+        "minCount": 4,
+        "maxCount": 4
+      },
+      {
+        "type": "minecraft:zombie_villager",
+        "weight": 5,
+        "minCount": 1,
+        "maxCount": 1
+      },
+      {
+        "type": "minecraft:skeleton",
+        "weight": 100,
+        "minCount": 4,
+        "maxCount": 4
+      },
+      {
+        "type": "minecraft:creeper",
+        "weight": 100,
+        "minCount": 4,
+        "maxCount": 4
+      },
+      {
+        "type": "minecraft:slime",
+        "weight": 100,
+        "minCount": 4,
+        "maxCount": 4
+      },
+      {
+        "type": "minecraft:enderman",
+        "weight": 10,
+        "minCount": 1,
+        "maxCount": 4
+      },
+      {
+        "type": "minecraft:witch",
+        "weight": 5,
+        "minCount": 1,
+        "maxCount": 1
+      },
+      {
+        "type": "minecraft:slime",
+        "weight": 1,
+        "minCount": 1,
+        "maxCount": 1
+      }
+    ],
+    "creature": [
+      {
+        "type": "minecraft:pig",
+        "weight": 10,
+        "minCount": 4,
+        "maxCount": 4
+      },
+      {
+        "type": "minecraft:chicken",
+        "weight": 10,
+        "minCount": 4,
+        "maxCount": 4
+      },
+      {
+        "type": "minecraft:frog",
+        "maxCount": 5,
+        "minCount": 2,
+        "weight": 10
+      },
+      {
+        "type": "minecraft:donkey",
+        "weight": 12,
+        "minCount": 2,
+        "maxCount": 4
+      }
+    ],
+    "ambient": [
+      {
+        "type": "minecraft:bat",
+        "weight": 10,
+        "minCount": 8,
+        "maxCount": 8
+      }
+    ],
+    "underground_water_creature": [
+      {
+        "type": "minecraft:glow_squid",
+        "maxCount": 4,
+        "minCount": 1,
+        "weight": 10
+      }
+    ],
+    "water_ambient": [
+      {
+        "type": "minecraft:cod",
+        "maxCount": 6,
+        "minCount": 3,
+        "weight": 10
+      }
+    ],
+    "water_creature": [
+      {
+        "type": "minecraft:squid",
+        "maxCount": 4,
+        "minCount": 1,
+        "weight": 1
+      },
+      {
+        "type": "minecraft:dolphin",
+        "maxCount": 2,
+        "minCount": 1,
+        "weight": 1
+      }
+    ],
+    "misc": []
+  },
+  "temperature": 0.8
+}

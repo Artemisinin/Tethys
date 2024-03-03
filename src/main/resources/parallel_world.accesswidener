@@ -1,2 +1,2 @@
-accessWidener v1 named
-
+accessWidener v2 named
+extendable method net/minecraft/world/gen/treedecorator/AlterGroundTreeDecorator setColumn (Lnet/minecraft/world/gen/treedecorator/TreeDecorator$Generator;Lnet/minecraft/util/math/BlockPos;)V

@@ -15,7 +15,9 @@ import net.minecraft.world.gen.stateprovider.BlockStateProvider;
 import net.minecraft.world.gen.treedecorator.BeehiveTreeDecorator;
 import net.minecraft.world.gen.trunk.LargeOakTrunkPlacer;
 import net.minecraft.world.gen.trunk.StraightTrunkPlacer;
+import org.spongepowered.asm.mixin.injection.selectors.ITargetSelector;
 
+import java.io.ObjectInputFilter;
 import java.util.OptionalInt;
 
 
@@ -41,6 +43,7 @@ public class TethysConfiguredFeatures extends ConfiguredFeatures {
     public static RegistryKey<ConfiguredFeature<?,?>> BLACKCURRANT_TREE_BEES = ConfiguredFeatures.of("parallel_world:rainbow_tree/blackcurrant_tree_bees");
     public static RegistryKey<ConfiguredFeature<?,?>> CHERRY_TREE = ConfiguredFeatures.of("parallel_world:rainbow_tree/cherry_tree");
     public static RegistryKey<ConfiguredFeature<?,?>> CHERRY_TREE_BEES = ConfiguredFeatures.of("parallel_world:rainbow_tree/cherry_tree_bees");
+    public static RegistryKey<ConfiguredFeature<?,?>> DARK_OAK_GLOWFRUIT = ConfiguredFeatures.of("parallel_world:dark_oak_glowfruit");
     public static RegistryKey<ConfiguredFeature<?,?>> DOGWOOD_TREE = ConfiguredFeatures.of("parallel_world:rainbow_tree/dogwood_tree");
     public static RegistryKey<ConfiguredFeature<?,?>> DOGWOOD_TREE_BEES = ConfiguredFeatures.of("parallel_world:rainbow_tree/dogwood_tree_bees");
     public static RegistryKey<ConfiguredFeature<?,?>> ELDERBERRY_TREE = ConfiguredFeatures.of("parallel_world:rainbow_tree/elderberry_tree");
@@ -48,6 +51,7 @@ public class TethysConfiguredFeatures extends ConfiguredFeatures {
     public static RegistryKey<ConfiguredFeature<?,?>> GINKGO_TREE = ConfiguredFeatures.of("parallel_world:rainbow_tree/ginkgo_tree");
     public static RegistryKey<ConfiguredFeature<?,?>> GINKGO_TREE_BEES = ConfiguredFeatures.of("parallel_world:rainbow_tree/ginkgo_tree_bees");
     //public static RegistryKey<ConfiguredFeature<TreeFeatureConfig,?>> LYCOPOD;
+    public static RegistryKey<ConfiguredFeature<?,?>> SMALL_MANGROVE = ConfiguredFeatures.of("parallel_world:small_mangrove");
     public static RegistryKey<ConfiguredFeature<?,?>> SWEETGUM_TREE = ConfiguredFeatures.of("parallel_world:rainbow_tree/sweetgum_tree");
     public static RegistryKey<ConfiguredFeature<?,?>> SWEETGUM_TREE_BEES = ConfiguredFeatures.of("parallel_world:rainbow_tree/sweetgum_tree_bees");
 
@@ -64,7 +68,7 @@ public class TethysConfiguredFeatures extends ConfiguredFeatures {
 */
 
 /*
-    // Tethys tree builders
+    // Tethys treedecorator builders
     // Shrubs
      private static TreeFeatureConfig.Builder shrub_birch() {
         return (new TreeFeatureConfig.Builder(

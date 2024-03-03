@@ -94,6 +94,24 @@
     "minecraft:stronghold",
 	"minecraft:village_plains"
   ],
+  "spawn_costs": {
+    "minecraft:spider": {
+      "charge": 0.7,
+      "energy_budget": 0.15
+    },
+    "minecraft:zombie": {
+      "charge": 0.7,
+      "energy_budget": 0.15
+    },
+    "minecraft:skeleton": {
+      "charge": 0.7,
+      "energy_budget": 0.15
+    },
+    "minecraft:creeper": {
+      "charge": 0.7,
+      "energy_budget": 0.15
+    }
+  },
   "spawners": {
     "monster": [
       {
@@ -153,32 +171,20 @@
         "maxCount": 4
       },
       {
-        "type": "minecraft:ocelot",
-        "weight": 2,
-        "minCount": 1,
-        "maxCount": 3
-      },
-      {
         "type": "minecraft:sheep",
         "weight": 12,
         "minCount": 4,
         "maxCount": 4
       },
       {
+        "type": "minecraft:rabbit",
+        "weight": 4,
+        "minCount": 2,
+        "maxCount": 3
+      },
+      {
         "type": "minecraft:pig",
         "weight": 10,
-        "minCount": 4,
-        "maxCount": 4
-      },
-      {
-        "type": "minecraft:chicken",
-        "weight": 10,
-        "minCount": 4,
-        "maxCount": 4
-      },
-      {
-        "type": "minecraft:cow",
-        "weight": 8,
         "minCount": 4,
         "maxCount": 4
       }
@@ -223,7 +229,6 @@
     ],
     "misc": []
   },
-  "spawn_costs": {},
   "precipitation": "rain",
   "temperature": 0.5,
   "downfall": 0.6

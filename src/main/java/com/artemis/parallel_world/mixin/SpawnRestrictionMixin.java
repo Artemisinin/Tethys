@@ -21,8 +21,8 @@ public abstract class SpawnRestrictionMixin {
 
     @Inject(method = "<clinit>", at = @At(value = "TAIL"))
     private static void registerTethysSpawnRestriction(CallbackInfo ci) {
-        register(TethysEntities.FLYING_CAT, SpawnRestriction.Location.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, FlyingCatEntity::canSpawn);
-        register(TethysEntities.TETHYS_TURTLE, SpawnRestriction.Location.IN_WATER, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, TethysTurtleEntity::canSpawn);
-        register(TethysEntities.WATER_STRIDER, SpawnRestriction.Location.IN_WATER, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, WaterStriderEntity::canSpawn);
+        register(TethysEntities.FLYING_CAT, SpawnRestriction.Location.NO_RESTRICTIONS, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, FlyingCatEntity::canSpawn);
+        register(TethysEntities.TETHYS_TURTLE, SpawnRestriction.Location.NO_RESTRICTIONS, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, TethysTurtleEntity::canSpawn);
+        register(TethysEntities.WATER_STRIDER, SpawnRestriction.Location.NO_RESTRICTIONS, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, WaterStriderEntity::canSpawn);
     }
 }

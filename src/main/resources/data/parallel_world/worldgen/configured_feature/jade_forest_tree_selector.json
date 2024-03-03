@@ -5,31 +5,59 @@
 		"features": [
 			{
 				"feature": "parallel_world:rainbow_tree/basswood_tree_bees_checked",
-				"chance": 0.30
+				"chance": 0.10
 			},
 			{
-				"feature": "parallel_world:rainbow_tree/blackcurrant_tree_bees_checked",
-				"chance": 0.30
-			},
-			{
-				"feature": "parallel_world:rainbow_tree/elderberry_tree_bees_checked",
+				"feature": "parallel_world:rainbow_tree/basswood_tree_checked",
 				"chance": 0.20
 			},
 			{
+				"feature": "parallel_world:rainbow_tree/blackcurrant_tree_bees_checked",
+				"chance": 0.10
+			},
+			{
+				"feature": "parallel_world:rainbow_tree/blackcurrant_tree_checked",
+				"chance": 0.20
+			},
+			{
+				"feature": "parallel_world:rainbow_tree/elderberry_tree_bees_checked",
+				"chance": 0.10
+			},
+			{
+				"feature": "parallel_world:rainbow_tree/elderberry_tree_checked",
+				"chance": 0.10
+			},
+			{
 				"feature": "parallel_world:rainbow_tree/sweetgum_tree_bees_checked",
-				"chance": 0.05
+				"chance": 0.02
+			},
+			{
+				"feature": "parallel_world:rainbow_tree/sweetgum_tree_checked",
+				"chance": 0.03
 			},
 			{
 				"feature": "parallel_world:rainbow_tree/ginkgo_tree_bees_checked",
-				"chance": 0.05
+				"chance": 0.02
+			},
+			{
+				"feature": "parallel_world:rainbow_tree/ginkgo_tree_checked",
+				"chance": 0.03
 			},
 			{
 				"feature": "parallel_world:rainbow_tree/dogwood_tree_bees_checked",
-				"chance": 0.03
+				"chance": 0.01
+			},
+			{
+				"feature": "parallel_world:rainbow_tree/dogwood_tree_checked",
+				"chance": 0.02
 			},
 			{
 				"feature": "parallel_world:rainbow_tree/cherry_tree_bees_checked",
-				"chance": 0.03
+				"chance": 0.015
+			},
+			{
+				"feature": "parallel_world:rainbow_tree/cherry_tree_checked",
+				"chance": 0.015
 			}
 		]
 	}

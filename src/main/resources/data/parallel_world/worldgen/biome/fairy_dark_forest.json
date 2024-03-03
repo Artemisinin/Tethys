@@ -97,6 +97,24 @@
     "minecraft:mansion",
     "minecraft:stronghold"
   ],
+  "spawn_costs": {
+    "minecraft:spider": {
+      "charge": 0.7,
+      "energy_budget": 0.15
+    },
+    "minecraft:zombie": {
+      "charge": 0.7,
+      "energy_budget": 0.15
+    },
+    "minecraft:skeleton": {
+      "charge": 0.7,
+      "energy_budget": 0.15
+    },
+    "minecraft:creeper": {
+      "charge": 0.7,
+      "energy_budget": 0.15
+    }
+  },
   "spawners": {
     "monster": [
       {
@@ -214,7 +232,6 @@
     ],
     "misc": []
   },
-  "spawn_costs": {},
   "precipitation": "rain",
   "temperature": 0.7,
   "downfall": 0.8

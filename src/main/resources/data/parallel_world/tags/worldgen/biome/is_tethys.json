@@ -1,0 +1,26 @@
+{
+  "values": [
+    "parallel_world:amazon",
+    "parallel_world:ancient_oak_forest",
+    "parallel_world:bamboo_forest",
+    "parallel_world:crystal_forest",
+    "parallel_world:end_desert",
+    "parallel_world:fairy_dark_forest",
+    "parallel_world:fairy_flower_forest",
+    "parallel_world:fungal_jungle",
+    "parallel_world:heath",
+    "parallel_world:ice_bergs",
+    "parallel_world:ice_spires",
+    "parallel_world:jade_forest",
+    "parallel_world:mangrove_swamp",
+    "parallel_world:marsh",
+    "parallel_world:mycelium",
+    "parallel_world:ocean",
+    "parallel_world:rainbow_forest",
+    "parallel_world:reef",
+    "parallel_world:sequoia_forest",
+    "parallel_world:snow_forest",
+    "parallel_world:traps",
+    "parallel_world:wasteland"
+  ]
+}

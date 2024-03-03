@@ -91,6 +91,24 @@
 	"minecraft:village_taiga",
     "minecraft:stronghold"
   ],
+  "spawn_costs": {
+    "minecraft:spider": {
+      "charge": 0.7,
+      "energy_budget": 0.15
+    },
+    "minecraft:zombie": {
+      "charge": 0.7,
+      "energy_budget": 0.15
+    },
+    "minecraft:skeleton": {
+      "charge": 0.7,
+      "energy_budget": 0.15
+    },
+    "minecraft:creeper": {
+      "charge": 0.7,
+      "energy_budget": 0.15
+    }
+  },
   "spawners": {
     "monster": [
       {
@@ -162,12 +180,6 @@
         "maxCount": 4
       },
       {
-        "type": "minecraft:cow",
-        "weight": 8,
-        "minCount": 4,
-        "maxCount": 4
-      },
-      {
         "type": "minecraft:wolf",
         "weight": 8,
         "minCount": 4,
@@ -226,7 +238,6 @@
     ],
     "misc": []
   },
-  "spawn_costs": {},
   "precipitation": "rain",
   "temperature": 0.3,
   "downfall": 0.8

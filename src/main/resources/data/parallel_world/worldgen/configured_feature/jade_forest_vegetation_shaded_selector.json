@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:random_selector",
+  "config": {
+    "features": [
+      {
+        "feature": {
+          "feature": "minecraft:huge_brown_mushroom",
+          "placement": []
+        },
+        "chance": 0.1
+      },
+      {
+        "feature": {
+          "feature": "minecraft:huge_red_mushroom",
+          "placement": []
+        },
+        "chance": 0.1
+      },
+      {
+        "feature": {
+          "feature": "parallel_world:jade_forest_tree_selector_shaded",
+          "placement": []
+        },
+        "chance": 0.75
+      }
+    ],
+    "default": "minecraft:dark_oak_checked"
+  }
+}

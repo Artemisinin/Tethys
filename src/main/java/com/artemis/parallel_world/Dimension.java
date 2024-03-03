@@ -5,7 +5,8 @@ import com.artemis.parallel_world.entity.TethysEntities;
 import com.artemis.parallel_world.item.TethysItems;
 import com.artemis.parallel_world.world.gen.feature.TethysPlacementModifiers;
 import com.artemis.parallel_world.world.gen.feature.TethysFeatures;
-import com.artemis.parallel_world.world.gen.tree.GlowfruitTreeDecorator;
+import com.artemis.parallel_world.world.gen.treedecorator.AlterGroundPlusSandTreeDecorator;
+import com.artemis.parallel_world.world.gen.treedecorator.GlowfruitTreeDecorator;
 import com.artemis.parallel_world.world.gen.trunk.TethysTrunkPlacers;
 import net.fabricmc.api.ModInitializer;
 import net.kyrptonaught.customportalapi.api.CustomPortalBuilder;
@@ -38,6 +39,7 @@ public class Dimension implements ModInitializer {
         // Register worldgen elements
         //TethysBiomes.registerBiomes();
         //TethysConfiguredCarvers.registerCarvers();
+        AlterGroundPlusSandTreeDecorator.registerAlterGroundPlusSandTreeDecorator();
         GlowfruitTreeDecorator.registerGlowfruitTreeDecorator();
         TethysTrunkPlacers.registerTrunkPlacers();
         TethysPlacementModifiers.registerDecorators();

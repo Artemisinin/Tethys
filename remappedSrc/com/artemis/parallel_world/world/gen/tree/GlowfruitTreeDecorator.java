@@ -1,4 +1,4 @@
-package com.artemis.parallel_world.world.gen.tree;
+package com.artemis.parallel_world.world.gen.treedecorator;
 
 
 import com.artemis.parallel_world.block.TethysBlocks;

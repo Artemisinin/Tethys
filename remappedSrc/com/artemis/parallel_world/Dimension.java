@@ -8,7 +8,7 @@ import com.artemis.parallel_world.world.gen.carver.TethysConfiguredCarvers;
 import com.artemis.parallel_world.world.gen.feature.TethysConfiguredFeatures;
 import com.artemis.parallel_world.world.gen.feature.TethysPlacementModifiers;
 import com.artemis.parallel_world.world.gen.feature.TethysFeatures;
-import com.artemis.parallel_world.world.gen.tree.GlowfruitTreeDecorator;
+import com.artemis.parallel_world.world.gen.treedecorator.GlowfruitTreeDecorator;
 import com.artemis.parallel_world.world.gen.trunk.TethysTrunkPlacers;
 import net.fabricmc.api.ModInitializer;
 

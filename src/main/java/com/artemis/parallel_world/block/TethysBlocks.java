@@ -22,6 +22,11 @@ public class TethysBlocks {
     public static final Block GLOWFRUIT = new LeavesBlock(FabricBlockSettings.of(Material.LEAVES).nonOpaque().luminance(9).hardness(0.2f).sounds(BlockSoundGroup.GRASS).ticksRandomly());
     public static final Block GLOW_FLOWER = new FlowerBlock(StatusEffects.NIGHT_VISION, 5, AbstractBlock.Settings.of(Material.REPLACEABLE_PLANT).noCollision().breakInstantly().nonOpaque().luminance(state -> 9).sounds(BlockSoundGroup.GRASS));
     public static final Block HEATHER = new FlowerBlock(StatusEffects.LUCK, 7, AbstractBlock.Settings.of(Material.REPLACEABLE_PLANT).noCollision().breakInstantly().nonOpaque().sounds(BlockSoundGroup.GRASS));
+    public static final Block MANGROVE_LEAVES = new LeavesBlock(FabricBlockSettings.of(Material.LEAVES).nonOpaque().hardness(0.2f).sounds(BlockSoundGroup.GRASS).ticksRandomly());
+
+    // Marsh grass blocks
+    public static final Block MARSH_GRASS_RED = new TallPlantBlock(AbstractBlock.Settings.of(Material.REPLACEABLE_PLANT).noCollision().breakInstantly().sounds(BlockSoundGroup.GRASS).offsetType(AbstractBlock.OffsetType.XZ));
+
     // Mushroom blocks
     public static final Block PINK_MUSHROOM_BLOCK = new MushroomBlock(AbstractBlock.Settings.of(Material.WOOD, MapColor.DULL_PINK).strength(0.2F).sounds(BlockSoundGroup.WOOD));
     public static final Block WHITE_MUSHROOM_BLOCK = new MushroomBlock(AbstractBlock.Settings.of(Material.WOOD, MapColor.OFF_WHITE).strength(0.2F).sounds(BlockSoundGroup.WOOD));
@@ -95,6 +100,7 @@ public class TethysBlocks {
 
     // Block Tags
     public static TagKey<Block> CORAL_BLOCKS;
+    public static TagKey<Block> DIRT_OR_SAND;
     public static TagKey<Block> DIRT_OR_STONE;
 
     public static void registerBlocks() {
@@ -114,6 +120,12 @@ public class TethysBlocks {
 
         // Heather
         Registry.register(Registries.BLOCK, new Identifier("parallel_world", "heather"), HEATHER);
+
+        // Mangrove leaves
+        Registry.register(Registries.BLOCK, new Identifier("parallel_world", "mangrove_leaves"), MANGROVE_LEAVES);
+
+        // Marsh grass blocks
+        Registry.register(Registries.BLOCK, new Identifier("parallel_world", "marsh_grass_red"), MARSH_GRASS_RED);
 
         // Mushroom blocks
         Registry.register(Registries.BLOCK, new Identifier("parallel_world", "pink_mushroom_block"), PINK_MUSHROOM_BLOCK);
@@ -189,6 +201,7 @@ public class TethysBlocks {
     public static void registerFlammability(){
 
         FlammableBlockRegistry.getDefaultInstance().add(GLOWFRUIT, 60, 30);
+        FlammableBlockRegistry.getDefaultInstance().add(MANGROVE_LEAVES, 60, 30);
         // Basswood trees
         FlammableBlockRegistry.getDefaultInstance().add(BASSWOOD_LOG, 20, 5);
         FlammableBlockRegistry.getDefaultInstance().add(BASSWOOD_LEAVES, 60, 30);
@@ -230,6 +243,7 @@ public class TethysBlocks {
     public static void registerBlockTags() {
 
         CORAL_BLOCKS = TagKey.of(RegistryKeys.BLOCK, new Identifier("parallel_world", "coral_blocks"));
+        DIRT_OR_SAND = TagKey.of(RegistryKeys.BLOCK, new Identifier("parallel_world", "dirt_or_sand"));
         DIRT_OR_STONE = TagKey.of(RegistryKeys.BLOCK, new Identifier("parallel_world", "dirt_or_stone"));
     }
 }

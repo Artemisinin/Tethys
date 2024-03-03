@@ -92,8 +92,32 @@
     "minecraft:jungle_pyramid",
     "minecraft:stronghold"
   ],
+  "spawn_costs": {
+    "minecraft:spider": {
+      "charge": 0.7,
+      "energy_budget": 0.15
+    },
+    "minecraft:zombie": {
+      "charge": 0.7,
+      "energy_budget": 0.15
+    },
+    "minecraft:skeleton": {
+      "charge": 0.7,
+      "energy_budget": 0.15
+    },
+    "minecraft:creeper": {
+      "charge": 0.7,
+      "energy_budget": 0.15
+    }
+  },
   "spawners": {
     "monster": [
+      {
+        "type": "minecraft:ocelot",
+        "maxCount": 3,
+        "minCount": 1,
+        "weight": 2
+      },
       {
         "type": "minecraft:spider",
         "weight": 100,
@@ -151,12 +175,6 @@
     ],
     "creature": [
       {
-        "type": "minecraft:sheep",
-        "weight": 12,
-        "minCount": 4,
-        "maxCount": 4
-      },
-      {
         "type": "minecraft:pig",
         "weight": 10,
         "minCount": 4,
@@ -169,12 +187,6 @@
         "maxCount": 4
       },
       {
-        "type": "minecraft:cow",
-        "weight": 8,
-        "minCount": 4,
-        "maxCount": 4
-      },
-      {
         "type": "minecraft:parrot",
         "weight": 40,
         "minCount": 1,
@@ -182,7 +194,7 @@
       },
       {
         "type": "minecraft:panda",
-        "weight": 1,
+        "weight": 15,
         "minCount": 1,
         "maxCount": 2
       }
@@ -227,7 +239,6 @@
     ],
     "misc": []
   },
-  "spawn_costs": {},
   "precipitation": "rain",
   "temperature": 0.65,
   "downfall": 0.9

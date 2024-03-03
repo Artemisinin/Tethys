@@ -14,4 +14,8 @@ public interface GetVariableConfiguredTreeFeature {
         return null;
     }
 
+    @Nullable
+    default RegistryKey<ConfiguredFeature<?, ?>> getLargeTreeFeature(Random random, ServerWorld world, BlockPos pos) {
+        return null;
+    }
 }
