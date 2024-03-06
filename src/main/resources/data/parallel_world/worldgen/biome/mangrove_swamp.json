@@ -83,11 +83,11 @@
       "parallel_world:patch_grass_shaded",
       "parallel_world:seagrass_swamp",
       "parallel_world:sea_pickle",
+      "parallel_world:patch_water_lilies",
       "parallel_world:trees_mangrove_swamp",
       "minecraft:glow_lichen",
       "minecraft:patch_grass_normal",
       "minecraft:patch_dead_bush",
-      "minecraft:patch_waterlily",
       "minecraft:seagrass_swamp"
     ],
     [

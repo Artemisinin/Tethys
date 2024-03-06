@@ -181,12 +181,6 @@
     ],
     "creature": [
       {
-        "type": "minecraft:chicken",
-        "weight": 10,
-        "minCount": 4,
-        "maxCount": 4
-      },
-      {
         "type": "minecraft:parrot",
         "weight": 40,
         "minCount": 1,

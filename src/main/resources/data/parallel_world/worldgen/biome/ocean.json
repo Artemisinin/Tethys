@@ -132,12 +132,6 @@
         "maxCount": 5,
         "minCount": 2,
         "weight": 10
-      },
-      {
-        "type": "minecraft:sheep",
-        "maxCount": 4,
-        "minCount": 2,
-        "weight": 2
       }
     ],
     "ambient": [

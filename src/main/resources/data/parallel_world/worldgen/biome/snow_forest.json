@@ -63,26 +63,12 @@
       "parallel_world:ores/ore_gold_diorite",
       "parallel_world:ores/ore_gold_granite"
     ],
-    [
-      "minecraft:spring_water"
-    ],
+    [],
     [
       "parallel_world:alpine_evergreens_ycap",
       "parallel_world:alpine_evergreens_ycap_dark",
       "parallel_world:dwarf_pines",
-      "parallel_world:scattered_poriferans_glowing",
-      "minecraft:glow_lichen",
-      "minecraft:patch_large_fern",
-      "minecraft:trees_taiga",
-      "minecraft:flower_default",
-      "minecraft:patch_grass_taiga_2",
-      "minecraft:brown_mushroom_taiga",
-      "minecraft:red_mushroom_taiga",
-      "minecraft:brown_mushroom_normal",
-      "minecraft:red_mushroom_normal",
-      "minecraft:patch_sugar_cane",
-      "minecraft:patch_pumpkin",
-      "minecraft:patch_berry_common"
+      "minecraft:glow_lichen"
     ],
     [
       "minecraft:freeze_top_layer"
@@ -162,42 +148,6 @@
       }
     ],
     "creature": [
-      {
-        "type": "minecraft:sheep",
-        "weight": 12,
-        "minCount": 4,
-        "maxCount": 4
-      },
-      {
-        "type": "minecraft:pig",
-        "weight": 10,
-        "minCount": 4,
-        "maxCount": 4
-      },
-      {
-        "type": "minecraft:chicken",
-        "weight": 10,
-        "minCount": 4,
-        "maxCount": 4
-      },
-      {
-        "type": "minecraft:cow",
-        "weight": 8,
-        "minCount": 4,
-        "maxCount": 4
-      },
-      {
-        "type": "minecraft:wolf",
-        "weight": 8,
-        "minCount": 4,
-        "maxCount": 4
-      },
-      {
-        "type": "minecraft:rabbit",
-        "weight": 4,
-        "minCount": 2,
-        "maxCount": 3
-      },
       {
         "type": "minecraft:fox",
         "weight": 8,

@@ -67,11 +67,9 @@
     [],
     [
       "parallel_world:alpine_evergreens_ycap",
+      "parallel_world:alpine_evergreens_ycap_dark",
       "parallel_world:dwarf_pines",
-      "parallel_world:scattered_poriferans_glowing",
-      "parallel_world:sea_pickle",
-      "minecraft:glow_lichen",
-      "minecraft:kelp_cold"
+      "minecraft:glow_lichen"
     ],
     [
 	  "minecraft:freeze_top_layer"
@@ -149,20 +147,7 @@
         "maxCount": 4
       }
     ],
-    "creature": [
-      {
-        "type": "minecraft:rabbit",
-        "weight": 4,
-        "minCount": 2,
-        "maxCount": 3
-      },
-      {
-        "type": "minecraft:polar_bear",
-        "weight": 8,
-        "minCount": 1,
-        "maxCount": 2
-      }
-    ],
+    "creature": [],
     "ambient": [
       {
         "type": "minecraft:bat",

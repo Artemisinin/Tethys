@@ -156,12 +156,6 @@
     ],
     "creature": [
       {
-        "type": "minecraft:rabbit",
-        "weight": 10,
-        "minCount": 2,
-        "maxCount": 3
-      },
-      {
         "type": "minecraft:polar_bear",
         "weight": 4,
         "minCount": 1,

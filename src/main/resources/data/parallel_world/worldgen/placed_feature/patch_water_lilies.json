@@ -13,6 +13,18 @@
       "heightmap": "MOTION_BLOCKING"
     },
     {
+      "type": "minecraft:environment_scan",
+      "allowed_search_condition": {
+        "type": "minecraft:matching_blocks",
+        "blocks": "minecraft:water"
+      },
+      "direction_of_search": "down",
+      "max_steps": 5,
+      "target_condition": {
+        "type": "minecraft:solid"
+      }
+    },
+    {
       "type": "minecraft:biome"
     }
   ]

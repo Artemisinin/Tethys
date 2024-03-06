@@ -2,116 +2,28 @@
   "type": "minecraft:random_selector",
   "config": {
     "default": {
-      "feature": "parallel_world:snow_pine",
-      "placement": [
-        {
-          "type": "minecraft:block_predicate_filter",
-          "predicate": {
-            "type": "minecraft:all_of",
-            "predicates": [
-              {
-                "type": "minecraft:matching_blocks",
-                "blocks": "minecraft:air"
-              },
-              {
-                "type": "minecraft:matching_blocks",
-                "blocks": "minecraft:snow_block",
-                "offset": [
-                  0,
-                  -1,
-                  0
-                ]
-              }
-            ]
-          }
-        }
-      ]
+      "feature": "parallel_world:snow_trees/snow_pine",
+      "placement": []
     },
     "features": [
       {
         "feature": {
-          "feature": "parallel_world:snow_pine",
-          "placement": [
-            {
-              "type": "minecraft:block_predicate_filter",
-              "predicate": {
-                "type": "minecraft:all_of",
-                "predicates": [
-                  {
-                    "type": "minecraft:matching_blocks",
-                    "blocks": "minecraft:air"
-                  },
-                  {
-                    "type": "minecraft:matching_blocks",
-                    "blocks": "minecraft:snow_block",
-                    "offset": [
-                      0,
-                      -1,
-                      0
-                    ]
-                  }
-                ]
-              }
-            }
-          ]
+          "feature": "parallel_world:snow_trees/snow_pine",
+          "placement": []
         },
         "chance": 0.50
       },
       {
         "feature": {
-          "feature": "parallel_world:snow_spruce",
-          "placement": [
-            {
-              "type": "minecraft:block_predicate_filter",
-              "predicate": {
-                "type": "minecraft:all_of",
-                "predicates": [
-                  {
-                    "type": "minecraft:matching_blocks",
-                    "blocks": "minecraft:air"
-                  },
-                  {
-                    "type": "minecraft:matching_blocks",
-                    "blocks": "minecraft:snow_block",
-                    "offset": [
-                      0,
-                      -1,
-                      0
-                    ]
-                  }
-                ]
-              }
-            }
-          ]
+          "feature": "parallel_world:snow_trees/snow_spruce",
+          "placement": []
         },
-        "chance": 0.30
+        "chance": 0.40
       },
       {
         "feature": {
-          "feature": "parallel_world:snow_spruce_shrub",
-          "placement": [
-            {
-              "type": "minecraft:block_predicate_filter",
-              "predicate": {
-                "type": "minecraft:all_of",
-                "predicates": [
-                  {
-                    "type": "minecraft:matching_blocks",
-                    "blocks": "minecraft:air"
-                  },
-                  {
-                    "type": "minecraft:matching_blocks",
-                    "blocks": "minecraft:snow_block",
-                    "offset": [
-                      0,
-                      -1,
-                      0
-                    ]
-                  }
-                ]
-              }
-            }
-          ]
+          "feature": "parallel_world:snow_trees/snow_spruce_shrub",
+          "placement": []
         },
         "chance": 0.10
       }

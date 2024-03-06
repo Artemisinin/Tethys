@@ -171,22 +171,10 @@
         "maxCount": 4
       },
       {
-        "type": "minecraft:sheep",
-        "weight": 12,
-        "minCount": 4,
-        "maxCount": 4
-      },
-      {
         "type": "minecraft:rabbit",
         "weight": 4,
         "minCount": 2,
         "maxCount": 3
-      },
-      {
-        "type": "minecraft:pig",
-        "weight": 10,
-        "minCount": 4,
-        "maxCount": 4
       }
     ],
     "ambient": [

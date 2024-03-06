@@ -70,6 +70,7 @@
 			"minecraft:spring_water"
 		],
 		[
+			"parallel_world:jade_forest_flowers",
 			"parallel_world:jade_forest_vegetation",
 			"parallel_world:jade_forest_vegetation_shaded",
 			"parallel_world:patch_grass_shaded",
@@ -169,12 +170,6 @@
 			{
 				"type": "minecraft:sheep",
 				"weight": 12,
-				"minCount": 4,
-				"maxCount": 4
-			},
-			{
-				"type": "minecraft:cow",
-				"weight": 8,
 				"minCount": 4,
 				"maxCount": 4
 			},

@@ -1,13 +1,13 @@
 {
-	"feature": "parallel_world:snow_spruce_shrub",
+	"feature": "parallel_world:snow_trees/snow_spruce_shrub",
 	"placement": [
 		{
 			"type": "minecraft:count",
 			"count": {
 				"type": "minecraft:uniform",
 				"value": {
-					"min_inclusive": 15,
-					"max_inclusive": 30
+					"min_inclusive": 25,
+					"max_inclusive": 35
 				}
 			}
 		},
@@ -16,7 +16,7 @@
 		},
 		{
 			"type": "minecraft:heightmap",
-			"heightmap": "OCEAN_FLOOR_WG"
+			"heightmap": "OCEAN_FLOOR"
 		},
 		{
 			"type": "minecraft:height_range",
@@ -26,19 +26,28 @@
 					"below_top": 0
 				},
 				"min_inclusive": {
-					"absolute": 100
+					"below_top": 30
 				}
 			}
 		},
 		{
 			"type": "minecraft:block_predicate_filter",
 			"predicate": {
-				"type": "minecraft:matching_blocks",
-				"blocks":  "minecraft:snow_block",
-				"offset": [
-					0,
-					-1,
-					0
+				"type": "minecraft:all_of",
+				"predicates": [
+					{
+						"type": "minecraft:matching_blocks",
+						"blocks": "minecraft:air"
+					},
+					{
+						"type": "minecraft:matching_blocks",
+						"blocks": "minecraft:snow_block",
+						"offset": [
+							0,
+							-1,
+							0
+						]
+					}
 				]
 			}
 		},

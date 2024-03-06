@@ -3,19 +3,7 @@
   "placement": [
     {
       "type": "minecraft:count",
-      "count": {
-        "type": "minecraft:weighted_list",
-        "distribution": [
-          {
-            "data": 60,
-            "weight": 9
-          },
-          {
-            "data": 70,
-            "weight": 1
-          }
-        ]
-      }
+      "count": 40
     },
     {
       "type": "minecraft:in_square"
@@ -24,7 +12,6 @@
       "type": "minecraft:heightmap",
       "heightmap": "OCEAN_FLOOR_WG"
     },
-
     {
       "type": "minecraft:biome"
     }

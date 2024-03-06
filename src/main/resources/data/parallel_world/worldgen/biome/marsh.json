@@ -80,6 +80,7 @@
       "parallel_world:patch_marsh_grass",
       "parallel_world:seagrass_swamp",
       "parallel_world:sea_pickle",
+      "parallel_world:patch_water_lilies",
       "minecraft:glow_lichen",
       "minecraft:flower_swamp",
       "minecraft:brown_mushroom_swamp",
@@ -172,28 +173,10 @@
     ],
     "creature": [
       {
-        "type": "minecraft:pig",
-        "weight": 10,
-        "minCount": 4,
-        "maxCount": 4
-      },
-      {
-        "type": "minecraft:chicken",
-        "weight": 10,
-        "minCount": 4,
-        "maxCount": 4
-      },
-      {
         "type": "minecraft:frog",
         "maxCount": 5,
         "minCount": 2,
         "weight": 10
-      },
-      {
-        "type": "minecraft:donkey",
-        "weight": 12,
-        "minCount": 2,
-        "maxCount": 4
       }
     ],
     "ambient": [

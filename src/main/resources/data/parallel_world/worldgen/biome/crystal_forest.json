@@ -70,10 +70,9 @@
     ],
     [],
     [
+      "parallel_world:alpine_evergreens_ycap",
       "parallel_world:crystal_forest_vegetation",
-      "parallel_world:scattered_poriferans_glowing",
-      "minecraft:glow_lichen",
-      "minecraft:kelp_cold"
+      "minecraft:glow_lichen"
     ],
     [
       "minecraft:freeze_top_layer"
@@ -151,20 +150,7 @@
         "maxCount": 1
       }
     ],
-    "creature": [
-      {
-        "type": "minecraft:rabbit",
-        "weight": 4,
-        "minCount": 2,
-        "maxCount": 3
-      },
-      {
-        "type": "minecraft:goat",
-        "maxCount": 8,
-        "minCount": 1,
-        "weight": 5
-      }
-    ],
+    "creature": [],
     "ambient": [
       {
         "type": "minecraft:bat",

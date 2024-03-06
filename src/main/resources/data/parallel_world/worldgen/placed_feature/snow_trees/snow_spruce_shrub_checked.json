@@ -1,23 +1,6 @@
 {
-  "feature": "parallel_world:snow_trees/snow_pine",
+  "feature": "parallel_world:snow_trees/snow_spruce_shrub",
   "placement": [
-    {
-      "type": "parallel_world:below_heightmap_placement_modifier",
-      "heightmap": "OCEAN_FLOOR_WG",
-      "count": 40
-    },
-    {
-      "type": "minecraft:height_range",
-      "height": {
-        "type": "minecraft:uniform",
-        "max_inclusive": {
-          "below_top": 40
-        },
-        "min_inclusive": {
-          "above_bottom": 30
-        }
-      }
-    },
     {
       "type": "minecraft:block_predicate_filter",
       "predicate": {
@@ -38,9 +21,6 @@
           }
         ]
       }
-    },
-    {
-      "type": "minecraft:biome"
     }
   ]
 }

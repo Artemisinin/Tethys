@@ -15,21 +15,21 @@
 							1.0
 						],
 						"depth": [
-							0.4,
-							0.6
+							0.52,
+							0.8
 						],
 						"erosion": [
 							-1.0,
 							1.0
 						],
 						"humidity": [
-							0.0,
-							0.5
+							-0.33,
+							1.0
 						],
 						"offset": 0.0,
 						"temperature": [
 							-0.33,
-							0.33
+							1.0
 						],
 						"weirdness": [
 							-1.0,
@@ -106,7 +106,7 @@
 						],
 						"depth": [
 							0.52,
-							0.9
+							0.8
 						],
 						"erosion": [
 							-1.0,
@@ -119,7 +119,7 @@
 						"offset": 0.0,
 						"temperature": [
 							-1.0,
-							-0.33
+							1.0
 						],
 						"weirdness": [
 							-1.0,
@@ -144,12 +144,12 @@
 						],
 						"humidity": [
 							-1.0,
-							0.33
+							1.0
 						],
 						"offset": 0.0,
 						"temperature": [
-							-1.0,
-							-0.33
+							-0.5,
+							0.0
 						],
 						"weirdness": [
 							-1.0,
@@ -256,19 +256,19 @@
 						],
 						"depth": [
 							0.52,
-							0.9
+							0.8
 						],
 						"erosion": [
 							-1.0,
 							1.0
 						],
 						"humidity": [
-							0.0,
+							-0.33,
 							1.0
 						],
 						"offset": 0.0,
 						"temperature": [
-							0.33,
+							0.5,
 							1.0
 						],
 						"weirdness": [
@@ -329,7 +329,7 @@
 						"offset": 0.0,
 						"temperature": [
 							-1.0,
-							-0.5
+							-0.45
 						],
 						"weirdness": [
 							-1.0,
@@ -346,11 +346,11 @@
 						],
 						"depth": [
 							-1.0,
-							-0.62
+							-0.7
 						],
 						"erosion": [
 							-1.0,
-							-0.2
+							1.0
 						],
 						"humidity": [
 							-1.0,
@@ -359,7 +359,7 @@
 						"offset": 0.0,
 						"temperature": [
 							-1.0,
-							0.33
+							-0.5
 						],
 						"weirdness": [
 							-1.0,
@@ -413,7 +413,7 @@
 							1.0
 						],
 						"humidity": [
-							0.25,
+							0.33,
 							1.0
 						],
 						"offset": 0.0,
@@ -443,13 +443,43 @@
 							1.0
 						],
 						"humidity": [
-							-1.0,
-							0.25
+							-0.33,
+							0.33
 						],
 						"offset": 0.0,
 						"temperature": [
 							-1.0,
 							1.0
+						],
+						"weirdness": [
+							-1.0,
+							1.0
+						]
+					}
+				},
+				{
+					"biome": "parallel_world:marsh",
+					"parameters": {
+						"continentalness": [
+							-1.0,
+							1.0
+						],
+						"depth": [
+							0.8,
+							0.9
+						],
+						"erosion": [
+							-1.0,
+							1.0
+						],
+						"humidity": [
+							0.33,
+							1.0
+						],
+						"offset": 0.0,
+						"temperature": [
+							-1,
+							-0.45
 						],
 						"weirdness": [
 							-1.0,
@@ -538,7 +568,7 @@
 						],
 						"offset": 0.0,
 						"temperature": [
-							0.45,
+							0.25,
 							1.0
 						],
 						"weirdness": [
@@ -569,7 +599,37 @@
 						"offset": 0.0,
 						"temperature": [
 							-0.45,
-							0.45
+							0.25
+						],
+						"weirdness": [
+							-1.0,
+							1.0
+						]
+					}
+				},
+				{
+					"biome": "parallel_world:sand_bar",
+					"parameters": {
+						"continentalness": [
+							-1.0,
+							1.0
+						],
+						"depth": [
+							0.8,
+							0.9
+						],
+						"erosion": [
+							-1.0,
+							1.0
+						],
+						"humidity": [
+							-1.0,
+							-0.33
+						],
+						"offset": 0.0,
+						"temperature": [
+							-1.0,
+							1.0
 						],
 						"weirdness": [
 							-1.0,
@@ -616,7 +676,7 @@
 						],
 						"depth": [
 							-1.0,
-							-0.62
+							-0.7
 						],
 						"erosion": [
 							-1.0,
@@ -628,7 +688,7 @@
 						],
 						"offset": 0.0,
 						"temperature": [
-							0.33,
+							0.0,
 							1.0
 						],
 						"weirdness": [

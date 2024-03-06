@@ -168,25 +168,7 @@
 		],
 		"creature": [
 			{
-				"type": "minecraft:sheep",
-				"weight": 8,
-				"minCount": 4,
-				"maxCount": 4
-			},
-			{
-				"type": "minecraft:pig",
-				"weight": 4,
-				"minCount": 4,
-				"maxCount": 4
-			},
-			{
-				"type": "minecraft:chicken",
-				"weight": 10,
-				"minCount": 4,
-				"maxCount": 4
-			},
-			{
-				"type": "minecraft:cow",
+				"type": "minecraft:horse",
 				"weight": 4,
 				"minCount": 4,
 				"maxCount": 4

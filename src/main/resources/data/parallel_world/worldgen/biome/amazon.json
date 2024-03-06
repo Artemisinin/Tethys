@@ -78,9 +78,9 @@
     [
       "parallel_world:jungle_vegetation_shaded",
       "parallel_world:patch_grass_shaded",
-      "parallel_world:patch_water_lilies",
       "parallel_world:seagrass_swamp",
       "parallel_world:sea_pickle",
+      "parallel_world:patch_water_lilies",
       "minecraft:glow_lichen",
 	  "minecraft:trees_jungle",
       "minecraft:flower_swamp",
@@ -175,12 +175,6 @@
     "creature": [
       {
         "type": "minecraft:pig",
-        "weight": 10,
-        "minCount": 4,
-        "maxCount": 4
-      },
-      {
-        "type": "minecraft:chicken",
         "weight": 10,
         "minCount": 4,
         "maxCount": 4
