@@ -15,7 +15,25 @@
                     "half": "lower"
                   }
                 },
-                "weight": 3
+                "weight": 4
+              },
+              {
+                "data": {
+                  "Name": "parallel_world:marsh_grass_olive_green",
+                  "Properties": {
+                    "half": "lower"
+                  }
+                },
+                "weight": 2
+              },
+              {
+                "data": {
+                  "Name": "parallel_world:marsh_grass_yellow",
+                  "Properties": {
+                    "half": "lower"
+                  }
+                },
+                "weight": 2
               },
               {
                 "data": {
@@ -24,7 +42,7 @@
                     "half": "lower"
                   }
                 },
-                "weight": 3
+                "weight": 2
               },
               {
                 "data": {

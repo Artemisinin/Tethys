@@ -193,5 +193,6 @@
   },
   "precipitation": "snow",
   "temperature": 0.0,
+  "temperature_modifier": "frozen",
   "downfall": 0.5
 }

@@ -1,5 +1,5 @@
 {
-  "feature": "parallel_world:snow_trees/snow_pine",
+  "feature": "parallel_world:alpine_evergreen_dark_selector",
   "placement": [
     {
       "type": "parallel_world:below_heightmap_placement_modifier",
@@ -25,11 +25,11 @@
         "predicates": [
           {
             "type": "minecraft:matching_blocks",
-            "blocks": "minecraft:air"
+            "blocks": "minecraft:snow_block"
           },
           {
             "type": "minecraft:matching_blocks",
-            "blocks": "minecraft:snow_block",
+            "blocks": "minecraft:dirt",
             "offset": [
               0,
               -1,

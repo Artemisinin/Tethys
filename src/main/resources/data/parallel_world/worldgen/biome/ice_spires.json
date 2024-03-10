@@ -8,7 +8,7 @@
     },
     "sky_color": 5211903,
     "fog_color": 12638463,
-    "water_color": 3750089,
+    "water_color": 3759305,
     "water_fog_color": 329011
   },
   "carvers": {
@@ -190,5 +190,6 @@
   },
   "precipitation": "snow",
   "temperature": 0.0,
+  "temperature_modifier": "frozen",
   "downfall": 0.5
 }

@@ -151,9 +151,10 @@ public class WaterStriderEntityModel<T extends WaterStriderEntity> extends Anima
 	this.rightLegLower1.roll = this.rightLegLower2.roll = this.rightLegLower3.roll = this.rightLegLower4.roll = lowerLegRoll;
 	this.leftLegUpper1.roll = this.leftLegUpper2.roll = this.leftLegUpper3.roll = this.leftLegUpper4.roll = -upperLegRoll;
 	this.leftLegLower1.roll = this.leftLegLower2.roll = this.leftLegLower3.roll = this.leftLegLower4.roll = -lowerLegRoll;
-	this.rightLegUpper1.pitch = this.leftLegUpper1.pitch = -0.12F;
-	this.rightLegUpper2.pitch = this.leftLegUpper2.pitch = -0.06F;
-	this.rightLegUpper3.pitch = this.leftLegUpper3.pitch = 0.06F;
-	this.rightLegUpper4.pitch = this.leftLegUpper4.pitch = 0.12F;
+	// This is the spread of the legs.
+	this.rightLegUpper1.pitch = this.leftLegUpper1.pitch = -0.85F;
+	this.rightLegUpper2.pitch = this.leftLegUpper2.pitch = -0.3F;
+	this.rightLegUpper3.pitch = this.leftLegUpper3.pitch = 0.3F;
+	this.rightLegUpper4.pitch = this.leftLegUpper4.pitch = 0.7F;
 	}
 }

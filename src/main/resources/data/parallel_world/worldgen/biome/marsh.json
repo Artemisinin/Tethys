@@ -92,7 +92,8 @@
       "minecraft:patch_melon"
     ],
     [
-      "minecraft:freeze_top_layer"
+      "minecraft:freeze_top_layer",
+      "parallel_world:freeze_shaded_water"
     ]
   ],
   "precipitation": "rain",

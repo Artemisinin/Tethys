@@ -53,7 +53,9 @@ public class TethysItems {
     public static final Item IRON_ORE_ANDESITE = new BlockItem(TethysBlocks.IRON_ORE_ANDESITE, new Item.Settings());
     public static final Item IRON_ORE_DIORITE = new BlockItem(TethysBlocks.IRON_ORE_DIORITE, new Item.Settings());
     public static final Item IRON_ORE_GRANITE = new BlockItem(TethysBlocks.IRON_ORE_GRANITE, new Item.Settings());
+    public static final Item MARSH_GRASS_OLIVE_GREEN = new BlockItem(TethysBlocks.MARSH_GRASS_OLIVE_GREEN, new Item.Settings());
     public static final Item MARSH_GRASS_RED = new BlockItem(TethysBlocks.MARSH_GRASS_RED, new Item.Settings());
+    public static final Item MARSH_GRASS_YELLOW = new BlockItem(TethysBlocks.MARSH_GRASS_RED, new Item.Settings());
     public static final Item MANGROVE_LEAVES = new BlockItem(TethysBlocks.MANGROVE_LEAVES, new Item.Settings());
     public static final Item PINK_DIAMOND = new Item(new FabricItemSettings());
     public static final Item PINK_DIAMOND_BLOCK = new BlockItem(TethysBlocks.PINK_DIAMOND_BLOCK, new Item.Settings());
@@ -93,7 +95,9 @@ public class TethysItems {
         Registry.register(Registries.ITEM, new Identifier("parallel_world", "mangrove_leaves"), MANGROVE_LEAVES);
 
         // Marsh grasses
+        Registry.register(Registries.ITEM, new Identifier("parallel_world", "marsh_grass_olive_green"), MARSH_GRASS_OLIVE_GREEN);
         Registry.register(Registries.ITEM, new Identifier("parallel_world", "marsh_grass_red"), MARSH_GRASS_RED);
+        Registry.register(Registries.ITEM, new Identifier("parallel_world", "marsh_grass_yellow"), MARSH_GRASS_YELLOW);
 
         // Mushrooms
         Registry.register(Registries.ITEM, new Identifier("parallel_world", "pink_mushroom_block"), PINK_MUSHROOM_BLOCK);
@@ -195,7 +199,9 @@ public class TethysItems {
         RegisterCompostableItemInvoker.invokeRegisterCompostableItem(0.5F, TethysItems.GLOW_LICHEN_BALL);
         RegisterCompostableItemInvoker.invokeRegisterCompostableItem(0.3F, TethysItems.HEATHER);
         RegisterCompostableItemInvoker.invokeRegisterCompostableItem(0.3F, TethysItems.MANGROVE_LEAVES);
+        RegisterCompostableItemInvoker.invokeRegisterCompostableItem(0.3F, TethysItems.MARSH_GRASS_OLIVE_GREEN);
         RegisterCompostableItemInvoker.invokeRegisterCompostableItem(0.3F, TethysItems.MARSH_GRASS_RED);
+        RegisterCompostableItemInvoker.invokeRegisterCompostableItem(0.3F, TethysItems.MARSH_GRASS_YELLOW);
         RegisterCompostableItemInvoker.invokeRegisterCompostableItem(0.5F, TethysItems.PINK_MUSHROOM_BLOCK);
         RegisterCompostableItemInvoker.invokeRegisterCompostableItem(0.5F, TethysItems.PORIFERAN_CHUNK);
         RegisterCompostableItemInvoker.invokeRegisterCompostableItem(0.5F, TethysItems.PORIFERAN_CHUNK_GLOW);

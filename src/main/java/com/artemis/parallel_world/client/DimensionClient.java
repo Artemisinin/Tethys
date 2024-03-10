@@ -62,7 +62,9 @@ public class DimensionClient implements ClientModInitializer {
         BlockRenderLayerMap.INSTANCE.putBlock(GLOWFRUIT, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(HEATHER, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(MANGROVE_LEAVES, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(MARSH_GRASS_OLIVE_GREEN, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(MARSH_GRASS_RED, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(MARSH_GRASS_YELLOW, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(SWEETGUM_SAPLING, RenderLayer.getCutout());
 
         ColorProviderRegistry.BLOCK.register((block, world, pos, layer) -> {

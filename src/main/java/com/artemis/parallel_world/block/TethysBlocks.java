@@ -25,7 +25,9 @@ public class TethysBlocks {
     public static final Block MANGROVE_LEAVES = new LeavesBlock(FabricBlockSettings.of(Material.LEAVES).nonOpaque().hardness(0.2f).sounds(BlockSoundGroup.GRASS).ticksRandomly());
 
     // Marsh grass blocks
+    public static final Block MARSH_GRASS_OLIVE_GREEN = new TallPlantBlock(AbstractBlock.Settings.of(Material.REPLACEABLE_PLANT).noCollision().breakInstantly().sounds(BlockSoundGroup.GRASS).offsetType(AbstractBlock.OffsetType.XZ));
     public static final Block MARSH_GRASS_RED = new TallPlantBlock(AbstractBlock.Settings.of(Material.REPLACEABLE_PLANT).noCollision().breakInstantly().sounds(BlockSoundGroup.GRASS).offsetType(AbstractBlock.OffsetType.XZ));
+    public static final Block MARSH_GRASS_YELLOW = new TallPlantBlock(AbstractBlock.Settings.of(Material.REPLACEABLE_PLANT).noCollision().breakInstantly().sounds(BlockSoundGroup.GRASS).offsetType(AbstractBlock.OffsetType.XZ));
 
     // Mushroom blocks
     public static final Block PINK_MUSHROOM_BLOCK = new MushroomBlock(AbstractBlock.Settings.of(Material.WOOD, MapColor.DULL_PINK).strength(0.2F).sounds(BlockSoundGroup.WOOD));
@@ -125,7 +127,9 @@ public class TethysBlocks {
         Registry.register(Registries.BLOCK, new Identifier("parallel_world", "mangrove_leaves"), MANGROVE_LEAVES);
 
         // Marsh grass blocks
+        Registry.register(Registries.BLOCK, new Identifier("parallel_world", "marsh_grass_olive_green"), MARSH_GRASS_OLIVE_GREEN);
         Registry.register(Registries.BLOCK, new Identifier("parallel_world", "marsh_grass_red"), MARSH_GRASS_RED);
+        Registry.register(Registries.BLOCK, new Identifier("parallel_world", "marsh_grass_yellow"), MARSH_GRASS_YELLOW);
 
         // Mushroom blocks
         Registry.register(Registries.BLOCK, new Identifier("parallel_world", "pink_mushroom_block"), PINK_MUSHROOM_BLOCK);

@@ -8,7 +8,7 @@
     },
     "sky_color": 5211903,
     "fog_color": 12638463,
-    "water_color": 3750089,
+    "water_color": 4556274,
     "water_fog_color": 329011
   },
   "carvers": {
@@ -78,7 +78,8 @@
 	  "minecraft:kelp_cold"
     ],
     [
-	  "minecraft:freeze_top_layer"
+	  "minecraft:freeze_top_layer",
+      "parallel_world:freeze_shaded_water"
     ]
   ],
   "starts": [
@@ -204,5 +205,6 @@
   },
   "precipitation": "snow",
   "temperature": 0.0,
+  "temperature_modifier": "frozen",
   "downfall": 0.5
 }

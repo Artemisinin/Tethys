@@ -1,0 +1,8 @@
+{
+  "feature": "parallel_world:fill_in_ice",
+  "placement": [
+    {
+      "type": "minecraft:biome"
+    }
+  ]
+}

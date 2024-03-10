@@ -15,6 +15,7 @@
     "SpawnRestrictionMixin",
     "StructureStartMixin",
     "TreeDecoratorTypeRegisterInvoker",
+    "TreeFeatureMixin",
     "TrunkPlacerTypeRegisterInvoker",
     "WorldSeaLevelMixin",
     "saplingblocks.BirchSaplingMixin",

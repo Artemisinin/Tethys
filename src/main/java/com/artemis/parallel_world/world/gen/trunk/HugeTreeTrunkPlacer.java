@@ -12,7 +12,7 @@ import net.minecraft.util.math.random.Random;
 import net.minecraft.world.TestableWorld;
 import net.minecraft.world.gen.feature.TreeFeature;
 import net.minecraft.world.gen.feature.TreeFeatureConfig;
-import net.minecraft.world.gen.foliage.FoliagePlacer;
+import net.minecraft.world.gen.foliage.FoliagePlacer.TreeNode;
 import net.minecraft.world.gen.trunk.TrunkPlacer;
 import net.minecraft.world.gen.trunk.TrunkPlacerType;
 
@@ -34,16 +34,17 @@ public class HugeTreeTrunkPlacer extends TrunkPlacer {
     }
 
     @Override
-    public List<FoliagePlacer.TreeNode> generate(TestableWorld testableWorld, BiConsumer<BlockPos, BlockState> biConsumer, Random random, int trunkHeight, BlockPos placementPos, TreeFeatureConfig treeFeatureConfig) {
+    public List<TreeNode> generate(TestableWorld testableWorld, BiConsumer<BlockPos, BlockState> biConsumer, Random random, int trunkHeight, BlockPos placementPos, TreeFeatureConfig treeFeatureConfig) {
         // This whole shebang is supposed to set dirt, place trunks, and send a list of nodes to place foliage at to the foliage placer.
 
+        // Place dirt if needed.
         BlockPos substratePos = placementPos.down();
         setToDirt(testableWorld, biConsumer, random, substratePos, treeFeatureConfig);
         setToDirt(testableWorld, biConsumer, random, substratePos.east(), treeFeatureConfig);
         setToDirt(testableWorld, biConsumer, random, substratePos.south(), treeFeatureConfig);
         setToDirt(testableWorld, biConsumer, random, substratePos.south().east(), treeFeatureConfig);
 
-        // Build the treedecorator trunk kinda tapering at the top.
+        // Build the trunk kinda tapering at the top.
         BlockPos.Mutable mutable = new BlockPos.Mutable();
         // Pick randomly which column gets generated at the top of the trunk in the loop below.
         int columnX;
@@ -59,91 +60,127 @@ public class HugeTreeTrunkPlacer extends TrunkPlacer {
             // Sets a full column at the top left corner of the 4x4 grid.
             setLog(testableWorld, biConsumer, random, mutable, treeFeatureConfig, placementPos, 0, trunkY, 0);
             // Fills in additional columns in the 4x4 grid depending on height.
-            if (trunkY <= trunkHeight/4) {
+            if (trunkY <= trunkHeight/3) {
+            /*
+            _____________________
+            |x+0, z+0 | x+1, z+0|
+            |x+0, z+1 | x+1, z+1|
+            ---------------------
+             */
                 setLog(testableWorld, biConsumer, random, mutable, treeFeatureConfig, placementPos, 1, trunkY, 0);
                 setLog(testableWorld, biConsumer, random, mutable, treeFeatureConfig, placementPos, 1, trunkY, 1);
                 setLog(testableWorld, biConsumer, random, mutable, treeFeatureConfig, placementPos, 0, trunkY, 1);
             }
-            if (trunkY > trunkHeight/4 && trunkY <= trunkHeight/2) {
+            if (trunkY > trunkHeight/3 && trunkY <= trunkHeight/2) {
+            /*
+            ______________________
+            |x+0, z+0 | x+1, z+0 |
+            |x+0, z+1 |
+            -----------
+            */
                 setLog(testableWorld, biConsumer, random, mutable, treeFeatureConfig, placementPos, 1, trunkY, 0);
                 setLog(testableWorld, biConsumer, random, mutable, treeFeatureConfig, placementPos, 0, trunkY, 1);
             }
             if (trunkY > trunkHeight/2 && trunkY <= trunkHeight * 3/4) {
+            /*
+                ______________________ or   ___________
+                |x+0, z+0 | x+1, z+0 |      |x+0, z+0 |
+                ----------------------      |x+0, z+1 |
+                                            -----------
+            */
                 setLog(testableWorld, biConsumer, random, mutable, treeFeatureConfig, placementPos, columnX, trunkY, columnZ);
             }
         }
-        int minBranchBaseHeight = MathHelper.floor((double)trunkHeight * 0.33);
-        int branchNumberAtY;
+        // Add foliage nodes at 1/2, 3/4, and top of trunk.
+        List<TreeNode> treeNodes = Lists.newArrayList();
+        treeNodes.add(new TreeNode(placementPos.add(0, trunkHeight - 1,0),0, false));
+        treeNodes.add(new TreeNode(placementPos.add(0, trunkHeight*3/4, 0), 0, true));
+        treeNodes.add(new TreeNode(placementPos.add(0, trunkHeight/2, 0), 0, true));
 
-        List<FoliagePlacer.TreeNode> treeNodes = Lists.newArrayList();
-        // Add foliage nodes at 1/2, 3/4, and top of treedecorator.
-        treeNodes.add(new FoliagePlacer.TreeNode(placementPos.add(0, trunkHeight,0),0, false));
-        treeNodes.add(new FoliagePlacer.TreeNode(placementPos.add(0, trunkHeight*3/4, 0), 0, true));
-        treeNodes.add(new FoliagePlacer.TreeNode(placementPos.add(0, trunkHeight/2, 0), 0, true));
+        int minBranchBaseHeight = MathHelper.floor((double)trunkHeight * 0.33);
 
         // This is supposed to find the point where a branch comes out of the trunk. That should then get passed on
         // to select the positions to be turned into logs.
         // Goal is to decide where to start each branch. How many branches? Which height? Which direction?
-        int branchTopHeight = trunkHeight-random.nextBetween(3, 6);
-        for(int branchPlacementHeight = branchTopHeight; branchPlacementHeight >= minBranchBaseHeight; --branchPlacementHeight) {
-            switch (random.nextBetween(0,20)) {
-                case 1, 2, 3, 4, 5 -> branchNumberAtY = 1;
-                case 6, 7 -> branchNumberAtY = 2;
-                default -> branchNumberAtY = 0;
-            }
-            for(int p = 1; p <= branchNumberAtY; ++p) {
-                //// If we're not supposed to put a branch at this y at all, go on to the next y level.
-                //if (branchNumberAtY == 0) {
-                //    continue;
-                //}
-                double placementAngle = random.nextFloat() * 2.0F * Math.PI;
-                double branchX;
-                double branchZ;
-                // set X and Z value and accommodate for 4x4 trunk.
-                // The Z axis runs THE OPPOSITE WAY from what you would think.
-                // The additional trunk blocks are placed at x+1 and z+1.
-                if (Math.sin(placementAngle) >= 0.707) {
-                    //Branch should grow from north side of trunk northward.
+        int branchTopHeight = trunkHeight - random.nextBetween(3, 6);
+        double placementAngle = 0;
+        for(int branchPlacementHeight = branchTopHeight;
+            branchPlacementHeight >= minBranchBaseHeight;
+            branchPlacementHeight = branchPlacementHeight-2) {
+            double branchX;
+            double branchZ;
+            // Set X and Z value and accommodate for 4x4 trunk.
+            // ** The Z axis runs THE OPPOSITE WAY from what you would think (see above diagrams). **
+            // The additional trunk blocks are placed at x+1 and z+1.
+            if (Math.sin(placementAngle) >= 0.707) {
+                //Branch should grow from north side of trunk northward.
+                branchZ = 0;
+                if (branchPlacementHeight < trunkHeight/2) {
                     // Randomly add 1 to x to shift from left to right of trunk.
                     branchX = random.nextBoolean() ? 1 : 0;
-                    branchZ = 0;
-                } else
-                if (Math.sin(placementAngle) <= -0.707) {
-                    // Branch should grow from south side of trunk southward.
+                } else branchX = 0;
+            } else
+            if (Math.sin(placementAngle) <= -0.707) {
+                // Branch should grow from south side of trunk southward.
+                branchZ = 1;
+                if (branchPlacementHeight < trunkHeight/3) {
                     // Randomly add +1 to x to shift from left to right of trunk.
                     branchX = random.nextBoolean() ? 1 : 0;
-                    branchZ = 1;
-                } else
-                if (Math.cos(placementAngle) < 0) {
-                    // Branch should grow from west side of trunk westward.
+                } else branchX = 0;
+
+            } else
+            if (Math.cos(placementAngle) < 0) {
+                // Branch should grow from west side of trunk westward.
+                branchX = 0;
+                if (branchPlacementHeight < trunkHeight/2) {
                     // Randomly add +1 to x to shift from left to right of trunk.
-                    branchX = 0;
                     branchZ = random.nextBoolean() ? 1 : 0;
-                }
-                else {
-                    // Branch should grow from east side of trunk eastward.
+                } else branchZ = 0;
+            }
+            else {
+                // Branch should grow from east side of trunk eastward.
+                branchX = 1;
+                if (branchPlacementHeight < trunkHeight/3) {
                     // Randomly add +1 to x to shift from left to right of trunk.
-                    branchX = 1;
                     branchZ = random.nextBoolean() ? 1 : 0;
-                }
-                BlockPos branchPos = placementPos.add(branchX, branchPlacementHeight, branchZ);
-                // Check positions and add to the list of branchPositions, but don't make them yet.
-                List<BlockPos> singleBranchLogPositions = this.checkBranch(testableWorld, branchPos, placementAngle, random);
-                if (!singleBranchLogPositions.isEmpty()) {
-                    for (BlockPos logPosition : singleBranchLogPositions) {
-                        this.getAndSetState(testableWorld, biConsumer, random, logPosition, treeFeatureConfig,
-                                state -> state.withIfExists(PillarBlock.AXIS, this.getLogAxis(branchPos, logPosition)));
+                } else branchZ = 0;
+            }
+            BlockPos branchPos = placementPos.add(branchX, branchPlacementHeight, branchZ);
+            // Check positions and add to the list of branchPositions, but don't make them yet.
+            List<BlockPos> singleBranchLogPositions = this.checkBranch(testableWorld, branchPos, placementAngle, random, true);
+            int length = singleBranchLogPositions.size();
+            // Add foliage placers along the branch.
+            treeNodes.add(new TreeNode(singleBranchLogPositions.get((int) Math.floor(length/3)), 0, false));
+            treeNodes.add(new TreeNode(singleBranchLogPositions.get((int) Math.floor(length * 2/3)), 0, false));
+            treeNodes.add(new TreeNode(singleBranchLogPositions.get(length - 1), 0, false));
+            // Make the branch.
+            buildBranch(singleBranchLogPositions, testableWorld, biConsumer,random,treeFeatureConfig, branchPos);
+            // If the branch is more than 4 blocks long, add a side branch at the midpoint.
+            if (length > 4) {
+                int index = (int) Math.floor(length/2);
+                List<BlockPos> sideBranchLogPositions;
+                while (index <= (length - 1)) {
+                    double rotationAngle = random.nextBoolean() ? Math.PI / 2 : Math.PI / 2 * -1;
+                    BlockPos blockPos = singleBranchLogPositions.get(index);
+                    double sideBranchAngle = placementAngle + rotationAngle;
+                    sideBranchLogPositions = this.checkBranch(testableWorld, blockPos, sideBranchAngle, random, false);
+                    treeNodes.add(new TreeNode(sideBranchLogPositions.get(sideBranchLogPositions.size() - 1), 0, false));
+                    int sideBranchLength = sideBranchLogPositions.size();
+                    if (sideBranchLength > 4) {
+                        int midpoint = (int) Math.floor(sideBranchLength / 2);
+                        treeNodes.add(new TreeNode(sideBranchLogPositions.get(midpoint), 0, false));
                     }
-                    treeNodes.add(new FoliagePlacer.TreeNode(singleBranchLogPositions.get(singleBranchLogPositions.size() - 1), 0, false));
-                    int index = (int) Math.floor(singleBranchLogPositions.size()/2);
-                    treeNodes.add(new FoliagePlacer.TreeNode(singleBranchLogPositions.get(index), 0, false));
+                    buildBranch(sideBranchLogPositions, testableWorld, biConsumer, random, treeFeatureConfig, blockPos);
+                    index = Math.min(index + 2, length);
+                    sideBranchLogPositions.clear();
                 }
             }
+            placementAngle = placementAngle + (Math.PI/2);
         }
         return treeNodes;
     }
 
-    private List<BlockPos> checkBranch(TestableWorld testableWorld, BlockPos branchPos, Double placementAngle, Random random) {
+    private List<BlockPos> checkBranch(TestableWorld testableWorld, BlockPos branchPos, Double placementAngle, Random random, Boolean mainBranch) {
 
         List<BlockPos> branchPositions = Lists.newArrayList();
         branchPositions.add(branchPos);
@@ -166,14 +203,13 @@ public class HugeTreeTrunkPlacer extends TrunkPlacer {
             xFactor = 1;
             zFactor = 0;
         }
-        int length = random.nextBetween(4, 7);
+        // If this is a main branch from the trunk, it will be longer than side branches.
+        int length = mainBranch ? random.nextBetween(4, 7) : random.nextBetween(2, 4);
         int delta = 0;
         int deltaX = 0;
         int deltaY = 0;
         int deltaZ = 0;
-        int shift = 0;
-        int xShift = 0;
-        int zShift = 0;
+
         for (int logNumber = 0; logNumber <= length; ++logNumber) {
             // The first 2 blocks should go directly out from the trunk.
             if (logNumber < 3) {
@@ -188,30 +224,28 @@ public class HugeTreeTrunkPlacer extends TrunkPlacer {
                 } else {
                     ++deltaY;
                 }
-                switch (random.nextBetween(1, 8)) {
-                    case 1 -> shift = -1;
-                    case 2 -> shift = 1;
-                    default -> shift = 0;
-                }
             }
             if (xFactor != 0) {
                 deltaX = delta;
-                zShift = shift;
             } else {
                 deltaZ = delta;
-                xShift = shift;
             }
-            BlockPos branchBlockPos = branchPos.add(deltaX*xFactor + xShift, deltaY, deltaZ*zFactor + zShift);
+            BlockPos branchBlockPos = branchPos.add(deltaX*xFactor, deltaY, deltaZ*zFactor);
             if (TreeFeature.canReplace(testableWorld, branchBlockPos)) {
                 branchPositions.add(branchBlockPos);
             }
             else break;
-            // Need to fix this to add side branches maybe eventually.
-            //if (length > 0 && longestSide > 4 && (Math.floor(longestSide / length) == 2)) {
-            //    branchPositions.add(new HugeTreeTrunkPlacer.BranchPosition(branchBlockPos, branchPos.getY()));
-            // }
         }
         return branchPositions;
+    }
+
+    private void buildBranch(List<BlockPos> branchLogPositions, TestableWorld testableWorld, BiConsumer<BlockPos, BlockState> biConsumer, Random random, TreeFeatureConfig treeFeatureConfig, BlockPos branchPos) {
+        if (!branchLogPositions.isEmpty()) {
+            for (BlockPos logPosition : branchLogPositions) {
+                this.getAndSetState(testableWorld, biConsumer, random, logPosition, treeFeatureConfig,
+                        state -> state.withIfExists(PillarBlock.AXIS, this.getLogAxis(branchPos, logPosition)));
+            }
+        }
     }
 
     private Direction.Axis getLogAxis(BlockPos branchStart, BlockPos branchEnd) {
@@ -222,11 +256,12 @@ public class HugeTreeTrunkPlacer extends TrunkPlacer {
         int deltaZ = Math.abs(branchEnd.getZ() - branchStart.getZ());
         int deltaMaxHorizontal = Math.max(deltaX, deltaZ);
         // I feel like there's a better way than setting it to Y again.
-        if (deltaY > deltaMaxHorizontal + 3) {
+        // Moved below if to the next.
+/*        if (deltaY > deltaMaxHorizontal + 3) {
             //axis = Direction.Axis.Y;
             return axis;
-        }
-        else if (deltaMaxHorizontal > 0) {
+        }*/
+        if (deltaMaxHorizontal > 0 && deltaY < deltaMaxHorizontal + 3) {
             if (deltaX == deltaMaxHorizontal) {
                 axis = Direction.Axis.X;
             } else {

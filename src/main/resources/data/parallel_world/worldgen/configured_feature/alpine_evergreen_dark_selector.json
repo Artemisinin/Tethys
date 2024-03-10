@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:random_selector",
+  "config": {
+    "default": {
+      "feature": "parallel_world:dwarf_pine",
+      "placement": []
+    },
+    "features": [
+      {
+        "feature": {
+          "feature": "parallel_world:dwarf_spruce",
+          "placement": []
+        },
+        "chance": 0.50
+      }
+    ]
+  }
+}
