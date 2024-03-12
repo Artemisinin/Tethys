@@ -191,7 +191,7 @@
     ],
     "misc": []
   },
-  "precipitation": "snow",
+  "has_precipitation": true,
   "temperature": 0.0,
   "temperature_modifier": "frozen",
   "downfall": 0.5

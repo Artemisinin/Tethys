@@ -232,7 +232,7 @@
 		],
 		"misc": []
 	},
-	"precipitation": "rain",
+	"has_precipitation": true,
 	"temperature": 0.95,
 	"downfall": 1
 }

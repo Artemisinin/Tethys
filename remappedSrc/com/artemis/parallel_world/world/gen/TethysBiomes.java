@@ -1,11 +1,16 @@
 package com.artemis.parallel_world.world.gen;
 
 import net.minecraft.registry.*;
+import net.minecraft.registry.tag.TagKey;
 import net.minecraft.util.Identifier;
 import net.minecraft.world.biome.Biome;
 
 public class TethysBiomes {
 
+    public static final TagKey<Biome> IS_TETHYS = TagKey.of(RegistryKeys.BIOME, new Identifier("parallel_world:is_tethys"));
+
+}
+    /*
     // Adding a json biome to the registry will allow it to be added to vanilla dimensions.
     // I don't think we need this any more but I don't think it hurts anything.
 
@@ -28,6 +33,7 @@ public class TethysBiomes {
     public static final RegistryKey<Biome> SNOW_FOREST_KEY = RegistryKey.of(RegistryKeys.BIOME, new Identifier("parallel_world", "snow_forest"));
     public static final RegistryKey<Biome> TRAPS_KEY = RegistryKey.of(RegistryKeys.BIOME, new Identifier("parallel_world", "traps"));
     public static final RegistryKey<Biome> WASTELAND_KEY = RegistryKey.of(RegistryKeys.BIOME, new Identifier("parallel_world", "wasteland"));
+*/
 
     // I think we don't need this any more
     /*
@@ -75,5 +81,3 @@ public class TethysBiomes {
         BuiltinBiomesAccessor.getBY_RAW_ID().put(BuiltinRegistries.BIOME.getRawId(BuiltinRegistries.BIOME.get(WASTELAND_KEY)), WASTELAND_KEY);
         }
         */
-
-}

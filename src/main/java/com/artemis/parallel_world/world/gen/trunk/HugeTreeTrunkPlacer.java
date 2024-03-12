@@ -107,8 +107,8 @@ public class HugeTreeTrunkPlacer extends TrunkPlacer {
         for(int branchPlacementHeight = branchTopHeight;
             branchPlacementHeight >= minBranchBaseHeight;
             branchPlacementHeight = branchPlacementHeight-2) {
-            double branchX;
-            double branchZ;
+            int branchX;
+            int branchZ;
             // Set X and Z value and accommodate for 4x4 trunk.
             // ** The Z axis runs THE OPPOSITE WAY from what you would think (see above diagrams). **
             // The additional trunk blocks are placed at x+1 and z+1.
@@ -150,9 +150,9 @@ public class HugeTreeTrunkPlacer extends TrunkPlacer {
             List<BlockPos> singleBranchLogPositions = this.checkBranch(testableWorld, branchPos, placementAngle, random, true);
             int length = singleBranchLogPositions.size();
             // Add foliage placers along the branch.
-            treeNodes.add(new TreeNode(singleBranchLogPositions.get((int) Math.floor(length/3)), 0, false));
-            treeNodes.add(new TreeNode(singleBranchLogPositions.get((int) Math.floor(length * 2/3)), 0, false));
-            treeNodes.add(new TreeNode(singleBranchLogPositions.get(length - 1), 0, false));
+            treeNodes.add(new TreeNode(singleBranchLogPositions.get((int) Math.floor(length/3)).down(), 0, false));
+            treeNodes.add(new TreeNode(singleBranchLogPositions.get((int) Math.floor(length * 2/3)).down(), 0, false));
+            treeNodes.add(new TreeNode(singleBranchLogPositions.get(length - 1).down(), 0, false));
             // Make the branch.
             buildBranch(singleBranchLogPositions, testableWorld, biConsumer,random,treeFeatureConfig, branchPos);
             // If the branch is more than 4 blocks long, add a side branch at the midpoint.

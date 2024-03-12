@@ -110,10 +110,10 @@ public class WaterStriderEntity extends PathAwareEntity {
         }
         else {
             ShapeContext shapeContext = ShapeContext.of(this);
-            if (shapeContext.isAbove(FluidBlock.COLLISION_SHAPE, this.getBlockPos(), true) && this.world.getFluidState(this.getBlockPos()).isOf(Fluids.WATER)) {
+            if (shapeContext.isAbove(FluidBlock.COLLISION_SHAPE, this.getBlockPos(), true) && this.getWorld().getFluidState(this.getBlockPos()).isOf(Fluids.WATER)) {
                 this.setVelocity(this.getVelocity().x, 0, getVelocity().z);
                 this.touchingWater = true;
-                this.onGround = true;
+                this.setOnGround(true);
             }
         }
     }
@@ -141,17 +141,17 @@ public class WaterStriderEntity extends PathAwareEntity {
         @Override
         public boolean canStart() {
             //this.targetEntity = this.mob.world.getClosestEntity(this.classToFleeFrom, this.withinRangePredicate, this.mob, this.mob.getX(), this.mob.getY(), this.mob.getZ(), this.mob.getBoundingBox().expand((double) this.fleeDistance, 3.0D, (double) this.fleeDistance));
-            this.targetEntity = this.mob.world.getClosestEntity(this.mob.world.getEntitiesByClass(this.classToFleeFrom, this.mob.getBoundingBox().expand(this.fleeDistance, 3.0, this.fleeDistance), livingEntity -> true), this.withinRangePredicate, this.mob, this.mob.getX(), this.mob.getY(), this.mob.getZ());
+            this.targetEntity = this.mob.getWorld().getClosestEntity(this.mob.getWorld().getEntitiesByClass(this.classToFleeFrom, this.mob.getBoundingBox().expand(this.fleeDistance, 3.0, this.fleeDistance), livingEntity -> true), this.withinRangePredicate, this.mob, this.mob.getX(), this.mob.getY(), this.mob.getZ());
             //if (this.targetEntity == null || !this.mob.world.getFluidState(this.mob.getBlockPos().down()).isIn(FluidTags.WATER)) {
-            if (this.targetEntity == null || !this.mob.world.getFluidState(this.mob.getBlockPos().down()).isIn(FluidTags.WATER)) {
+            if (this.targetEntity == null || !this.mob.getWorld().getFluidState(this.mob.getBlockPos().down()).isIn(FluidTags.WATER)) {
                 return false;
             } else {
                 Vec3d vec3d = NoPenaltyTargeting.findFrom(this.mob, 16, 0, this.targetEntity.getPos());
                 if (vec3d == null) {
                     return false;
                 }
-                BlockPos target = new BlockPos(vec3d.x, vec3d.y, vec3d.z);
-                if (this.mob.world.getFluidState(target.down()).isOf(Fluids.WATER)) {
+                BlockPos target = new BlockPos((int) vec3d.getX(), (int) vec3d.getY(), (int) vec3d.getZ());
+                if (this.mob.getWorld().getFluidState(target.down()).isOf(Fluids.WATER)) {
                     if (this.targetEntity.squaredDistanceTo(vec3d.x, vec3d.y, vec3d.z) < this.targetEntity.squaredDistanceTo(this.mob)) {
                         return false;
                     } else {
@@ -175,13 +175,13 @@ public class WaterStriderEntity extends PathAwareEntity {
         @Override
         public boolean canStart() {
             down = mob.getBlockPos().down();
-            return (mob.world.getFluidState(down).isOf(Fluids.WATER)) && super.canStart();
+            return (mob.getWorld().getFluidState(down).isOf(Fluids.WATER)) && super.canStart();
         }
 
         @Override
         public boolean shouldContinue() {
             down = mob.getBlockPos().down();
-            if (!mob.world.getFluidState(down).isOf(Fluids.WATER)) {
+            if (!mob.getWorld().getFluidState(down).isOf(Fluids.WATER)) {
                 return false;
             }
             // Not sure if like return to water where it needs go to the actual water block to target correctly.
@@ -221,7 +221,7 @@ public class WaterStriderEntity extends PathAwareEntity {
                         int n = ((m < l) && (m > -l)) ? l : 0;
                         while (n <= l) {
                             mutable.set(origin, m, k - 1, n);
-                            if (this.mob.isInWalkTargetRange(mutable) && this.mob.world.getFluidState(mutable).isOf(Fluids.WATER)) {
+                            if (this.mob.isInWalkTargetRange(mutable) && this.mob.getWorld().getFluidState(mutable).isOf(Fluids.WATER)) {
                                 return mutable.toCenterPos();
                             }
                             n = n > 0 ? -n : 1 - n;
@@ -249,14 +249,14 @@ public class WaterStriderEntity extends PathAwareEntity {
         @Override
         public boolean canStart() {
             BlockPos down = mob.getBlockPos().down();
-            return (!mob.world.getFluidState(down).isOf(Fluids.WATER) && super.canStart());
+            return (!mob.getWorld().getFluidState(down).isOf(Fluids.WATER) && super.canStart());
             //return (!mob.isTouchingWater() && super.canStart());
         }
 
         @Override
         public boolean shouldContinue() {
             BlockPos down = mob.getBlockPos().down();
-            if (mob.world.getFluidState(down).isOf(Fluids.WATER)) {
+            if (mob.getWorld().getFluidState(down).isOf(Fluids.WATER)) {
                 return false;
             }
             else return !this.mob.getNavigation().isIdle();

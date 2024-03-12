@@ -7,7 +7,9 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.projectile.thrown.ThrownItemEntity;
 import net.minecraft.fluid.*;
 import net.minecraft.item.Item;
-import net.minecraft.network.Packet;
+import net.minecraft.network.listener.ClientPlayPacketListener;
+import net.minecraft.network.packet.Packet;
+import net.minecraft.network.packet.s2c.play.EntitySpawnS2CPacket;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.Identifier;
@@ -32,19 +34,18 @@ public class GlowLichenBallEntity extends ThrownItemEntity {
         super(TethysEntities.GLOW_LICHEN_BALL, x, y, z, world);
     }
 
-    //public static final Identifier GLOW_LICHEN_BALL_SPAWN_PACKET = new Identifier("parallel_world", "glow_lichen_ball_spawn_packet");
+    public static final Identifier GLOW_LICHEN_BALL_SPAWN_PACKET = new Identifier("parallel_world", "glow_lichen_ball_spawn_packet");
 
-/*    @Override
-    public Packet<?> createSpawnPacket() {
-
+    //@Override
+    //public Packet<ClientPlayPacketListener> createSpawnPacket() {
         //return EntitySpawnPacket.create(this, GLOW_LICHEN_BALL_SPAWN_PACKET);
-    }*/
+    //}
 
     @Override
     protected Item getDefaultItem() {
         return TethysItems.GLOW_LICHEN_BALL;
     }
-
+/*
     protected void onBlockHit(BlockHitResult blockHitResult) {
         // Properties
         Map<Direction, BooleanProperty> FACING_PROPERTIES = ConnectingBlock.FACING_PROPERTIES;
@@ -75,4 +76,6 @@ public class GlowLichenBallEntity extends ThrownItemEntity {
             this.remove(RemovalReason.DISCARDED);
         }
     }
+
+ */
 }

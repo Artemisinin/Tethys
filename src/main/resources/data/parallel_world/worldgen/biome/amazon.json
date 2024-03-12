@@ -23,6 +23,7 @@
     "water_color": 3832426,
     "water_fog_color": 5077600
   },
+  "has_precipitation": true,
   "features": [
     [
       "parallel_world:seagen/seabed_bedrock_1",
@@ -96,7 +97,6 @@
       "minecraft:freeze_top_layer"
     ]
   ],
-  "precipitation": "rain",
   "spawn_costs": {
     "minecraft:spider": {
       "charge": 0.7,

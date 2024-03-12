@@ -50,7 +50,6 @@ public class TethysTurtleEntity extends AnimalEntity {
         super(entityType, world);
         this.setPathfindingPenalty(PathNodeType.WATER, 0.0F);
         this.moveControl = new TethysTurtleEntity.TurtleMoveControl(this);
-        this.stepHeight = 1.0F;
     }
 
     private static final TrackedData<BlockPos> HOME_POS = DataTracker.registerData(TethysTurtleEntity.class, TrackedDataHandlerRegistry.BLOCK_POS);
@@ -178,10 +177,10 @@ public class TethysTurtleEntity extends AnimalEntity {
     public static Builder createTurtleAttributes() {
         return MobEntity.createMobAttributes().add(EntityAttributes.GENERIC_MAX_HEALTH, 30.0D).add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.25D);
     }
-
-    public boolean canBreatheInWater() {
-        return true;
-    }
+    // Add to tag group
+    //public boolean canBreatheInWater() {
+    //    return true;
+    //}
 
     public EntityGroup getGroup() {
         return EntityGroup.AQUATIC;
@@ -193,7 +192,7 @@ public class TethysTurtleEntity extends AnimalEntity {
 
     @Nullable
     protected SoundEvent getAmbientSound() {
-        return !this.isTouchingWater() && this.onGround && !this.isBaby() ? SoundEvents.ENTITY_TURTLE_AMBIENT_LAND : super.getAmbientSound();
+        return !this.isTouchingWater() && this.isOnGround() && !this.isBaby() ? SoundEvents.ENTITY_TURTLE_AMBIENT_LAND : super.getAmbientSound();
     }
 
     protected void playSwimSound(float volume) {
@@ -243,7 +242,7 @@ public class TethysTurtleEntity extends AnimalEntity {
         if (world.getBlockState(pos).getFluidState().isIn(FluidTags.WATER)) {
             return 10.0F;
         } else {
-            return this.world.getFluidState(this.getBlockPos()).isIn(FluidTags.WATER) ? Float.NEGATIVE_INFINITY : 0.0F;
+            return this.getWorld().getFluidState(this.getBlockPos()).isIn(FluidTags.WATER) ? Float.NEGATIVE_INFINITY : 0.0F;
         }
     }
 
@@ -251,15 +250,15 @@ public class TethysTurtleEntity extends AnimalEntity {
         super.tickMovement();
         if (this.isAlive() && this.isDiggingSand() && this.sandDiggingCounter >= 1 && this.sandDiggingCounter % 5 == 0) {
             BlockPos blockPos = this.getBlockPos();
-            if (TethysTurtleEggBlock.isSand(this.world, blockPos)) {
-                this.world.syncWorldEvent(2001, blockPos, Block.getRawIdFromState(Blocks.SAND.getDefaultState()));
+            if (TethysTurtleEggBlock.isSand(this.getWorld(), blockPos)) {
+                this.getWorld().syncWorldEvent(2001, blockPos, Block.getRawIdFromState(Blocks.SAND.getDefaultState()));
             }
         }
     }
 
     protected void onGrowUp() {
         super.onGrowUp();
-        if (!this.isBaby() && this.world.getGameRules().getBoolean(GameRules.DO_MOB_LOOT)) {
+        if (!this.isBaby() && this.getWorld().getGameRules().getBoolean(GameRules.DO_MOB_LOOT)) {
             this.dropItem(Items.SCUTE, 1);
         }
     }
@@ -277,12 +276,14 @@ public class TethysTurtleEntity extends AnimalEntity {
         }
     }
 
+    @Override
     public boolean canBeLeashedBy(PlayerEntity player) {
         return false;
     }
 
+    @Override
     public void onStruckByLightning(ServerWorld world, LightningEntity lightning) {
-        this.damage(DamageSource.LIGHTNING_BOLT, 3.4F);
+        this.damage(this.getDamageSources().lightningBolt(), 3.4f);
     }
 
     static class TurtleSwimNavigation extends SwimNavigation {
@@ -290,16 +291,19 @@ public class TethysTurtleEntity extends AnimalEntity {
             super(owner, world);
         }
 
+        @Override
         protected boolean isAtValidPosition() {
             return true;
         }
 
+        @Override
         protected PathNodeNavigator createPathNodeNavigator(int range) {
             // This true/false thing seems to penalize swimming far below sea level.
             this.nodeMaker = new AmphibiousPathNodeMaker(false);
             return new PathNodeNavigator(this.nodeMaker, range);
         }
 
+        @Override
         public boolean isValidPosition(BlockPos pos) {
             if (this.entity instanceof TethysTurtleEntity) {
                 TethysTurtleEntity tethysTurtleEntity = (TethysTurtleEntity)this.entity;
@@ -328,7 +332,7 @@ public class TethysTurtleEntity extends AnimalEntity {
                 if (this.turtle.isBaby()) {
                     this.turtle.setMovementSpeed(Math.max(this.turtle.getMovementSpeed() / 3.0F, 0.06F));
                 }
-            } else if (this.turtle.onGround) {
+            } else if (this.turtle.isOnGround()) {
                 this.turtle.setMovementSpeed(Math.max(this.turtle.getMovementSpeed() / 2.0F, 0.06F));
             }
         }
@@ -363,7 +367,7 @@ public class TethysTurtleEntity extends AnimalEntity {
         }
 
         public boolean shouldContinue() {
-            return !this.turtle.isTouchingWater() && this.tryingTime <= 1200 && this.isTargetPos(this.turtle.world, this.targetPos);
+            return !this.turtle.isTouchingWater() && this.tryingTime <= 1200 && this.isTargetPos(this.turtle.getWorld(), this.targetPos);
         }
 
         public boolean canStart() {
@@ -415,7 +419,7 @@ public class TethysTurtleEntity extends AnimalEntity {
             super.tick();
             BlockPos turtlePos = this.turtle.getBlockPos();
             BlockPos belowTurtlePos = turtlePos.down();
-            BlockState belowTurtleBlockState = this.turtle.world.getBlockState(belowTurtlePos);
+            BlockState belowTurtleBlockState = this.turtle.getWorld().getBlockState(belowTurtlePos);
             // Block belowTurtleBlock = belowTurtleBlockState.getBlock();
             if (this.hasReached()) {
                 if (belowTurtleBlockState.isIn(BlockTags.SAND)) {
@@ -424,7 +428,7 @@ public class TethysTurtleEntity extends AnimalEntity {
                     if (this.turtle.sandDiggingCounter < 1) {
                         this.turtle.setDiggingSand(true);
                     } else if (this.turtle.sandDiggingCounter > 100) {
-                        World world = this.turtle.world;
+                        World world = this.turtle.getWorld();
                         world.playSound(null, turtlePos, SoundEvents.ENTITY_TURTLE_LAY_EGG, SoundCategory.BLOCKS, 0.3F, 0.9F + world.random.nextFloat() * 0.2F);
                         world.setBlockState(this.targetPos.up(), TethysBlocks.TETHYS_TURTLE_EGG.getDefaultState().with(TethysTurtleEggBlock.EGGS, this.turtle.random.nextInt(4) + 1), 3);
                         this.turtle.setHasEgg(false);
@@ -522,22 +526,22 @@ public class TethysTurtleEntity extends AnimalEntity {
             }
 
             if (this.turtle.getNavigation().isIdle()) {
-                Vec3d vec3d = Vec3d.ofBottomCenter(blockPos);
-                Vec3d vec3d2 = NoPenaltyTargeting.findTo(this.turtle, 16, 3, vec3d, 0.3141592741012573D);
-                if (vec3d2 == null) {
-                    vec3d2 = NoPenaltyTargeting.findTo(this.turtle, 8, 7, vec3d, 1.57D);
+                Vec3d current = Vec3d.ofBottomCenter(blockPos);
+                Vec3d target = NoPenaltyTargeting.findTo(this.turtle, 16, 3, current, 0.3141592741012573D);
+                if (target == null) {
+                    target = NoPenaltyTargeting.findTo(this.turtle, 8, 7, current, 1.57D);
                 }
 
-                if (vec3d2 != null && !bl && !this.turtle.world.getBlockState(new BlockPos(vec3d2)).isOf(Blocks.WATER)) {
-                    vec3d2 = NoPenaltyTargeting.findTo(this.turtle, 16, 5, vec3d, 1.57D);
+                if (target != null && !bl && !this.turtle.getWorld().getBlockState(new BlockPos((int) target.getX(), (int) target.getY(), (int) target.getZ())).isOf(Blocks.WATER)) {
+                    target = NoPenaltyTargeting.findTo(this.turtle, 16, 5, current, 1.57D);
                 }
 
-                if (vec3d2 == null) {
+                if (target == null) {
                     this.noPath = true;
                     return;
                 }
 
-                this.turtle.getNavigation().startMovingTo(vec3d2.x, vec3d2.y, vec3d2.z, this.speed);
+                this.turtle.getNavigation().startMovingTo(target.x, target.y, target.z, this.speed);
             }
 
         }
@@ -562,11 +566,11 @@ public class TethysTurtleEntity extends AnimalEntity {
             int k = random.nextInt(1025) - 512;
             int l = random.nextInt(9) - 4;
             int m = random.nextInt(1025) - 512;
-            if ((double)l + this.turtle.getY() > (double)(this.turtle.world.getSeaLevel() - 1)) {
+            if (l + this.turtle.getY() > (this.turtle.getWorld().getSeaLevel() - 1)) {
                 l = 0;
             }
 
-            BlockPos blockPos = new BlockPos((double)k + this.turtle.getX(), (double)l + this.turtle.getY(), (double)m + this.turtle.getZ());
+            BlockPos blockPos = new BlockPos((k + (int) this.turtle.getX()), l + (int) this.turtle.getY(), m + (int) this.turtle.getZ());
             this.turtle.setTravelPos(blockPos);
             this.turtle.setActivelyTravelling(true);
             this.noPath = false;
@@ -584,7 +588,7 @@ public class TethysTurtleEntity extends AnimalEntity {
                     int i = MathHelper.floor(vec3d2.x);
                     int j = MathHelper.floor(vec3d2.z);
                     boolean k = true;
-                    if (!this.turtle.world.isRegionLoaded(i - 34, 0, j - 34, i + 34, 0, j + 34)) {
+                    if (!this.turtle.getWorld().isRegionLoaded(i - 34, 0, j - 34, i + 34, 0, j + 34)) {
                         vec3d2 = null;
                     }
                 }
@@ -618,7 +622,7 @@ public class TethysTurtleEntity extends AnimalEntity {
             if (this.mob.getAttacker() == null && !this.mob.isOnFire()) {
                 return false;
             } else {
-                BlockPos blockPos = this.locateClosestWater(this.mob.world, this.mob, 7);
+                BlockPos blockPos = this.locateClosestWater(this.mob.getWorld(), this.mob, 7);
                 if (blockPos != null) {
                     this.targetX = blockPos.getX();
                     this.targetY = blockPos.getY();

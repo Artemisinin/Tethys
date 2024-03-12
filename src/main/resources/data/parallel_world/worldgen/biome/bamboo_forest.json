@@ -233,7 +233,7 @@
     ],
     "misc": []
   },
-  "precipitation": "rain",
+  "has_precipitation": true,
   "temperature": 0.95,
   "downfall": 0.9,
   "depth": 0.20

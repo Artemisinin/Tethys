@@ -167,7 +167,7 @@
 		],
     "misc": []
   },
-  "precipitation": "none",
+  "has_precipitation": false,
   "temperature": 2.0,
   "downfall": 0.0
 }

@@ -29,7 +29,7 @@ public class GoBackToWaterGoal extends MoveToTargetPosGoal {
     @Override
     public boolean canStart() {
         BlockPos down = this.mob.getBlockPos().down();
-        return !this.mob.world.getFluidState(down).isIn(FluidTags.WATER) && super.canStart();
+        return !this.mob.getWorld().getFluidState(down).isIn(FluidTags.WATER) && super.canStart();
     }
 
     // Since it can never actually reach the target block because it's not allowed
@@ -37,7 +37,7 @@ public class GoBackToWaterGoal extends MoveToTargetPosGoal {
     @Override
     public boolean shouldContinue() {
         BlockPos down = this.mob.getBlockPos().down();
-        if (this.mob.world.getFluidState(down).isIn(FluidTags.WATER)) {
+        if (this.mob.getWorld().getFluidState(down).isIn(FluidTags.WATER)) {
             return false;
         }
         else return super.shouldContinue();

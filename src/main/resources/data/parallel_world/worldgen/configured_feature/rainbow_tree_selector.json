@@ -5,31 +5,35 @@
 		"features": [
 			{
 				"feature": "parallel_world:rainbow_tree/basswood_tree_checked",
-				"chance": 0.15
+				"chance": 0.12
 			},
 			{
 			    "feature": "parallel_world:rainbow_tree/blackcurrant_tree_checked",
-				"chance": 0.15
+				"chance": 0.12
+			},
+			{
+				"feature": "minecraft:cherry_checked",
+				"chance": 0.12
 			},
 			{
 			    "feature": "parallel_world:rainbow_tree/cherry_tree_checked",
-				"chance": 0.15
+				"chance": 0.12
 			},
 			{
 			    "feature": "parallel_world:rainbow_tree/dogwood_tree_checked",
-				"chance": 0.15
+				"chance": 0.12
 			},
 			{
 			    "feature": "parallel_world:rainbow_tree/elderberry_tree_checked",
-				"chance": 0.15
+				"chance": 0.12
 			},
             {
                 "feature": "parallel_world:rainbow_tree/ginkgo_tree_checked",
-                "chance": 0.15
+                "chance": 0.12
             },
 			{
 			    "feature": "parallel_world:rainbow_tree/sweetgum_tree_checked",
-				"chance": 0.15
+				"chance": 0.12
 			}
         ]
     }

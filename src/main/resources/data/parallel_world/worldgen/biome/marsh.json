@@ -96,7 +96,7 @@
       "parallel_world:freeze_shaded_water"
     ]
   ],
-  "precipitation": "rain",
+  "has_precipitation": true,
   "spawn_costs": {
     "minecraft:spider": {
       "charge": 0.7,

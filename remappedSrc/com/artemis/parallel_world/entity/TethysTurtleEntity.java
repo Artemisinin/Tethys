@@ -1,5 +1,6 @@
 package com.artemis.parallel_world.entity;
 
+import com.artemis.parallel_world.Dimension;
 import net.minecraft.advancement.criterion.Criteria;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -39,6 +40,7 @@ import net.minecraft.util.math.random.Random;
 import net.minecraft.world.*;
 import org.jetbrains.annotations.Nullable;
 import com.artemis.parallel_world.block.*;
+
 
 
 public class TethysTurtleEntity extends AnimalEntity {
@@ -156,8 +158,8 @@ public class TethysTurtleEntity extends AnimalEntity {
         return TethysEntities.TETHYS_TURTLE.create(world);
     }
 
-    public static boolean isValidNaturalSpawn(EntityType<? extends AnimalEntity> type, WorldAccess world, SpawnReason spawnReason, BlockPos pos, Random random) {
-        return pos.getY() < 25 && TethysTurtleEggBlock.isSand(world, pos) && world.getBaseLightLevel(pos, 0) > 8;
+    public static boolean canSpawn(EntityType<TethysTurtleEntity> type, WorldAccess world, SpawnReason spawnReason, BlockPos pos, Random random) {
+        return pos.getY() < (Dimension.TETHYS_SEA_LEVEL + 4) && world.getBlockState(pos.down()).isIn(BlockTags.SAND) && world.getBaseLightLevel(pos, 0) > 8;
     }
 
     protected void initGoals() {

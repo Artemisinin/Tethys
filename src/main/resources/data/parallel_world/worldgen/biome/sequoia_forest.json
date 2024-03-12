@@ -68,6 +68,7 @@
       "minecraft:spring_water"
     ],
     [
+      "parallel_world:generic_evergreen_vegetation_shaded",
       "parallel_world:patch_grass_shaded",
       "minecraft:glow_lichen",
       "minecraft:patch_large_fern",
@@ -220,7 +221,7 @@
     ],
     "misc": []
   },
-  "precipitation": "rain",
+  "has_precipitation": true,
   "temperature": 0.3,
   "downfall": 0.8
 }

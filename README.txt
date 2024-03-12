@@ -1,1 +1,1 @@
-This mod is for Minecraft 1.17 and requires Fabric loader and Fabric API in the mod directory.  Fabric can be downloaded at https://fabricmc.net/.
+This mod is for Minecraft 1.20.4 and requires Fabric loader and Fabric API in the mod directory.  Fabric can be downloaded at https://fabricmc.net/.

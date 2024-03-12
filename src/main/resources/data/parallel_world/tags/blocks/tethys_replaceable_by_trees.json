@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "parallel_world:glow_flower",
+    "parallel_world:heather",
+    "parallel_world:marsh_grass_olive_green",
+    "parallel_world:marsh_grass_red",
+    "parallel_world:marsh_grass_yellow"
+  ]
+}

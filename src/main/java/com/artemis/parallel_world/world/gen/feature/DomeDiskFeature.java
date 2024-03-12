@@ -1,8 +1,8 @@
 package com.artemis.parallel_world.world.gen.feature;
 
 import com.mojang.serialization.Codec;
+import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.Material;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.StructureWorldAccess;
@@ -35,10 +35,7 @@ public class DomeDiskFeature extends Feature<DomeDiskFeatureConfig> {
         while ((layerY <= topY) || (radiusX > 1 && radiusZ > 1)) {
             for (BlockPos currentPos : BlockPos.iterateOutwards(startPos, radiusX, 0, radiusZ)) {
                 // If the current position is not over a solid block, stop.
-                if (!structureWorldAccess.testBlockState(currentPos.down(), state -> {
-                            Material material = state.getMaterial();
-                            return material.isSolid();
-                        })) break;
+                if (!structureWorldAccess.testBlockState(currentPos.down(), AbstractBlock.AbstractBlockState::isSolid)) break;
                 // If the current position is not a target block or is not the placed block, continue to next position.
                 if (!domeDiskFeatureConfig.target().test(structureWorldAccess, currentPos) ||
                         !structureWorldAccess.getBlockState(currentPos.down()).isOf(placedBlockState.getBlock())) continue;

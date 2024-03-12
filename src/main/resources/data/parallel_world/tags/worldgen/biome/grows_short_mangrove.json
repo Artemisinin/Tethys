@@ -1,0 +1,11 @@
+{
+  "values": [
+    "parallel_world:amazon",
+    "parallel_world:bamboo_forest",
+    "parallel_world:mangrove_swamp",
+    "parallel_world:marsh",
+    "parallel_world:ocean",
+    "parallel_world:reef",
+    "parallel_world:sand_bar"
+  ]
+}

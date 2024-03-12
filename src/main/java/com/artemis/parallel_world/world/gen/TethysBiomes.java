@@ -7,8 +7,10 @@ import net.minecraft.world.biome.Biome;
 
 public class TethysBiomes {
 
+    public static final TagKey<Biome> COLD_BIOMES = TagKey.of(RegistryKeys.BIOME, new Identifier("parallel_world:cold_biomes"));
+    public static final TagKey<Biome> GROWS_SHORT_MANGROVE = TagKey.of(RegistryKeys.BIOME, new Identifier("parallel_world:grows_short_mangrove"));
     public static final TagKey<Biome> IS_TETHYS = TagKey.of(RegistryKeys.BIOME, new Identifier("parallel_world:is_tethys"));
-
+    public static final TagKey<Biome> WARM_BIOMES = TagKey.of(RegistryKeys.BIOME, new Identifier("parallel_world:warm_biomes"));
 }
     /*
     // Adding a json biome to the registry will allow it to be added to vanilla dimensions.

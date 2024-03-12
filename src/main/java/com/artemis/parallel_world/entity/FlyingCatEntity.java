@@ -32,6 +32,7 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.util.math.Vec3d;
+import net.minecraft.world.EntityView;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
 import org.jetbrains.annotations.Nullable;
@@ -88,7 +89,7 @@ public class FlyingCatEntity extends TameableEntity {
                 setFlying(false);
                 MoveControl walkingControl = new MoveControl(this);
                 this.moveControl = walkingControl;
-                MobNavigation walkingNav = new MobNavigation(this, world);
+                MobNavigation walkingNav = new MobNavigation(this, this.getWorld());
                 walkingNav.setCanEnterOpenDoors(true);
                 walkingNav.setCanPathThroughDoors(true);
                 this.navigation = walkingNav;
@@ -98,7 +99,7 @@ public class FlyingCatEntity extends TameableEntity {
             setFlying(true);
             FlightMoveControl flyingControl = new FlightMoveControl(this,5, false);
             this.moveControl = flyingControl;
-            BirdNavigation flyingNav = new BirdNavigation(this, world);
+            BirdNavigation flyingNav = new BirdNavigation(this, this.getWorld());
             flyingNav.setCanEnterOpenDoors(true);
             flyingNav.setCanPathThroughDoors(true);
             flyingNav.setCanSwim(true);
@@ -135,7 +136,7 @@ public class FlyingCatEntity extends TameableEntity {
     }
 
     public boolean tryAttack(Entity target) {
-        return target.damage(DamageSource.mob(this), this.getAttackDamage());
+        return target.damage(this.getDamageSources().mobAttack(this), this.getAttackDamage());
     }
 
     @Nullable
@@ -193,6 +194,12 @@ public class FlyingCatEntity extends TameableEntity {
         return !this.isTamed() && this.age > 2400;
     }
 
+    // Can't figure out wtf this is so null for now.
+    @Override
+    public EntityView method_48926() {
+        return null;
+    }
+
     private static class FlyOntoTreeGoal extends FlyGoal {
         public FlyOntoTreeGoal(PathAwareEntity pathAwareEntity, double d) {
             super(pathAwareEntity, d);
@@ -231,9 +238,9 @@ public class FlyingCatEntity extends TameableEntity {
                     blockPos2 = (BlockPos)var5.next();
                 } while(blockPos.equals(blockPos2));
 
-                BlockState blockState = this.mob.world.getBlockState(mutable2.set(blockPos2, Direction.DOWN));
+                BlockState blockState = this.mob.getWorld().getBlockState(mutable2.set(blockPos2, Direction.DOWN));
                 bl = blockState.getBlock() instanceof LeavesBlock || blockState.isIn(BlockTags.LOGS);
-            } while(!bl || !this.mob.world.isAir(blockPos2) || !this.mob.world.isAir(mutable.set(blockPos2, Direction.UP)));
+            } while(!bl || !this.mob.getWorld().isAir(blockPos2) || !this.mob.getWorld().isAir(mutable.set(blockPos2, Direction.UP)));
 
             return Vec3d.ofBottomCenter(blockPos2);
         }

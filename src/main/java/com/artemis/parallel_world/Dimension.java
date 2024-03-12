@@ -5,6 +5,7 @@ import com.artemis.parallel_world.entity.TethysEntities;
 import com.artemis.parallel_world.item.TethysItems;
 import com.artemis.parallel_world.world.gen.feature.TethysPlacementModifiers;
 import com.artemis.parallel_world.world.gen.feature.TethysFeatures;
+import com.artemis.parallel_world.world.gen.foliage.TethysFoliagePlacers;
 import com.artemis.parallel_world.world.gen.treedecorator.AlterGroundPlusSandTreeDecorator;
 import com.artemis.parallel_world.world.gen.treedecorator.GlowfruitTreeDecorator;
 import com.artemis.parallel_world.world.gen.trunk.TethysTrunkPlacers;
@@ -29,6 +30,7 @@ public class Dimension implements ModInitializer {
         TethysEntities.registerEntities();
 
         // Register blocks and items
+        TethysBlocks.TethysSaplingGenerators.registerSaplingGenerators();
         TethysBlocks.registerBlocks();
         TethysBlocks.registerFlammability();
         TethysBlocks.registerBlockTags();
@@ -42,6 +44,7 @@ public class Dimension implements ModInitializer {
         AlterGroundPlusSandTreeDecorator.registerAlterGroundPlusSandTreeDecorator();
         GlowfruitTreeDecorator.registerGlowfruitTreeDecorator();
         TethysTrunkPlacers.registerTrunkPlacers();
+        TethysFoliagePlacers.registerFoliagePlacers();
         TethysPlacementModifiers.registerDecorators();
         TethysFeatures.registerFeatures();
 
