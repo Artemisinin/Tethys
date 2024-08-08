@@ -1,6 +1,8 @@
 package com.artemis.parallel_world;
 
 import com.artemis.parallel_world.block.*;
+import com.artemis.parallel_world.entity.FlyingCatEntity;
+import com.artemis.parallel_world.entity.FlyingCatVariant;
 import com.artemis.parallel_world.entity.TethysEntities;
 import com.artemis.parallel_world.item.TethysItems;
 import com.artemis.parallel_world.world.gen.feature.TethysPlacementModifiers;
@@ -10,9 +12,13 @@ import com.artemis.parallel_world.world.gen.treedecorator.AlterGroundPlusSandTre
 import com.artemis.parallel_world.world.gen.treedecorator.GlowfruitTreeDecorator;
 import com.artemis.parallel_world.world.gen.trunk.TethysTrunkPlacers;
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.event.registry.FabricRegistryBuilder;
 import net.kyrptonaught.customportalapi.api.CustomPortalBuilder;
 import net.minecraft.block.Blocks;
+import net.minecraft.entity.data.TrackedDataHandler;
+import net.minecraft.entity.data.TrackedDataHandlerRegistry;
 import net.minecraft.fluid.Fluids;
+import net.minecraft.registry.SimpleRegistry;
 import net.minecraft.util.Identifier;
 
 public class Dimension implements ModInitializer {
@@ -23,7 +29,6 @@ public class Dimension implements ModInitializer {
 
     @Override
     public void onInitialize() {
-
         // Add portal
         CustomPortalBuilder.beginPortal().frameBlock(Blocks.LAPIS_BLOCK).lightWithFluid(Fluids.WATER).destDimID(new Identifier("parallel_world", "tethys")).tintColor(23,140,176).registerPortal();
         // Register entities

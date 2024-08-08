@@ -15,35 +15,40 @@ import net.minecraft.entity.ai.pathing.PathNodeType;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.damage.DamageSource;
+import net.minecraft.entity.data.DataTracker;
+import net.minecraft.entity.data.TrackedData;
+import net.minecraft.entity.data.TrackedDataHandlerRegistry;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.mob.PathAwareEntity;
 import net.minecraft.entity.passive.*;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.nbt.NbtCompound;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
+import net.minecraft.util.DyeColor;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.util.math.Vec3d;
-import net.minecraft.world.EntityView;
-import net.minecraft.world.World;
-import net.minecraft.world.WorldAccess;
+import net.minecraft.world.*;
 import org.jetbrains.annotations.Nullable;
 import net.minecraft.entity.ai.goal.TemptGoal;
 
 import java.util.Iterator;
 
 
-public class FlyingCatEntity extends TameableEntity {
+public class FlyingCatEntity extends TameableEntity implements VariantHolder<FlyingCatVariant> {
 
     private static final Ingredient TAMING_INGREDIENT = Ingredient.ofItems(Items.COOKIE);
+    private static final TrackedData<Integer> FLYING_CAT_VARIANT = DataTracker.registerData(FlyingCatEntity.class, TrackedDataHandlerRegistry.INTEGER);
+    private static final TrackedData<Integer> COLLAR_COLOR = DataTracker.registerData(FlyingCatEntity.class, TrackedDataHandlerRegistry.INTEGER);
     private int locomotionToggle;
 
     public FlyingCatEntity(EntityType<? extends TameableEntity> entityType, World world) {
@@ -55,6 +60,34 @@ public class FlyingCatEntity extends TameableEntity {
 
     public static DefaultAttributeContainer.Builder createFlyingCatAttributes() {
         return MobEntity.createMobAttributes().add(EntityAttributes.GENERIC_MAX_HEALTH, 10.0D).add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.3D).add(EntityAttributes.GENERIC_FLYING_SPEED, 0.6D).add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 3.0D);
+    }
+
+    public FlyingCatVariant getVariant() {
+        return FlyingCatVariant.byId(this.dataTracker.get(FLYING_CAT_VARIANT));
+    }
+
+    public void setVariant(FlyingCatVariant flyingCatVariant) {
+        this.dataTracker.set(FLYING_CAT_VARIANT, flyingCatVariant.getId());
+    }
+
+    public DyeColor getCollarColor() {
+        return DyeColor.byId(this.dataTracker.get(COLLAR_COLOR));
+    }
+
+    public void setCollarColor(DyeColor color) {
+        this.dataTracker.set(COLLAR_COLOR, color.getId());
+    }
+
+    protected void initDataTracker() {
+        super.initDataTracker();
+        this.dataTracker.startTracking(FLYING_CAT_VARIANT, FlyingCatVariant.CALICO.getId());
+        this.dataTracker.startTracking(COLLAR_COLOR, DyeColor.RED.getId());
+    }
+
+    public void writeCustomDataToNbt(NbtCompound nbt) {
+        super.writeCustomDataToNbt(nbt);
+        nbt.putString("variant", FlyingCatVariant.byId(FLYING_CAT_VARIANT.getId()).asString());
+        nbt.putByte("CollarColor", (byte)this.getCollarColor().getId());
     }
 
     protected EntityNavigation createNavigation(World world) {
@@ -246,4 +279,11 @@ public class FlyingCatEntity extends TameableEntity {
         }
     }
 
+    @Nullable
+    public EntityData initialize(ServerWorldAccess world, LocalDifficulty difficulty, SpawnReason spawnReason, @Nullable EntityData entityData, @Nullable NbtCompound entityNbt) {
+        int index = world.getRandom().nextInt(FlyingCatVariant.values().length);
+        entityData = super.initialize(world, difficulty, spawnReason, entityData, entityNbt);
+        this.setVariant(FlyingCatVariant.byId(index));
+        return entityData;
+    }
 }
