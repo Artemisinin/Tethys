@@ -71,7 +71,8 @@
       "minecraft:glow_lichen"
     ],
     [
-      "minecraft:freeze_top_layer"
+      "minecraft:freeze_top_layer",
+      "parallel_world:freeze_area_shaded"
     ]
   ],
   "starts": [

@@ -95,8 +95,8 @@ public class FlyingCatEntityModel<T extends FlyingCatEntity> extends AnimalModel
 		// Tail
 		ModelPartData upperTail = core.addChild("upper_tail", ModelPartBuilder.create().
 						uv(0, 15).
-						cuboid(-0.5F, 0.0F, 0.0F, 1.0F, 8.0F, 1.0F, dilation),
-				//ModelTransform.of(0.0F, 15.0F, 8.0F, 0.9F, 0.0F, 0.0F));
+						// Offset Y was 0, but the tail was floating above the cat's butt during walking. Trying variation.
+						cuboid(-0.5F, -0.5F, 0.0F, 1.0F, 8.0F, 1.0F, dilation),
 				ModelTransform.pivot(0.0F, 15.0F, 8.0F));
 		upperTail.addChild("lower_tail", ModelPartBuilder.create().
 						uv(4, 15).

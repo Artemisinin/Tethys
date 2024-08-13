@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shapeless",
+  "category": "misc",
   "ingredients": [
     {
       "item": "minecraft:slime_ball"
@@ -9,7 +10,7 @@
     }
   ],
   "result": {
-    "item": "parallel_world:glow_lichen_ball",
+    "id": "parallel_world:glow_lichen_ball",
     "count": 1
   }
 }

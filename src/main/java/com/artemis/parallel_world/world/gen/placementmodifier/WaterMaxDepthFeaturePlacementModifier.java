@@ -1,6 +1,7 @@
 package com.artemis.parallel_world.world.gen.placementmodifier;
 
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.util.math.BlockPos;
@@ -14,13 +15,11 @@ import net.minecraft.world.gen.placementmodifier.PlacementModifierType;
 import static com.artemis.parallel_world.world.gen.feature.TethysPlacementModifiers.WATER_MAX_DEPTH_DECORATOR;
 
 public class WaterMaxDepthFeaturePlacementModifier extends AbstractConditionalPlacementModifier {
-    private int maxSubmersion;
+    private final int maxSubmersion;
 
-    public static final Codec<WaterMaxDepthFeaturePlacementModifier> CODEC = RecordCodecBuilder.create((instance) -> {
-        return instance.group(Codec.INT.fieldOf("max_submersion").forGetter((waterMaxDepthFeaturePlacementModifier) -> {
-            return waterMaxDepthFeaturePlacementModifier.maxSubmersion;
-        })).apply(instance, WaterMaxDepthFeaturePlacementModifier::new);
-    });
+    public static final MapCodec<WaterMaxDepthFeaturePlacementModifier> CODEC = RecordCodecBuilder.mapCodec((instance) ->
+            instance.group(Codec.INT.fieldOf("max_submersion").forGetter((waterMaxDepthFeaturePlacementModifier) ->
+                    waterMaxDepthFeaturePlacementModifier.maxSubmersion)).apply(instance, WaterMaxDepthFeaturePlacementModifier::new));
 
     public WaterMaxDepthFeaturePlacementModifier(int maxSubmersion) { this.maxSubmersion = maxSubmersion; }
 

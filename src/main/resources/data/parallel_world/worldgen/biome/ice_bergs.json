@@ -69,8 +69,8 @@
       "minecraft:spring_water"
     ],
     [
-      "parallel_world:alpine_evergreens_ycap",
-      "parallel_world:dwarf_pines",
+      "parallel_world:generic_forest_vegetation_shaded",
+      "parallel_world:patch_grass_shaded",
       "parallel_world:scattered_poriferans_glowing",
       "parallel_world:sea_pickle",
       "minecraft:glow_lichen",
@@ -79,7 +79,7 @@
     ],
     [
 	  "minecraft:freeze_top_layer",
-      "parallel_world:freeze_shaded_water"
+      "parallel_world:freeze_area_shaded"
     ]
   ],
   "starts": [

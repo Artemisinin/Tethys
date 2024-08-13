@@ -1,7 +1,7 @@
 package com.artemis.parallel_world.world.gen.trunk;
 
 import com.google.common.collect.Lists;
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.block.BlockState;
 import net.minecraft.util.math.BlockPos;
@@ -23,9 +23,8 @@ public class ScaleTreeTrunkPlacer extends TrunkPlacer {
         super(baseHeight, firstRandomHeight, secondRandomHeight);
     }
 
-    public static final Codec<ScaleTreeTrunkPlacer> CODEC = RecordCodecBuilder.create((instance) -> {
-        return TrunkPlacer.fillTrunkPlacerFields(instance).apply(instance, ScaleTreeTrunkPlacer::new);
-    });
+    public static final MapCodec<ScaleTreeTrunkPlacer> CODEC = RecordCodecBuilder.mapCodec((instance)
+            -> TrunkPlacer.fillTrunkPlacerFields(instance).apply(instance, ScaleTreeTrunkPlacer::new));
 
     @Override
     protected TrunkPlacerType<?> getType() {

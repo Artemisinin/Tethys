@@ -1,0 +1,34 @@
+{
+  "feature": "parallel_world:swamp_water",
+  "placement": [
+    {
+      "type": "parallel_world:below_heightmap_placement_modifier",
+      "heightmap": "OCEAN_FLOOR_WG",
+      "count": 20
+    },
+    {
+      "type": "minecraft:block_predicate_filter",
+      "predicate": {
+        "type": "minecraft:all_of",
+        "predicates": [
+          {
+            "type": "minecraft:matching_blocks",
+            "blocks": "minecraft:air",
+            "offset": [
+              0,
+              1,
+              0
+            ]
+          },
+          {
+            "type": "minecraft:matching_block_tag",
+            "tag": "minecraft:dirt"
+          }
+        ]
+      }
+    },
+    {
+      "type": "minecraft:biome"
+    }
+  ]
+}

@@ -12,15 +12,16 @@ import net.minecraft.entity.ai.NoPenaltyTargeting;
 import net.minecraft.entity.ai.control.MoveControl;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.ai.pathing.*;
-import net.minecraft.entity.attribute.DefaultAttributeContainer.Builder;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.data.DataTracker;
 import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.data.TrackedDataHandlerRegistry;
+import net.minecraft.entity.data.DataTracker.Builder;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.passive.PassiveEntity;
+import net.minecraft.entity.passive.TurtleEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
@@ -111,14 +112,14 @@ public class TethysTurtleEntity extends AnimalEntity {
         this.dataTracker.set(ACTIVELY_TRAVELLING, travelling);
     }
 
-    protected void initDataTracker() {
-        super.initDataTracker();
-        this.dataTracker.startTracking(HOME_POS, BlockPos.ORIGIN);
-        this.dataTracker.startTracking(HAS_EGG, false);
-        this.dataTracker.startTracking(TRAVEL_POS, BlockPos.ORIGIN);
-        this.dataTracker.startTracking(LAND_BOUND, false);
-        this.dataTracker.startTracking(ACTIVELY_TRAVELLING, false);
-        this.dataTracker.startTracking(DIGGING_SAND, false);
+    protected void initDataTracker(Builder builder) {
+        super.initDataTracker(builder);
+        builder.add(HOME_POS, BlockPos.ORIGIN);
+        builder.add(HAS_EGG, false);
+        builder.add(TRAVEL_POS, BlockPos.ORIGIN);
+        builder.add(LAND_BOUND, false);
+        builder.add(ACTIVELY_TRAVELLING, false);
+        builder.add(DIGGING_SAND, false);
     }
 
     public void writeCustomDataToNbt(NbtCompound nbt) {
@@ -146,10 +147,10 @@ public class TethysTurtleEntity extends AnimalEntity {
     }
 
     @Nullable
-    public EntityData initialize(ServerWorldAccess world, LocalDifficulty difficulty, SpawnReason spawnReason, @Nullable EntityData entityData, @Nullable NbtCompound entityNbt) {
+    public EntityData initialize(ServerWorldAccess world, LocalDifficulty difficulty, SpawnReason spawnReason, @Nullable EntityData entityData) {
         this.setHomePos(this.getBlockPos());
         this.setTravelPos(BlockPos.ORIGIN);
-        return super.initialize(world, difficulty, spawnReason, entityData, entityNbt);
+        return super.initialize(world, difficulty, spawnReason, entityData);
     }
 
     @Nullable
@@ -174,7 +175,7 @@ public class TethysTurtleEntity extends AnimalEntity {
         this.goalSelector.add(9, new TethysTurtleEntity.WanderOnLandGoal(this, 1.0D, 100));
     }
 
-    public static Builder createTurtleAttributes() {
+    public static net.minecraft.entity.attribute.DefaultAttributeContainer.Builder createTurtleAttributes() {
         return MobEntity.createMobAttributes().add(EntityAttributes.GENERIC_MAX_HEALTH, 30.0D).add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.25D);
     }
     // Add to tag group
@@ -182,9 +183,11 @@ public class TethysTurtleEntity extends AnimalEntity {
     //    return true;
     //}
 
+    // Apparently this got nuked in 20.5 or 20.6
+    /*
     public EntityGroup getGroup() {
         return EntityGroup.AQUATIC;
-    }
+    }*/
 
     public int getMinAmbientSoundDelay() {
         return 200;
@@ -259,7 +262,7 @@ public class TethysTurtleEntity extends AnimalEntity {
     protected void onGrowUp() {
         super.onGrowUp();
         if (!this.isBaby() && this.getWorld().getGameRules().getBoolean(GameRules.DO_MOB_LOOT)) {
-            this.dropItem(Items.SCUTE, 1);
+            this.dropItem(Items.TURTLE_SCUTE, 1);
         }
     }
 
@@ -305,8 +308,7 @@ public class TethysTurtleEntity extends AnimalEntity {
 
         @Override
         public boolean isValidPosition(BlockPos pos) {
-            if (this.entity instanceof TethysTurtleEntity) {
-                TethysTurtleEntity tethysTurtleEntity = (TethysTurtleEntity)this.entity;
+            if (this.entity instanceof TethysTurtleEntity tethysTurtleEntity) {
                 if (tethysTurtleEntity.isActivelyTravelling()) {
                     return this.world.getBlockState(pos).isOf(Blocks.WATER);
                 }
@@ -462,9 +464,18 @@ public class TethysTurtleEntity extends AnimalEntity {
 
         protected void breed() {
             ServerPlayerEntity serverPlayerEntity = this.animal.getLovingPlayer();
+            if (serverPlayerEntity == null) {
+                assert this.mate != null;
+                if (this.mate.getLovingPlayer() != null) {
+                    serverPlayerEntity = this.mate.getLovingPlayer();
+                }
+            }
+            // It said the below could produce a null pointer exception and recommended asserting not null.
+            /*
             if (serverPlayerEntity == null && this.mate.getLovingPlayer() != null) {
                 serverPlayerEntity = this.mate.getLovingPlayer();
             }
+            */
 
             if (serverPlayerEntity != null) {
                 serverPlayerEntity.incrementStat(Stats.ANIMALS_BRED);
@@ -473,6 +484,7 @@ public class TethysTurtleEntity extends AnimalEntity {
 
             this.turtle.setHasEgg(true);
             this.animal.resetLoveTicks();
+            assert this.mate != null;
             this.mate.resetLoveTicks();
             Random random = this.animal.getRandom();
             if (this.world.getGameRules().getBoolean(GameRules.DO_MOB_LOOT)) {
@@ -578,27 +590,28 @@ public class TethysTurtleEntity extends AnimalEntity {
 
         public void tick() {
             if (this.turtle.getNavigation().isIdle()) {
-                Vec3d vec3d = Vec3d.ofBottomCenter(this.turtle.getTravelPos());
-                Vec3d vec3d2 = NoPenaltyTargeting.findTo(this.turtle, 16, 3, vec3d, 0.3141592741012573D);
-                if (vec3d2 == null) {
-                    vec3d2 = NoPenaltyTargeting.findTo(this.turtle, 8, 7, vec3d, 1.57D);
+                Vec3d turtleBottomCenter = Vec3d.ofBottomCenter(this.turtle.getTravelPos());
+                Vec3d route = NoPenaltyTargeting.findTo(this.turtle, 16, 3, turtleBottomCenter, 0.314D);
+                if (route == null) {
+                    route = NoPenaltyTargeting.findTo(this.turtle, 8, 7, turtleBottomCenter, 1.57D);
                 }
 
-                if (vec3d2 != null) {
-                    int i = MathHelper.floor(vec3d2.x);
-                    int j = MathHelper.floor(vec3d2.z);
-                    boolean k = true;
+                if (route != null) {
+                    int i = MathHelper.floor(route.x);
+                    int j = MathHelper.floor(route.z);
+                    // what is this mystery variable that does not do a thing
+                    //boolean k = true;
                     if (!this.turtle.getWorld().isRegionLoaded(i - 34, 0, j - 34, i + 34, 0, j + 34)) {
-                        vec3d2 = null;
+                        route = null;
                     }
                 }
 
-                if (vec3d2 == null) {
+                if (route == null) {
                     this.noPath = true;
                     return;
                 }
 
-                this.turtle.getNavigation().startMovingTo(vec3d2.x, vec3d2.y, vec3d2.z, this.speed);
+                this.turtle.getNavigation().startMovingTo(route.x, route.y, route.z, this.speed);
             }
 
         }

@@ -1,12 +1,14 @@
 {
   "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "planks",
   "ingredients": [
     {
       "item": "parallel_world:cherry_log"
     }
   ],
   "result": {
-    "item": "parallel_world:cherry_planks",
+    "id": "parallel_world:cherry_planks",
     "count": 4
   }
 }

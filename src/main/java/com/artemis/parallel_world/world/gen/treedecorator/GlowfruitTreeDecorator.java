@@ -3,7 +3,7 @@ package com.artemis.parallel_world.world.gen.treedecorator;
 
 import com.artemis.parallel_world.block.TethysBlocks;
 import com.artemis.parallel_world.mixin.TreeDecoratorTypeRegisterInvoker;
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import net.minecraft.block.LeavesBlock;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.state.property.Properties;
@@ -18,9 +18,7 @@ public class GlowfruitTreeDecorator extends TreeDecorator {
 
     public static final GlowfruitTreeDecorator INSTANCE = new GlowfruitTreeDecorator();
 
-    public static final Codec<GlowfruitTreeDecorator> CODEC = Codec.unit(() -> {
-        return INSTANCE;
-    });
+    public static final MapCodec<GlowfruitTreeDecorator> CODEC = MapCodec.unit(() -> INSTANCE);
 
     public GlowfruitTreeDecorator() {
     }

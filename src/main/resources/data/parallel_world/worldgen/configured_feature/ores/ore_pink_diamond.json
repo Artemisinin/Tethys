@@ -8,7 +8,7 @@
           "predicate_type": "minecraft:tag_match"
         },
         "state": {
-          "Name": "parallel_world:ores/pink_diamond_ore"
+          "Name": "parallel_world:pink_diamond_ore"
         }
       }
     ],

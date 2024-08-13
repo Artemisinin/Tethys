@@ -18,6 +18,7 @@ import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.data.DataTracker;
 import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.data.TrackedDataHandlerRegistry;
+import net.minecraft.entity.data.DataTracker.Builder;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.mob.PathAwareEntity;
 import net.minecraft.entity.passive.*;
@@ -78,15 +79,15 @@ public class FlyingCatEntity extends TameableEntity implements VariantHolder<Fly
         this.dataTracker.set(COLLAR_COLOR, color.getId());
     }
 
-    protected void initDataTracker() {
-        super.initDataTracker();
-        this.dataTracker.startTracking(FLYING_CAT_VARIANT, FlyingCatVariant.CALICO.getId());
-        this.dataTracker.startTracking(COLLAR_COLOR, DyeColor.RED.getId());
+    protected void initDataTracker(Builder builder) {
+        super.initDataTracker(builder);
+        builder.add(FLYING_CAT_VARIANT, FlyingCatVariant.CALICO.getId());
+        builder.add(COLLAR_COLOR, DyeColor.RED.getId());
     }
 
     public void writeCustomDataToNbt(NbtCompound nbt) {
         super.writeCustomDataToNbt(nbt);
-        nbt.putString("variant", FlyingCatVariant.byId(FLYING_CAT_VARIANT.getId()).asString());
+        nbt.putInt("Variant", FLYING_CAT_VARIANT.id());
         nbt.putByte("CollarColor", (byte)this.getCollarColor().getId());
     }
 
@@ -209,14 +210,16 @@ public class FlyingCatEntity extends TameableEntity implements VariantHolder<Fly
         FlyingCatEntity flyingCatEntity = TethysEntities.FLYING_CAT.create(serverWorld);
         if (this.isTamed()) {
             flyingCatEntity.setOwnerUuid(this.getOwnerUuid());
-            flyingCatEntity.setTamed(true);
+            flyingCatEntity.setTamed(true, true);
         }
         return flyingCatEntity;
     }
 
+    // Removed in 20.5 or 20.6
+    /*
     protected float getActiveEyeHeight(EntityPose pose, EntityDimensions dimensions) {
         return dimensions.height * 0.5F;
-    }
+    }*/
 
     public static boolean canSpawn(EntityType<? extends FlyingCatEntity> type, WorldAccess world, SpawnReason spawnReason, BlockPos pos, Random random) {
         BlockState blockState = world.getBlockState(pos.down());
@@ -280,9 +283,9 @@ public class FlyingCatEntity extends TameableEntity implements VariantHolder<Fly
     }
 
     @Nullable
-    public EntityData initialize(ServerWorldAccess world, LocalDifficulty difficulty, SpawnReason spawnReason, @Nullable EntityData entityData, @Nullable NbtCompound entityNbt) {
+    public EntityData initialize(ServerWorldAccess world, LocalDifficulty difficulty, SpawnReason spawnReason, @Nullable EntityData entityData) {
         int index = world.getRandom().nextInt(FlyingCatVariant.values().length);
-        entityData = super.initialize(world, difficulty, spawnReason, entityData, entityNbt);
+        entityData = super.initialize(world, difficulty, spawnReason, entityData);
         this.setVariant(FlyingCatVariant.byId(index));
         return entityData;
     }

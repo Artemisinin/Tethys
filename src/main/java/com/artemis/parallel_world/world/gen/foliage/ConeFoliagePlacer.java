@@ -1,6 +1,6 @@
 package com.artemis.parallel_world.world.gen.foliage;
 
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.intprovider.IntProvider;
@@ -12,7 +12,7 @@ import net.minecraft.world.gen.foliage.FoliagePlacerType;
 
 public class ConeFoliagePlacer extends FoliagePlacer {
 
-    public static final Codec<ConeFoliagePlacer> CODEC = RecordCodecBuilder.create((instance) -> {
+    public static final MapCodec<ConeFoliagePlacer> CODEC = RecordCodecBuilder.mapCodec((instance) -> {
         return fillFoliagePlacerFields(instance).and
                 (IntProvider.createValidatingCodec(0, 24).fieldOf("height").
                         forGetter((placer) -> {

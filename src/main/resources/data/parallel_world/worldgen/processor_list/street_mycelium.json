@@ -1,13 +1,14 @@
 {
   "processors": [
     {
+      "processor_type": "minecraft:rule",
       "rules": [
         {
           "output_state": {
             "Name": "minecraft:acacia_planks"
           },
           "input_predicate": {
-            "block": "minecraft:grass_path",
+            "block": "minecraft:dirt_path",
             "predicate_type": "minecraft:block_match"
           },
           "location_predicate": {
@@ -23,7 +24,7 @@
             "Name": "minecraft:mycelium"
           },
           "input_predicate": {
-            "block": "minecraft:grass_path",
+            "block": "minecraft:dirt_path",
             "probability": 0.2,
             "predicate_type": "minecraft:random_block_match"
           },
@@ -63,8 +64,7 @@
             "predicate_type": "minecraft:block_match"
           }
         }
-      ],
-      "processor_type": "minecraft:rule"
+      ]
     }
   ]
 }

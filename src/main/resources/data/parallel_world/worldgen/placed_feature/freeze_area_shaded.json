@@ -1,0 +1,14 @@
+{
+  "feature": "parallel_world:freeze_area",
+  "placement": [
+    {
+      "type": "parallel_world:below_heightmap_placement_modifier",
+      "heightmap": "WORLD_SURFACE_WG",
+      "count": 60,
+      "include_water": true
+    },
+    {
+      "type": "minecraft:biome"
+    }
+  ]
+}

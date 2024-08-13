@@ -3,7 +3,6 @@ package com.artemis.parallel_world.item;
 import com.artemis.parallel_world.block.TethysBlocks;
 import com.artemis.parallel_world.entity.TethysEntities;
 import com.artemis.parallel_world.mixin.RegisterCompostableItemInvoker;
-import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
@@ -44,7 +43,7 @@ public class TethysItems {
     public static final Item GINKGO_PLANKS = new BlockItem(TethysBlocks.GINKGO_PLANKS, new Item.Settings());
     public static final Item GINKGO_SAPLING = new BlockItem(TethysBlocks.GINKGO_SAPLING, new Item.Settings());
     public static final Item GLOW_FLOWER = new BlockItem(TethysBlocks.GLOW_FLOWER, new Item.Settings());
-    public static final Item GLOW_LICHEN_BALL = new GlowLichenBallItem(new FabricItemSettings().maxCount(16));
+    public static final Item GLOW_LICHEN_BALL = new GlowLichenBallItem(new Item.Settings().maxCount(16));
     public static final Item GLOWFRUIT = new BlockItem(TethysBlocks.GLOWFRUIT, new Item.Settings());
     public static final Item GOLD_ORE_ANDESITE = new BlockItem(TethysBlocks.GOLD_ORE_ANDESITE, new Item.Settings());
     public static final Item GOLD_ORE_DIORITE = new BlockItem(TethysBlocks.GOLD_ORE_DIORITE, new Item.Settings());
@@ -57,7 +56,7 @@ public class TethysItems {
     public static final Item MARSH_GRASS_RED = new BlockItem(TethysBlocks.MARSH_GRASS_RED, new Item.Settings());
     public static final Item MARSH_GRASS_YELLOW = new BlockItem(TethysBlocks.MARSH_GRASS_RED, new Item.Settings());
     public static final Item MANGROVE_LEAVES = new BlockItem(TethysBlocks.MANGROVE_LEAVES, new Item.Settings());
-    public static final Item PINK_DIAMOND = new Item(new FabricItemSettings());
+    public static final Item PINK_DIAMOND = new Item(new Item.Settings());
     public static final Item PINK_DIAMOND_BLOCK = new BlockItem(TethysBlocks.PINK_DIAMOND_BLOCK, new Item.Settings());
     public static final Item PINK_DIAMOND_ORE = new BlockItem(TethysBlocks.PINK_DIAMOND_ORE, new Item.Settings());
     public static final Item PINK_MUSHROOM_BLOCK = new BlockItem(TethysBlocks.PINK_MUSHROOM_BLOCK, new Item.Settings());

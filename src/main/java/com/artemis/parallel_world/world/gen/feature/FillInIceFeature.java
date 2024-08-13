@@ -1,5 +1,6 @@
 package com.artemis.parallel_world.world.gen.feature;
 
+import com.artemis.parallel_world.Dimension;
 import com.mojang.serialization.Codec;
 import net.minecraft.block.Blocks;
 import net.minecraft.fluid.Fluids;
@@ -30,7 +31,8 @@ public class FillInIceFeature extends Feature<DefaultFeatureConfig> {
             for (int j = 0; j < 16; ++j) {
                 int x = blockPos.getX() + i;
                 int z = blockPos.getZ() + j;
-                int m = structureWorldAccess.getTopY(Heightmap.Type.MOTION_BLOCKING, x, z) - 1;
+                int m = Dimension.TETHYS_SEA_LEVEL - 1;
+                //int m = structureWorldAccess.getTopY(Heightmap.Type.MOTION_BLOCKING, x, z) - 1;
                 mutable.set(x, m, z);
                 if (structureWorldAccess.getFluidState(mutable).isOf(Fluids.WATER)) {
                     north.set(mutable).move(Direction.NORTH, 1);

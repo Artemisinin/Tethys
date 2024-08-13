@@ -1,6 +1,6 @@
 package com.artemis.parallel_world.world.gen.foliage;
 
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockPos.Mutable;
@@ -13,7 +13,7 @@ import net.minecraft.world.gen.foliage.FoliagePlacerType;
 
 public class WeepingFoliagePlacer extends FoliagePlacer {
 
-    public static final Codec<WeepingFoliagePlacer> CODEC = RecordCodecBuilder.create((instance) -> {
+    public static final MapCodec<WeepingFoliagePlacer> CODEC = RecordCodecBuilder.mapCodec((instance) -> {
         return fillFoliagePlacerFields(instance).apply(instance, WeepingFoliagePlacer::new);
     });
 

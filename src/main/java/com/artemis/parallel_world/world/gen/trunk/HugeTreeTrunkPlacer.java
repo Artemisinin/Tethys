@@ -2,6 +2,7 @@ package com.artemis.parallel_world.world.gen.trunk;
 
 import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.PillarBlock;
@@ -26,7 +27,8 @@ public class HugeTreeTrunkPlacer extends TrunkPlacer {
         super(baseHeight, firstRandomHeight, secondRandomHeight);
     }
 
-    public static final Codec<HugeTreeTrunkPlacer> CODEC = RecordCodecBuilder.create((instance) -> TrunkPlacer.fillTrunkPlacerFields(instance).apply(instance, HugeTreeTrunkPlacer::new));
+    public static final MapCodec<HugeTreeTrunkPlacer> CODEC = RecordCodecBuilder.mapCodec((instance) ->
+            TrunkPlacer.fillTrunkPlacerFields(instance).apply(instance, HugeTreeTrunkPlacer::new));
 
     @Override
     protected TrunkPlacerType<?> getType() {
@@ -150,8 +152,8 @@ public class HugeTreeTrunkPlacer extends TrunkPlacer {
             List<BlockPos> singleBranchLogPositions = this.checkBranch(testableWorld, branchPos, placementAngle, random, true);
             int length = singleBranchLogPositions.size();
             // Add foliage placers along the branch.
-            treeNodes.add(new TreeNode(singleBranchLogPositions.get((int) Math.floor(length/3)).down(), 0, false));
-            treeNodes.add(new TreeNode(singleBranchLogPositions.get((int) Math.floor(length * 2/3)).down(), 0, false));
+            treeNodes.add(new TreeNode(singleBranchLogPositions.get((int) Math.floor(length/3f)).down(), 0, false));
+            treeNodes.add(new TreeNode(singleBranchLogPositions.get((int) Math.floor(length * 2/3f)).down(), 0, false));
             treeNodes.add(new TreeNode(singleBranchLogPositions.get(length - 1).down(), 0, false));
             // Make the branch.
             buildBranch(singleBranchLogPositions, testableWorld, biConsumer,random,treeFeatureConfig, branchPos);

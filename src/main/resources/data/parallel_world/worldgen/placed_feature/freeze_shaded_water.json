@@ -1,8 +1,0 @@
-{
-  "feature": "parallel_world:freeze_shaded_water",
-  "placement": [
-    {
-      "type": "minecraft:biome"
-    }
-  ]
-}

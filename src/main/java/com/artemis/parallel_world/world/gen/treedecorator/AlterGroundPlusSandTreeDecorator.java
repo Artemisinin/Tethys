@@ -1,7 +1,7 @@
 package com.artemis.parallel_world.world.gen.treedecorator;
 
 import com.artemis.parallel_world.mixin.TreeDecoratorTypeRegisterInvoker;
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import net.minecraft.block.Blocks;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.gen.feature.Feature;
@@ -14,8 +14,8 @@ public class AlterGroundPlusSandTreeDecorator extends AlterGroundTreeDecorator {
 
     public static TreeDecoratorType<AlterGroundPlusSandTreeDecorator> ALTERGROUNDPLUSSAND;
 
-    public static final Codec<AlterGroundPlusSandTreeDecorator> CODEC = BlockStateProvider.TYPE_CODEC.fieldOf("provider").
-            xmap(AlterGroundPlusSandTreeDecorator::new, decorator -> decorator.provider).codec();
+    public static final MapCodec<AlterGroundPlusSandTreeDecorator> CODEC = BlockStateProvider.TYPE_CODEC.fieldOf("provider").
+            xmap(AlterGroundPlusSandTreeDecorator::new, decorator -> decorator.provider);
 
     private final BlockStateProvider provider;
 

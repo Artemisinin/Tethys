@@ -10,7 +10,7 @@
           "predicate_type": "minecraft:block_match"
       },
         "state": {
-          "Name": "parallel_world:ores/gold_ore_andesite"
+          "Name": "parallel_world:gold_ore_andesite"
         }
       }
     ]

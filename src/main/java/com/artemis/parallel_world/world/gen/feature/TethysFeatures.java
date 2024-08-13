@@ -9,7 +9,7 @@ public class TethysFeatures {
 
     public static Feature<DomeDiskFeatureConfig> DOME_DISK_FEATURE;
     public static Feature<DefaultFeatureConfig> FILL_IN_ICE_FEATURE;
-    public static Feature<DefaultFeatureConfig> FREEZE_SHADED_WATER_FEATURE;
+    public static Feature<DefaultFeatureConfig> FREEZE_AREA;
     public static Feature<HugeMushroomFeatureConfig> HUGE_HEATH_FLAT_MUSHROOM_FEATURE;
     public static Feature<HugeMushroomFeatureConfig> HUGE_HEATH_UMBRELLA_MUSHROOM_FEATURE;
     public static Feature<DefaultFeatureConfig> SHORTENED_ICE_SPIKE;
@@ -25,7 +25,7 @@ public class TethysFeatures {
     public static void registerFeatures() {
         DOME_DISK_FEATURE = register("parallel_world:dome_disk", new DomeDiskFeature(DomeDiskFeatureConfig.CODEC));
         FILL_IN_ICE_FEATURE = register("parallel_world:fill_in_ice", new FillInIceFeature(DefaultFeatureConfig.CODEC));
-        FREEZE_SHADED_WATER_FEATURE = register("parallel_world:freeze_shaded_water", new FreezeShadedWaterFeature(DefaultFeatureConfig.CODEC));
+        FREEZE_AREA = register("parallel_world:freeze_area", new FreezeAreaFeature(DefaultFeatureConfig.CODEC));
         HUGE_HEATH_FLAT_MUSHROOM_FEATURE = register("parallel_world:flat_mushroom", new HugeHeathFlatMushroomFeature(HugeMushroomFeatureConfig.CODEC));
         HUGE_HEATH_UMBRELLA_MUSHROOM_FEATURE = register("parallel_world:umbrella_mushroom", new HugeHeathUmbrellaMushroomFeature(HugeMushroomFeatureConfig.CODEC));
         SHORTENED_ICE_SPIKE = register("parallel_world:shortened_ice_spike", new IceSpikeShortenedFeature(DefaultFeatureConfig.CODEC));

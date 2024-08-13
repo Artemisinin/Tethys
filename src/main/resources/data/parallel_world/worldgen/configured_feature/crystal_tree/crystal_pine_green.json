@@ -35,15 +35,13 @@
       "type": "minecraft:simple_state_provider"
     },
     "foliage_placer": {
-		"radius": 1,
-		"offset": 0,		
-		"height": {
-          "type": "minecraft:uniform",
-          "value": {
-            "min_inclusive": 3,
-            "max_inclusive": 4
-          }
-		},
+      "radius": 1,
+      "offset": 0,
+      "height": {
+        "type": "minecraft:uniform",
+        "min_inclusive": 3,
+        "max_inclusive": 4
+      },
       "type": "minecraft:pine_foliage_placer"
     },
     "trunk_placer": {

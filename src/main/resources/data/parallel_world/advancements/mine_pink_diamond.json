@@ -2,18 +2,15 @@
   "parent": "minecraft:story/iron_tools",
   "display": {
     "icon": {
-      "item": "parallel_world:pink_diamond"
+      "count": 1,
+      "id": "parallel_world:pink_diamond"
     },
     "title": {
       "text": "DIAMONDS! But pink."
     },
     "description": {
       "text": "Acquire a pink diamond. How trendy."
-    },
-    "frame": "task",
-    "show_toast": true,
-    "announce_to_chat": true,
-    "hidden": false
+    }
   },
   "criteria": {
     "pink_diamond": {
@@ -21,9 +18,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "parallel_world:pink_diamond"
-            ]
+            "items": "parallel_world:pink_diamond"
           }
         ]
       }
@@ -33,5 +28,6 @@
     [
       "pink_diamond"
     ]
-  ]
+  ],
+  "sends_telemetry_event": true
 }

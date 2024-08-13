@@ -1,5 +1,6 @@
 {
     "type": "minecraft:crafting_shaped",
+    "category": "building",
     "pattern": [
         "###",
         "###",
@@ -11,7 +12,7 @@
         }
     },
     "result": {
-        "item": "parallel_world:pink_diamond_block",
+        "id": "parallel_world:pink_diamond_block",
         "count": 1
     }
 }
