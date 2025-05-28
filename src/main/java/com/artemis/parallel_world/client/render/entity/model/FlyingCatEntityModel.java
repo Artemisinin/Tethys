@@ -25,11 +25,21 @@ public class FlyingCatEntityModel<T extends FlyingCatEntity> extends AnimalModel
 	private final ModelPart rightWingDistal2;
 	private final ModelPart rightWingDistal3;
 	private final ModelPart rightWingDistal4;
+	private final ModelPart rightWingDistal5;
+	private final ModelPart rightWingShort1;
+	private final ModelPart rightWingShort2;
+	private final ModelPart rightWingShort3;
+	private final ModelPart rightWingShort4;
 	private final ModelPart leftWingProx;
 	private final ModelPart leftWingDistal1;
 	private final ModelPart leftWingDistal2;
 	private final ModelPart leftWingDistal3;
 	private final ModelPart leftWingDistal4;
+	private final ModelPart leftWingDistal5;
+	private final ModelPart leftWingShort1;
+	private final ModelPart leftWingShort2;
+	private final ModelPart leftWingShort3;
+	private final ModelPart leftWingShort4;
 	private final float proxWingPitchRest = 2.2F;
 	private final float proxWingRollRest = -0.15F;
 	private final float proxWingYawRest = -0.20F;
@@ -58,11 +68,21 @@ public class FlyingCatEntityModel<T extends FlyingCatEntity> extends AnimalModel
 		this.rightWingDistal2 = this.rightWingProx.getChild("right_wing_distal2");
 		this.rightWingDistal3 = this.rightWingProx.getChild("right_wing_distal3");
 		this.rightWingDistal4 = this.rightWingProx.getChild("right_wing_distal4");
+		this.rightWingDistal5 = this.rightWingProx.getChild("right_wing_distal5");
+		this.rightWingShort1 = this.rightWingProx.getChild("right_wing_short1");
+		this.rightWingShort2 = this.rightWingProx.getChild("right_wing_short2");
+		this.rightWingShort3 = this.rightWingProx.getChild("right_wing_short3");
+		this.rightWingShort4 = this.rightWingProx.getChild("right_wing_short4");
 		this.leftWingProx = root.getChild("left_wing_prox");
 		this.leftWingDistal1 = this.leftWingProx.getChild("left_wing_distal1");
 		this.leftWingDistal2 = this.leftWingProx.getChild("left_wing_distal2");
 		this.leftWingDistal3 = this.leftWingProx.getChild("left_wing_distal3");
 		this.leftWingDistal4 = this.leftWingProx.getChild("left_wing_distal4");
+		this.leftWingDistal5 = this.leftWingProx.getChild("left_wing_distal5");
+		this.leftWingShort1 = this.leftWingProx.getChild("left_wing_short1");
+		this.leftWingShort2 = this.leftWingProx.getChild("left_wing_short2");
+		this.leftWingShort3 = this.leftWingProx.getChild("left_wing_short3");
+		this.leftWingShort4 = this.leftWingProx.getChild("left_wing_short4");
 	}
 
 	public static ModelData getModelData(Dilation dilation) {
@@ -124,20 +144,38 @@ public class FlyingCatEntityModel<T extends FlyingCatEntity> extends AnimalModel
 		// Distal wings
 			// Define pieces
 		ModelPartBuilder leading_edge = ModelPartBuilder.create().
-				uv(29, 22).
+				uv(9, 22).
 				cuboid(-0.5F, 0.0F, -0.5F, 1, 9, 1, dilation);
 		ModelPartBuilder feather = ModelPartBuilder.create().
-				uv(30, 22).
+				uv(9, 22).
 				cuboid(-0.5F, 0.0F, -0.5F, 1, 9, 1, dilation);
-			// Attach pieces
+		ModelPartBuilder med_feather = ModelPartBuilder.create().
+				uv(14,22).
+				cuboid(-0.5F, 0.0F, -0.5F, 1, 7, 1, dilation);
+		ModelPartBuilder short_feather = ModelPartBuilder.create().
+				uv(19, 22).
+				cuboid(-0.5F, 0.0F, -0.5F, 1, 5, 1, dilation);
+		// Attach pieces
+		// Right wing feathers
 		rightWing.addChild("right_wing_distal1", leading_edge, ModelTransform.pivot(0F, 10.0F, -1.0F));
 		rightWing.addChild("right_wing_distal2", feather, ModelTransform.pivot(0F, 9.5F, -1.0F));
 		rightWing.addChild("right_wing_distal3", feather, ModelTransform.pivot(0F, 9.25F, -1.0F));
 		rightWing.addChild("right_wing_distal4", feather, ModelTransform.pivot(0F, 9.0F, -1.0F));
+		rightWing.addChild("right_wing_distal5", feather, ModelTransform.pivot(0F, 8.75F, -1.0F));
+		rightWing.addChild("right_wing_short1", short_feather, ModelTransform.pivot(0F, 5.5F, 0.75F));
+		rightWing.addChild("right_wing_short2", short_feather, ModelTransform.pivot(0F, 6.25F, -0.25F));
+		rightWing.addChild("right_wing_short3", med_feather, ModelTransform.pivot(0F, 7.0F, -0.5F));
+		rightWing.addChild("right_wing_short4", med_feather, ModelTransform.pivot(0F, 7.75F, -1.0F));
+		// Left wing feathers
 		leftWing.addChild("left_wing_distal1", leading_edge, ModelTransform.pivot(0F, 10.F, -1.0F));
 		leftWing.addChild("left_wing_distal2", feather, ModelTransform.pivot(0F, 9.5F, -1.0F));
 		leftWing.addChild("left_wing_distal3", feather, ModelTransform.pivot(0F, 9.25F, -1.0F));
 		leftWing.addChild("left_wing_distal4", feather, ModelTransform.pivot(0F, 9.0F, -1.0F));
+		leftWing.addChild("left_wing_distal5", feather, ModelTransform.pivot(0F, 8.75F, -1.0F));
+		leftWing.addChild("left_wing_short1", short_feather, ModelTransform.pivot(0F, 5.5F, 0.75F));
+		leftWing.addChild("left_wing_short2", short_feather, ModelTransform.pivot(0F, 6.25F, -0.25F));
+		leftWing.addChild("left_wing_short3", med_feather, ModelTransform.pivot(0F, 7.0F, -0.5F));
+		leftWing.addChild("left_wing_short4", med_feather, ModelTransform.pivot(0F, 7.75F, -1.0F));
 
 		return modelData;
 	}
@@ -188,12 +226,20 @@ public class FlyingCatEntityModel<T extends FlyingCatEntity> extends AnimalModel
 		this.leftWingProx.pitch = proxWingPitchRest;
 		this.rightWingProx.yaw = proxWingYawRest;
 		this.leftWingProx.yaw = -proxWingYawRest;
-		this.rightWingDistal1.yaw = this.rightWingDistal2.yaw = this.rightWingDistal3.yaw = this.rightWingDistal4.yaw = distalWingYawRest;
-		this.leftWingDistal1.yaw = this.leftWingDistal2.yaw = this.leftWingDistal3.yaw = this.leftWingDistal4.yaw = -distalWingYawRest;
+		this.rightWingDistal1.yaw = this.rightWingDistal2.yaw = this.rightWingDistal3.yaw = this.rightWingDistal4.yaw = this.rightWingDistal5.yaw = distalWingYawRest;
+		this.leftWingDistal1.yaw = this.leftWingDistal2.yaw = this.leftWingDistal3.yaw = this.leftWingDistal4.yaw = this.leftWingDistal5.yaw = -distalWingYawRest;
 		this.rightWingDistal1.pitch = this.leftWingDistal1.pitch = -1.30F;
 		this.rightWingDistal2.pitch = this.leftWingDistal2.pitch = -1.45F;
 		this.rightWingDistal3.pitch = this.leftWingDistal3.pitch = -1.60F;
 		this.rightWingDistal4.pitch = this.leftWingDistal4.pitch = -1.75F;
+		this.rightWingDistal5.pitch = this.leftWingDistal5.pitch = -1.90F;
+		this.rightWingShort1.yaw = this.rightWingShort2.yaw = this.rightWingShort3.yaw = this.rightWingShort4.yaw = distalWingYawRest;
+		this.leftWingShort1.yaw = this.leftWingShort2.yaw = this.leftWingShort3.yaw = this.leftWingShort4.yaw = -distalWingYawRest;
+		// Feather 1 is closest to base of wing
+		this.rightWingShort1.pitch = this.leftWingShort1.pitch = -1.60F;
+		this.rightWingShort2.pitch = this.leftWingShort2.pitch = -1.50F;
+		this.rightWingShort3.pitch = this.leftWingShort3.pitch = -1.40F;
+		this.rightWingShort4.pitch = this.leftWingShort4.pitch = -1.30F;
 
 		boolean flying = !flyingCatEntity.isOnGround();
 
@@ -241,16 +287,24 @@ public class FlyingCatEntityModel<T extends FlyingCatEntity> extends AnimalModel
 				this.leftBackLeg.pitch += 0.2F;
 				this.upperTail.pitch += 0.5F;
 			}
+			// Pitch right and left have same signs, yaw they have opposite.
 			this.rightWingProx.pitch = proxWingPitchFlight;
 			this.leftWingProx.pitch = proxWingPitchFlight;
 			this.rightWingProx.yaw = proxWingYawFlight;
 			this.leftWingProx.yaw = -proxWingYawFlight;
-			this.rightWingDistal1.yaw = this.rightWingDistal2.yaw = this.rightWingDistal3.yaw = this.rightWingDistal4.yaw = distalWingYawFlight;
-			this.leftWingDistal1.yaw = this.leftWingDistal2.yaw = this.leftWingDistal3.yaw = this.leftWingDistal4.yaw = -distalWingYawFlight;
+			this.rightWingDistal1.yaw = this.rightWingDistal2.yaw = this.rightWingDistal3.yaw = this.rightWingDistal4.yaw = this.rightWingDistal5.yaw = distalWingYawFlight;
+			this.rightWingShort1.yaw = this.rightWingShort2.yaw = this.rightWingShort3.yaw = this.rightWingShort4.yaw = distalWingYawFlight;
+			this.leftWingDistal1.yaw = this.leftWingDistal2.yaw = this.leftWingDistal3.yaw = this.leftWingDistal4.yaw = this.leftWingDistal5.yaw = -distalWingYawFlight;
+			this.leftWingShort1.yaw = this.leftWingShort2.yaw = this.leftWingShort3.yaw = this.leftWingShort4.yaw = -distalWingYawFlight;
 			this.rightWingDistal1.pitch = this.leftWingDistal1.pitch = -0.7F;
 			this.rightWingDistal2.pitch = this.leftWingDistal2.pitch = -0.95F;
 			this.rightWingDistal3.pitch = this.leftWingDistal3.pitch = -1.10F;
 			this.rightWingDistal4.pitch = this.leftWingDistal4.pitch = -1.25F;
+			this.rightWingDistal5.pitch = this.leftWingDistal5.pitch = -1.40F;
+			this.rightWingShort1.pitch = this.leftWingShort1.pitch = -1.60F;
+			this.rightWingShort2.pitch = this.leftWingShort2.pitch = -1.55F;
+			this.rightWingShort3.pitch = this.leftWingShort3.pitch = -1.50F;
+			this.rightWingShort4.pitch = this.leftWingShort4.pitch = -1.45F;
 		} else {
 			this.animationState = 1;
 		}
@@ -263,6 +317,7 @@ public class FlyingCatEntityModel<T extends FlyingCatEntity> extends AnimalModel
 		if (this.animationState != 3) {
 			// If not sneaking set torso pitch.
 			this.torso.pitch = 1.57F;
+			// If flying set torso pitch and wing roll.
 			if (this.animationState == 4) {
 				this.torso.pitch = 1.47F;
 				// The speed is dictated by the multiplier of the animationProgress ticker.
@@ -279,6 +334,12 @@ public class FlyingCatEntityModel<T extends FlyingCatEntity> extends AnimalModel
 				this.rightWingDistal2.pitch = this.leftWingDistal2.pitch = -1.25F;
 				this.rightWingDistal3.pitch = this.leftWingDistal3.pitch = -1.40F;
 				this.rightWingDistal4.pitch = this.leftWingDistal4.pitch = -1.55F;
+				this.rightWingDistal5.pitch = this.leftWingDistal5.pitch = -1.7F;
+				// 1 is closest to the base of the wing
+				this.rightWingShort1.pitch = this.leftWingShort1.pitch = -1.8F;
+				this.rightWingShort2.pitch = this.leftWingShort2.pitch = -1.75F;
+				this.rightWingShort3.pitch = this.leftWingShort3.pitch = -1.7F;
+				this.rightWingShort4.pitch = this.leftWingShort4.pitch = -1.65F;
 				this.leftBackLeg.pitch = MathHelper.cos(limbAngle * 0.6662F) * limbDistance;
 				this.rightBackLeg.pitch = MathHelper.cos(limbAngle * 0.6662F + 3.14F) * limbDistance;
 				this.leftFrontLeg.pitch = MathHelper.cos(limbAngle * 0.6662F + 3.14F) * limbDistance;

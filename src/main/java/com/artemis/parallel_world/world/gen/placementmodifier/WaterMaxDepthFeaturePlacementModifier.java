@@ -12,7 +12,7 @@ import net.minecraft.util.math.random.Random;
 import net.minecraft.world.gen.placementmodifier.PlacementModifierType;
 
 
-import static com.artemis.parallel_world.world.gen.feature.TethysPlacementModifiers.WATER_MAX_DEPTH_DECORATOR;
+import static com.artemis.parallel_world.world.gen.placementmodifier.TethysPlacementModifiers.WATER_MAX_DEPTH_DECORATOR;
 
 public class WaterMaxDepthFeaturePlacementModifier extends AbstractConditionalPlacementModifier {
     private final int maxSubmersion;

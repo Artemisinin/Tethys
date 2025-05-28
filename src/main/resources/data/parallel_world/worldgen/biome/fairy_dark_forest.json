@@ -90,6 +90,7 @@
       "minecraft:kelp_cold"
     ],
     [
+      "parallel_world:glow_lichen_tree",
       "minecraft:freeze_top_layer"
     ]
   ],

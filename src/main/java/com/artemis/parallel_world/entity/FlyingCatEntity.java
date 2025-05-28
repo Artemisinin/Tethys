@@ -1,5 +1,6 @@
 package com.artemis.parallel_world.entity;
 
+import com.artemis.parallel_world.world.gen.TethysBiomes;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.LeavesBlock;
@@ -27,18 +28,21 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.recipe.Ingredient;
+import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.DyeColor;
 import net.minecraft.util.Hand;
+import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.*;
+import net.minecraft.world.biome.Biome;
 import org.jetbrains.annotations.Nullable;
 import net.minecraft.entity.ai.goal.TemptGoal;
 
@@ -50,6 +54,7 @@ public class FlyingCatEntity extends TameableEntity implements VariantHolder<Fly
     private static final Ingredient TAMING_INGREDIENT = Ingredient.ofItems(Items.COOKIE);
     private static final TrackedData<Integer> FLYING_CAT_VARIANT = DataTracker.registerData(FlyingCatEntity.class, TrackedDataHandlerRegistry.INTEGER);
     private static final TrackedData<Integer> COLLAR_COLOR = DataTracker.registerData(FlyingCatEntity.class, TrackedDataHandlerRegistry.INTEGER);
+    private static final Integer DEFAULT_VARIANT = FlyingCatVariant.CALICO.getId();
     private int locomotionToggle;
 
     public FlyingCatEntity(EntityType<? extends TameableEntity> entityType, World world) {
@@ -59,16 +64,22 @@ public class FlyingCatEntity extends TameableEntity implements VariantHolder<Fly
         this.setPathfindingPenalty(PathNodeType.DAMAGE_FIRE, -1.0F);
     }
 
+    public Identifier getTexture() {
+        return new Identifier("parallel_world", "textures/entity/flyingcat/" + this.getVariant().asString() + ".png");
+    }
+
     public static DefaultAttributeContainer.Builder createFlyingCatAttributes() {
         return MobEntity.createMobAttributes().add(EntityAttributes.GENERIC_MAX_HEALTH, 10.0D).add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.3D).add(EntityAttributes.GENERIC_FLYING_SPEED, 0.6D).add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 3.0D);
     }
 
-    public FlyingCatVariant getVariant() {
-        return FlyingCatVariant.byId(this.dataTracker.get(FLYING_CAT_VARIANT));
+    @Override
+    public void setVariant(FlyingCatVariant variant) {
+        this.dataTracker.set(FLYING_CAT_VARIANT, variant.getId());
     }
 
-    public void setVariant(FlyingCatVariant flyingCatVariant) {
-        this.dataTracker.set(FLYING_CAT_VARIANT, flyingCatVariant.getId());
+    @Override
+    public FlyingCatVariant getVariant() {
+        return FlyingCatVariant.byId(this.dataTracker.get(FLYING_CAT_VARIANT));
     }
 
     public DyeColor getCollarColor() {
@@ -79,18 +90,27 @@ public class FlyingCatEntity extends TameableEntity implements VariantHolder<Fly
         this.dataTracker.set(COLLAR_COLOR, color.getId());
     }
 
+    @Override
     protected void initDataTracker(Builder builder) {
         super.initDataTracker(builder);
-        builder.add(FLYING_CAT_VARIANT, FlyingCatVariant.CALICO.getId());
+        builder.add(FLYING_CAT_VARIANT, FlyingCatEntity.DEFAULT_VARIANT);
         builder.add(COLLAR_COLOR, DyeColor.RED.getId());
     }
 
+    @Override
     public void writeCustomDataToNbt(NbtCompound nbt) {
         super.writeCustomDataToNbt(nbt);
         nbt.putInt("Variant", FLYING_CAT_VARIANT.id());
         nbt.putByte("CollarColor", (byte)this.getCollarColor().getId());
     }
 
+    @Override
+    public void readCustomDataFromNbt(NbtCompound nbt) {
+        super.readCustomDataFromNbt(nbt);
+        this.setVariant(FlyingCatVariant.byId(nbt.getInt("Variant")));
+    }
+
+    @Override
     protected EntityNavigation createNavigation(World world) {
         BirdNavigation birdNavigation = new BirdNavigation(this, world);
         birdNavigation.setCanSwim(true);
@@ -99,6 +119,7 @@ public class FlyingCatEntity extends TameableEntity implements VariantHolder<Fly
         return birdNavigation;
     }
 
+    @Override
     protected void initGoals() {
         this.goalSelector.add(1, new SwimGoal(this));
         this.goalSelector.add(1, new SitGoal(this));
@@ -114,6 +135,7 @@ public class FlyingCatEntity extends TameableEntity implements VariantHolder<Fly
         this.goalSelector.add(11, new LookAtEntityGoal(this, PlayerEntity.class, 10.0F));
     }
 
+    @Override
     public void tick() {
         super.tick();
         if (this.locomotionToggle <600) {
@@ -154,6 +176,7 @@ public class FlyingCatEntity extends TameableEntity implements VariantHolder<Fly
         return status;
     }
 
+    @Override
     public boolean isBreedingItem(ItemStack stack) {
         return TAMING_INGREDIENT.test(stack);
     }
@@ -186,12 +209,9 @@ public class FlyingCatEntity extends TameableEntity implements VariantHolder<Fly
         }
     }
 
+    @Override
     public boolean handleFallDamage(float fallDistance, float damageMultiplier, DamageSource damageSource) {
         return false;
-    }
-
-    public int getMinAmbientSoundDelay() {
-        return 120;
     }
 
     public void hiss() {
@@ -214,12 +234,6 @@ public class FlyingCatEntity extends TameableEntity implements VariantHolder<Fly
         }
         return flyingCatEntity;
     }
-
-    // Removed in 20.5 or 20.6
-    /*
-    protected float getActiveEyeHeight(EntityPose pose, EntityDimensions dimensions) {
-        return dimensions.height * 0.5F;
-    }*/
 
     public static boolean canSpawn(EntityType<? extends FlyingCatEntity> type, WorldAccess world, SpawnReason spawnReason, BlockPos pos, Random random) {
         BlockState blockState = world.getBlockState(pos.down());
@@ -282,11 +296,30 @@ public class FlyingCatEntity extends TameableEntity implements VariantHolder<Fly
         }
     }
 
+    @Override
     @Nullable
     public EntityData initialize(ServerWorldAccess world, LocalDifficulty difficulty, SpawnReason spawnReason, @Nullable EntityData entityData) {
-        int index = world.getRandom().nextInt(FlyingCatVariant.values().length);
         entityData = super.initialize(world, difficulty, spawnReason, entityData);
-        this.setVariant(FlyingCatVariant.byId(index));
+        RegistryEntry<Biome> biome = world.getBiome(this.getBlockPos());
+        Integer variant;
+        int random;
+        if (biome.isIn(TethysBiomes.COLD_BIOMES)) {
+            random = Random.create().nextBetween(0,TethysEntities.coldVariants.size()-1);
+            variant = TethysEntities.coldVariants.get(random);
+            this.setVariant(FlyingCatVariant.byId(variant));
+        } else if (biome.isIn(TethysBiomes.TEMPERATE_BIOMES)) {
+            random = Random.create().nextBetween(0,TethysEntities.temperateVariants.size()-1);
+            variant = TethysEntities.temperateVariants.get(random);
+            this.setVariant(FlyingCatVariant.byId(variant));
+        }
+        else if (biome.isIn(TethysBiomes.WARM_BIOMES)) {
+            random = Random.create().nextBetween(0,TethysEntities.warmVariants.size()-1);
+            variant = TethysEntities.warmVariants.get(random);
+            this.setVariant(FlyingCatVariant.byId(variant));
+        }
+        else {
+            this.setVariant(FlyingCatVariant.byId(FlyingCatEntity.DEFAULT_VARIANT));
+        }
         return entityData;
     }
 }

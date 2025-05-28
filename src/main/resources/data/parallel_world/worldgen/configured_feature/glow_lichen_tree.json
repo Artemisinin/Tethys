@@ -1,0 +1,33 @@
+{
+  "type": "minecraft:multiface_growth",
+  "config": {
+    "block": "minecraft:glow_lichen",
+    "can_be_placed_on": [
+      "minecraft:dark_oak_log",
+      "minecraft:oak_log",
+      "minecraft:acacia_log",
+      "minecraft:birch_log",
+      "minecraft:jungle_log",
+      "minecraft:spruce_log",
+      "minecraft:mangrove_log",
+      "minecraft:cherry_log",
+      "minecraft:brown_mushroom_block",
+      "minecraft:red_mushroom_block",
+      "minecraft:mushroom_stem",
+      "parallel_world:basswood_log",
+      "parallel_world:blackcurrant_log",
+      "parallel_world:cherry_log",
+      "parallel_world:dogwood_log",
+      "parallel_world:elderberry_log",
+      "parallel_world:ginkgo_log",
+      "parallel_world:sweetgum_log",
+      "parallel_world:pink_mushroom_block",
+      "parallel_world:white_mushroom_block"
+    ],
+    "can_place_on_ceiling": true,
+    "can_place_on_floor": true,
+    "can_place_on_wall": true,
+    "chance_of_spreading": 0.5,
+    "search_range": 20
+  }
+}

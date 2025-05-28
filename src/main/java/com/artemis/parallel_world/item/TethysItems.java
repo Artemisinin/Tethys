@@ -5,20 +5,24 @@ import com.artemis.parallel_world.entity.TethysEntities;
 import com.artemis.parallel_world.mixin.RegisterCompostableItemInvoker;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.item.*;
+import net.minecraft.network.packet.CustomPayload;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 
 public class TethysItems {
 
+    public static final Item AZALEA_LOG = new BlockItem(TethysBlocks.AZALEA_LOG, new Item.Settings());
     public static final Item BASSWOOD_LEAVES = new BlockItem(TethysBlocks.BASSWOOD_LEAVES, new Item.Settings());
     public static final Item BASSWOOD_LOG = new BlockItem(TethysBlocks.BASSWOOD_LOG, new Item.Settings());
     public static final Item BASSWOOD_PLANKS = new BlockItem(TethysBlocks.BASSWOOD_PLANKS, new Item.Settings());
     public static final Item BASSWOOD_SAPLING = new BlockItem(TethysBlocks.BASSWOOD_SAPLING, new Item.Settings());
+    public static final Item BASSWOOD_STAIRS = new BlockItem(TethysBlocks.BASSWOOD_STAIRS, new Item.Settings());
     public static final Item BLACKCURRANT_LEAVES = new BlockItem(TethysBlocks.BLACKCURRANT_LEAVES, new Item.Settings());
     public static final Item BLACKCURRANT_LOG = new BlockItem(TethysBlocks.BLACKCURRANT_LOG, new Item.Settings());
     public static final Item BLACKCURRANT_PLANKS = new BlockItem(TethysBlocks.BLACKCURRANT_PLANKS, new Item.Settings());
     public static final Item BLACKCURRANT_SAPLING = new BlockItem(TethysBlocks.BLACKCURRANT_SAPLING, new Item.Settings());
+    public static final Item BLACKCURRANT_STAIRS = new BlockItem(TethysBlocks.BLACKCURRANT_STAIRS, new Item.Settings());
     public static final Item BLUE_CALCITE_LOG = new BlockItem(TethysBlocks.BLUE_CALCITE_LOG, new Item.Settings());
     public static final Item CALCITE_LOG = new BlockItem(TethysBlocks.CALCITE_LOG, new Item.Settings());
     public static final Item CAVE_GLOWLEAF = new BlockItem(TethysBlocks.CAVE_GLOWLEAF, new Item.Settings());
@@ -26,6 +30,7 @@ public class TethysItems {
     public static final Item CHERRY_LOG = new BlockItem(TethysBlocks.CHERRY_LOG, new Item.Settings());
     public static final Item CHERRY_PLANKS = new BlockItem(TethysBlocks.CHERRY_PLANKS, new Item.Settings());
     public static final Item CHERRY_SAPLING = new BlockItem(TethysBlocks.CHERRY_SAPLING, new Item.Settings());
+    public static final Item CHERRY_STAIRS = new BlockItem(TethysBlocks.CHERRY_STAIRS, new Item.Settings());
     public static final Item COPPER_ORE_ANDESITE = new BlockItem(TethysBlocks.COPPER_ORE_ANDESITE, new Item.Settings());
     public static final Item COPPER_ORE_DIORITE = new BlockItem(TethysBlocks.COPPER_ORE_DIORITE, new Item.Settings());
     public static final Item COPPER_ORE_GRANITE = new BlockItem(TethysBlocks.COPPER_ORE_GRANITE, new Item.Settings());
@@ -33,15 +38,18 @@ public class TethysItems {
     public static final Item DOGWOOD_LOG = new BlockItem(TethysBlocks.DOGWOOD_LOG, new Item.Settings());
     public static final Item DOGWOOD_PLANKS = new BlockItem(TethysBlocks.DOGWOOD_PLANKS, new Item.Settings());
     public static final Item DOGWOOD_SAPLING = new BlockItem(TethysBlocks.DOGWOOD_SAPLING, new Item.Settings());
+    public static final Item DOGWOOD_STAIRS = new BlockItem(TethysBlocks.DOGWOOD_STAIRS, new Item.Settings());
     public static final Item ELDERBERRY_LEAVES = new BlockItem(TethysBlocks.ELDERBERRY_LEAVES, new Item.Settings());
     public static final Item ELDERBERRY_LOG = new BlockItem(TethysBlocks.ELDERBERRY_LOG, new Item.Settings());
     public static final Item ELDERBERRY_PLANKS = new BlockItem(TethysBlocks.ELDERBERRY_PLANKS, new Item.Settings());
     public static final Item ELDERBERRY_SAPLING = new BlockItem(TethysBlocks.ELDERBERRY_SAPLING, new Item.Settings());
+    public static final Item ELDERBERRY_STAIRS = new BlockItem(TethysBlocks.ELDERBERRY_STAIRS, new Item.Settings());
     public static final Item FLYING_CAT_SPAWN_EGG = new SpawnEggItem(TethysEntities.FLYING_CAT, 16769262, 4668761, (new Item.Settings()));
     public static final Item GINKGO_LEAVES = new BlockItem(TethysBlocks.GINKGO_LEAVES, new Item.Settings());
     public static final Item GINKGO_LOG = new BlockItem(TethysBlocks.GINKGO_LOG, new Item.Settings());
     public static final Item GINKGO_PLANKS = new BlockItem(TethysBlocks.GINKGO_PLANKS, new Item.Settings());
     public static final Item GINKGO_SAPLING = new BlockItem(TethysBlocks.GINKGO_SAPLING, new Item.Settings());
+    public static final Item GINKGO_STAIRS = new BlockItem(TethysBlocks.GINKGO_STAIRS, new Item.Settings());
     public static final Item GLOW_FLOWER = new BlockItem(TethysBlocks.GLOW_FLOWER, new Item.Settings());
     public static final Item GLOW_LICHEN_BALL = new GlowLichenBallItem(new Item.Settings().maxCount(16));
     public static final Item GLOWFRUIT = new BlockItem(TethysBlocks.GLOWFRUIT, new Item.Settings());
@@ -67,12 +75,16 @@ public class TethysItems {
     public static final Item SWEETGUM_LOG = new BlockItem(TethysBlocks.SWEETGUM_LOG, new Item.Settings());
     public static final Item SWEETGUM_PLANKS = new BlockItem(TethysBlocks.SWEETGUM_PLANKS, new Item.Settings());
     public static final Item SWEETGUM_SAPLING = new BlockItem(TethysBlocks.SWEETGUM_SAPLING, new Item.Settings());
+    public static final Item SWEETGUM_STAIRS = new BlockItem(TethysBlocks.SWEETGUM_STAIRS, new Item.Settings());
     public static final Item TETHYS_TURTLE_EGG = new BlockItem(TethysBlocks.TETHYS_TURTLE_EGG, new Item.Settings());
     public static final Item TETHYS_TURTLE_SPAWN_EGG = new SpawnEggItem(TethysEntities.TETHYS_TURTLE, 4750419, 4599642, (new Item.Settings()));
     public static final Item WATER_STRIDER_SPAWN_EGG = new SpawnEggItem(TethysEntities.WATER_STRIDER, 5263602, 987033, (new Item.Settings()));
     public static final Item WHITE_MUSHROOM_BLOCK = new BlockItem(TethysBlocks.WHITE_MUSHROOM_BLOCK, new Item.Settings());
 
     public static void registerItems() {
+
+        // Azalea log
+        Registry.register(Registries.ITEM, new Identifier("parallel_world", "azalea_log"), AZALEA_LOG);
 
         // Calcite logs
         Registry.register(Registries.ITEM, new Identifier("parallel_world", "calcite_log"), CALCITE_LOG);
@@ -127,42 +139,49 @@ public class TethysItems {
         Registry.register(Registries.ITEM, new Identifier("parallel_world", "basswood_planks"), BASSWOOD_PLANKS);
         Registry.register(Registries.ITEM, new Identifier("parallel_world", "basswood_leaves"), BASSWOOD_LEAVES);
         Registry.register(Registries.ITEM, new Identifier("parallel_world", "basswood_sapling"), BASSWOOD_SAPLING);
+        Registry.register(Registries.ITEM, new Identifier("parallel_world", "basswood_stairs"), BASSWOOD_STAIRS);
 
             // Blackcurrant trees
         Registry.register(Registries.ITEM, new Identifier("parallel_world", "blackcurrant_log"), BLACKCURRANT_LOG);
         Registry.register(Registries.ITEM, new Identifier("parallel_world", "blackcurrant_planks"), BLACKCURRANT_PLANKS);
         Registry.register(Registries.ITEM, new Identifier("parallel_world", "blackcurrant_leaves"), BLACKCURRANT_LEAVES);
         Registry.register(Registries.ITEM, new Identifier("parallel_world", "blackcurrant_sapling"), BLACKCURRANT_SAPLING);
+        Registry.register(Registries.ITEM, new Identifier("parallel_world", "blackcurrant_stairs"), BLACKCURRANT_STAIRS);
 
             // Cherry trees
         Registry.register(Registries.ITEM, new Identifier("parallel_world", "cherry_log"), CHERRY_LOG);
         Registry.register(Registries.ITEM, new Identifier("parallel_world", "cherry_planks"), CHERRY_PLANKS);
         Registry.register(Registries.ITEM, new Identifier("parallel_world", "cherry_leaves"), CHERRY_LEAVES);
         Registry.register(Registries.ITEM, new Identifier("parallel_world", "cherry_sapling"), CHERRY_SAPLING);
+        Registry.register(Registries.ITEM, new Identifier("parallel_world", "cherry_stairs"), CHERRY_STAIRS);
 
             // Dogwood trees
         Registry.register(Registries.ITEM, new Identifier("parallel_world", "dogwood_log"), DOGWOOD_LOG);
         Registry.register(Registries.ITEM, new Identifier("parallel_world", "dogwood_planks"), DOGWOOD_PLANKS);
         Registry.register(Registries.ITEM, new Identifier("parallel_world", "dogwood_leaves"), DOGWOOD_LEAVES);
         Registry.register(Registries.ITEM, new Identifier("parallel_world", "dogwood_sapling"), DOGWOOD_SAPLING);
+        Registry.register(Registries.ITEM, new Identifier("parallel_world", "dogwood_stairs"), DOGWOOD_STAIRS);
 
             // Elderberry trees
         Registry.register(Registries.ITEM, new Identifier("parallel_world", "elderberry_log"), ELDERBERRY_LOG);
         Registry.register(Registries.ITEM, new Identifier("parallel_world", "elderberry_planks"), ELDERBERRY_PLANKS);
         Registry.register(Registries.ITEM, new Identifier("parallel_world", "elderberry_leaves"), ELDERBERRY_LEAVES);
         Registry.register(Registries.ITEM, new Identifier("parallel_world", "elderberry_sapling"), ELDERBERRY_SAPLING);
+        Registry.register(Registries.ITEM, new Identifier("parallel_world", "elderberry_stairs"), ELDERBERRY_STAIRS);
 
             // Ginkgo trees
         Registry.register(Registries.ITEM, new Identifier("parallel_world", "ginkgo_log"), GINKGO_LOG);
         Registry.register(Registries.ITEM, new Identifier("parallel_world", "ginkgo_planks"), GINKGO_PLANKS);
         Registry.register(Registries.ITEM, new Identifier("parallel_world", "ginkgo_leaves"), GINKGO_LEAVES);
         Registry.register(Registries.ITEM, new Identifier("parallel_world", "ginkgo_sapling"), GINKGO_SAPLING);
+        Registry.register(Registries.ITEM, new Identifier("parallel_world", "ginkgo_stairs"), GINKGO_STAIRS);
 
-            // Sweetgum trees
+        // Sweetgum trees
         Registry.register(Registries.ITEM, new Identifier("parallel_world", "sweetgum_log"), SWEETGUM_LOG);
         Registry.register(Registries.ITEM, new Identifier("parallel_world", "sweetgum_planks"), SWEETGUM_PLANKS);
         Registry.register(Registries.ITEM, new Identifier("parallel_world", "sweetgum_leaves"), SWEETGUM_LEAVES);
         Registry.register(Registries.ITEM, new Identifier("parallel_world", "sweetgum_sapling"), SWEETGUM_SAPLING);
+        Registry.register(Registries.ITEM, new Identifier("parallel_world", "sweetgum_stairs"), SWEETGUM_STAIRS);
 
         // Other Vegetation
         Registry.register(Registries.ITEM, new Identifier("parallel_world", "heather"), HEATHER);
@@ -216,26 +235,34 @@ public class TethysItems {
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.BUILDING_BLOCKS).register(entries -> {
             entries.add(BASSWOOD_LOG);
             entries.add(BASSWOOD_PLANKS);
+            entries.add(BASSWOOD_STAIRS);
             entries.add(BLACKCURRANT_LOG);
             entries.add(BLACKCURRANT_PLANKS);
+            entries.add(BLACKCURRANT_STAIRS);
             entries.add(BLUE_CALCITE_LOG);
             entries.add(CALCITE_LOG);
             entries.add(CHERRY_LOG);
             entries.add(CHERRY_PLANKS);
+            entries.add(CHERRY_STAIRS);
             entries.add(DOGWOOD_LOG);
             entries.add(DOGWOOD_PLANKS);
+            entries.add(DOGWOOD_STAIRS);
             entries.add(ELDERBERRY_LOG);
             entries.add(ELDERBERRY_PLANKS);
+            entries.add(ELDERBERRY_STAIRS);
             entries.add(GINKGO_LOG);
             entries.add(GINKGO_PLANKS);
+            entries.add(GINKGO_STAIRS);
             entries.add(PINK_DIAMOND_BLOCK);
             entries.add(SWEETGUM_LOG);
             entries.add(SWEETGUM_PLANKS);
+            entries.add(SWEETGUM_STAIRS);
         });
 
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.COMBAT).register(entries -> entries.add(GLOW_LICHEN_BALL));
 
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> {
+            entries.add(AZALEA_LOG);
             entries.add(BASSWOOD_LEAVES);
             entries.add(BASSWOOD_LOG);
             entries.add(BASSWOOD_PLANKS);

@@ -1,10 +1,29 @@
 {
+  "replace": false,
   "values": [
     "parallel_world:amazon",
+    "parallel_world:bamboo_forest",
     "parallel_world:end_desert",
     "parallel_world:fungal_jungle",
+    "parallel_world:mangrove_swamp",
     "parallel_world:mycelium",
     "parallel_world:reef",
-    "parallel_world:traps"
+    "parallel_world:traps",
+
+    "minecraft:beach",
+    "minecraft:meadow",
+    "minecraft:mushroom_fields",
+    "minecraft:plains",
+    "minecraft:swamp",
+    "minecraft:sunflower_plains",
+    "minecraft:warm_ocean",
+
+    "minecraft:desert",
+    "minecraft:warm_ocean",
+    "#minecraft:is_jungle",
+    "#minecraft:is_savanna",
+    "#minecraft:is_nether",
+    "#minecraft:is_badlands",
+    "minecraft:mangrove_swamp"
   ]
 }

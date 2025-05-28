@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/stairs",
+  "textures": {
+    "bottom": "parallel_world:block/elderberry_planks",
+    "side": "parallel_world:block/elderberry_planks",
+    "top": "parallel_world:block/elderberry_planks"
+  }
+}

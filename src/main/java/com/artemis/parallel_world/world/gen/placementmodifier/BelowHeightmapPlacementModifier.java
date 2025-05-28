@@ -16,9 +16,11 @@ import net.minecraft.world.gen.placementmodifier.PlacementModifierType;
 
 import java.util.stream.Stream;
 
-import static com.artemis.parallel_world.world.gen.feature.TethysPlacementModifiers.BELOW_HEIGHTMAP_PLACEMENT_MODIFIER;
+import static com.artemis.parallel_world.world.gen.placementmodifier.TethysPlacementModifiers.BELOW_HEIGHTMAP_PLACEMENT_MODIFIER;
 
 public class BelowHeightmapPlacementModifier extends PlacementModifier {
+
+    // Retrieves solid blocks that are under the listed heightmap and have air above them.
 
     public static final MapCodec<BelowHeightmapPlacementModifier> MODIFIER_CODEC = RecordCodecBuilder.mapCodec((instance) -> instance.group(
                     Heightmap.Type.CODEC.fieldOf("heightmap").forGetter((belowHeightmapPlacementModifier) -> belowHeightmapPlacementModifier.heightmap),

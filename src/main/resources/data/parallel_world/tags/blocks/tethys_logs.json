@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
+    "parallel_world:azalea_log",
     "parallel_world:basswood_log",
     "parallel_world:blackcurrant_log",
     "parallel_world:cherry_log",

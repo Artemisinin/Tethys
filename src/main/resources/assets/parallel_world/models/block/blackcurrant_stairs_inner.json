@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/inner_stairs",
+  "textures": {
+    "bottom": "parallel_world:block/blackcurrant_planks",
+    "side": "parallel_world:block/blackcurrant_planks",
+    "top": "parallel_world:block/blackcurrant_planks"
+  }
+}

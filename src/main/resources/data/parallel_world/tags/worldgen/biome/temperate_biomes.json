@@ -1,0 +1,28 @@
+{
+  "replace": false,
+  "values": [
+    "parallel_world:ancient_oak_forest",
+    "parallel_world:fairy_dark_forest",
+    "parallel_world:fairy_flower_forest",
+    "parallel_world:heath",
+    "parallel_world:jade_forest",
+    "parallel_world:ocean",
+    "parallel_world:rainbow_forest",
+    "parallel_world:sand_bar",
+
+    "#minecraft:is_hill",
+    "minecraft:birch_forest",
+    "minecraft:cherry_grove",
+    "minecraft:dark_forest",
+    "minecraft:deep_lukewarm_ocean",
+    "minecraft:deep_ocean",
+    "minecraft:dripstone_caves",
+    "minecraft:flower_forest",
+    "minecraft:forest",
+    "minecraft:lukewarm_ocean",
+    "minecraft:ocean",
+    "minecraft:old_growth_birch_forest",
+    "minecraft:river",
+    "minecraft:stony_shore"
+  ]
+}

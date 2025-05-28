@@ -93,6 +93,7 @@
       "minecraft:patch_melon"
     ],
     [
+      "parallel_world:glow_lichen_tree",
       "minecraft:freeze_top_layer",
       "parallel_world:fill_in_ice"
     ]

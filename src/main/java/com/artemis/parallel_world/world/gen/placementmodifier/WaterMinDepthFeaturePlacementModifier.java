@@ -14,7 +14,7 @@ import net.minecraft.world.gen.placementmodifier.PlacementModifierType;
 
 import java.util.stream.Stream;
 
-import static com.artemis.parallel_world.world.gen.feature.TethysPlacementModifiers.WATER_MIN_DEPTH_DECORATOR;
+import static com.artemis.parallel_world.world.gen.placementmodifier.TethysPlacementModifiers.WATER_MIN_DEPTH_DECORATOR;
 
 public class WaterMinDepthFeaturePlacementModifier extends PlacementModifier {
     private final int minSubmersion;
