@@ -35,8 +35,13 @@
       "parallel_world:generic_forest_vegetation_shaded",
       "parallel_world:glow_vines",
       "parallel_world:patch_grass_shaded",
-      "parallel_world:sea_pickle",
+      "parallel_world:scattered_poriferans",
+      "parallel_world:scattered_poriferans_glowing",
+      "parallel_world:seagrass_shaded",
       "parallel_world:seagrass_warm",
+      "parallel_world:sea_pickle",
+      "parallel_world:sea_pickle_shaded",
+      "parallel_world:sparse_coral",
       "minecraft:kelp_warm",
       "minecraft:glow_lichen",
       "minecraft:flower_default",
@@ -70,7 +75,87 @@
     }
   },
   "spawners": {
-    "monster": [
+    "monster": [],
+    "creature": [
+      {
+        "type": "minecraft:donkey",
+        "maxCount": 2,
+        "minCount": 1,
+        "weight": 1
+      },
+      {
+        "type": "minecraft:frog",
+        "maxCount": 5,
+        "minCount": 2,
+        "weight": 10
+      }
+    ],
+    "ambient": [
+      {
+        "type": "minecraft:bat",
+        "weight": 10,
+        "minCount": 8,
+        "maxCount": 8
+      },
+      {
+        "type": "parallel_world:water_strider",
+        "weight": 15,
+        "minCount": 2,
+        "maxCount": 3
+      }
+    ],
+    "underground_water_creature": [
+      {
+        "type": "minecraft:glow_squid",
+        "maxCount": 2,
+        "minCount": 1,
+        "weight": 5
+      }
+    ],
+    "water_creature": [
+      {
+        "type": "minecraft:squid",
+        "weight": 10,
+        "minCount": 2,
+        "maxCount": 2
+      },
+      {
+        "type": "minecraft:dolphin",
+        "weight": 5,
+        "minCount": 1,
+        "maxCount": 2
+      }
+    ],
+    "water_ambient": [
+      {
+        "type": "minecraft:pufferfish",
+        "weight": 15,
+        "minCount": 1,
+        "maxCount": 3
+      },
+      {
+        "type": "minecraft:salmon",
+        "weight": 25,
+        "minCount": 3,
+        "maxCount": 6
+      },
+      {
+        "type": "minecraft:cod",
+        "weight": 25,
+        "minCount": 3,
+        "maxCount": 6
+      }
+    ],
+    "misc": [],
+    "tethys_creatures": [
+      {
+        "type": "parallel_world:tethys_turtle",
+        "weight": 100,
+        "minCount": 1,
+        "maxCount": 2
+      }
+    ],
+    "tethys_monsters": [
       {
         "type": "minecraft:spider",
         "weight": 100,
@@ -119,84 +204,7 @@
         "minCount": 1,
         "maxCount": 1
       }
-    ],
-    "creature": [
-      {
-        "type": "minecraft:donkey",
-        "maxCount": 2,
-        "minCount": 1,
-        "weight": 1
-      },
-      {
-        "type": "minecraft:frog",
-        "maxCount": 5,
-        "minCount": 2,
-        "weight": 10
-      }
-    ],
-    "ambient": [
-      {
-        "type": "minecraft:bat",
-        "weight": 10,
-        "minCount": 8,
-        "maxCount": 8
-      },
-      {
-        "type": "parallel_world:water_strider",
-        "weight": 15,
-        "minCount": 2,
-        "maxCount": 3
-      }
-    ],
-    "underground_water_creature": [
-      {
-        "type": "minecraft:glow_squid",
-        "maxCount": 2,
-        "minCount": 1,
-        "weight": 5
-      }
-    ],
-    "water_creature": [
-      {
-        "type": "parallel_world:tethys_turtle",
-        "weight": 5,
-        "minCount": 1,
-        "maxCount": 2
-      },
-      {
-        "type": "minecraft:squid",
-        "weight": 10,
-        "minCount": 2,
-        "maxCount": 2
-      },
-      {
-        "type": "minecraft:dolphin",
-        "weight": 5,
-        "minCount": 1,
-        "maxCount": 2
-      }
-    ],
-    "water_ambient": [
-      {
-        "type": "minecraft:pufferfish",
-        "weight": 15,
-        "minCount": 1,
-        "maxCount": 3
-      },
-      {
-        "type": "minecraft:salmon",
-        "weight": 25,
-        "minCount": 3,
-        "maxCount": 6
-      },
-      {
-        "type": "minecraft:cod",
-        "weight": 25,
-        "minCount": 3,
-        "maxCount": 6
-      }
-    ],
-    "misc": []
+    ]
   },
   "has_precipitation": true,
   "temperature": 0.5,

@@ -24,7 +24,7 @@
       "sound": "minecraft:music.overworld.swamp"
     },
     "sky_color": 7907327,
-    "water_color": 3832426,
+    "water_color": 2139084,
     "water_fog_color": 5077600
   },
   "features": [
@@ -83,8 +83,10 @@
       "parallel_world:patch_grass_shaded",
       "parallel_world:seagrass_swamp",
       "parallel_world:sea_pickle",
+      "parallel_world:sea_pickle_shaded",
       "parallel_world:patch_water_lilies",
       "parallel_world:trees_mangrove_swamp",
+      "parallel_world:trees_mangrove_swamp_shaded",
       "minecraft:glow_lichen",
       "minecraft:patch_grass_normal",
       "minecraft:patch_dead_bush",
@@ -114,7 +116,44 @@
     }
   },
   "spawners": {
-    "monster": [
+    "monster": [],
+    "ambient": [
+      {
+        "type": "minecraft:bat",
+        "maxCount": 8,
+        "minCount": 8,
+        "weight": 10
+      }
+    ],
+    "axolotls": [],
+    "creature": [
+      {
+        "type": "minecraft:frog",
+        "maxCount": 5,
+        "minCount": 2,
+        "weight": 10
+      }
+    ],
+    "misc": [],
+    "underground_water_creature": [
+      {
+        "type": "minecraft:glow_squid",
+        "maxCount": 6,
+        "minCount": 4,
+        "weight": 10
+      }
+    ],
+    "water_ambient": [
+      {
+        "type": "minecraft:tropical_fish",
+        "maxCount": 8,
+        "minCount": 8,
+        "weight": 25
+      }
+    ],
+    "water_creature": [],
+    "tethys_creatures": [],
+    "tethys_monsters": [
       {
         "type": "minecraft:spider",
         "maxCount": 4,
@@ -169,42 +208,7 @@
         "minCount": 1,
         "weight": 1
       }
-    ],
-    "ambient": [
-      {
-        "type": "minecraft:bat",
-        "maxCount": 8,
-        "minCount": 8,
-        "weight": 10
-      }
-    ],
-    "axolotls": [],
-    "creature": [
-      {
-        "type": "minecraft:frog",
-        "maxCount": 5,
-        "minCount": 2,
-        "weight": 10
-      }
-    ],
-    "misc": [],
-    "underground_water_creature": [
-      {
-        "type": "minecraft:glow_squid",
-        "maxCount": 6,
-        "minCount": 4,
-        "weight": 10
-      }
-    ],
-    "water_ambient": [
-      {
-        "type": "minecraft:tropical_fish",
-        "maxCount": 8,
-        "minCount": 8,
-        "weight": 25
-      }
-    ],
-    "water_creature": []
+    ]
   },
   "temperature": 0.8
 }

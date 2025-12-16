@@ -100,7 +100,22 @@
     }
   },
   "spawners": {
-    "monster": [
+    "monster": [],
+    "creature": [],
+    "ambient": [
+      {
+        "type": "minecraft:bat",
+        "weight": 10,
+        "minCount": 8,
+        "maxCount": 8
+      }
+    ],
+    "underground_water_creature": [],
+    "water_creature": [],
+    "water_ambient": [],
+    "misc": [],
+    "tethys_creatures": [],
+    "tethys_monsters": [
       {
         "type": "minecraft:spider",
         "weight": 100,
@@ -143,20 +158,7 @@
         "minCount": 4,
         "maxCount": 4
       }
-    ],
-    "creature": [],
-    "ambient": [
-      {
-        "type": "minecraft:bat",
-        "weight": 10,
-        "minCount": 8,
-        "maxCount": 8
-      }
-    ],
-    "underground_water_creature": [],
-    "water_creature": [],
-    "water_ambient": [],
-    "misc": []
+    ]
   },
   "has_precipitation": false,
   "temperature": 2.0,

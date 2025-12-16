@@ -219,7 +219,15 @@
         "weight": 1
       }
     ],
-    "misc": []
+    "misc": [],
+    "tethys_creatures": [
+      {
+        "type": "parallel_world:flying_cat",
+        "weight": 5,
+        "minCount": 3,
+        "maxCount": 4
+      }
+    ]
   },
   "has_precipitation": true,
   "temperature": 0.3,

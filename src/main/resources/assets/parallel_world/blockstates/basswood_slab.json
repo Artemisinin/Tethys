@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "parallel_world:block/basswood_slab"
+    },
+    "type=double": {
+      "model": "parallel_world:block/basswood_planks"
+    },
+    "type=top": {
+      "model": "parallel_world:block/basswood_slab_top"
+    }
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "feature": "minecraft:warm_ocean_vegetation",
+  "placement": [
+    {
+      "type": "parallel_world:below_heightmap_placement_modifier",
+      "heightmap": "OCEAN_FLOOR_WG",
+      "count": 5
+    },
+    {
+      "type": "minecraft:biome"
+    }
+  ]
+}

@@ -43,14 +43,17 @@ public class FreezeAreaFeature extends Feature<DefaultFeatureConfig> {
             // Currently NOT placing snow on ice.
             if (placementPosState.isAir() && structureWorldAccess.getBlockState(placementPos.down()).isSolid()
                     && !structureWorldAccess.getBlockState(placementPos.down()).isOf(Blocks.ICE)
-                    && random.nextBetween(0, 10) > 4) {
+                    //&& random.nextBetween(0, 10) > 4
+            ) {
                 // Check for solid surface, place snow.
                 structureWorldAccess.setBlockState(placementPos, Blocks.SNOW.getDefaultState(), Block.NOTIFY_LISTENERS);
                 placed = true;
             }
             // Check for water, place ice.
             if (placementPosState.isAir() && structureWorldAccess.testFluidState(blockPos.down(), (fluidState) ->
-                fluidState.isEqualAndStill(Fluids.WATER)) && random.nextBetween(0, 10) > 4) {
+                fluidState.isEqualAndStill(Fluids.WATER))
+                    //&& random.nextBetween(0, 10) > 4
+            ) {
                 structureWorldAccess.setBlockState(placementPos.down(), Blocks.ICE.getDefaultState(), Block.NOTIFY_LISTENERS);
                 placed = true;
             }

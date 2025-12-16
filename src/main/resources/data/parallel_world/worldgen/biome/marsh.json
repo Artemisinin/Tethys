@@ -2,7 +2,6 @@
   "carvers": {
     "air": []
   },
-  "downfall": 0.9,
   "effects": {
     "fog_color": 12638463,
     "foliage_color": 6460465,
@@ -81,6 +80,7 @@
       "parallel_world:patch_marsh_grass",
       "parallel_world:seagrass_swamp",
       "parallel_world:sea_pickle",
+      "parallel_world:sea_pickle_shaded",
       "parallel_world:patch_water_lilies",
       "minecraft:glow_lichen",
       "minecraft:flower_swamp",
@@ -98,7 +98,6 @@
       "parallel_world:fill_in_ice"
     ]
   ],
-  "has_precipitation": true,
   "spawn_costs": {
     "minecraft:spider": {
       "charge": 0.7,
@@ -118,7 +117,56 @@
     }
   },
   "spawners": {
-    "monster": [
+    "monster": [],
+    "creature": [
+      {
+        "type": "minecraft:frog",
+        "maxCount": 5,
+        "minCount": 2,
+        "weight": 10
+      }
+    ],
+    "ambient": [
+      {
+        "type": "minecraft:bat",
+        "weight": 10,
+        "minCount": 8,
+        "maxCount": 8
+      }
+    ],
+    "underground_water_creature": [
+      {
+        "type": "minecraft:glow_squid",
+        "maxCount": 4,
+        "minCount": 1,
+        "weight": 10
+      }
+    ],
+    "water_ambient": [
+      {
+        "type": "minecraft:cod",
+        "maxCount": 6,
+        "minCount": 3,
+        "weight": 10
+      }
+    ],
+    "water_creature": [
+      {
+        "type": "minecraft:squid",
+        "maxCount": 4,
+        "minCount": 1,
+        "weight": 1
+      },
+      {
+        "type": "minecraft:dolphin",
+        "maxCount": 2,
+        "minCount": 1,
+        "weight": 1
+      }
+    ],
+    "misc": [],
+    "tethys_creatures": [],
+    "tethys_monsters": [
       {
         "type": "minecraft:spider",
         "weight": 100,
@@ -173,54 +221,9 @@
         "minCount": 1,
         "maxCount": 1
       }
-    ],
-    "creature": [
-      {
-        "type": "minecraft:frog",
-        "maxCount": 5,
-        "minCount": 2,
-        "weight": 10
-      }
-    ],
-    "ambient": [
-      {
-        "type": "minecraft:bat",
-        "weight": 10,
-        "minCount": 8,
-        "maxCount": 8
-      }
-    ],
-    "underground_water_creature": [
-      {
-        "type": "minecraft:glow_squid",
-        "maxCount": 4,
-        "minCount": 1,
-        "weight": 10
-      }
-    ],
-    "water_ambient": [
-      {
-        "type": "minecraft:cod",
-        "maxCount": 6,
-        "minCount": 3,
-        "weight": 10
-      }
-    ],
-    "water_creature": [
-      {
-        "type": "minecraft:squid",
-        "maxCount": 4,
-        "minCount": 1,
-        "weight": 1
-      },
-      {
-        "type": "minecraft:dolphin",
-        "maxCount": 2,
-        "minCount": 1,
-        "weight": 1
-      }
-    ],
-    "misc": []
+    ]
   },
-  "temperature": 0.8
+  "has_precipitation": true,
+  "temperature": 0.2,
+  "downfall": 0.9
 }

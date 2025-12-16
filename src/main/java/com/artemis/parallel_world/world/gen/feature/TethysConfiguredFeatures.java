@@ -37,6 +37,7 @@ public class TethysConfiguredFeatures extends ConfiguredFeatures {
     //public static RegistryKey<ConfiguredFeature<?, ?>> SWAMP_OAK_SHRUB = ConfiguredFeatures.of("parallel_world:shrub/shrub_swamp_oak");
 
     // Tethys trees
+    public static RegistryKey<ConfiguredFeature<?, ?>> ANCIENT_OAK = ConfiguredFeatures.of("parallel_world:ancient_oak");
     public static RegistryKey<ConfiguredFeature<?, ?>> BASSWOOD_TREE = ConfiguredFeatures.of("parallel_world:rainbow_tree/basswood_tree");
     public static RegistryKey<ConfiguredFeature<?, ?>> BASSWOOD_TREE_BEES = ConfiguredFeatures.of("parallel_world:rainbow_tree/basswood_tree_bees");
     public static RegistryKey<ConfiguredFeature<?,?>> BLACKCURRANT_TREE = ConfiguredFeatures.of("parallel_world:rainbow_tree/blackcurrant_tree");

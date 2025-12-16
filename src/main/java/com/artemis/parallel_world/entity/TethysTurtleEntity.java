@@ -1,6 +1,5 @@
 package com.artemis.parallel_world.entity;
 
-import com.artemis.parallel_world.Dimension;
 import com.artemis.parallel_world.block.TethysTurtleEggBlock;
 import net.minecraft.advancement.criterion.Criteria;
 import net.minecraft.block.Block;
@@ -21,8 +20,8 @@ import net.minecraft.entity.data.DataTracker.Builder;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.passive.PassiveEntity;
-import net.minecraft.entity.passive.TurtleEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.fluid.Fluids;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.nbt.NbtCompound;
@@ -160,7 +159,22 @@ public class TethysTurtleEntity extends AnimalEntity {
     }
 
     public static boolean canSpawn(EntityType<TethysTurtleEntity> type, WorldAccess world, SpawnReason spawnReason, BlockPos pos, Random random) {
-        return pos.getY() < (Dimension.TETHYS_SEA_LEVEL + 4) && world.getBlockState(pos.down()).isIn(BlockTags.SAND) && world.getBaseLightLevel(pos, 0) > 8;
+        BlockState floor = world.getBlockState(pos.down());
+        BlockState spawnSpot = world.getBlockState(pos);
+        if(!floor.isIn(BlockTags.SAND)) {
+            return false;
+        }
+        if (spawnSpot.isAir() || spawnSpot.isOf(Blocks.WATER)) {
+            return true;
+        }
+        return false;
+        //return world.getBlockState(pos.down()).isIn(BlockTags.SAND)  &&
+        //        (world.getBlockState(pos).isAir() || world.getFluidState(pos).isEqualAndStill(Fluids.WATER));
+    }
+
+    @Override
+    public boolean canSpawn(WorldView world) {
+        return world.doesNotIntersectEntities(this);
     }
 
     protected void initGoals() {
@@ -178,16 +192,6 @@ public class TethysTurtleEntity extends AnimalEntity {
     public static net.minecraft.entity.attribute.DefaultAttributeContainer.Builder createTurtleAttributes() {
         return MobEntity.createMobAttributes().add(EntityAttributes.GENERIC_MAX_HEALTH, 30.0D).add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.25D);
     }
-    // Add to tag group
-    //public boolean canBreatheInWater() {
-    //    return true;
-    //}
-
-    // Apparently this got nuked in 20.5 or 20.6
-    /*
-    public EntityGroup getGroup() {
-        return EntityGroup.AQUATIC;
-    }*/
 
     public int getMinAmbientSoundDelay() {
         return 200;

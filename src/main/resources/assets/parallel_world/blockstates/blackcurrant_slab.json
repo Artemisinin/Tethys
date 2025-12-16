@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "parallel_world:block/blackcurrant_slab"
+    },
+    "type=double": {
+      "model": "parallel_world:block/blackcurrant_planks"
+    },
+    "type=top": {
+      "model": "parallel_world:block/blackcurrant_slab_top"
+    }
+  }
+}

@@ -34,17 +34,17 @@ public class DimensionClient implements ClientModInitializer {
             AtomicReference<Float> yaw = new AtomicReference<>(EntitySpawnPacket.PacketBufUtil.readAngle(byteBuf));
             ctx.getTaskQueue().execute(() -> {
                 if (MinecraftClient.getInstance().world == null)
-                    throw new IllegalStateException("Tried to spawn entity in a null world!");
-                Entity entity = entityType.create(MinecraftClient.getInstance().world);
-                if (entity == null)
-                    throw new IllegalStateException("Failed to create instance of entity \"" + Registry.ENTITY_TYPE.getId(entityType) + "\"!");
-                entity.updateTrackedPosition(pos);
-                entity.setPos(pos.x, pos.y, pos.z);
-                pitch.set(entity.getPitch());
-                yaw.set(entity.getYaw());
-                entity.setEntityId(entityId);
-                entity.setUuid(uuid);
-                MinecraftClient.getInstance().world.addEntity(entityId, entity);
+                    throw new IllegalStateException("Tried to spawn entity_types in a null world!");
+                Entity entity_types = entityType.create(MinecraftClient.getInstance().world);
+                if (entity_types == null)
+                    throw new IllegalStateException("Failed to create instance of entity_types \"" + Registry.ENTITY_TYPE.getId(entityType) + "\"!");
+                entity_types.updateTrackedPosition(pos);
+                entity_types.setPos(pos.x, pos.y, pos.z);
+                pitch.set(entity_types.getPitch());
+                yaw.set(entity_types.getYaw());
+                entity_types.setEntityId(entityId);
+                entity_types.setUuid(uuid);
+                MinecraftClient.getInstance().world.addEntity(entityId, entity_types);
             });
         });
     }*/

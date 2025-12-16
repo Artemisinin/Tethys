@@ -1,7 +1,6 @@
 package com.artemis.parallel_world;
 
 import com.artemis.parallel_world.block.*;
-import com.artemis.parallel_world.entity.FlyingCatVariant;
 import com.artemis.parallel_world.entity.TethysEntities;
 import com.artemis.parallel_world.item.TethysItems;
 import com.artemis.parallel_world.world.gen.placementmodifier.TethysPlacementModifiers;
@@ -14,8 +13,8 @@ import net.fabricmc.api.ModInitializer;
 import net.kyrptonaught.customportalapi.api.CustomPortalBuilder;
 import net.minecraft.block.Blocks;
 import net.minecraft.fluid.Fluids;
-import net.minecraft.registry.BuiltinRegistries;
 import net.minecraft.util.Identifier;
+
 
 public class Dimension implements ModInitializer {
 
@@ -27,6 +26,7 @@ public class Dimension implements ModInitializer {
     public void onInitialize() {
         // Add portal
         CustomPortalBuilder.beginPortal().frameBlock(Blocks.LAPIS_BLOCK).lightWithFluid(Fluids.WATER).destDimID(new Identifier("parallel_world", "tethys")).tintColor(23,140,176).registerPortal();
+
         // Register entities
         TethysEntities.registerEntities();
         TethysEntities.assignFlyingCatsBiomes();

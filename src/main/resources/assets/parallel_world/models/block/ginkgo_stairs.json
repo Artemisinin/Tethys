@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:block/stairs",
   "textures": {
-    "bottom": "parallel_world:block/gingo_planks",
+    "bottom": "parallel_world:block/ginkgo_planks",
     "side": "parallel_world:block/ginkgo_planks",
     "top": "parallel_world:block/ginkgo_planks"
   }

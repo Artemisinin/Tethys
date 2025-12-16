@@ -20,7 +20,7 @@ public class FlyingCatEntityRenderer extends MobEntityRenderer<FlyingCatEntity, 
     }
 
     public Identifier getTexture(FlyingCatEntity entity) {
-        return new Identifier("parallel_world", "textures/entity/flyingcat/flying_cat_calico.png");
+        return new Identifier("parallel_world", "textures/entity_types/flyingcat/flying_cat_calico.png");
     }
 
     protected void scale(FlyingCatEntity flyingCatEntity, MatrixStack matrixStack, float f) {

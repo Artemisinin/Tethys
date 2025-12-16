@@ -52,7 +52,7 @@
 				"chance": 0.02
 			},
 			{
-				"feature": "parallel_world:rainbow_tree/cherry_tree_bees_checked",
+				"feature": "parallel_world:rainbow_tree/cherry_tree_checked",
 				"chance": 0.015
 			},
 			{

@@ -1,9 +1,11 @@
 package com.artemis.parallel_world.block;
 
 import com.artemis.parallel_world.world.gen.feature.TethysConfiguredFeatures;
+import net.fabricmc.fabric.api.block.v1.FabricBlock;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.minecraft.block.*;
+import net.minecraft.block.enums.Instrument;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.network.packet.CustomPayload;
 import net.minecraft.registry.Registries;
@@ -67,6 +69,7 @@ public class TethysBlocks {
     public static final Block BASSWOOD_LEAVES = new LeavesBlock(FabricBlockSettings.copyOf(Blocks.OAK_LEAVES).hardness(0.2f).nonOpaque().sounds(BlockSoundGroup.GRASS).ticksRandomly());
     public static final Block BASSWOOD_LOG = new PillarBlock(FabricBlockSettings.copyOf(Blocks.OAK_LOG).hardness(2.0f));
     public static final SaplingBlock BASSWOOD_SAPLING = new SaplingBlock(TethysSaplingGenerators.BASSWOOD_SAPLING_GENERATOR, AbstractBlock.Settings.copy(Blocks.OAK_SAPLING).ticksRandomly().breakInstantly().sounds(BlockSoundGroup.GRASS).nonOpaque().noCollision());
+    public static final Block BASSWOOD_SLAB = new SlabBlock(AbstractBlock.Settings.create().mapColor(MapColor.OAK_TAN).instrument(Instrument.BASS).strength(2.0F, 3.0F).sounds(BlockSoundGroup.WOOD).burnable());
     public static final Block BASSWOOD_STAIRS = new StairsBlock(BASSWOOD_PLANKS.getDefaultState(), AbstractBlock.Settings.copyShallow(BASSWOOD_PLANKS));
 
     // Blackcurrant trees
@@ -74,6 +77,7 @@ public class TethysBlocks {
     public static final Block BLACKCURRANT_LEAVES = new LeavesBlock(FabricBlockSettings.copyOf(Blocks.OAK_LEAVES).hardness(0.2f).nonOpaque().sounds(BlockSoundGroup.GRASS).ticksRandomly());
     public static final Block BLACKCURRANT_LOG = new PillarBlock(FabricBlockSettings.copyOf(Blocks.OAK_LOG).hardness(2.0f));
     public static final SaplingBlock BLACKCURRANT_SAPLING = new SaplingBlock(TethysSaplingGenerators.BLACKCURRANT_SAPLING_GENERATOR, AbstractBlock.Settings.copy(Blocks.OAK_SAPLING).ticksRandomly().breakInstantly().sounds(BlockSoundGroup.GRASS).nonOpaque().noCollision());
+    public static final Block BLACKCURRANT_SLAB = new SlabBlock(AbstractBlock.Settings.create().mapColor(MapColor.OAK_TAN).instrument(Instrument.BASS).strength(2.0F, 3.0F).sounds(BlockSoundGroup.WOOD).burnable());
     public static final Block BLACKCURRANT_STAIRS = new StairsBlock(BLACKCURRANT_PLANKS.getDefaultState(), AbstractBlock.Settings.copyShallow(BLACKCURRANT_PLANKS));
 
     // Cherry trees
@@ -81,6 +85,7 @@ public class TethysBlocks {
     public static final Block CHERRY_LEAVES = new LeavesBlock(FabricBlockSettings.copyOf(Blocks.OAK_LEAVES).hardness(0.2f).nonOpaque().sounds(BlockSoundGroup.GRASS).ticksRandomly());
     public static final Block CHERRY_LOG = new PillarBlock(FabricBlockSettings.copyOf(Blocks.OAK_LOG).hardness(2.0f));
     public static final SaplingBlock CHERRY_SAPLING = new SaplingBlock(TethysSaplingGenerators.CHERRY_SAPLING_GENERATOR, AbstractBlock.Settings.copy(Blocks.OAK_SAPLING).ticksRandomly().breakInstantly().sounds(BlockSoundGroup.GRASS).nonOpaque().noCollision());
+    public static final Block CHERRY_SLAB = new SlabBlock(AbstractBlock.Settings.create().mapColor(MapColor.TERRACOTTA_PINK).instrument(Instrument.BASS).strength(2.0F, 3.0F).sounds(BlockSoundGroup.CHERRY_WOOD).burnable());
     public static final Block CHERRY_STAIRS = new StairsBlock(CHERRY_PLANKS.getDefaultState(), AbstractBlock.Settings.copyShallow(CHERRY_PLANKS));
 
     // Dogwood trees
@@ -88,6 +93,7 @@ public class TethysBlocks {
     public static final Block DOGWOOD_LEAVES = new LeavesBlock(FabricBlockSettings.copyOf(Blocks.OAK_LEAVES).hardness(0.2f).nonOpaque().sounds(BlockSoundGroup.GRASS).ticksRandomly());
     public static final Block DOGWOOD_LOG = new PillarBlock(FabricBlockSettings.copyOf(Blocks.OAK_LOG).hardness(2.0f));
     public static final SaplingBlock DOGWOOD_SAPLING = new SaplingBlock(TethysSaplingGenerators.DOGWOOD_SAPLING_GENERATOR, AbstractBlock.Settings.copy(Blocks.OAK_SAPLING).ticksRandomly().breakInstantly().sounds(BlockSoundGroup.GRASS).nonOpaque().noCollision());
+    public static final Block DOGWOOD_SLAB = new SlabBlock(AbstractBlock.Settings.create().mapColor(MapColor.PALE_YELLOW).instrument(Instrument.BASS).strength(2.0F, 3.0F).sounds(BlockSoundGroup.WOOD).burnable());
     public static final Block DOGWOOD_STAIRS = new StairsBlock(DOGWOOD_PLANKS.getDefaultState(), AbstractBlock.Settings.copyShallow(DOGWOOD_PLANKS));
 
     // Elderberry trees
@@ -95,6 +101,7 @@ public class TethysBlocks {
     public static final Block ELDERBERRY_LEAVES = new LeavesBlock(FabricBlockSettings.copyOf(Blocks.OAK_LEAVES).hardness(0.2f).nonOpaque().sounds(BlockSoundGroup.GRASS).ticksRandomly());
     public static final Block ELDERBERRY_LOG = new PillarBlock(FabricBlockSettings.copyOf(Blocks.OAK_LOG).hardness(2.0f));
     public static final SaplingBlock ELDERBERRY_SAPLING = new SaplingBlock(TethysSaplingGenerators.ELDERBERRY_SAPLING_GENERATOR, AbstractBlock.Settings.copy(Blocks.OAK_SAPLING).ticksRandomly().breakInstantly().sounds(BlockSoundGroup.GRASS).nonOpaque().noCollision());
+    public static final Block ELDERBERRY_SLAB = new SlabBlock(AbstractBlock.Settings.create().mapColor(MapColor.OAK_TAN).instrument(Instrument.BASS).strength(2.0F, 3.0F).sounds(BlockSoundGroup.WOOD).burnable());
     public static final Block ELDERBERRY_STAIRS = new StairsBlock(ELDERBERRY_PLANKS.getDefaultState(), AbstractBlock.Settings.copyShallow(ELDERBERRY_PLANKS));
 
     // Ginkgo trees
@@ -102,6 +109,7 @@ public class TethysBlocks {
     public static final Block GINKGO_LEAVES = new LeavesBlock(FabricBlockSettings.copyOf(Blocks.OAK_LEAVES).hardness(0.2f).nonOpaque().sounds(BlockSoundGroup.GRASS).ticksRandomly());
     public static final Block GINKGO_LOG = new PillarBlock(FabricBlockSettings.copyOf(Blocks.OAK_LOG).hardness(2.0f));
     public static final SaplingBlock GINKGO_SAPLING = new SaplingBlock(TethysSaplingGenerators.GINKGO_SAPLING_GENERATOR, AbstractBlock.Settings.copy(Blocks.OAK_SAPLING).ticksRandomly().breakInstantly().sounds(BlockSoundGroup.GRASS).nonOpaque().noCollision());
+    public static final Block GINKGO_SLAB = new SlabBlock(AbstractBlock.Settings.create().mapColor(MapColor.PALE_YELLOW).instrument(Instrument.BASS).strength(2.0F, 3.0F).sounds(BlockSoundGroup.WOOD).burnable());
     public static final Block GINKGO_STAIRS = new StairsBlock(GINKGO_PLANKS.getDefaultState(), AbstractBlock.Settings.copyShallow(CHERRY_PLANKS));
 
 
@@ -110,6 +118,7 @@ public class TethysBlocks {
     public static final Block SWEETGUM_LEAVES = new LeavesBlock(FabricBlockSettings.copyOf(Blocks.OAK_LEAVES).hardness(0.2f).nonOpaque().sounds(BlockSoundGroup.GRASS).ticksRandomly());
     public static final Block SWEETGUM_LOG = new PillarBlock(FabricBlockSettings.copyOf(Blocks.OAK_LOG).hardness(2.0f));
     public static final SaplingBlock SWEETGUM_SAPLING = new SaplingBlock(TethysSaplingGenerators.SWEETGUM_SAPLING_GENERATOR, AbstractBlock.Settings.copy(Blocks.OAK_SAPLING).ticksRandomly().breakInstantly().sounds(BlockSoundGroup.GRASS).nonOpaque().noCollision());
+    public static final Block SWEETGUM_SLAB = new SlabBlock(AbstractBlock.Settings.create().mapColor(MapColor.PALE_YELLOW).instrument(Instrument.BASS).strength(2.0F, 3.0F).sounds(BlockSoundGroup.WOOD).burnable());
     public static final Block SWEETGUM_STAIRS = new StairsBlock(SWEETGUM_PLANKS.getDefaultState(), AbstractBlock.Settings.copyShallow(CHERRY_PLANKS));
 
 
@@ -180,6 +189,7 @@ public class TethysBlocks {
         Registry.register(Registries.BLOCK, new Identifier("parallel_world", "basswood_planks"), BASSWOOD_PLANKS);
         Registry.register(Registries.BLOCK, new Identifier("parallel_world", "basswood_leaves"), BASSWOOD_LEAVES);
         Registry.register(Registries.BLOCK, new Identifier("parallel_world", "basswood_sapling"), BASSWOOD_SAPLING);
+        Registry.register(Registries.BLOCK, new Identifier("parallel_world", "basswood_slab"), BASSWOOD_SLAB);
         Registry.register(Registries.BLOCK, new Identifier("parallel_world", "basswood_stairs"), BASSWOOD_STAIRS);
 
         // Blackcurrant trees
@@ -187,6 +197,7 @@ public class TethysBlocks {
         Registry.register(Registries.BLOCK, new Identifier("parallel_world", "blackcurrant_planks"), BLACKCURRANT_PLANKS);
         Registry.register(Registries.BLOCK, new Identifier("parallel_world", "blackcurrant_leaves"), BLACKCURRANT_LEAVES);
         Registry.register(Registries.BLOCK, new Identifier("parallel_world", "blackcurrant_sapling"), BLACKCURRANT_SAPLING);
+        Registry.register(Registries.BLOCK, new Identifier("parallel_world", "blackcurrant_slab"), BLACKCURRANT_SLAB);
         Registry.register(Registries.BLOCK, new Identifier("parallel_world", "blackcurrant_stairs"), BLACKCURRANT_STAIRS);
 
         // Cherry trees
@@ -194,6 +205,7 @@ public class TethysBlocks {
         Registry.register(Registries.BLOCK, new Identifier("parallel_world", "cherry_planks"), CHERRY_PLANKS);
         Registry.register(Registries.BLOCK, new Identifier("parallel_world", "cherry_leaves"), CHERRY_LEAVES);
         Registry.register(Registries.BLOCK, new Identifier("parallel_world", "cherry_sapling"), CHERRY_SAPLING);
+        Registry.register(Registries.BLOCK, new Identifier("parallel_world", "cherry_slab"), CHERRY_SLAB);
         Registry.register(Registries.BLOCK, new Identifier("parallel_world", "cherry_stairs"), CHERRY_STAIRS);
 
         // Dogwood trees
@@ -201,6 +213,7 @@ public class TethysBlocks {
         Registry.register(Registries.BLOCK, new Identifier("parallel_world", "dogwood_planks"), DOGWOOD_PLANKS);
         Registry.register(Registries.BLOCK, new Identifier("parallel_world", "dogwood_leaves"), DOGWOOD_LEAVES);
         Registry.register(Registries.BLOCK, new Identifier("parallel_world", "dogwood_sapling"), DOGWOOD_SAPLING);
+        Registry.register(Registries.BLOCK, new Identifier("parallel_world", "dogwood_slab"), DOGWOOD_SLAB);
         Registry.register(Registries.BLOCK, new Identifier("parallel_world", "dogwood_stairs"), DOGWOOD_STAIRS);
 
         // Elderberry trees
@@ -208,6 +221,7 @@ public class TethysBlocks {
         Registry.register(Registries.BLOCK, new Identifier("parallel_world", "elderberry_planks"), ELDERBERRY_PLANKS);
         Registry.register(Registries.BLOCK, new Identifier("parallel_world", "elderberry_leaves"), ELDERBERRY_LEAVES);
         Registry.register(Registries.BLOCK, new Identifier("parallel_world", "elderberry_sapling"), ELDERBERRY_SAPLING);
+        Registry.register(Registries.BLOCK, new Identifier("parallel_world", "elderberry_slab"), ELDERBERRY_SLAB);
         Registry.register(Registries.BLOCK, new Identifier("parallel_world", "elderberry_stairs"), ELDERBERRY_STAIRS);
 
         // Ginkgo trees
@@ -215,6 +229,7 @@ public class TethysBlocks {
         Registry.register(Registries.BLOCK, new Identifier("parallel_world", "ginkgo_planks"), GINKGO_PLANKS);
         Registry.register(Registries.BLOCK, new Identifier("parallel_world", "ginkgo_leaves"), GINKGO_LEAVES);
         Registry.register(Registries.BLOCK, new Identifier("parallel_world", "ginkgo_sapling"), GINKGO_SAPLING);
+        Registry.register(Registries.BLOCK, new Identifier("parallel_world", "ginkgo_slab"), GINKGO_SLAB);
         Registry.register(Registries.BLOCK, new Identifier("parallel_world", "ginkgo_stairs"), GINKGO_STAIRS);
 
 
@@ -223,6 +238,7 @@ public class TethysBlocks {
         Registry.register(Registries.BLOCK, new Identifier("parallel_world", "sweetgum_planks"), SWEETGUM_PLANKS);
         Registry.register(Registries.BLOCK, new Identifier("parallel_world", "sweetgum_leaves"), SWEETGUM_LEAVES);
         Registry.register(Registries.BLOCK, new Identifier("parallel_world", "sweetgum_sapling"), SWEETGUM_SAPLING);
+        Registry.register(Registries.BLOCK, new Identifier("parallel_world", "sweetgum_slab"), SWEETGUM_SLAB);
         Registry.register(Registries.BLOCK, new Identifier("parallel_world", "sweetgum_stairs"), SWEETGUM_STAIRS);
 
     }
@@ -237,44 +253,50 @@ public class TethysBlocks {
         FlammableBlockRegistry.getDefaultInstance().add(BASSWOOD_LEAVES, 60, 30);
         FlammableBlockRegistry.getDefaultInstance().add(BASSWOOD_PLANKS, 20, 5);
         FlammableBlockRegistry.getDefaultInstance().add(BASSWOOD_SAPLING, 100, 60);
+        FlammableBlockRegistry.getDefaultInstance().add(BASSWOOD_SLAB, 20, 5);
         FlammableBlockRegistry.getDefaultInstance().add(BASSWOOD_STAIRS, 20, 5);
         // Blackcurrant trees
         FlammableBlockRegistry.getDefaultInstance().add(BLACKCURRANT_LOG, 20, 5);
         FlammableBlockRegistry.getDefaultInstance().add(BLACKCURRANT_LEAVES, 60, 30);
         FlammableBlockRegistry.getDefaultInstance().add(BLACKCURRANT_PLANKS, 20, 5);
         FlammableBlockRegistry.getDefaultInstance().add(BLACKCURRANT_SAPLING, 100, 60);
+        FlammableBlockRegistry.getDefaultInstance().add(BLACKCURRANT_SLAB, 20,5);
         FlammableBlockRegistry.getDefaultInstance().add(BLACKCURRANT_STAIRS, 20,5);
         // Cherry trees
         FlammableBlockRegistry.getDefaultInstance().add(CHERRY_LOG, 20, 5);
         FlammableBlockRegistry.getDefaultInstance().add(CHERRY_LEAVES, 60, 30);
         FlammableBlockRegistry.getDefaultInstance().add(CHERRY_PLANKS, 20, 5);
         FlammableBlockRegistry.getDefaultInstance().add(CHERRY_SAPLING, 100, 60);
+        FlammableBlockRegistry.getDefaultInstance().add(CHERRY_SLAB, 20, 5);
         FlammableBlockRegistry.getDefaultInstance().add(CHERRY_STAIRS, 20, 5);
         // Dogwood trees
         FlammableBlockRegistry.getDefaultInstance().add(DOGWOOD_LOG, 20, 5);
         FlammableBlockRegistry.getDefaultInstance().add(DOGWOOD_LEAVES, 60, 30);
         FlammableBlockRegistry.getDefaultInstance().add(DOGWOOD_PLANKS, 20, 5);
         FlammableBlockRegistry.getDefaultInstance().add(DOGWOOD_SAPLING, 100, 60);
+        FlammableBlockRegistry.getDefaultInstance().add(DOGWOOD_SLAB, 20, 5);
         FlammableBlockRegistry.getDefaultInstance().add(DOGWOOD_STAIRS, 20, 5);
         // Elderberry trees
         FlammableBlockRegistry.getDefaultInstance().add(ELDERBERRY_LOG, 20, 5);
         FlammableBlockRegistry.getDefaultInstance().add(ELDERBERRY_LEAVES, 60, 30);
         FlammableBlockRegistry.getDefaultInstance().add(ELDERBERRY_PLANKS, 20, 5);
         FlammableBlockRegistry.getDefaultInstance().add(ELDERBERRY_SAPLING, 100, 60);
+        FlammableBlockRegistry.getDefaultInstance().add(ELDERBERRY_SLAB, 20,5);
         FlammableBlockRegistry.getDefaultInstance().add(ELDERBERRY_STAIRS, 20,5);
         // Ginkgo trees
         FlammableBlockRegistry.getDefaultInstance().add(GINKGO_LOG, 20, 5);
         FlammableBlockRegistry.getDefaultInstance().add(GINKGO_LEAVES, 60, 30);
         FlammableBlockRegistry.getDefaultInstance().add(GINKGO_PLANKS, 20, 5);
         FlammableBlockRegistry.getDefaultInstance().add(GINKGO_SAPLING, 100, 60);
+        FlammableBlockRegistry.getDefaultInstance().add(GINKGO_SLAB, 20, 5);
         FlammableBlockRegistry.getDefaultInstance().add(GINKGO_STAIRS, 20, 5);
         // Sweetgum trees
         FlammableBlockRegistry.getDefaultInstance().add(SWEETGUM_LOG, 20, 5);
         FlammableBlockRegistry.getDefaultInstance().add(SWEETGUM_LEAVES, 60, 30);
         FlammableBlockRegistry.getDefaultInstance().add(SWEETGUM_PLANKS, 20, 5);
         FlammableBlockRegistry.getDefaultInstance().add(SWEETGUM_SAPLING, 100, 60);
+        FlammableBlockRegistry.getDefaultInstance().add(SWEETGUM_SLAB, 20, 5);
         FlammableBlockRegistry.getDefaultInstance().add(SWEETGUM_STAIRS, 20, 5);
-
     }
 
     public static void registerBlockTags() {

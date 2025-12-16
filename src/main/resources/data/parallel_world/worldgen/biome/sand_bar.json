@@ -98,21 +98,33 @@
       }
     ],
     "axolotls": [],
-    "creature": [
+    "creature": [],
+    "misc": [],
+    "monster": [],
+    "underground_water_creature": [
       {
-        "type": "minecraft:turtle",
-        "maxCount": 5,
-        "minCount": 2,
-        "weight": 5
+        "type": "minecraft:glow_squid",
+        "maxCount": 6,
+        "minCount": 4,
+        "weight": 10
       }
     ],
-    "misc": [],
-    "monster": [
+    "water_ambient": [],
+    "water_creature": [],
+    "tethys_creatures": [
       {
-        "type": "minecraft:spider",
-        "maxCount": 4,
-        "minCount": 4,
-        "weight": 100
+        "type": "parallel_world:tethys_turtle",
+        "weight": 100,
+        "minCount": 2,
+        "maxCount": 4
+      }
+    ],
+    "tethys_monsters": [
+      {
+      "type": "minecraft:spider",
+      "maxCount": 4,
+      "minCount": 4,
+      "weight": 100
       },
       {
         "type": "minecraft:zombie",
@@ -156,17 +168,7 @@
         "minCount": 1,
         "weight": 5
       }
-    ],
-    "underground_water_creature": [
-      {
-        "type": "minecraft:glow_squid",
-        "maxCount": 6,
-        "minCount": 4,
-        "weight": 10
-      }
-    ],
-    "water_ambient": [],
-    "water_creature": []
+    ]
   },
   "temperature": 0.8
 }

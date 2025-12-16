@@ -84,15 +84,18 @@ public class WeepingFoliagePlacer extends FoliagePlacer {
     @Override
     protected boolean isInvalidForLeaves(Random random, int dx, int y, int dz, int radius, boolean giantTrunk) {
         if (y == 0) {
-            return dx + dz > radius * 2 - 2;
+            return dx == radius && dz == radius;
         }
         if (y == -1) {
-            if (dx == 1 && (dz == 1 || dz == 0)) {
+            if (dx + dz <= 2) {
                 return true;
             }
-            if (dz == 1 && (dx == 1 || dx == 0)) {
-                return true;
-            }
+//            if (dx == 1 && (dz == 1 || dz == 0)) {
+//                return true;
+//            }
+//            if (dz == 1 && (dx == 1 || dx == 0)) {
+//                return true;
+//            }
             return dx + dz > radius * 2 - 1;
         }
         if (y == -2) {

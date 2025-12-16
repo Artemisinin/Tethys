@@ -1,0 +1,21 @@
+{
+  "feature": "parallel_world:sea_pickle",
+  "placement": [
+    {
+      "type": "minecraft:count",
+      "count": 3
+    },
+    {
+      "type": "parallel_world:below_heightmap_placement_modifier",
+      "heightmap": "OCEAN_FLOOR_WG",
+      "count": 1
+    },
+    {
+      "type": "minecraft:rarity_filter",
+      "chance": 16
+    },
+    {
+      "type": "minecraft:biome"
+    }
+  ]
+}

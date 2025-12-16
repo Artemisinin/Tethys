@@ -16,7 +16,6 @@ import net.minecraft.util.math.random.Random;
 import net.minecraft.world.WorldAccess;
 import net.minecraft.world.gen.feature.ConfiguredFeature;
 import net.minecraft.world.gen.feature.TreeConfiguredFeatures;
-import org.apache.logging.log4j.core.jmx.Server;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
@@ -94,6 +93,9 @@ public abstract class SaplingGeneratorMixin implements GetVariableConfiguredTree
             if (world.getBiome(pos).isIn(TethysBiomes.IS_TETHYS)) {
                 return random.nextBoolean() ? TethysConfiguredFeatures.DARK_OAK_GLOWFRUIT : TreeConfiguredFeatures.DARK_OAK;
             }
+        }
+        if (id.equals("oak")) {
+            return TethysConfiguredFeatures.ANCIENT_OAK;
         }
         if (this.rareMegaVariant.isPresent() && random.nextFloat() < this.rareChance) {
             return this.rareMegaVariant.get();

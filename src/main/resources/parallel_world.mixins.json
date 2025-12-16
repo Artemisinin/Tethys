@@ -5,6 +5,7 @@
   "compatibilityLevel": "JAVA_16",
   "mixins": [
     "CoralFeatureMixin",
+    "EntityTypeBuilderMixin",
     "FillLayerFeatureConfigMixin",
     "FoliagePlacerTypeRegisterInvoker",
     "GetTopPositionInvoker",

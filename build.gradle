@@ -32,6 +32,9 @@ dependencies {
     modImplementation "net.kyrptonaught:customportalapi:0.0.1-beta65.5-1.20.6"
     include "net.kyrptonaught:customportalapi:0.0.1-beta65.5-1.20.6"
 
+    // Add Fabric-ASM
+    modImplementation "com.github.Chocohead:Fabric-ASM:2.3"
+
     repositories {
         // Add mod for accessing dimension.
         maven {
@@ -40,6 +43,11 @@ dependencies {
 
         maven {
             url = "https://api.modrinth.com/maven"
+        }
+
+        // Add JitPack for Fabric-ASM retrieval
+        maven {
+            url 'https://jitpack.io'
         }
     }
 }

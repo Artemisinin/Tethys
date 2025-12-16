@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "parallel_world:block/sweetgum_slab"
+    },
+    "type=double": {
+      "model": "parallel_world:block/sweetgum_planks"
+    },
+    "type=top": {
+      "model": "parallel_world:block/sweetgum_slab_top"
+    }
+  }
+}

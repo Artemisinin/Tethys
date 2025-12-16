@@ -18,7 +18,7 @@ public class WaterStriderEntityRenderer extends MobEntityRenderer<WaterStriderEn
     }
 
     public Identifier getTexture(WaterStriderEntity entity) {
-        return new Identifier("parallel_world", "textures/entity/water_strider.png");
+        return new Identifier("parallel_world", "textures/entity_types/water_strider.png");
     }
 
     protected void scale(WaterStriderEntity waterStriderEntity, MatrixStack matrixStack, float f) {

@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "parallel_world:block/elderberry_slab"
+    },
+    "type=double": {
+      "model": "parallel_world:block/elderberry_planks"
+    },
+    "type=top": {
+      "model": "parallel_world:block/elderberry_slab_top"
+    }
+  }
+}

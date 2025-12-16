@@ -17,6 +17,9 @@
     ],
     "main": [
       "com.artemis.parallel_world.Dimension"
+    ],
+    "mm:early_risers": [
+      "com.artemis.parallel_world.EnumEdits"
     ]
   },
   "mixins": [
