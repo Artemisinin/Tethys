@@ -159,17 +159,8 @@ public class TethysTurtleEntity extends AnimalEntity {
     }
 
     public static boolean canSpawn(EntityType<TethysTurtleEntity> type, WorldAccess world, SpawnReason spawnReason, BlockPos pos, Random random) {
-        BlockState floor = world.getBlockState(pos.down());
-        BlockState spawnSpot = world.getBlockState(pos);
-        if(!floor.isIn(BlockTags.SAND)) {
-            return false;
-        }
-        if (spawnSpot.isAir() || spawnSpot.isOf(Blocks.WATER)) {
-            return true;
-        }
-        return false;
-        //return world.getBlockState(pos.down()).isIn(BlockTags.SAND)  &&
-        //        (world.getBlockState(pos).isAir() || world.getFluidState(pos).isEqualAndStill(Fluids.WATER));
+        return world.getBlockState(pos.down()).isIn(BlockTags.SAND)  &&
+                (world.getBlockState(pos).isAir() || world.getFluidState(pos).isEqualAndStill(Fluids.WATER));
     }
 
     @Override

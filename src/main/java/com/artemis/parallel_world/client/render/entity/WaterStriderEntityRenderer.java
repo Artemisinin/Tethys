@@ -3,10 +3,8 @@ package com.artemis.parallel_world.client.render.entity;
 import com.artemis.parallel_world.client.render.entity.model.TethysEntityModelLayers;
 import com.artemis.parallel_world.client.render.entity.model.WaterStriderEntityModel;
 import com.artemis.parallel_world.entity.WaterStriderEntity;
-import net.minecraft.client.render.entity.EntityRenderDispatcher;
 import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.client.render.entity.MobEntityRenderer;
-import net.minecraft.client.render.entity.model.EntityModelLayers;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;
 

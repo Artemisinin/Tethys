@@ -1,24 +1,9 @@
 package com.artemis.parallel_world.world.gen.feature;
 
-import com.artemis.parallel_world.block.TethysBlocks;
-import com.artemis.parallel_world.world.gen.placementmodifier.WaterMaxDepthFeaturePlacementModifier;
-import com.artemis.parallel_world.world.gen.placementmodifier.WaterMinDepthFeaturePlacementModifier;
-import com.artemis.parallel_world.world.gen.trunk.ScaleTreeTrunkPlacer;
 import net.minecraft.registry.Registerable;
 import net.minecraft.registry.RegistryKey;
-import net.minecraft.util.math.intprovider.ConstantIntProvider;
-
-import net.minecraft.world.gen.feature.*;
-import net.minecraft.world.gen.feature.size.TwoLayersFeatureSize;
-import net.minecraft.world.gen.foliage.*;
-import net.minecraft.world.gen.stateprovider.BlockStateProvider;
-import net.minecraft.world.gen.treedecorator.BeehiveTreeDecorator;
-import net.minecraft.world.gen.trunk.LargeOakTrunkPlacer;
-import net.minecraft.world.gen.trunk.StraightTrunkPlacer;
-import org.spongepowered.asm.mixin.injection.selectors.ITargetSelector;
-
-import java.io.ObjectInputFilter;
-import java.util.OptionalInt;
+import net.minecraft.world.gen.feature.ConfiguredFeature;
+import net.minecraft.world.gen.feature.ConfiguredFeatures;
 
 
 public class TethysConfiguredFeatures extends ConfiguredFeatures {
