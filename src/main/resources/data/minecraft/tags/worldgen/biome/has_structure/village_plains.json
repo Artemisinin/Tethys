@@ -1,0 +1,6 @@
+{
+  "replace": false,
+  "values": [
+    "#parallel_world:has_structure/village_plains"
+  ]
+}

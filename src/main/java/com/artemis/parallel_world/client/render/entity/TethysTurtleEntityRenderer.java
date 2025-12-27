@@ -14,7 +14,7 @@ import net.minecraft.util.Identifier;
 @Environment(EnvType.CLIENT)
 
 public class TethysTurtleEntityRenderer extends MobEntityRenderer<TethysTurtleEntity,TethysTurtleEntityModel<TethysTurtleEntity>> {
-    private static final Identifier TEXTURE = new Identifier("parallel_world:textures/entity_types/tethys_turtle.png");
+    private static final Identifier TEXTURE = new Identifier("parallel_world:textures/entity/tethys_turtle.png");
 
     public TethysTurtleEntityRenderer(Context context) {
         super(context, new TethysTurtleEntityModel(context.getPart(TethysEntityModelLayers.TETHYS_TURTLE_MODEL_LAYER)), 1.0F);

@@ -4,6 +4,7 @@ import com.artemis.parallel_world.entity.WaterStriderEntity;
 import com.google.common.collect.ImmutableList;
 import net.minecraft.client.model.*;
 import net.minecraft.client.render.entity.model.AnimalModel;
+import net.minecraft.util.math.MathHelper;
 
 public class WaterStriderEntityModel<T extends WaterStriderEntity> extends AnimalModel<T> {
 	private final ModelPart head;
@@ -52,8 +53,9 @@ public class WaterStriderEntityModel<T extends WaterStriderEntity> extends Anima
 		this.leftLegLower4 = this.leftLegUpper4.getChild("left_leg_lower_4");
 	}
 
-		float upperLegRoll = 1.85F;
-		float lowerLegRoll = -1.0F;
+	float upperLegRoll = 1.85F;
+	float lowerLegRoll = -1.0F;
+
 
 	public static ModelData getModelData() {
 		ModelData modelData = new ModelData();
@@ -63,8 +65,8 @@ public class WaterStriderEntityModel<T extends WaterStriderEntity> extends Anima
 
 		// Head
 		ModelPartData head = core.addChild("head", ModelPartBuilder.create().
-				cuboid("main", -1.0F, -0.5F, -1.0F, 2,1,2, 21, 10).
-				cuboid("proboscis", -0.5F, -0.125F, -1.5F, 1,3,1, headPartDilation, 21, 4),
+						cuboid("main", -1.0F, -0.5F, -1.0F, 2,1,2, 21, 10).
+						cuboid("proboscis", -0.5F, -0.125F, -1.5F, 1,3,1, headPartDilation, 21, 4),
 				ModelTransform.pivot(0.0F, 19.0F, -7.5F));
 		ModelPartBuilder antenna = ModelPartBuilder.create().cuboid(-0.5F, -0.5F, -0.5F, 1,3,1,headPartDilation, 21,0);
 		head.addChild("right_antenna", antenna, ModelTransform.pivot(-0.75F, -2.0F, -0.5F));
@@ -72,12 +74,12 @@ public class WaterStriderEntityModel<T extends WaterStriderEntity> extends Anima
 
 		// Body
 		core.addChild("body", ModelPartBuilder.create().
-				cuboid("main", -2.0F, -1.0F, -3.0F, 4, 2, 11, 0, 3).
-				cuboid("spike1", -0.5F, -2.0F, -1.5F, 1, 1, 1, 4, 0).
-				cuboid("spike2", -0.5F, -3.0F, 0.5F, 1, 2, 1, 4, 0).
-				cuboid("spike3", -0.5F, -3.0F, 2.5F, 1, 2, 1, 4, 0).
-				cuboid("spike4", -0.5F, -2.0F, 4.5F, 1, 1, 1, 4, 0),
-		ModelTransform.pivot(0.0F, 19.0F, -3.0F));
+						cuboid("main", -2.0F, -1.0F, -3.0F, 4, 2, 11, 0, 3).
+						cuboid("spike1", -0.5F, -2.0F, -1.5F, 1, 1, 1, 4, 0).
+						cuboid("spike2", -0.5F, -3.0F, 0.5F, 1, 2, 1, 4, 0).
+						cuboid("spike3", -0.5F, -3.0F, 2.5F, 1, 2, 1, 4, 0).
+						cuboid("spike4", -0.5F, -2.0F, 4.5F, 1, 1, 1, 4, 0),
+				ModelTransform.pivot(0.0F, 19.0F, -3.0F));
 
 		// Legs
 		ModelPartBuilder upper_leg = ModelPartBuilder.create().cuboid(-0.5F, -0.5F, -0.5F, 1, 6, 1, upperLegDilation).uv(0,0);
@@ -143,18 +145,40 @@ public class WaterStriderEntityModel<T extends WaterStriderEntity> extends Anima
 	}
 
 	public void setAngles(T waterStriderEntity, float limbAngle, float limbDistance, float animationProgress, float headYaw, float headPitch) {
-	this.head.pitch = 0F;
-	this.head.yaw = 0F;
-	this.rightAntenna.roll = -0.4F;
-	this.leftAntenna.roll = 0.4F;
-	this.rightLegUpper1.roll = this.rightLegUpper2.roll = this.rightLegUpper3.roll = this.rightLegUpper4.roll = upperLegRoll;
-	this.rightLegLower1.roll = this.rightLegLower2.roll = this.rightLegLower3.roll = this.rightLegLower4.roll = lowerLegRoll;
-	this.leftLegUpper1.roll = this.leftLegUpper2.roll = this.leftLegUpper3.roll = this.leftLegUpper4.roll = -upperLegRoll;
-	this.leftLegLower1.roll = this.leftLegLower2.roll = this.leftLegLower3.roll = this.leftLegLower4.roll = -lowerLegRoll;
-	// This is the spread of the legs.
-	this.rightLegUpper1.pitch = this.leftLegUpper1.pitch = -0.85F;
-	this.rightLegUpper2.pitch = this.leftLegUpper2.pitch = -0.3F;
-	this.rightLegUpper3.pitch = this.leftLegUpper3.pitch = 0.3F;
-	this.rightLegUpper4.pitch = this.leftLegUpper4.pitch = 0.7F;
+		this.head.pitch = 0F;
+		this.head.yaw = 0F;
+		this.rightAntenna.roll = -0.4F;
+		this.leftAntenna.roll = 0.4F;
+		this.rightLegUpper1.roll = this.rightLegUpper2.roll = this.rightLegUpper3.roll = this.rightLegUpper4.roll = upperLegRoll;
+		this.rightLegLower1.roll = this.rightLegLower2.roll = this.rightLegLower3.roll = this.rightLegLower4.roll = lowerLegRoll;
+		this.leftLegUpper1.roll = this.leftLegUpper2.roll = this.leftLegUpper3.roll = this.leftLegUpper4.roll = -upperLegRoll;
+		this.leftLegLower1.roll = this.leftLegLower2.roll = this.leftLegLower3.roll = this.leftLegLower4.roll = -lowerLegRoll;
+
+		// Moving in the water--in theory, sometimes it moves at land speed in water
+		if (waterStriderEntity.getStatus() == 2) {
+			this.rightLegUpper1.pitch = this.leftLegUpper1.pitch = (float) (-0.85 + (MathHelper.sin(animationProgress / 3) * 0.5));
+			this.rightLegUpper2.pitch = this.leftLegUpper2.pitch = (float) (-0.3 + (MathHelper.sin(animationProgress / 3) * 0.5));
+			this.rightLegUpper3.pitch = this.leftLegUpper3.pitch = (float) (0.3 + (MathHelper.sin(animationProgress / 3) * 0.5));
+			this.rightLegUpper4.pitch = this.leftLegUpper4.pitch = (float) (0.7 + (MathHelper.sin(animationProgress / 3) * 0.5));
+		}
+		// Moving on land
+		if (waterStriderEntity.getStatus() == 3) {
+			this.rightLegUpper1.pitch = this.leftLegUpper1.pitch = (float) (-0.85 + (MathHelper.sin((float) (animationProgress * 1.2))  * 0.25));
+			this.rightLegUpper2.pitch = this.leftLegUpper2.pitch = (float) (-0.3 + (MathHelper.sin((float) (animationProgress * 1.2))  * 0.25));
+			this.rightLegUpper3.pitch = this.leftLegUpper3.pitch = (float) (0.3 + (MathHelper.sin((float) (animationProgress * 1.2))  * 0.25));
+			this.rightLegUpper4.pitch = this.leftLegUpper4.pitch = (float) (0.7 + (MathHelper.sin((float) (animationProgress * 1.2))  * 0.25));
+		}
+		// Stationary
+		if (waterStriderEntity.getStatus() == 1) {
+			this.rightLegUpper1.pitch = this.leftLegUpper1.pitch = -0.85F;
+			this.rightLegUpper2.pitch = this.leftLegUpper2.pitch = -0.3F;
+			this.rightLegUpper3.pitch = this.leftLegUpper3.pitch = 0.3F;
+			this.rightLegUpper4.pitch = this.leftLegUpper4.pitch = 0.7F;
+		}
 	}
+
+/*	@Override
+	public void animateModel(T waterStriderEntity, float limbAngle, float limbDistance, float tickDelta) {
+		super.animateModel(waterStriderEntity, limbAngle, limbDistance, tickDelta);
+	}*/
 }

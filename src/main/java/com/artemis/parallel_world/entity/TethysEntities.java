@@ -35,7 +35,7 @@ public class TethysEntities {
                 FabricEntityTypeBuilder.create(SpawnGroup.valueOf("TETHYS_CREATURES"), TethysTurtleEntity::new).dimensions(EntityDimensions.fixed(1.2f, 0.4f)).build());
             FabricDefaultAttributeRegistry.register(TETHYS_TURTLE, TethysTurtleEntity.createTurtleAttributes());
         WATER_STRIDER = Registry.register(Registries.ENTITY_TYPE, new Identifier("parallel_world", "water_strider"),
-                FabricEntityTypeBuilder.create(SpawnGroup.AMBIENT, WaterStriderEntity::new).dimensions(EntityDimensions.fixed(0.3f, 0.3f)).build());
+                FabricEntityTypeBuilder.create(SpawnGroup.AMBIENT, WaterStriderEntity::new).dimensions(EntityDimensions.fixed(0.2f, 0.2f)).build());
             FabricDefaultAttributeRegistry.register(WATER_STRIDER, WaterStriderEntity.createWaterStriderAttributes());
     }
 

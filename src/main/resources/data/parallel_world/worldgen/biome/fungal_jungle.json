@@ -88,10 +88,6 @@
       "minecraft:freeze_top_layer"
     ]
   ],
-  "starts": [
-    "minecraft:jungle_pyramid",
-    "minecraft:stronghold"
-  ],
   "spawn_costs": {
     "minecraft:spider": {
       "charge": 0.7,

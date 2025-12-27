@@ -196,6 +196,7 @@ public class FlyingCatEntityModel<T extends FlyingCatEntity> extends AnimalModel
 				this.upperTail);
 	}
 
+	@Override
 	public void animateModel(T flyingCatEntity, float limbAngle, float limbDistance, float tickDelta) {
 
 		super.animateModel(flyingCatEntity, limbAngle, limbDistance, tickDelta);

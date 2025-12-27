@@ -80,7 +80,6 @@
       "minecraft:spring_closed_double"
     ]
   ],
-  "starts": [],
   "spawn_costs": {
     "minecraft:spider": {
       "charge": 0.7,

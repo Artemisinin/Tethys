@@ -65,7 +65,7 @@ public class FlyingCatEntity extends TameableEntity implements VariantHolder<Fly
     }
 
     public Identifier getTexture() {
-        return new Identifier("parallel_world", "textures/entity_types/flyingcat/" + this.getVariant().asString() + ".png");
+        return new Identifier("parallel_world", "textures/entity/flyingcat/" + this.getVariant().asString() + ".png");
     }
 
     public static DefaultAttributeContainer.Builder createFlyingCatAttributes() {

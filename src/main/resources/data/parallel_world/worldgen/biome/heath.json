@@ -88,10 +88,6 @@
       "minecraft:freeze_top_layer"
     ]
   ],
-  "starts": [
-    "minecraft:stronghold",
-	"minecraft:village_plains"
-  ],
   "spawn_costs": {
     "minecraft:spider": {
       "charge": 0.7,

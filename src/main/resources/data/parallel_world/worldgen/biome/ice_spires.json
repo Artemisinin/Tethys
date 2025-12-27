@@ -76,9 +76,6 @@
       "parallel_world:freeze_area_shaded"
     ]
   ],
-  "starts": [
-    "minecraft:stronghold"
-  ],
   "spawn_costs": {
     "minecraft:spider": {
       "charge": 0.7,

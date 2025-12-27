@@ -28,34 +28,34 @@ import java.util.List;
 
 @Mixin(StructureStart.class)
 public final class StructureStartMixin<C extends FeatureConfig> {
-
-    @Mutable
-    @Final
-    @Shadow
-    private final StructurePiecesList children;
-
-    @Shadow
-    @Final
-    private Structure structure;
-
-    public StructureStartMixin(StructurePiecesList children) {
-        this.children = children;
-    }
-
-    @Inject(method = "place", at = @At(value = "INVOKE", target = "Ljava/util/List;iterator()Ljava/util/Iterator;"))
-    private void checkAltitude(StructureWorldAccess world, StructureAccessor structureAccessor, ChunkGenerator chunkGenerator, net.minecraft.util.math.random.Random random, BlockBox chunkBox, ChunkPos chunkPos, CallbackInfo ci) {
-        List<StructurePiece> list = this.children.pieces();
-        Iterator children = list.iterator();
-        if (world.getRegistryManager().get(RegistryKeys.DIMENSION_TYPE).getId(world.getDimension()).equals(new Identifier("parallel_world", "tethys")) &&
-                this.structure instanceof JigsawStructure) {
-                while (children.hasNext()) {
-                    StructurePiece structurePiece = (StructurePiece)children.next();
-                    if (structurePiece.getBoundingBox().getMinY() < 30) {
-                        children.remove();
-                    }
-                }
-            }
-            else children = list.iterator();
-    }
+//
+//    @Mutable
+//    @Final
+//    @Shadow
+//    private final StructurePiecesList children;
+//
+//    @Shadow
+//    @Final
+//    private Structure structure;
+//
+//    public StructureStartMixin(StructurePiecesList children) {
+//        this.children = children;
+//    }
+//
+//    @Inject(method = "place", at = @At(value = "INVOKE", target = "Ljava/util/List;iterator()Ljava/util/Iterator;"))
+//    private void checkAltitude(StructureWorldAccess world, StructureAccessor structureAccessor, ChunkGenerator chunkGenerator, net.minecraft.util.math.random.Random random, BlockBox chunkBox, ChunkPos chunkPos, CallbackInfo ci) {
+//        List<StructurePiece> list = this.children.pieces();
+//        Iterator children = list.iterator();
+//        if (world.getRegistryManager().get(RegistryKeys.DIMENSION_TYPE).getId(world.getDimension()).equals(new Identifier("parallel_world", "tethys")) &&
+//                this.structure instanceof JigsawStructure) {
+//                while (children.hasNext()) {
+//                    StructurePiece structurePiece = (StructurePiece)children.next();
+//                    if (structurePiece.getBoundingBox().getMinY() < 30) {
+//                        children.remove();
+//                    }
+//                }
+//            }
+//            else children = list.iterator();
+//    }
 }
 

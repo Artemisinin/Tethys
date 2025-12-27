@@ -83,9 +83,6 @@
       "minecraft:freeze_top_layer"
     ]
   ],
-  "starts": [
-	    "minecraft:village_desert"
-	],
   "spawn_costs": {
     "minecraft:spider": {
       "charge": 0.7,
