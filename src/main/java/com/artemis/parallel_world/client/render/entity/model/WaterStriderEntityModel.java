@@ -176,9 +176,4 @@ public class WaterStriderEntityModel<T extends WaterStriderEntity> extends Anima
 			this.rightLegUpper4.pitch = this.leftLegUpper4.pitch = 0.7F;
 		}
 	}
-
-/*	@Override
-	public void animateModel(T waterStriderEntity, float limbAngle, float limbDistance, float tickDelta) {
-		super.animateModel(waterStriderEntity, limbAngle, limbDistance, tickDelta);
-	}*/
 }

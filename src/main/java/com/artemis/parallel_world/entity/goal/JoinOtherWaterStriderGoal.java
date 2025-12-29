@@ -2,16 +2,15 @@ package com.artemis.parallel_world.entity.goal;
 
 import com.artemis.parallel_world.entity.WaterStriderEntity;
 import net.minecraft.entity.ai.control.LookControl;
-import net.minecraft.entity.ai.goal.FollowMobGoal;
 import net.minecraft.entity.ai.goal.Goal;
-import net.minecraft.entity.ai.pathing.BirdNavigation;
 import net.minecraft.entity.ai.pathing.EntityNavigation;
-import net.minecraft.entity.ai.pathing.MobNavigation;
-import net.minecraft.entity.ai.pathing.PathNodeType;
+import net.minecraft.entity.ai.pathing.Path;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.random.Random;
 import org.jetbrains.annotations.Nullable;
+
 
 import java.util.EnumSet;
 import java.util.List;
@@ -28,15 +27,16 @@ public class JoinOtherWaterStriderGoal extends Goal {
     private int updateCountdownTicks;
     private final float minDistance;
     private final float maxDistance;
+    private final Random random;
 
-
-    public JoinOtherWaterStriderGoal (WaterStriderEntity strider, double speed, float minDistance, float maxDistance) {
+    public JoinOtherWaterStriderGoal (WaterStriderEntity strider, double speed, float minDistance, float maxDistance, Random random) {
         this.strider = strider;
         this.targetPredicate = target -> target != null && strider.getClass() == target.getClass();
         this.speed = speed;
         this.navigation = strider.getNavigation();
         this.minDistance = minDistance;
         this.maxDistance = maxDistance;
+        this.random = random;
         this.setControls(EnumSet.of(Goal.Control.MOVE, Goal.Control.LOOK));
     }
 
@@ -85,7 +85,10 @@ public class JoinOtherWaterStriderGoal extends Goal {
                 double f = this.strider.getZ() - this.target.getZ();
                 double g = d * d + e * e + f * f;
                 if (!(g <= (double)(this.minDistance * this.minDistance))) {
-                    strider.getNavigation().startMovingTo(this.target, this.speed);
+                    int xFuzz = random.nextBetween(1, 4);
+                    int zFuzz = random.nextBetween(1, 4);
+                    BlockPos fuzzTarget = this.target.getBlockPos().add(random.nextBoolean() ? xFuzz : -xFuzz, 0, random.nextBoolean() ? zFuzz : -zFuzz);
+                    strider.getNavigation().startMovingTo(fuzzTarget.getX(), fuzzTarget.getY(), fuzzTarget.getZ(), this.speed);
                 } else {
                     this.navigation.stop();
                     LookControl lookControl = this.target.getLookControl();
