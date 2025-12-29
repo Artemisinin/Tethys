@@ -12,7 +12,6 @@ import net.minecraft.util.math.Vec3d;
 import java.util.List;
 
 public class AvoidBoatGoal extends Goal {
-    private int updateCountdownTicks;
     private final PathAwareEntity mob;
     private final float distance;
     private final double speed;

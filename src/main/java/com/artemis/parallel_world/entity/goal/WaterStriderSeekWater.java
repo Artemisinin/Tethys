@@ -55,8 +55,6 @@ public class WaterStriderSeekWater extends WanderAroundFarGoal {
 
     @Override
     public boolean canStart() {
-        FluidState fluidStateDown = mob.getWorld().getFluidState(mob.getBlockPos().down());
-        //return (!fluidStateDown.isOf(Fluids.WATER)
         return (!mob.getWorld().getFluidState(mob.getBlockPos()).isOf(Fluids.WATER))
                 && super.canStart();
     }

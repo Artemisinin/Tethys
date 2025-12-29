@@ -15,20 +15,20 @@ public class WaterStriderPathNodeMaker extends LandPathNodeMaker {
     public PathNode getStart() {
         BlockPos.Mutable mutable = new BlockPos.Mutable();
         int i = this.entity.getBlockY();
-        BlockState blockState = this.context.getBlockState(mutable.set(this.entity.getX(), (double)i, this.entity.getZ()));
+        BlockState blockState = this.context.getBlockState(mutable.set(this.entity.getX(), i, this.entity.getZ()));
         if (this.entity.canWalkOnFluid(blockState.getFluidState())) {
             while (this.entity.canWalkOnFluid(blockState.getFluidState())) {
-                blockState = this.context.getBlockState(mutable.set(this.entity.getX(), (double)(++i), this.entity.getZ()));
+                blockState = this.context.getBlockState(mutable.set(this.entity.getX(), (++i), this.entity.getZ()));
             }
             i--;
         }
         BlockPos blockPos = this.entity.getBlockPos();
         if (!this.canPathThrough(mutable.set(blockPos.getX(), i, blockPos.getZ()))) {
             Box box = this.entity.getBoundingBox();
-            if (this.canPathThrough(mutable.set(box.minX, (double)i, box.minZ))
-                    || this.canPathThrough(mutable.set(box.minX, (double)i, box.maxZ))
-                    || this.canPathThrough(mutable.set(box.maxX, (double)i, box.minZ))
-                    || this.canPathThrough(mutable.set(box.maxX, (double)i, box.maxZ))) {
+            if (this.canPathThrough(mutable.set(box.minX, i, box.minZ))
+                    || this.canPathThrough(mutable.set(box.minX, i, box.maxZ))
+                    || this.canPathThrough(mutable.set(box.maxX, i, box.minZ))
+                    || this.canPathThrough(mutable.set(box.maxX, i, box.maxZ))) {
                 return this.getStart(mutable);
             }
         }
